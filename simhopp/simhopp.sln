@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simhopp", "simhopp.csproj", "{92E2EE1B-F1EE-4191-9A12-8D33D2D4E1A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testsimhopp", "..\testsimhopp\testsimhopp.csproj", "{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "spikes", "spikes", "{D34F8658-D07F-4E62-B7BD-19A75E67DF5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92E2EE1B-F1EE-4191-9A12-8D33D2D4E1A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E2EE1B-F1EE-4191-9A12-8D33D2D4E1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92E2EE1B-F1EE-4191-9A12-8D33D2D4E1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92E2EE1B-F1EE-4191-9A12-8D33D2D4E1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26066BD0-B8CA-48BF-9ECF-B4094D05FEE6}
+	EndGlobalSection
+EndGlobal
