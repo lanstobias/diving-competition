@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simhopp", "simhopp.csproj", "{92E2EE1B-F1EE-4191-9A12-8D33D2D4E1A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simhopp", "Simhopp.csproj", "{92E2EE1B-F1EE-4191-9A12-8D33D2D4E1A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testsimhopp", "..\testsimhopp\testsimhopp.csproj", "{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSimhopp", "..\testsimhopp\TestSimhopp.csproj", "{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "spikes", "spikes", "{D34F8658-D07F-4E62-B7BD-19A75E67DF5A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spikes", "Spikes", "{B4D3DB6D-ED20-4FDE-A206-FFA2FF1C3468}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
