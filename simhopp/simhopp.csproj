@@ -51,8 +51,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="models\Contest.cs" />
     <Compile Include="models\Contestant.cs" />
     <Compile Include="models\ContestantList.cs" />
+    <Compile Include="models\ContestInfo.cs" />
     <Compile Include="models\DiveList.cs" />
     <Compile Include="models\JudgeList.cs" />
     <Compile Include="models\Score.cs" />
