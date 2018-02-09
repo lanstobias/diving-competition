@@ -8,9 +8,13 @@ namespace simhopp.models
 {
     class JudgeList : List<Judge>
     {
+        #region Constructor(s)
         public JudgeList()
+            : base()
         {
 
         }
+
+        #endregion
     }
 }

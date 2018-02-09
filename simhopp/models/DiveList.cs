@@ -8,9 +8,14 @@ namespace simhopp.models
 {
     class DiveList : List<Dive>
     {
+
+        #region Constructor(s)
         public DiveList()
+            : base()
         {
 
         }
+
+        #endregion
     }
 }
