@@ -55,6 +55,8 @@
     <Compile Include="models\Contestant.cs" />
     <Compile Include="models\ContestantList.cs" />
     <Compile Include="models\ContestInfo.cs" />
+    <Compile Include="models\Dive.cs" />
+    <Compile Include="models\DiveCode.cs" />
     <Compile Include="models\DiveList.cs" />
     <Compile Include="models\JudgeList.cs" />
     <Compile Include="models\Score.cs" />
