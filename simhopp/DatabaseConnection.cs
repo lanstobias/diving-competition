@@ -72,5 +72,22 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Close an opened connection to the database.
+        /// </summary>
+        /// <returns></returns>
+        private bool CloseConnection()
+        {
+            try
+            {
+                connection.Close();
+                return true;
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
     }
 }
