@@ -28,5 +28,19 @@ namespace Simhopp
         }
         #endregion
 
+        /// <summary>
+        /// Initialize connection to database.
+        /// </summary>
+        private void InitializeConnection()
+        {
+            MySqlConnectionStringBuilder connectionString = new MySqlConnectionStringBuilder();
+            connectionString.Server = server;
+            connectionString.UserID = userID;
+            connectionString.Password = password;
+            connectionString.Database = database;
+
+            connection = new MySqlConnection(connectionString.ToString());
+        }
+
     }
 }
