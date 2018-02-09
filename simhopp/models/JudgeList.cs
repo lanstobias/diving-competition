@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace simhopp.models
 {
-    class JudgeList
+    class JudgeList : List<Judge>
     {
         public JudgeList()
         {

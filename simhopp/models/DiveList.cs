@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace simhopp.models
 {
-    class DiveList
+    class DiveList : List<Dive>
     {
         public DiveList()
         {
