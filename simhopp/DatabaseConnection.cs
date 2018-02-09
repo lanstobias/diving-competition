@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 
 namespace Simhopp
 {
-    class DatabaseConnection
+    public class DatabaseConnection
     {
         #region Fields
         private MySqlConnection connection;
