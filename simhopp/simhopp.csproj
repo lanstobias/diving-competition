@@ -51,6 +51,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="models\Contestant.cs" />
+    <Compile Include="models\ContestantList.cs" />
+    <Compile Include="models\DiveList.cs" />
+    <Compile Include="models\JudgeList.cs" />
+    <Compile Include="models\Score.cs" />
+    <Compile Include="models\ScoreList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -76,7 +82,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="models\" />
     <Folder Include="presenters\" />
     <Folder Include="views\" />
   </ItemGroup>
