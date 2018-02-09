@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhopp.Models
+namespace simhopp.models
 {
     class Contest
     {
@@ -13,7 +13,7 @@ namespace Simhopp.Models
 
         public JudgeList Judges { get; set; }
 
-        public ContestList Contestants { get; set; }
+        public ContestantList Contestants { get; set; }
 
         public DiveList Dives { get; set; }
 
@@ -22,8 +22,21 @@ namespace Simhopp.Models
         #region Contructor(s)
         public Contest()
         {
-
+            Info = null;
+            Judges = null;
+            Contestants = null;
+            Dives = null;
         }
+
+        public Contest(ContestInfo info, JudgeList judges, ContestantList contestants, DiveList dives)
+        {
+            this.Info = info;
+            this.Judges = judges;
+            this.Contestants = contestants;
+            this.Dives = dives;
+        }
+
+
         #endregion
 
     }
