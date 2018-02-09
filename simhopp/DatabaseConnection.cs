@@ -42,5 +42,35 @@ namespace Simhopp
             connection = new MySqlConnection(connectionString.ToString());
         }
 
+        /// <summary>
+        /// Open a connection to the databas.
+        /// </summary>
+        /// <returns></returns>
+        private bool OpenConnection()
+        {
+            try
+            {
+                connection.Open();
+                return true;
+            }
+            catch (MySqlException e)
+            {
+                // Error codes:
+                // 0: Cannot connect to server.
+                // 1045: Invalid user name and/or password.
+                switch (e.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Cannot connect to server.");
+                        break;
+
+                    case 1045:
+                        MessageBox.Show("Wrong username or password.");
+                        break;
+                }
+                return false;
+            }
+        }
+
     }
 }
