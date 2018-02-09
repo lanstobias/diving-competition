@@ -34,7 +34,6 @@
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.6.10.6\lib\net452\MySql.Data.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
@@ -58,11 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseConnection.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="presenters\MainMenuPresenter.cs" />
+    <Compile Include="ProjectMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ProjectMainWindow.Designer.cs">
+      <DependentUpon>ProjectMainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="models\Contest.cs" />
     <Compile Include="models\Contestant.cs" />
@@ -78,6 +78,9 @@
     <Compile Include="models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ProjectMainWindow.resx">
+      <DependentUpon>ProjectMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -101,10 +104,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="presenters\" />
-    <Folder Include="views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />

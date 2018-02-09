@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Simhopp
 {
-    public partial class Form1 : Form
+    public partial class ProjectMainWindow : Form
     {
-        public Form1()
+        public ProjectMainWindow()
         {
             InitializeComponent();
         }
