@@ -32,6 +32,18 @@ namespace simhopp.models
 
         }
 
+        public Person(int ID, String FirstName, String LastName, int Age, String Email, String Gender, String SSN, String Address)
+        {
+            this.ID = ID;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Age = Age;
+            this.Email = Email;
+            this.Gender = Gender;
+            this.SocialSecurityNr = SSN;
+            this.Address = Address;
+        }
+
 
 
     }

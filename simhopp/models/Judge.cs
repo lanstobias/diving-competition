@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace simhopp.models
 {
-    public class Judge
+    public class Judge : Person
     {
+
         Judge()
         {
 
