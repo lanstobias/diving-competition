@@ -14,7 +14,7 @@ namespace simhopp.models
         }
 
         public double Value { get; set; }
-       // public Judge Judge { get; set; }
+        public Judge Judge { get; set; }
 
     }
 }
