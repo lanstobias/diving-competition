@@ -78,6 +78,7 @@
     <Compile Include="models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="views\IMainMenuView.cs" />
     <Compile Include="views\PanelView.cs">
       <SubType>Component</SubType>
     </Compile>
