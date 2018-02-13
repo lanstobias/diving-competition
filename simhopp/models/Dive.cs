@@ -36,5 +36,11 @@ namespace Simhopp
             generateScoresWithoutFirstAndLastScore();
             return FinalizedScore;
         }
+
+        public ScoreList generateScoresWithoutFirstAndLastScore()
+        {
+            ScoreList ScoresWithoutFirstAndLastScore = null;
+            return ScoresWithoutFirstAndLastScore;
+        }
     }
 }
