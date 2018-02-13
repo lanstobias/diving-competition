@@ -29,5 +29,12 @@ namespace Simhopp
 
             return RawScore;
         }
+
+        public double generateFinalizedScore()
+        {
+            double FinalizedScore = 0;
+            generateScoresWithoutFirstAndLastScore();
+            return FinalizedScore;
+        }
     }
 }
