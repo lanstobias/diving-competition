@@ -31,6 +31,7 @@ namespace Simhopp
             Info = null;
             Judges = null;
             Contestants = null;
+            SubContestBranches = null;
         }
 
         /// <summary>
@@ -39,11 +40,12 @@ namespace Simhopp
         /// <param name="info">Object containing info about contest</param>
         /// <param name="judges">List of judges</param>
         /// <param name="contestants">list of contestants</param>
-        public Contest(ContestInfo info, JudgeList judges, ContestantList contestants)
+        public Contest(ContestInfo info, JudgeList judges, ContestantList contestants, SubContestBranchList subContestBranches)
         {
             this.Info = info;
             this.Judges = judges;
             this.Contestants = contestants;
+            this.SubContestBranches = subContestBranches;
         }
         #endregion
 
