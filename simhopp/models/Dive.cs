@@ -22,5 +22,12 @@ namespace Simhopp
         {
             get;set;
         }
+
+        public double generateRawScore()
+        {
+            double RawScore = 0;
+
+            return RawScore;
+        }
     }
 }
