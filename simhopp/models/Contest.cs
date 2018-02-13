@@ -18,6 +18,7 @@ namespace Simhopp
 
         public ContestantList Contestants { get; set; }
 
+        public SubContestBranchList SubContestBranches { get; set; }
 
         #endregion
 
