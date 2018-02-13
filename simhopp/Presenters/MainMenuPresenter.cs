@@ -24,8 +24,8 @@ namespace Simhopp
         
         public void gotoCreateContestView()
         {
-            //CreateContestView view = new Crateasdfasfd
-            //CreateContestPresenter presenter = new asdfasdf
+            //CreateContestView view = new CrateaContestView();
+            //CreateContestPresenter presenter = new CreateContestPresenter();
             //window.ChangePanel(view, this)   // ChangePanel(ny view, cameFrom)
         }
     }
