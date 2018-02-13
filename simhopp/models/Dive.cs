@@ -8,20 +8,21 @@ namespace Simhopp
 {
     class Dive
     {
+        #region Constructor(s)
         public Dive()
         {
 
         }
-
-<<<<<<< HEAD
+        
         public Dive(DiveCode code, ScoreList scores)
         {
             this.Code = code;
             this.Scores = scores;
         }
-        
-=======
->>>>>>> 53ceb6a348dbf99d4a01c0970b1cf9a1f72d6888
+        #endregion
+
+        #region Properties
+
         public DiveCode Code
         {
             get;set;
@@ -31,6 +32,10 @@ namespace Simhopp
         {
             get;set;
         }
+
+        #endregion
+
+        #region Functions
 
         public double generateRawScore()
         {
@@ -51,5 +56,7 @@ namespace Simhopp
             ScoreList ScoresWithoutFirstAndLastScore = null;
             return ScoresWithoutFirstAndLastScore;
         }
+
+        #endregion
     }
 }
