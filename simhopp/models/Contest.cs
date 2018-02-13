@@ -9,35 +9,43 @@ namespace Simhopp
     class Contest
     {
         #region Properties
+        //
+        // Properties
+        //
         public ContestInfo Info { get; set; }
 
         public JudgeList Judges { get; set; }
 
         public ContestantList Contestants { get; set; }
 
-        public DiveList Dives { get; set; }
 
         #endregion
 
         #region Contructor(s)
+        //
+        // Default constructor
+        //
         public Contest()
         {
             Info = null;
             Judges = null;
             Contestants = null;
-            Dives = null;
         }
 
-        public Contest(ContestInfo info, JudgeList judges, ContestantList contestants, DiveList dives)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="info">Object containing info about contest</param>
+        /// <param name="judges">List of judges</param>
+        /// <param name="contestants">list of contestants</param>
+        public Contest(ContestInfo info, JudgeList judges, ContestantList contestants)
         {
             this.Info = info;
             this.Judges = judges;
             this.Contestants = contestants;
-            this.Dives = dives;
         }
-
-
         #endregion
+
 
     }
 }
