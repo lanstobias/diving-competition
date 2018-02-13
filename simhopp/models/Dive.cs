@@ -12,6 +12,12 @@ namespace Simhopp
         {
 
         }
+
+        public Dive(DiveCode code, ScoreList scores)
+        {
+            this.Code = code;
+            this.Scores = scores;
+        }
         
         public DiveCode Code
         {
