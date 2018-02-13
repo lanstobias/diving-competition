@@ -12,11 +12,12 @@ namespace Simhopp
         {
 
         }
-        
+
         public DiveCode Code
         {
             get;set;
         }
+
         public ScoreList Scores
         {
             get;set;
