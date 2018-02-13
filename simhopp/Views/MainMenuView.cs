@@ -15,14 +15,14 @@ namespace Simhopp
         private Button exitButton;
         
         
-        private Label label1;
+        private Label title;
         
 
         public MainMenuView()
         {
 
             this.createContestButton = new Button();
-            this.label1 = new Label();
+            this.title = new Label();
             this.loadContestButton = new Button();
             this.judgeContestButton = new Button();
             this.exitButton = new Button();
@@ -33,11 +33,11 @@ namespace Simhopp
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.judgeContestButton);
             this.Controls.Add(this.loadContestButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.title);
             this.Controls.Add(this.createContestButton);
             this.Name = "mainMenuPanel";
             // 
-            // button1
+            // createContestButton
             // 
             this.createContestButton.Location = new System.Drawing.Point(212, 142);
             this.createContestButton.Name = "createContestButton";
@@ -47,16 +47,16 @@ namespace Simhopp
             this.createContestButton.UseVisualStyleBackColor = true;
             this.Click += new EventHandler(this.CreateContestButton_Click);
             // 
-            // label1
+            // title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(233, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.title.AutoSize = true;
+            this.title.Location = new System.Drawing.Point(233, 81);
+            this.title.Name = "label1";
+            this.title.Size = new System.Drawing.Size(35, 13);
+            this.title.TabIndex = 1;
+            this.title.Text = "label1";
             // 
-            // button2
+            // loadContestButton
             // 
             this.loadContestButton.Location = new System.Drawing.Point(212, 171);
             this.loadContestButton.Name = "loadContestButton";
@@ -65,7 +65,7 @@ namespace Simhopp
             this.loadContestButton.Text = "Ladda pågående tävling";
             this.loadContestButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // judgeContestButton
             // 
             this.judgeContestButton.Location = new System.Drawing.Point(212, 200);
             this.judgeContestButton.Name = "judgeContestButton";
@@ -74,13 +74,13 @@ namespace Simhopp
             this.judgeContestButton.Text = "Bedöm tävling";
             this.judgeContestButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // exitButton
             // 
             this.exitButton.Location = new System.Drawing.Point(212, 229);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 4;
-            this.exitButton.Text = "Stäng";
+            this.exitButton.Text = "Avsluta";
             this.exitButton.UseVisualStyleBackColor = true;
         }
 
