@@ -12,19 +12,19 @@ namespace Simhopp
         //
         // Properites
         //
-        public DiveList Dives { get; set; }
+        public List<DiveList> DiveLists { get; set; }
 
         #endregion
 
         #region Constructor(s)
         public Contestant()
         {
-            Dives = null;
+            DiveLists = null;
         }
 
-        public Contestant(DiveList dives)
+        public Contestant(List<DiveList> diveLists)
         {
-            this.Dives = dives;
+            this.DiveLists = diveLists;
         }
         #endregion
 
