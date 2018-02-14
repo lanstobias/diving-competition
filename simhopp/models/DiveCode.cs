@@ -11,7 +11,9 @@ namespace Simhopp
         public double Multiplier { get; set; }
 
         public DiveCode()
-        { 
+        {
+            this.Multiplier = 0;
+        }
         }
     }
 }
