@@ -50,5 +50,11 @@ namespace Simhopp
         #endregion
 
 
+        #region Methods
+        public void AddNewDive(Contestant Diver, SubContestBranch Branch, Dive DiveToBeAdded)
+        {
+            throw new NotImplementedException();
+        } 
+        #endregion
     }
 }
