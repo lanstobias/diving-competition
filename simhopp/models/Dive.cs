@@ -52,7 +52,7 @@ namespace Simhopp
             foreach (var score in Scores)
                 RawScore += score.Value;
 
-            RawScore = RawScore * this.Code.Multiplier;
+            RawScore *= this.Code.Multiplier;
             return RawScore;
         }
 
