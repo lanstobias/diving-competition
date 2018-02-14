@@ -54,7 +54,17 @@ namespace Simhopp
         public void AddNewDive(Contestant Diver, SubContestBranch Branch, Dive DiveToBeAdded)
         {
             throw new NotImplementedException();
-        } 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dive"></param>
+        /// <param name="scores"></param>
+        public void AddFinalizedScoreListToDive(Dive dive, ScoreList scores)
+        {
+            dive.Scores = scores;
+        }
         #endregion
     }
 }
