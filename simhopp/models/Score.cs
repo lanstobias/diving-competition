@@ -13,6 +13,11 @@ namespace Simhopp
 
         }
 
+        public Score(double value)
+        {
+            this.Value = value;
+        }
+
         public double Value { get; set; }
         public Judge Judge { get; set; }
 
