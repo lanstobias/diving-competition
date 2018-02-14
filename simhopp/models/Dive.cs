@@ -94,6 +94,12 @@ namespace Simhopp
             return ScoresWithoutFirstAndLastScore;
         }
 
+        public void SortScoreListAscending()
+        {
+            ScoreComparer scoreComparer = new ScoreComparer();
+            Scores.Sort(scoreComparer);
+        }
+
         #endregion
     }
 }
