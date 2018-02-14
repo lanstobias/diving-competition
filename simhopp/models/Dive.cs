@@ -47,7 +47,16 @@ namespace Simhopp
         public double generateFinalizedScore()
         {
             double FinalizedScore = 0;
-            generateScoresWithoutFirstAndLastScore();
+            ScoreList scoresWithoutFirstAndLastScore = generateScoresWithoutFirstAndLastScore();
+
+            //Summering av alla poäng
+            foreach (var scores in scoresWithoutFirstAndLastScore)
+            {
+                FinalizedScore += scores.Value;
+            }
+            
+            FinalizedScore *= Code.Multiplier;
+
             return FinalizedScore;
         }
 
