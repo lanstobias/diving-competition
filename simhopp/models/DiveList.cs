@@ -9,13 +9,13 @@ namespace Simhopp
     class DiveList : List<Dive>
     {
 
-        public SubContestBranch SubContest { get; set; }
+        public SubContestBranch SubContestBranch { get; set; }
 
         #region Constructor(s)
-        public DiveList(SubContestBranch subContest)
+        public DiveList(SubContestBranch subContestBranch)
             : base()
         {
-            this.SubContest = SubContest;
+            this.SubContestBranch = subContestBranch;
         }
 
         #endregion
