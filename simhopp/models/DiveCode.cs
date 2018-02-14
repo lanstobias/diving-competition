@@ -14,6 +14,9 @@ namespace Simhopp
         {
             this.Multiplier = 0;
         }
+        public DiveCode(double multiplier)
+        {
+            this.Multiplier = multiplier;
         }
     }
 }
