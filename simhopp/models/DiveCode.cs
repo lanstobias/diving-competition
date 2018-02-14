@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
+
+
     class DiveCode
     {
-        public DiveCode()
-        {
+        public double Multiplier { get; set; }
 
+        public DiveCode()
+        { 
         }
     }
 }
