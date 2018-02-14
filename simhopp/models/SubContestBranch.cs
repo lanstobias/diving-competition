@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 //Denna klass är en Gren, vi valde namnet SubContestBranch eftersom namnet Event eller DiveEvent skulle kunna skapa förviring. Detta namn förvirar kanske också, men inte lika mycket ansåg vi.
 namespace Simhopp
 {
-    class SubContestBranch
+    public class SubContestBranch
     {
 
         public SubContestBranch()

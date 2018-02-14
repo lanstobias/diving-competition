@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
-    class ContestantList
+    public class ContestantList
     {
         public ContestantList()
         {

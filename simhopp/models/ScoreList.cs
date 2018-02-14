@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
-    class ScoreList : List<Score>
+    public class ScoreList : List<Score>
     {
 
         #region Constructor(s)

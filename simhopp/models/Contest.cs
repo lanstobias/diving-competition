@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
-    class Contest
+    public class Contest
     {
         #region Properties
         //

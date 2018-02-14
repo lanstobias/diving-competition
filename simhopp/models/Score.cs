@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
-    class Score
+    public class Score
     {
         public Score()
         {

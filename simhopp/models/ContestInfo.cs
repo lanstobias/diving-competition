@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
-    class ContestInfo
+    public class ContestInfo
     {
         #region Properties
         public string Name { get; set; }

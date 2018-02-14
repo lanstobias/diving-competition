@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
-    class Dive
+    public class Dive
     {
         #region Constructor(s)
         public Dive()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
-    class DiveList : List<Dive>
+    public class DiveList : List<Dive>
     {
 
         public SubContestBranch SubContestBranch { get; set; }
