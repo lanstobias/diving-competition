@@ -82,8 +82,7 @@ namespace Simhopp
         /// <returns>New list with the valid scores</returns>
         public ScoreList generateScoresWithoutFirstAndLastScore()
         {
-            ScoreList ScoresWithoutFirstAndLastScore = null;
-            
+            ScoreList ScoresWithoutFirstAndLastScore = new ScoreList();
             // i start at 1 to skip first
             for(int i = 1; i < Scores.Count; i++)
             {
