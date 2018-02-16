@@ -13,5 +13,16 @@ namespace Simhopp
         {
 
         }
+
+        internal bool Exists(Contestant diver)
+        {
+            foreach(var c in this)
+            {
+                if (c == diver)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }
