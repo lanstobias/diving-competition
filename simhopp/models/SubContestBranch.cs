@@ -68,8 +68,30 @@ namespace Simhopp
                 }
             }
         }
+
+        /// <summary>
+        /// Remove an existing dive from a contestants DiveList bound to this branch
+        /// </summary>
+        /// <param name="diver">The Contestant to have his dive removed</param>
+        /// <param name="diveToBeRemoved">The dive in question</param>
+        public bool RemoveExistingDive(Contestant diver, Dive diveToBeRemoved)
+        {
+            if(BranchContestants.Exists(diver))
+            {
+                foreach (var list in diver.DiveLists)
+                {
+                    if (list.Exists(diveToBeRemoved))
+                    {
+                        list.Remove(diveToBeRemoved);
+                        return true;
+                    }
+                }
+            }
+            return false;
             
         }
+
+
         #endregion
     }
 }
