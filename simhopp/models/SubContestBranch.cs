@@ -31,19 +31,39 @@ namespace Simhopp
         #region Methods
 
         /// <summary>
-        /// Add a new dive to a divers divelist
+        /// Add a new dive to the correct divelist of a Contestant
         /// </summary>
-        /// <param name="Diver"></param>
-        /// <param name="DiveToBeAdded"></param>
+        /// <param name="Diver">The Contestant who made the dive</param>
+        /// <param name="DiveToBeAdded">The dive</param>
         public void AddNewDive(Contestant Diver, Dive DiveToBeAdded)
         {
             if (this.BranchContestants.Contains(Diver))
             {
-                foreach (var list in Diver.DiveLists)
+
+                // If this is the first dive of this Contestant, create a new DiveList connected to this branch,
+                // and then add the dive.
+                if (Diver.DiveLists.Count == 0)
                 {
-                    if (list.SubContestBranch == this)
+                    Diver.DiveLists.Add(new DiveList(this));
+                    Diver.DiveLists.ElementAt(0).Add(DiveToBeAdded);
+                }
+                // if it is not the first dive, go through the DiveList(s) and see if any of them match with
+                // this branch. If no such list exists, create it and add the dive.
+                else
+                {
+                    foreach (var list in Diver.DiveLists)
                     {
-                        list.Add(DiveToBeAdded);
+                        if (list.SubContestBranch == this)
+                        {
+                            list.Add(DiveToBeAdded);
+                            break;
+                        }
+                        else
+                        {
+                            Diver.DiveLists.Add(new DiveList(this));
+                            Diver.DiveLists.Last().Add(DiveToBeAdded);
+                            break;
+                        }
                     }
                 }
             }
