@@ -18,6 +18,17 @@ namespace Simhopp
             this.SubContestBranch = subContestBranch;
         }
 
+        internal bool Exists(Dive dive)
+        {
+            foreach (var d in this)
+            {
+                if (d == dive)
+                    return true;
+            }
+
+            return false;
+        }
+
         #endregion
     }
 }
