@@ -11,6 +11,10 @@ namespace Simhopp
 
         public SubContestBranch()
         {
+            Name = "-";
+            ParentContest = null;
+            BranchContestants = new ContestantList();
+        }
 
         }
 
