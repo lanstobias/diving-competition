@@ -28,6 +28,18 @@ namespace Simhopp
         {
             this.DiveLists = diveLists;
         }
+
+        public Contestant(int ID, String firstName, String lastName, int age, String email, String gender, String SSN, String address)
+            : base(ID, firstName, lastName, age, email, gender, SSN, address)
+        {
+            DiveLists = new List<DiveList>();
+        }
+
+        public Contestant(int ID, String firstName, String lastName, int age, String email, String gender, String SSN, String address, List<DiveList> diveLists)
+            : base(ID, firstName, lastName, age, email, gender, SSN, address)
+        {
+            DiveLists = diveLists;
+        }
         #endregion
 
 
