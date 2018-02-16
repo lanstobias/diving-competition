@@ -57,10 +57,10 @@ namespace Simhopp
         }
 
         /// <summary>
-        /// 
+        /// Adds the finalized ScoreList to the dive
         /// </summary>
-        /// <param name="dive"></param>
-        /// <param name="scores"></param>
+        /// <param name="dive">The dive to be judged</param>
+        /// <param name="scores">The list of points from the judges</param>
         public void AddFinalizedScoreListToDive(Dive dive, ScoreList scores)
         {
             dive.Scores = scores;
