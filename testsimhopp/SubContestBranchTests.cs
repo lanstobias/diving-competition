@@ -37,7 +37,7 @@ namespace testsimhopp
         #endregion
 
         [TestMethod]
-        public void TestAddNewDive()
+        public void TestAddAndRemoveNewDive()
         {
             Contest contest = new Contest();
             Contestant kalle = new Contestant("kalle");
@@ -82,6 +82,29 @@ namespace testsimhopp
 
             Assert.AreEqual(dive3, diveToCheck);
 
+
+            // Tests removing of a dive that was added by mistake?
+
+            Assert.IsTrue(branch.RemoveExistingDive(contestantList.ElementAt(0), dive2));
+
+            // Checks if the element we removed is still there
+            // If ArgumentOutOfRangeException is triggered the test is valid
+            try
+            {
+                contestantList.ElementAt(0).DiveLists.ElementAt(0).ElementAt(1);
+                Assert.Fail();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                
+            }
+
+
+            // Tests removing of a dive that doesnt exist
+
+            Assert.IsFalse(branch.RemoveExistingDive(contestantList.ElementAt(1), dive2));
+            
+            
         }
     }
 }
