@@ -23,6 +23,12 @@ namespace Simhopp
             DiveLists = new List<DiveList>();
         }
 
+        public Contestant(string name)
+            : base(0, name, "", 0, "", "", "", "")
+        {
+            DiveLists = new List<DiveList>();
+        }
+
         public Contestant(List<DiveList> diveLists)
             : base()
         {
