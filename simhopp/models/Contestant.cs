@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
-    public class Contestant
+    public class Contestant : Person
     {
         #region Properties
         //
@@ -18,11 +18,13 @@ namespace Simhopp
 
         #region Constructor(s)
         public Contestant()
+            : base()
         {
             DiveLists = null;
         }
 
         public Contestant(List<DiveList> diveLists)
+            : base()
         {
             this.DiveLists = diveLists;
         }
