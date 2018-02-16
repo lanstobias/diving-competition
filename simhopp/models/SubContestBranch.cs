@@ -16,5 +16,30 @@ namespace Simhopp
 
         public string Name { get; set; }
         public Contest ParentContest { get; set; }
+
+        public ContestantList BranchContestants { get; set; }
+
+        #region Methods
+
+        /// <summary>
+        /// Add a new dive to a divers divelist
+        /// </summary>
+        /// <param name="Diver"></param>
+        /// <param name="DiveToBeAdded"></param>
+        public void AddNewDive(Contestant Diver, Dive DiveToBeAdded)
+        {
+            if (this.BranchContestants.Contains(Diver))
+            {
+                foreach (var list in Diver.DiveLists)
+                {
+                    if (list.SubContestBranch == this)
+                    {
+                        list.Add(DiveToBeAdded);
+                    }
+                }
+            }
+            
+        }
+        #endregion
     }
 }
