@@ -56,15 +56,7 @@ namespace Simhopp
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Adds the finalized ScoreList to the dive
-        /// </summary>
-        /// <param name="dive">The dive to be judged</param>
-        /// <param name="scores">The list of points from the judges</param>
-        public void AddFinalizedScoreListToDive(Dive dive, ScoreList scores)
-        {
-            dive.Scores = scores;
-        }
+        
         #endregion
     }
 }

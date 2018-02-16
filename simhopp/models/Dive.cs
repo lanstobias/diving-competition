@@ -111,6 +111,16 @@ namespace Simhopp
             Scores.Sort(scoreComparer);
         }
 
+        /// <summary>
+        /// Adds the finalized ScoreList to this dive
+        /// </summary>
+        /// <param name="dive">The dive to be judged</param>
+        /// <param name="scores">The list of points from the judges</param>
+        public void AddFinalizedScoreListToDive(ScoreList scores)
+        {
+            this.Scores = scores;
+        }
+
         #endregion
     }
 }
