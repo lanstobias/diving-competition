@@ -10,13 +10,17 @@ namespace Simhopp
     {
         public double Multiplier { get; set; }
 
+        public string Code { get; set; }
+
         public DiveCode()
         {
             this.Multiplier = 0;
         }
-        public DiveCode(double multiplier)
+
+        public DiveCode(double multiplier = 0, string code = "")
         {
             this.Multiplier = multiplier;
+            this.Code = code;
         }
     }
 }
