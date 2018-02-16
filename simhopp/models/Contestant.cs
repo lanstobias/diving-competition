@@ -20,7 +20,7 @@ namespace Simhopp
         public Contestant()
             : base()
         {
-            DiveLists = null;
+            DiveLists = new List<DiveList>();
         }
 
         public Contestant(List<DiveList> diveLists)
