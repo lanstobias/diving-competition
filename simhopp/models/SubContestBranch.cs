@@ -16,6 +16,11 @@ namespace Simhopp
             BranchContestants = new ContestantList();
         }
 
+        public SubContestBranch(string name, Contest parentContest, ContestantList branchContestants)
+        {
+            this.Name = name;
+            this.ParentContest = parentContest;
+            this.BranchContestants = branchContestants;
         }
 
         public string Name { get; set; }
