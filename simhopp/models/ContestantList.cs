@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
-    public class ContestantList
+    public class ContestantList : List<Contestant>
     {
         public ContestantList()
+            : base()
         {
 
         }
