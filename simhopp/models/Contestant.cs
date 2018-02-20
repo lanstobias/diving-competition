@@ -23,6 +23,7 @@ namespace Simhopp
             DiveLists = new List<DiveList>();
         }
 
+        // constructor for easy testing
         public Contestant(string name)
             : base(0, name, "", 0, "", "", "", "")
         {
@@ -35,12 +36,14 @@ namespace Simhopp
             this.DiveLists = diveLists;
         }
 
+        // without divelist
         public Contestant(int ID, String firstName, String lastName, int age, String email, String gender, String SSN, String address)
             : base(ID, firstName, lastName, age, email, gender, SSN, address)
         {
             DiveLists = new List<DiveList>();
         }
 
+        // with existing divelist
         public Contestant(int ID, String firstName, String lastName, int age, String email, String gender, String SSN, String address, List<DiveList> diveLists)
             : base(ID, firstName, lastName, age, email, gender, SSN, address)
         {
