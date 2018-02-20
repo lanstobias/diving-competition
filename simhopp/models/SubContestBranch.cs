@@ -91,6 +91,35 @@ namespace Simhopp
             
         }
 
+        /// <summary>
+        /// Generates a dictionary containing all the contestants and their total score in this subcontest.
+        /// Sorts it in descending order with the winner first.
+        /// ResultDictionary inherits from Dictionary<Contestant, double> 
+        /// </summary>
+        /// <returns>A ResultDictionary object</returns>
+        public ResultDictionary GenerateSubContestResult()
+        {
+            ResultDictionary resultDictionary = new ResultDictionary();
+            double sum = 0;
+
+            foreach(var diver in BranchContestants)
+            {
+                foreach(var diveList in diver.DiveLists)
+                {
+                    if(diveList.SubContestBranch == this)
+                    {
+                        foreach(var dive in diveList)
+                            sum += dive.generateFinalizedScore();
+                        
+                        resultDictionary.Add(diver, sum);
+                        sum = 0;
+                    }
+                }
+            }
+
+            resultDictionary.Sort();
+            return resultDictionary;
+        }
 
         #endregion
     }
