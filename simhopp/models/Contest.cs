@@ -32,6 +32,13 @@ namespace Simhopp
             Judges = null;
             Contestants = null;
             SubContestBranches = null;
+
+        public Contest(ContestInfo info, JudgeList judges, ContestantList contestants)
+        {
+            this.Info = info;
+            this.Judges = judges;
+            this.Contestants = contestants;
+            SubContestBranches = new SubContestBranchList();
         }
 
         /// <summary>
