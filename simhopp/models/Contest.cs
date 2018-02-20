@@ -57,5 +57,17 @@ namespace Simhopp
         #endregion
         
 
+        #region Functions
+        /// <summary>
+        /// Get the ResultDictionary from a specified subcontest.
+        /// </summary>
+        /// <param name="subContest">The subcontest to generate the results</param>
+        /// <returns>A ResultDictionary</returns>
+        public ResultDictionary GetSubContestResultDictionary(SubContestBranch subContest)
+        {
+            return subContest.GenerateSubContestResult();
+        }
+        #endregion
+
     }
 }
