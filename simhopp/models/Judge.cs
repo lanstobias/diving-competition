@@ -8,10 +8,9 @@ namespace Simhopp
 {
     public class Judge : Person
     {
-
-        Judge()
+        public Judge()
+            : base()
         {
-
         }
 
 
