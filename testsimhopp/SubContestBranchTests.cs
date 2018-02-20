@@ -104,7 +104,101 @@ namespace testsimhopp
 
             Assert.IsFalse(branch.RemoveExistingDive(contestantList.ElementAt(1), dive2));
             
+        }
+
+        [TestMethod]
+        public void TestGenerateSubContestResult()
+        {
+            Contest contest = new Contest();
+            Contestant kalle = new Contestant("kalle");
+            Contestant pelle = new Contestant("pelle");
+            Contestant lars = new Contestant("Lars");
+
+            ContestantList contestantList = new ContestantList();
+            contestantList.Add(kalle);
+            contestantList.Add(pelle);
+            contestantList.Add(lars);
+
+            SubContestBranch subContest = new SubContestBranch("Test", contest, contestantList);
+
+            Dive dive = new Dive(new DiveCode(3.1));
+            Dive dive2 = new Dive(new DiveCode(2.1));
+            Dive dive3 = new Dive(new DiveCode(3.5));
+            Dive dive4 = new Dive(new DiveCode(2.5));
+            Dive dive5 = new Dive(new DiveCode(15.0));
+
+            ScoreList scoreListDive = new ScoreList();
+            scoreListDive.Add(new Score(8));
+            scoreListDive.Add(new Score(8.5));
+            scoreListDive.Add(new Score(6.5));
+            scoreListDive.Add(new Score(7));
+            scoreListDive.Add(new Score(9));
+            dive.Scores = scoreListDive;
+            // 72.85
+
+            subContest.AddNewDive(kalle, dive);
+
+            ScoreList scoreListDive2 = new ScoreList();
+            scoreListDive2.Add(new Score(6));
+            scoreListDive2.Add(new Score(7.5));
+            scoreListDive2.Add(new Score(6.5));
+            scoreListDive2.Add(new Score(7));
+            scoreListDive2.Add(new Score(9));
+            dive2.Scores = scoreListDive2;
+            // 44.1
+
+            subContest.AddNewDive(pelle, dive2);
+
+            ScoreList scoreListDive3 = new ScoreList();
+            scoreListDive3.Add(new Score(6));
+            scoreListDive3.Add(new Score(4.5));
+            scoreListDive3.Add(new Score(6.5));
+            scoreListDive3.Add(new Score(5));
+            scoreListDive3.Add(new Score(8));
+            dive3.Scores = scoreListDive3;
+            subContest.AddNewDive(kalle, dive3);
+            // 61.25
+
+            ScoreList scoreListDive4 = new ScoreList();
+            scoreListDive4.Add(new Score(6));
+            scoreListDive4.Add(new Score(7));
+            scoreListDive4.Add(new Score(8.5));
+            scoreListDive4.Add(new Score(5));
+            scoreListDive4.Add(new Score(8));
+            dive4.Scores = scoreListDive4;
+            subContest.AddNewDive(pelle, dive4);
+            //
+
             
+            
+            ScoreList scoreListDive5 = new ScoreList();
+            scoreListDive5.Add(new Score(6));
+            scoreListDive5.Add(new Score(7));
+            scoreListDive5.Add(new Score(8.5));
+            scoreListDive5.Add(new Score(5));
+            scoreListDive5.Add(new Score(8));
+            dive5.Scores = scoreListDive5;
+            subContest.AddNewDive(lars, dive5);
+            //
+
+            ResultDictionary result = subContest.GenerateSubContestResult();
+
+        
+
+            Assert.AreEqual(3, result.Count);
+
+
+            foreach (var score in result)
+            {
+                Console.WriteLine(score.Key.FirstName + ": " + score.Value);
+            }
+
+            Assert.AreEqual(315, result.First().Value);
+            
+            
+            
+
+
         }
     }
 }
