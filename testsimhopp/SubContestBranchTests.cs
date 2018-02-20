@@ -13,7 +13,30 @@ namespace testsimhopp
     [TestClass]
     public class SubContestBranchTests
     {
-       
+        private TestContext testContext;
+
+        public TestContext TestContext
+        {
+            get { return testContext; }
+            set { testContext = value; }
+        }
+
+
+        Contest contest = new Contest();
+        Contestant kalle = new Contestant("kalle");
+        Contestant pelle = new Contestant("pelle");
+        ContestantList contestantList = new ContestantList();
+        SubContestBranch branch;
+        
+
+        public SubContestBranchTests()
+        {
+            contestantList.Add(kalle);
+            contestantList.Add(pelle);
+            branch = new SubContestBranch("testbranch", contest, contestantList);
+        }
+
+
         #region Additional test attributes
         //
         // You can use the following additional attributes as you write your tests:
@@ -39,20 +62,11 @@ namespace testsimhopp
         [TestMethod]
         public void TestAddAndRemoveNewDive()
         {
-            Contest contest = new Contest();
-            Contestant kalle = new Contestant("kalle");
-            Contestant pelle = new Contestant("pelle");
-            ContestantList contestantList = new ContestantList();
-            contestantList.Add(kalle);
-            contestantList.Add(pelle);
+
 
             // Tests the adding of a new dive, when it is the first dive of the diver
-            SubContestBranch branch = new SubContestBranch("testbranch", contest, contestantList);
-            
             Dive dive = new Dive(new DiveCode(3.1));
-
             branch.AddNewDive(contestantList.ElementAt(0), dive);
-
             Dive diveToCheck = null;
 
             diveToCheck = branch.BranchContestants.ElementAt(0).DiveLists.ElementAt(0).ElementAt(0);
@@ -98,7 +112,7 @@ namespace testsimhopp
             {
                 
             }
-
+            
 
             // Tests removing of a dive that doesnt exist
 
