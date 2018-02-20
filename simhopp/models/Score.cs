@@ -10,12 +10,19 @@ namespace Simhopp
     {
         public Score()
         {
-
+            this.Value = 0;
         }
 
+        // for testing purposes
         public Score(double value)
         {
             this.Value = value;
+        }
+
+        public Score(double value, Judge judge)
+        {
+            this.Value = value;
+            this.Judge = judge;
         }
 
         public double Value { get; set; }
