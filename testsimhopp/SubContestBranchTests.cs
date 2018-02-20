@@ -120,6 +120,9 @@ namespace testsimhopp
             
         }
 
+        /// <summary>
+        /// Test the method that generates a result of a subcontest, ordered by winner first.
+        /// </summary>
         [TestMethod]
         public void TestGenerateSubContestResult()
         {
@@ -182,9 +185,8 @@ namespace testsimhopp
             dive4.Scores = scoreListDive4;
             subContest.AddNewDive(pelle, dive4);
             //
+            
 
-            
-            
             ScoreList scoreListDive5 = new ScoreList();
             scoreListDive5.Add(new Score(6));
             scoreListDive5.Add(new Score(7));
@@ -195,12 +197,12 @@ namespace testsimhopp
             subContest.AddNewDive(lars, dive5);
             //
 
+            // get the ResultDictionary containing pairs of contestant and a total score sum.
             ResultDictionary result = subContest.GenerateSubContestResult();
 
         
 
             Assert.AreEqual(3, result.Count);
-
 
             foreach (var score in result)
             {
@@ -208,10 +210,20 @@ namespace testsimhopp
             }
 
             Assert.AreEqual(315, result.First().Value);
-            
-            
-            
 
+            Console.WriteLine();
+
+            // getting same data from our Contest object
+            ResultDictionary r = contest.getSubContestResultDictionary(subContest);
+
+            Assert.AreEqual(3, result.Count);
+
+            foreach (var score in result)
+            {
+                Console.WriteLine(score.Key.FirstName + ": " + score.Value);
+            }
+
+            Assert.AreEqual(315, result.First().Value);
 
         }
     }
