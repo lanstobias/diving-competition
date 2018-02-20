@@ -28,10 +28,11 @@ namespace Simhopp
         //
         public Contest()
         {
-            Info = null;
-            Judges = null;
-            Contestants = null;
-            SubContestBranches = null;
+            Info = new ContestInfo();
+            Judges = new JudgeList();
+            Contestants = new ContestantList();
+            SubContestBranches = new SubContestBranchList();
+        }
 
         public Contest(ContestInfo info, JudgeList judges, ContestantList contestants)
         {
@@ -55,7 +56,6 @@ namespace Simhopp
             this.SubContestBranches = subContestBranches;
         }
         #endregion
-        
 
         #region Functions
         /// <summary>
