@@ -12,6 +12,9 @@ namespace Simhopp
 {
     public partial class ProjectMainWindow : Form
     {
+        #region Properties
+        private PanelViewControl CurrentPanel { get; set; }
+
         public ProjectMainWindow()
         {
             InitializeComponent();
