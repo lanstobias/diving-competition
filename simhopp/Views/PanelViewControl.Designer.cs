@@ -36,7 +36,6 @@
             this.mainPanel.Location = new System.Drawing.Point(4, 4);
             this.mainPanel.Name = "MainPanel";
             this.mainPanel.Size = new System.Drawing.Size(513, 390);
-            this.mainPanel.BackColor = System.Drawing.Color.White;
             this.mainPanel.TabIndex = 0;
             // 
             // PanelViewControl
