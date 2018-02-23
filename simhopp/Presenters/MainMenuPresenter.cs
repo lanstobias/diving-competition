@@ -11,10 +11,10 @@ namespace Simhopp
     {
         public IMainMenuView View { get; set; }
 
-        private MainMenu window;
+        private ProjectMainWindow window;
 
         #region Constructor
-        public MainMenuPresenter(IMainMenuView view, MainMenu window)
+        public MainMenuPresenter(IMainMenuView view, ProjectMainWindow window)
         {
             this.View = view;
             this.window = window;
