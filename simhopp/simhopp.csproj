@@ -84,10 +84,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="views\IMainMenuView.cs" />
     <Compile Include="views\MainMenuView.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="views\PanelView.cs">
-      <SubType>Component</SubType>
+    <Compile Include="views\PanelViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\PanelViewControl.Designer.cs">
+      <DependentUpon>PanelViewControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ProjectMainWindow.resx">
       <DependentUpon>ProjectMainWindow.cs</DependentUpon>
@@ -101,6 +104,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="views\MainMenuView.resx">
+      <DependentUpon>MainMenuView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\PanelViewControl.resx">
+      <DependentUpon>PanelViewControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
