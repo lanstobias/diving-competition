@@ -7,54 +7,63 @@ using System.Windows.Forms;
 
 namespace Simhopp
 {
-    class MainMenuView : PanelView, IMainMenuView
+    class MainMenuView : PanelViewControl, IMainMenuView
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+
         private Button createContestButton;
         private Button loadContestButton;
         private Button judgeContestButton;
         private Button exitButton;
-        
-        
-        private Label title;
+        private Button button1;
         
 
         public MainMenuView()
         {
 
-            this.createContestButton = new Button();
-            this.title = new Label();
-            this.loadContestButton = new Button();
-            this.judgeContestButton = new Button();
-            this.exitButton = new Button();
+            InitializeComponent();
 
+            
+        }
+
+        public event DelegateCreateNewContest EventCreateNewContest;
+
+        private void CreateContestButton_Click(object sender, EventArgs e)
+        {
+            this.EventCreateNewContest.Invoke();
+        }
+
+        private void InitializeComponent()
+        {
+            this.createContestButton = new System.Windows.Forms.Button();
+            this.loadContestButton = new System.Windows.Forms.Button();
+            this.judgeContestButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.mainPanel.SuspendLayout();
+            this.SuspendLayout();
             // 
-            // this
+            // mainPanel
             // 
-            this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.judgeContestButton);
-            this.Controls.Add(this.loadContestButton);
-            this.Controls.Add(this.title);
-            this.Controls.Add(this.createContestButton);
-            this.Name = "mainMenuPanel";
+            this.mainPanel.Controls.Add(this.exitButton);
+            this.mainPanel.Controls.Add(this.judgeContestButton);
+            this.mainPanel.Controls.Add(this.loadContestButton);
+            this.mainPanel.Controls.Add(this.createContestButton);
             // 
             // createContestButton
             // 
+            this.createContestButton.ForeColor = System.Drawing.Color.Black;
             this.createContestButton.Location = new System.Drawing.Point(212, 142);
             this.createContestButton.Name = "createContestButton";
             this.createContestButton.Size = new System.Drawing.Size(75, 23);
             this.createContestButton.TabIndex = 0;
             this.createContestButton.Text = "Ny tävling";
             this.createContestButton.UseVisualStyleBackColor = true;
-            this.Click += new EventHandler(this.CreateContestButton_Click);
-            // 
-            // title
-            // 
-            this.title.AutoSize = true;
-            this.title.Location = new System.Drawing.Point(233, 81);
-            this.title.Name = "label1";
-            this.title.Size = new System.Drawing.Size(35, 13);
-            this.title.TabIndex = 1;
-            this.title.Text = "label1";
+            this.createContestButton.Click += new System.EventHandler(this.CreateContestButton_Click);
             // 
             // loadContestButton
             // 
@@ -82,13 +91,18 @@ namespace Simhopp
             this.exitButton.TabIndex = 4;
             this.exitButton.Text = "Avsluta";
             this.exitButton.UseVisualStyleBackColor = true;
+            
+            
+            // 
+            // MainMenuView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Location = new System.Drawing.Point(0, 0);
+            this.Name = "MainMenuView";
+            this.mainPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
-        public event DelegateCreateNewContest EventCreateNewContest;
-
-        private void CreateContestButton_Click(object sender, EventArgs e)
-        {
-            this.EventCreateNewContest.Invoke();
-        }
     }
 }
