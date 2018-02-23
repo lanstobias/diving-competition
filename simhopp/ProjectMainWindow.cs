@@ -22,6 +22,12 @@ namespace Simhopp
         public ProjectMainWindow()
         {
             InitializeComponent();
+
+            MainMenuView mainMenuView = new MainMenuView();
+            MainMenuPresenter mainMenuPresenter = new MainMenuPresenter(mainMenuView,this);
+
+            this.Controls.Add(mainMenuView);
+
         }
 
         /// <summary>
