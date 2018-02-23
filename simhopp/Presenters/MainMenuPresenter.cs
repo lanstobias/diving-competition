@@ -24,9 +24,9 @@ namespace Simhopp
         
         public void gotoCreateContestView()
         {
-            //CreateContestView view = new CreateContestView();
-            //CreateContestPresenter presenter = new CreateContestPresenter();
-            //window.ChangePanel(view, this);   // ChangePanel(ny view, cameFrom)
+            CreateContestView newView = new CreateContestView();
+            CreateContestPresenter presenter = new CreateContestPresenter(newView,window);
+            window.ChangePanel(newView, (PanelViewControl)View);   // ChangePanel(ny view, cameFrom)
         }
     }
 }
