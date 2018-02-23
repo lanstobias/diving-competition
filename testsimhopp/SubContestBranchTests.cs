@@ -214,7 +214,7 @@ namespace testsimhopp
             Console.WriteLine();
 
             // getting same data from our Contest object
-            ResultDictionary r = contest.getSubContestResultDictionary(subContest);
+            ResultDictionary r = contest.GetSubContestResultDictionary(subContest);
 
             Assert.AreEqual(3, result.Count);
 
