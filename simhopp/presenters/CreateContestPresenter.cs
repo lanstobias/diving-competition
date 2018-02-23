@@ -97,9 +97,7 @@ namespace Simhopp
         {
             var datePicker = new DatePicker();
 
-            datePicker.Show();
-
-            if (datePicker.IsDateSet)
+            if (datePicker.ShowDialog() == DialogResult.OK)
             { 
                 StartDate = datePicker.SelectedDate;
             }
@@ -109,9 +107,7 @@ namespace Simhopp
         {
             var datePicker = new DatePicker();
 
-            datePicker.Show();
-
-            if (datePicker.IsDateSet)
+            if (datePicker.ShowDialog() == DialogResult.OK)
             {
                 EndDate = datePicker.SelectedDate;
             }

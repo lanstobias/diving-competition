@@ -14,22 +14,16 @@ namespace Simhopp
     {
         public DateTime SelectedDate { get; set; }
 
-        public bool IsDateSet { get; set; }
-
         public DatePicker()
         {
             InitializeComponent();
             SelectedDate = new DateTime();
-
-            IsDateSet = false;
         }
 
         private void buttonSelectDate_Click(object sender, EventArgs e)
         {
             SelectedDate = calender.SelectionStart;
-
-            IsDateSet = true;
-
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
