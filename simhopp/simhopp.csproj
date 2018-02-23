@@ -68,6 +68,7 @@
     <Compile Include="models\SubContestBranch.cs" />
     <Compile Include="models\SubContestBranchList.cs" />
     <Compile Include="presenters\CreateContestPresenter.cs" />
+    <Compile Include="presenters\CreateSubContestPresenter.cs" />
     <Compile Include="presenters\MainMenuPresenter.cs" />
     <Compile Include="ProjectMainWindow.cs">
       <SubType>Form</SubType>
