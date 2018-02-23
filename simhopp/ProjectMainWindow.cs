@@ -15,6 +15,10 @@ namespace Simhopp
         #region Properties
         private PanelViewControl CurrentPanel { get; set; }
 
+        // Holds the previous view that was presented.
+        private PanelViewControl PreviousView { get; set; }
+        #endregion
+
         public ProjectMainWindow()
         {
             InitializeComponent();
