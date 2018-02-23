@@ -23,5 +23,20 @@ namespace Simhopp
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Handles the changing of panels to view
+        /// </summary>
+        /// <param name="viewToLoad">The new view to be presented</param>
+        /// <param name="cameFrom">The view from where the call to this was made</param>
+        public void ChangePanel(PanelViewControl viewToLoad, PanelViewControl cameFrom)
+        {
+            this.Controls.Remove(cameFrom);
+            this.Controls.Add(viewToLoad);
+
+            PreviousView = cameFrom;
+            CurrentPanel = viewToLoad;
+            
+        }
     }
 }
