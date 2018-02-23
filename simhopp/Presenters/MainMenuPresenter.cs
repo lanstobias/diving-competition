@@ -11,10 +11,10 @@ namespace Simhopp
     {
         public IMainMenuView View { get; set; }
 
-        private Form window;
+        private MainMenu window;
 
         #region Constructor
-        public MainMenuPresenter(IMainMenuView view, Form window)
+        public MainMenuPresenter(IMainMenuView view, MainMenu window)
         {
             this.View = view;
             this.window = window;
@@ -24,9 +24,9 @@ namespace Simhopp
         
         public void gotoCreateContestView()
         {
-            //CreateContestView view = new CrateaContestView();
+            //CreateContestView view = new CreateContestView();
             //CreateContestPresenter presenter = new CreateContestPresenter();
-            //window.ChangePanel(view, this)   // ChangePanel(ny view, cameFrom)
+            //window.ChangePanel(view, this);   // ChangePanel(ny view, cameFrom)
         }
     }
 }
