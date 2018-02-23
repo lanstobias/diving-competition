@@ -98,6 +98,9 @@
     <Compile Include="views\PanelViewControl.Designer.cs">
       <DependentUpon>PanelViewControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DatePicker.resx">
+      <DependentUpon>DatePicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectMainWindow.resx">
       <DependentUpon>ProjectMainWindow.cs</DependentUpon>
     </EmbeddedResource>
