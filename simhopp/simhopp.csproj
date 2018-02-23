@@ -57,6 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="DatePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatePicker.Designer.cs">
+      <DependentUpon>DatePicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="models\ResultDictionary.cs" />
     <Compile Include="models\ScoreComparer.cs" />
     <Compile Include="models\SubContestBranch.cs" />
