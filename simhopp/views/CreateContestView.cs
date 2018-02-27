@@ -231,6 +231,7 @@ namespace Simhopp
             this.buttonRemoveContestantFromContest.TabIndex = 17;
             this.buttonRemoveContestantFromContest.Text = "Ta bort deltagare";
             this.buttonRemoveContestantFromContest.UseVisualStyleBackColor = true;
+            this.buttonRemoveContestantFromContest.Click += new System.EventHandler(this.buttonRemoveContestantFromContest_Click);
             // 
             // buttonAddContestantToContest
             // 
@@ -298,6 +299,11 @@ namespace Simhopp
         private void buttonAddContestantToContest_Click(object sender, EventArgs e)
         {
             this.EventAddContestantToContest?.Invoke();
+        }
+
+        private void buttonRemoveContestantFromContest_Click(object sender, EventArgs e)
+        {
+            this.EventRemoveContestantFromContest?.Invoke();
         }
     }
 }
