@@ -70,10 +70,10 @@ namespace Simhopp
             GlobalContestantList.Add(anna);
 
             foreach(var judge in GlobalJudgeList)
-                View.ListBoxGlobalJudges.Items.Add(judge.FirstName + " " + judge.LastName);
+                View.ListBoxGlobalJudges.Items.Add(judge.GetFullName());
 
             foreach (var contestant in GlobalContestantList)
-                View.ListBoxGlobalContestants.Items.Add(contestant.FirstName + " " + contestant.LastName);
+                View.ListBoxGlobalContestants.Items.Add(contestant.GetFullName());
 
         }
 
@@ -83,10 +83,10 @@ namespace Simhopp
             View.ListBoxLocalContestants.Items.Clear();
 
             foreach (var judge in ContestJudgeList)
-                View.ListBoxLocalJudges.Items.Add(judge.FirstName + " " + judge.LastName);
+                View.ListBoxLocalJudges.Items.Add(judge.GetFullName());
 
             foreach (var contestant in ContestContestantList)
-                View.ListBoxLocalContestants.Items.Add(contestant.FirstName + " " + contestant.LastName);
+                View.ListBoxLocalContestants.Items.Add(contestant.GetFullName());
         }
 
         public void GoToCreateSubContest()
@@ -119,9 +119,10 @@ namespace Simhopp
 
             foreach(var c in ContestContestantList)
             {
-                if((c.FirstName + " " + c.LastName) == ((string)contestant))
+                if (c.GetFullName() == (string)contestant)
                 {
                     isAdded = true;
+                    MessageBox.Show("Deltagare är redan tillagd!");
                     break;
                 }
             }
@@ -132,7 +133,7 @@ namespace Simhopp
             {
                 foreach( var c in GlobalContestantList)
                 {
-                    if ((c.FirstName + " " + c.LastName) == ((string)contestant))
+                    if (c.GetFullName() == (string)contestant)
                     {
                         contestantToBeAdded = c;
                     }
@@ -165,9 +166,10 @@ namespace Simhopp
             // Check if judge is already added to the contest
             foreach(var j in ContestJudgeList)
             {
-                if((j.FirstName + " " + j.LastName) == ((string)judge))
+                if(j.GetFullName() == (string)judge)
                 {
                     isAdded = true;
+                    MessageBox.Show("Domare är redan tillagd!");
                     break;
                 }
             }
@@ -179,7 +181,7 @@ namespace Simhopp
             {
                 foreach (var j in GlobalJudgeList)
                 {
-                    if ((j.FirstName + " " + j.LastName) == ((string)judge))
+                    if (j.GetFullName() == (string)judge)
                         judgeToBeAdded = j;
                 }
 
