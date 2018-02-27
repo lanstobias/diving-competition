@@ -43,6 +43,38 @@ namespace Simhopp
             View.EventRemoveContestantFromContest += RemoveContestantFromContest;
             View.EventCreateSubContest += GoToCreateSubContest;
 
+
+            // detta ska komma från databasen
+            Judge judge1 = new Judge("Karl", "Mal");
+            Judge judge2 = new Judge("LAban", "Asda");
+            Judge judge3 = new Judge("Leg", "Shin");
+            Judge judge4 = new Judge("Handy", "Bandy");
+            Judge judge5 = new Judge("Sammy", "Rol");
+
+            JudgeList judgeList = new JudgeList();
+            judgeList.Add(judge1);
+            judgeList.Add(judge2);
+            judgeList.Add(judge3);
+            judgeList.Add(judge4);
+            judgeList.Add(judge5);
+
+            Contestant kalle = new Contestant("kalle");
+            Contestant pelle = new Contestant("pelle");
+            Contestant lars = new Contestant("Lars");
+            Contestant anna = new Contestant("Anna");
+
+            ContestantList contestantList = new ContestantList();
+            contestantList.Add(kalle);
+            contestantList.Add(pelle);
+            contestantList.Add(lars);
+            contestantList.Add(anna);
+
+            foreach(var judge in judgeList)
+                View.ListBoxGlobalJudges.Items.Add(judge.FirstName);
+
+            foreach (var contestant in contestantList)
+                View.ListBoxGlobalContestants.Items.Add(contestant.FirstName);
+
         }
 
         public void GoToCreateSubContest()
