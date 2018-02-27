@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Simhopp
 {
@@ -14,9 +15,9 @@ namespace Simhopp
 
         public Contest CurrentContest { get; set; }
 
-        public ContestantList SubContestContestants { get; set; }
+        public ContestantList SubContestContestants { get; set; } = new ContestantList();
 
-        public SubContestBranchList SubContests { get; set; }
+        public SubContestBranchList SubContests { get; set; } = new SubContestBranchList();
 
         public CreateSubContestPresenter(CreateSubContestView view, ProjectMainWindow window, Contest contest)
         {
@@ -29,6 +30,7 @@ namespace Simhopp
             foreach(var contestant in contest.Contestants)
             {
                 View.ListBoxContestContestants.Items.Add(contestant.FirstName);
+                SubContestContestants.Add(contestant);
             }
 
             View.EventAddContestantToSubContest += AddContestantToSubContest;
