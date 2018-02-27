@@ -50,8 +50,6 @@ namespace Simhopp
 
             View.ListBoxSubContests.Items.Add(subContestBranch.Name);
 
-
-
         }
 
         private void RemoveContestantFromSubContest()
@@ -61,7 +59,40 @@ namespace Simhopp
 
         private void AddContestantToSubContest()
         {
-            throw new NotImplementedException();
+            var contestant = View.ListBoxContestContestants.SelectedItem;
+            bool isAdded = false;
+
+            foreach (var c in SubContestContestants)
+            {
+                if (c.GetFullName() == (string)contestant)
+                {
+                    isAdded = true;
+                    MessageBox.Show("Deltagare är redan tillagd!");
+                    break;
+                }
+            }
+
+            Contestant contestantToBeAdded = null;
+
+            if (!isAdded)
+            {
+                foreach (var c in CurrentContest.Contestants)
+                {
+
+                    if (c.GetFullName() == (string)contestant)
+                    {
+                        contestantToBeAdded = c;
+                    }
+                }
+
+                if (contestantToBeAdded != null)
+                {
+                    SubContestContestants.Add(contestantToBeAdded);
+                    View.ListBoxContestContestants.Items.Add(contestantToBeAdded.GetFullName());
+                }
+       
+
+            }
         }
     }
 }
