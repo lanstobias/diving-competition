@@ -20,13 +20,13 @@ namespace Simhopp
 
 
         // Skapas och fylls upp av databas
-        public JudgeList GlobalJudgeList { get; set; }
+        public JudgeList GlobalJudgeList { get; set; } = new JudgeList();
 
-        public JudgeList ContestJudgeList { get; set; }
+        public JudgeList ContestJudgeList { get; set; } = new JudgeList();
 
-        public ContestantList GlobalContestantList { get; set; }
+        public ContestantList GlobalContestantList { get; set; } = new ContestantList();
 
-        public ContestantList ContestContestantList { get; set; }
+        public ContestantList ContestContestantList { get; set; } = new ContestantList();
 
         public CreateContestPresenter(CreateContestView view, ProjectMainWindow window)
         {
@@ -52,11 +52,11 @@ namespace Simhopp
             Judge judge5 = new Judge("Sammy", "Rol");
 
             JudgeList judgeList = new JudgeList();
-            judgeList.Add(judge1);
-            judgeList.Add(judge2);
-            judgeList.Add(judge3);
-            judgeList.Add(judge4);
-            judgeList.Add(judge5);
+            GlobalJudgeList.Add(judge1);
+            GlobalJudgeList.Add(judge2);
+            GlobalJudgeList.Add(judge3);
+            GlobalJudgeList.Add(judge4);
+            GlobalJudgeList.Add(judge5);
 
             Contestant kalle = new Contestant("kalle");
             Contestant pelle = new Contestant("pelle");
@@ -64,17 +64,26 @@ namespace Simhopp
             Contestant anna = new Contestant("Anna");
 
             ContestantList contestantList = new ContestantList();
-            contestantList.Add(kalle);
-            contestantList.Add(pelle);
-            contestantList.Add(lars);
-            contestantList.Add(anna);
+            GlobalContestantList.Add(kalle);
+            GlobalContestantList.Add(pelle);
+            GlobalContestantList.Add(lars);
+            GlobalContestantList.Add(anna);
 
-            foreach(var judge in judgeList)
-                View.ListBoxGlobalJudges.Items.Add(judge.FirstName);
+            foreach(var judge in GlobalJudgeList)
+                View.ListBoxGlobalJudges.Items.Add(judge.FirstName + " " + judge.LastName);
 
-            foreach (var contestant in contestantList)
-                View.ListBoxGlobalContestants.Items.Add(contestant.FirstName);
+            foreach (var contestant in GlobalContestantList)
+                View.ListBoxGlobalContestants.Items.Add(contestant.FirstName + " " + contestant.LastName);
 
+        }
+
+        public void UpdateListBoxes()
+        {
+            View.ListBoxLocalJudges.Items.Clear();
+            //View.ListBoxLocalContestants.Items.Clear();
+
+            foreach (var judge in ContestJudgeList)
+                View.ListBoxLocalJudges.Items.Add(judge.FirstName + " " + judge.LastName);
         }
 
         public void GoToCreateSubContest()
@@ -146,7 +155,36 @@ namespace Simhopp
 
         public void AddJudgeToContest()
         {
-            throw new NotImplementedException();
+            // Collect the chosen judge
+            var judge = View.ListBoxGlobalJudges.SelectedItem;
+            bool isAdded = false;
+
+            // Check if judge is already added to the contest
+            foreach(var j in ContestJudgeList)
+            {
+                if((j.FirstName + " " + j.LastName) == ((string)judge))
+                {
+                    isAdded = true;
+                    break;
+                }
+            }
+
+            // Collect the correct Judge object
+            Judge judgeToBeAdded = null;
+
+            if(!isAdded)
+            {
+                foreach (var j in GlobalJudgeList)
+                {
+                    if ((j.FirstName + " " + j.LastName) == ((string)judge))
+                        judgeToBeAdded = j;
+                }
+
+                if(judgeToBeAdded != null)
+                    ContestJudgeList.Add(judgeToBeAdded);
+            }
+
+            UpdateListBoxes();
         }
 
         public void AddJudgeToDB()
