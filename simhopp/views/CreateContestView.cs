@@ -287,6 +287,7 @@ namespace Simhopp
             this.buttonSetEndDate.TabIndex = 22;
             this.buttonSetEndDate.Text = "Välj startdatum";
             this.buttonSetEndDate.UseVisualStyleBackColor = true;
+            this.buttonSetEndDate.Click += new System.EventHandler(this.buttonSetEndDate_Click);
             // 
             // labelEndDate
             // 
@@ -310,7 +311,11 @@ namespace Simhopp
 
         private void buttonSetStartDate_Click(object sender, EventArgs e)
         {
-            this.EventSetStartDate.Invoke();
+            this.EventSetStartDate?.Invoke();
+        }
+        private void buttonSetEndDate_Click(object sender, EventArgs e)
+        {
+            this.EventSetEndDate?.Invoke();
         }
 
         private void buttonGoToSubContest_Click(object sender, EventArgs e)
@@ -338,5 +343,7 @@ namespace Simhopp
         {
             this.EventRemoveJudgeFromContest?.Invoke();
         }
+
+
     }
 }
