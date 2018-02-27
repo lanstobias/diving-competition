@@ -43,6 +43,7 @@ namespace Simhopp
         public TextBox TextBoxCity { get { return textBoxCity; } set { textBoxCity = value; } }
         public TextBox TextBoxArena { get { return textBoxArena; } set { textBoxArena = value; } }
         public ListBox ListBoxGlobalJudges { get { return listBoxGlobalJudges; } set { listBoxGlobalJudges = value; } }
+        public ListBox ListBoxLocalJudges { get { return listBoxLocalJudges; } set { listBoxLocalJudges = value; } }
         public ListBox ListBoxGlobalContestants { get { return listBoxGlobalContestants; } set { listBoxGlobalJudges = value; } }
         public ListBox ListBoxLocalContestants { get { return listBoxLocalContestants; } set { listBoxLocalContestants = value; } }
 
