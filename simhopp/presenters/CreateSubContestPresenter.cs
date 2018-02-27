@@ -29,8 +29,7 @@ namespace Simhopp
             //Fyller på contestants från contest
             foreach(var contestant in contest.Contestants)
             {
-                View.ListBoxContestContestants.Items.Add(contestant.FirstName);
-                SubContestContestants.Add(contestant);
+                View.ListBoxContestContestants.Items.Add(contestant.GetFullName());
             }
 
             View.EventAddContestantToSubContest += AddContestantToSubContest;
@@ -95,7 +94,6 @@ namespace Simhopp
             {
                 foreach (var c in CurrentContest.Contestants)
                 {
-
                     if (c.GetFullName() == (string)contestant)
                     {
                         contestantToBeAdded = c;
@@ -105,7 +103,7 @@ namespace Simhopp
                 if (contestantToBeAdded != null)
                 {
                     SubContestContestants.Add(contestantToBeAdded);
-                    View.ListBoxContestContestants.Items.Add(contestantToBeAdded.GetFullName());
+                    View.ListBoxSubContestContestants.Items.Add(contestantToBeAdded.GetFullName());
                 }
        
 

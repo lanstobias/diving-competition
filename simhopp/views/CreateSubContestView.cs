@@ -24,6 +24,8 @@ namespace Simhopp
         public event DelegateAddSubContest EventAddSubContest;
         public event DelegateFinalizeContest EventFinalizeContest;
 
+        public ListBox ListBoxSubContestContestants { get { return listBoxSubContestContestants; } set { listBoxSubContestContestants = value; } }
+
         public ListBox ListBoxContestContestants { get { return listBoxContestContestants; } set { listBoxContestContestants = value; } }
 
         public ListBox ListBoxSubContests { get { return listBoxSubContests; } set { listBoxSubContests = value; } }
