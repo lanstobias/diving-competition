@@ -80,10 +80,13 @@ namespace Simhopp
         public void UpdateListBoxes()
         {
             View.ListBoxLocalJudges.Items.Clear();
-            //View.ListBoxLocalContestants.Items.Clear();
+            View.ListBoxLocalContestants.Items.Clear();
 
             foreach (var judge in ContestJudgeList)
                 View.ListBoxLocalJudges.Items.Add(judge.FirstName + " " + judge.LastName);
+
+            foreach (var contestant in ContestContestantList)
+                View.ListBoxLocalContestants.Items.Add(contestant.FirstName + " " + contestant.LastName);
         }
 
         public void GoToCreateSubContest()
@@ -139,7 +142,7 @@ namespace Simhopp
                     ContestContestantList.Add(contestantToBeAdded);
 
             }
-
+            UpdateListBoxes();
 
         }
 
