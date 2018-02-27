@@ -119,7 +119,7 @@ namespace Simhopp
 
             foreach(var c in ContestContestantList)
             {
-                if(c.FirstName == (string)contestant)
+                if((c.FirstName + " " + c.LastName) == ((string)contestant))
                 {
                     isAdded = true;
                     break;
@@ -132,7 +132,7 @@ namespace Simhopp
             {
                 foreach( var c in GlobalContestantList)
                 {
-                    if (c.FirstName == (string)contestant)
+                    if ((c.FirstName + " " + c.LastName) == ((string)contestant))
                     {
                         contestantToBeAdded = c;
                     }
