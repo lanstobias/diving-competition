@@ -238,6 +238,7 @@ namespace Simhopp
             this.buttonAddContestantToContest.TabIndex = 16;
             this.buttonAddContestantToContest.Text = "Lägg till deltagare";
             this.buttonAddContestantToContest.UseVisualStyleBackColor = true;
+            this.buttonAddContestantToContest.Click += new System.EventHandler(this.buttonAddContestantToContest_Click);
             // 
             // listBoxGlobalContestants
             // 
@@ -285,6 +286,11 @@ namespace Simhopp
         {
             
             this.EventCreateSubContest.Invoke();
+        }
+
+        private void buttonAddContestantToContest_Click(object sender, EventArgs e)
+        {
+            this.EventAddContestantToContest?.Invoke();
         }
     }
 }
