@@ -279,6 +279,8 @@ namespace Simhopp
             { 
                 StartDate = datePicker.SelectedDate;
             }
+
+            View.LabelStartDate.Text = StartDate.ToShortDateString();
         }
 
         public void SetEndDate()
@@ -289,6 +291,8 @@ namespace Simhopp
             {
                 EndDate = datePicker.SelectedDate;
             }
+
+            View.LabelEndDate.Text = EndDate.ToShortDateString();
         }
     }
 }

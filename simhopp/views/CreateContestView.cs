@@ -14,19 +14,21 @@ namespace Simhopp
         private System.Windows.Forms.ListBox listBoxLocalContestants;
         private System.Windows.Forms.Button buttonRemoveContestantFromContest;
         private System.Windows.Forms.Button buttonAddContestantToContest;
-        private System.Windows.Forms.ListBox listBoxGlobalContestants;
+        private ListBox listBoxGlobalContestants;
         private System.Windows.Forms.Button buttonAddNewJudgeToDB;
         private System.Windows.Forms.ListBox listBoxLocalJudges;
         private System.Windows.Forms.Button buttonRemoveJudgeFromContest;
         private System.Windows.Forms.Button buttonAddJudgeToContest;
         private System.Windows.Forms.ListBox listBoxGlobalJudges;
         private System.Windows.Forms.Button buttonSetStartDate;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelStartDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxArena;
-        private System.Windows.Forms.Label labelName;
+        private Label labelName;
         private System.Windows.Forms.Label labelContestInfo;
         private System.Windows.Forms.TextBox textBoxCity;
+        private Label labelEndDate;
+        private Button buttonSetEndDate;
         private System.Windows.Forms.TextBox textBoxName;
 
         public event DelegateSetStartDate EventSetStartDate;
@@ -39,6 +41,7 @@ namespace Simhopp
         public event DelegateRemoveContestantFromContest EventRemoveContestantFromContest;
         public event DelegateCreateSubContest EventCreateSubContest;
 
+
         public TextBox TextBoxName { get { return textBoxName; } set { textBoxName = value; } }
         public TextBox TextBoxCity { get { return textBoxCity; } set { textBoxCity = value; } }
         public TextBox TextBoxArena { get { return textBoxArena; } set { textBoxArena = value; } }
@@ -46,6 +49,8 @@ namespace Simhopp
         public ListBox ListBoxLocalJudges { get { return listBoxLocalJudges; } set { listBoxLocalJudges = value; } }
         public ListBox ListBoxGlobalContestants { get { return listBoxGlobalContestants; } set { listBoxGlobalJudges = value; } }
         public ListBox ListBoxLocalContestants { get { return listBoxLocalContestants; } set { listBoxLocalContestants = value; } }
+        public Label LabelStartDate { get { return labelStartDate; } set { labelStartDate = value; } }
+        public Label LabelEndDate { get { return labelEndDate; } set { labelEndDate = value; } }
 
         public CreateContestView()
         {
@@ -60,7 +65,7 @@ namespace Simhopp
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxArena = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelStartDate = new System.Windows.Forms.Label();
             this.buttonSetStartDate = new System.Windows.Forms.Button();
             this.listBoxGlobalJudges = new System.Windows.Forms.ListBox();
             this.buttonAddJudgeToContest = new System.Windows.Forms.Button();
@@ -74,11 +79,15 @@ namespace Simhopp
             this.listBoxGlobalContestants = new System.Windows.Forms.ListBox();
             this.buttonGoToSubContest = new System.Windows.Forms.Button();
             this.textBoxCity = new System.Windows.Forms.TextBox();
+            this.buttonSetEndDate = new System.Windows.Forms.Button();
+            this.labelEndDate = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.labelEndDate);
+            this.mainPanel.Controls.Add(this.buttonSetEndDate);
             this.mainPanel.Controls.Add(this.textBoxCity);
             this.mainPanel.Controls.Add(this.buttonGoToSubContest);
             this.mainPanel.Controls.Add(this.buttonAddNewContestantToDB);
@@ -92,7 +101,7 @@ namespace Simhopp
             this.mainPanel.Controls.Add(this.buttonAddJudgeToContest);
             this.mainPanel.Controls.Add(this.listBoxGlobalJudges);
             this.mainPanel.Controls.Add(this.buttonSetStartDate);
-            this.mainPanel.Controls.Add(this.label2);
+            this.mainPanel.Controls.Add(this.labelStartDate);
             this.mainPanel.Controls.Add(this.label1);
             this.mainPanel.Controls.Add(this.textBoxArena);
             this.mainPanel.Controls.Add(this.labelName);
@@ -140,18 +149,18 @@ namespace Simhopp
             this.label1.TabIndex = 6;
             this.label1.Text = "label1";
             // 
-            // label2
+            // labelStartDate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(592, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "label1";
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.Location = new System.Drawing.Point(546, 104);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Size = new System.Drawing.Size(51, 20);
+            this.labelStartDate.TabIndex = 7;
+            this.labelStartDate.Text = "label1";
             // 
             // buttonSetStartDate
             // 
-            this.buttonSetStartDate.Location = new System.Drawing.Point(566, 56);
+            this.buttonSetStartDate.Location = new System.Drawing.Point(550, 56);
             this.buttonSetStartDate.Name = "buttonSetStartDate";
             this.buttonSetStartDate.Size = new System.Drawing.Size(102, 45);
             this.buttonSetStartDate.TabIndex = 9;
@@ -270,6 +279,25 @@ namespace Simhopp
             this.textBoxCity.Size = new System.Drawing.Size(129, 26);
             this.textBoxCity.TabIndex = 21;
             // 
+            // buttonSetEndDate
+            // 
+            this.buttonSetEndDate.Location = new System.Drawing.Point(658, 56);
+            this.buttonSetEndDate.Name = "buttonSetEndDate";
+            this.buttonSetEndDate.Size = new System.Drawing.Size(102, 45);
+            this.buttonSetEndDate.TabIndex = 22;
+            this.buttonSetEndDate.Text = "Välj startdatum";
+            this.buttonSetEndDate.UseVisualStyleBackColor = true;
+            this.buttonSetEndDate.Click += new System.EventHandler(this.buttonSetEndDate_Click);
+            // 
+            // labelEndDate
+            // 
+            this.labelEndDate.AutoSize = true;
+            this.labelEndDate.Location = new System.Drawing.Point(669, 104);
+            this.labelEndDate.Name = "labelEndDate";
+            this.labelEndDate.Size = new System.Drawing.Size(51, 20);
+            this.labelEndDate.TabIndex = 23;
+            this.labelEndDate.Text = "label1";
+            // 
             // CreateContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -283,7 +311,11 @@ namespace Simhopp
 
         private void buttonSetStartDate_Click(object sender, EventArgs e)
         {
-            this.EventSetStartDate.Invoke();
+            this.EventSetStartDate?.Invoke();
+        }
+        private void buttonSetEndDate_Click(object sender, EventArgs e)
+        {
+            this.EventSetEndDate?.Invoke();
         }
 
         private void buttonGoToSubContest_Click(object sender, EventArgs e)
@@ -311,5 +343,7 @@ namespace Simhopp
         {
             this.EventRemoveJudgeFromContest?.Invoke();
         }
+
+
     }
 }
