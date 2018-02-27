@@ -80,10 +80,10 @@ namespace testsimhopp
             judgeList.Add(judge4);
             judgeList.Add(judge5);
 
-            Contestant kalle = new Contestant("kalle");
-            Contestant pelle = new Contestant("pelle");
-            Contestant lars = new Contestant("Lars");
-            Contestant anna = new Contestant("Anna");
+            Contestant kalle = new Contestant("kalle", "Cool");
+            Contestant pelle = new Contestant("pelle", "Holm");
+            Contestant lars = new Contestant("Lars", "Lerin");
+            Contestant anna = new Contestant("Anna", "Annasson");
 
             ContestantList contestantList = new ContestantList();
             contestantList.Add(kalle);

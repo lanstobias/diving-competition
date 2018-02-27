@@ -24,8 +24,8 @@ namespace Simhopp
         }
 
         // constructor for easy testing
-        public Contestant(string name)
-            : base(0, name, "", 0, "", "", "", "")
+        public Contestant(string firstName, string lastName)
+            : base(0, firstName, lastName, 0, "", "", "", "")
         {
             DiveLists = new List<DiveList>();
         }
