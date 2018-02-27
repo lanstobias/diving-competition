@@ -285,7 +285,12 @@ namespace Simhopp
         private void buttonGoToSubContest_Click(object sender, EventArgs e)
         {
             
-            this.EventCreateSubContest.Invoke();
+            this.EventCreateSubContest?.Invoke();
+        }
+
+        private void buttonAddJudgeToContest_Click(object sender, EventArgs e)
+        {
+            this.EventAddJudgeToContest?.Invoke();
         }
     }
 }
