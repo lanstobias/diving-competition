@@ -44,7 +44,7 @@ namespace Simhopp
         public TextBox TextBoxArena { get { return textBoxArena; } set { textBoxArena = value; } }
         public ListBox ListBoxGlobalJudges { get { return listBoxGlobalJudges; } set { listBoxGlobalJudges = value; } }
         public ListBox ListBoxGlobalContestants { get { return listBoxGlobalContestants; } set { listBoxGlobalJudges = value; } }
-
+        public ListBox ListBoxLocalContestants { get { return listBoxLocalContestants; } set { listBoxLocalContestants = value; } }
 
         public CreateContestView()
         {

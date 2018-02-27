@@ -102,7 +102,36 @@ namespace Simhopp
 
         public void AddContestantToContest()
         {
-            throw new NotImplementedException();
+            var contestant = View.ListBoxGlobalContestants.SelectedItem;
+            bool isAdded = false;
+
+            foreach(var c in ContestContestantList)
+            {
+                if(c.FirstName == (string)contestant)
+                {
+                    isAdded = true;
+                    break;
+                }
+            }
+
+            Contestant contestantToBeAdded = null;
+
+            if(!isAdded)
+            {
+                foreach( var c in GlobalContestantList)
+                {
+                    if (c.FirstName == (string)contestant)
+                    {
+                        contestantToBeAdded = c;
+                    }
+                }
+
+                if (contestantToBeAdded != null)
+                    ContestContestantList.Add(contestantToBeAdded);
+
+            }
+
+
         }
 
         public void AddContestantToDB()
