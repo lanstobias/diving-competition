@@ -46,7 +46,6 @@ namespace Simhopp
 
         private void AddSubContest()
         {
-<<<<<<< HEAD
             //TODO kolla så korrekt data
             bool isDataValid = false;
 
@@ -67,14 +66,7 @@ namespace Simhopp
                 SubContests.Add(subContestBranch);
                 View.ListBoxSubContests.Items.Add(subContestBranch.Name);
             }
-=======
-            SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, SubContestContestants);
 
-            //Uppdatera SubContestListBox
-
-            View.ListBoxSubContests.Items.Add(subContestBranch.Name);
-
->>>>>>> 519a7ff33e47eb738a8d609fedbcf6fe3a923c96
         }
 
         private void RemoveContestantFromSubContest()
