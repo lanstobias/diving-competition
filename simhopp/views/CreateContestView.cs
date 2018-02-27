@@ -176,6 +176,7 @@ namespace Simhopp
             this.buttonAddJudgeToContest.TabIndex = 11;
             this.buttonAddJudgeToContest.Text = "Lägg till domare";
             this.buttonAddJudgeToContest.UseVisualStyleBackColor = true;
+            this.buttonAddJudgeToContest.Click += new System.EventHandler(this.buttonAddJudgeToContest_Click);
             // 
             // buttonRemoveJudgeFromContest
             // 
