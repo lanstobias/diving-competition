@@ -126,7 +126,36 @@ namespace Simhopp
 
         public void AddJudgeToContest()
         {
-            throw new NotImplementedException();
+            // Collect the chosen judge
+            var judge = View.ListBoxGlobalJudges.SelectedItem;
+            bool isAdded = false;
+
+            // Check if judge is already added to the contest
+            foreach(var j in ContestJudgeList)
+            {
+                if((j.FirstName + " " + j.LastName) == ((string)judge))
+                {
+                    isAdded = true;
+                    break;
+                }
+            }
+
+            // Collect the correct Judge object
+            Judge judgeToBeAdded = null;
+
+            if(!isAdded)
+            {
+                foreach (var j in GlobalJudgeList)
+                {
+                    if ((j.FirstName + " " + j.LastName) == ((string)judge))
+                        judgeToBeAdded = j;
+                }
+
+                if(judgeToBeAdded != null)
+                    ContestJudgeList.Add(judgeToBeAdded);
+            }
+
+            UpdateListBoxes();
         }
 
         public void AddJudgeToDB()
