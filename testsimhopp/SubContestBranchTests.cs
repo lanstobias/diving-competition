@@ -23,8 +23,8 @@ namespace testsimhopp
 
 
         Contest contest = new Contest();
-        Contestant kalle = new Contestant("kalle");
-        Contestant pelle = new Contestant("pelle");
+        Contestant kalle = new Contestant("kalle", "Cool");
+        Contestant pelle = new Contestant("pelle", "Holm");
         ContestantList contestantList = new ContestantList();
         SubContestBranch branch;
         
@@ -127,9 +127,9 @@ namespace testsimhopp
         public void TestGenerateSubContestResult()
         {
             Contest contest = new Contest();
-            Contestant kalle = new Contestant("kalle");
-            Contestant pelle = new Contestant("pelle");
-            Contestant lars = new Contestant("Lars");
+            Contestant kalle = new Contestant("kalle", "Cool");
+            Contestant pelle = new Contestant("pelle", "Holm");
+            Contestant lars = new Contestant("Lars", "Lerin");
 
             ContestantList contestantList = new ContestantList();
             contestantList.Add(kalle);
