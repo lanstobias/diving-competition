@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Simhopp
 {
@@ -44,14 +45,26 @@ namespace Simhopp
 
         private void AddSubContest()
         {
-            SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, SubContestContestants);
+            //TODO kolla så korrekt data
+            bool isDataValid = false;
 
-            //Uppdatera SubContestListBox
+            if(window.StringCheckFormat(View.TextBoxName.Text))
+            {
+                if (SubContestContestants.Count != 0)
+                    isDataValid = true;
+                else
+                    MessageBox.Show("En deltävling behöver minst en deltagare.");
+            }
+            else
+                MessageBox.Show("Tävlingsnamn ej korrekt. Får ej innehålla specialtecken, förutom _ och -");
 
-            View.ListBoxSubContests.Items.Add(subContestBranch.Name);
-
-
-
+            if(isDataValid)
+            {
+                SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, SubContestContestants);
+           
+                SubContests.Add(subContestBranch);
+                View.ListBoxSubContests.Items.Add(subContestBranch.Name);
+            }
         }
 
         private void RemoveContestantFromSubContest()
