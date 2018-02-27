@@ -44,7 +44,10 @@ namespace Simhopp
             this.Address = Address;
         }
 
-
+        public string GetFullName()
+        {
+            return FirstName + " " + LastName;
+        }
 
     }
 }
