@@ -15,9 +15,9 @@ namespace Simhopp
 
         public Contest CurrentContest { get; set; }
 
-        public ContestantList SubContestContestants { get; set; }
+        public ContestantList SubContestContestants { get; set; } = new ContestantList();
 
-        public SubContestBranchList SubContests { get; set; }
+        public SubContestBranchList SubContests { get; set; } = new SubContestBranchList();
 
         public CreateSubContestPresenter(CreateSubContestView view, ProjectMainWindow window, Contest contest)
         {
@@ -30,6 +30,7 @@ namespace Simhopp
             foreach(var contestant in contest.Contestants)
             {
                 View.ListBoxContestContestants.Items.Add(contestant.FirstName);
+                SubContestContestants.Add(contestant);
             }
 
             View.EventAddContestantToSubContest += AddContestantToSubContest;
@@ -45,6 +46,7 @@ namespace Simhopp
 
         private void AddSubContest()
         {
+<<<<<<< HEAD
             //TODO kolla så korrekt data
             bool isDataValid = false;
 
@@ -65,6 +67,14 @@ namespace Simhopp
                 SubContests.Add(subContestBranch);
                 View.ListBoxSubContests.Items.Add(subContestBranch.Name);
             }
+=======
+            SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, SubContestContestants);
+
+            //Uppdatera SubContestListBox
+
+            View.ListBoxSubContests.Items.Add(subContestBranch.Name);
+
+>>>>>>> 519a7ff33e47eb738a8d609fedbcf6fe3a923c96
         }
 
         private void RemoveContestantFromSubContest()
@@ -74,7 +84,40 @@ namespace Simhopp
 
         private void AddContestantToSubContest()
         {
-            throw new NotImplementedException();
+            var contestant = View.ListBoxContestContestants.SelectedItem;
+            bool isAdded = false;
+
+            foreach (var c in SubContestContestants)
+            {
+                if (c.GetFullName() == (string)contestant)
+                {
+                    isAdded = true;
+                    MessageBox.Show("Deltagare är redan tillagd!");
+                    break;
+                }
+            }
+
+            Contestant contestantToBeAdded = null;
+
+            if (!isAdded)
+            {
+                foreach (var c in CurrentContest.Contestants)
+                {
+
+                    if (c.GetFullName() == (string)contestant)
+                    {
+                        contestantToBeAdded = c;
+                    }
+                }
+
+                if (contestantToBeAdded != null)
+                {
+                    SubContestContestants.Add(contestantToBeAdded);
+                    View.ListBoxContestContestants.Items.Add(contestantToBeAdded.GetFullName());
+                }
+       
+
+            }
         }
     }
 }

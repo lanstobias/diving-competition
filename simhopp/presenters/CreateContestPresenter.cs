@@ -14,6 +14,7 @@ namespace Simhopp
 
         private ProjectMainWindow window;
 
+        #region Properties
         public DateTime StartDate { get; set; } = new DateTime();
 
         public DateTime EndDate { get; set; } = new DateTime();
@@ -27,7 +28,9 @@ namespace Simhopp
         public ContestantList GlobalContestantList { get; set; } = new ContestantList();
 
         public ContestantList ContestContestantList { get; set; } = new ContestantList();
+        #endregion
 
+        #region Constructor
         public CreateContestPresenter(CreateContestView view, ProjectMainWindow window)
         {
             this.View = view;
@@ -69,14 +72,16 @@ namespace Simhopp
             GlobalContestantList.Add(lars);
             GlobalContestantList.Add(anna);
 
-            foreach(var judge in GlobalJudgeList)
+            foreach (var judge in GlobalJudgeList)
                 View.ListBoxGlobalJudges.Items.Add(judge.GetFullName());
 
             foreach (var contestant in GlobalContestantList)
                 View.ListBoxGlobalContestants.Items.Add(contestant.GetFullName());
 
-        }
+        } 
+        #endregion
 
+        #region Methods
         public void UpdateListBoxes()
         {
             View.ListBoxLocalJudges.Items.Clear();
@@ -111,7 +116,7 @@ namespace Simhopp
 
             bool areDatesSet = false;
             // The dates have DateTime.MinValue if they have not been set manually 
-            if(StartDate != DateTime.MinValue)
+            if (StartDate != DateTime.MinValue)
             {
                 if (EndDate != DateTime.MinValue)
                     areDatesSet = true;
@@ -150,7 +155,7 @@ namespace Simhopp
 
                 window.ChangePanel(createSubContestView, View);
             }
-            
+
         }
 
         public void RemoveContestantFromContest()
@@ -159,7 +164,7 @@ namespace Simhopp
 
             Contestant contestantToBeRemoved = null;
 
-            foreach(var c in ContestContestantList)
+            foreach (var c in ContestContestantList)
             {
                 if (c.GetFullName() == (string)contestant)
                     contestantToBeRemoved = c;
@@ -176,7 +181,7 @@ namespace Simhopp
             var contestant = View.ListBoxGlobalContestants.SelectedItem;
             bool isAdded = false;
 
-            foreach(var c in ContestContestantList)
+            foreach (var c in ContestContestantList)
             {
                 if (c.GetFullName() == (string)contestant)
                 {
@@ -188,9 +193,9 @@ namespace Simhopp
 
             Contestant contestantToBeAdded = null;
 
-            if(!isAdded)
+            if (!isAdded)
             {
-                foreach( var c in GlobalContestantList)
+                foreach (var c in GlobalContestantList)
                 {
                     if (c.GetFullName() == (string)contestant)
                     {
@@ -219,7 +224,7 @@ namespace Simhopp
             Judge judgeToBeRemoved = null;
 
             // find the right Judge object
-            foreach(var j in ContestJudgeList)
+            foreach (var j in ContestJudgeList)
             {
                 if (j.GetFullName() == (string)judge)
                     judgeToBeRemoved = j;
@@ -238,9 +243,9 @@ namespace Simhopp
             bool isAdded = false;
 
             // Check if judge is already added to the contest
-            foreach(var j in ContestJudgeList)
+            foreach (var j in ContestJudgeList)
             {
-                if(j.GetFullName() == (string)judge)
+                if (j.GetFullName() == (string)judge)
                 {
                     isAdded = true;
                     MessageBox.Show("Domare är redan tillagd!");
@@ -251,7 +256,7 @@ namespace Simhopp
             // Collect the correct Judge object
             Judge judgeToBeAdded = null;
 
-            if(!isAdded)
+            if (!isAdded)
             {
                 foreach (var j in GlobalJudgeList)
                 {
@@ -259,7 +264,7 @@ namespace Simhopp
                         judgeToBeAdded = j;
                 }
 
-                if(judgeToBeAdded != null)
+                if (judgeToBeAdded != null)
                     ContestJudgeList.Add(judgeToBeAdded);
             }
 
@@ -276,7 +281,7 @@ namespace Simhopp
             var datePicker = new DatePicker();
 
             if (datePicker.ShowDialog() == DialogResult.OK)
-            { 
+            {
                 StartDate = datePicker.SelectedDate;
             }
 
@@ -293,6 +298,7 @@ namespace Simhopp
             }
 
             View.LabelEndDate.Text = EndDate.ToShortDateString();
-        }
+        } 
+        #endregion
     }
 }
