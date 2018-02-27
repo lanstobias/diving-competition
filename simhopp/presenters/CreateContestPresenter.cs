@@ -154,7 +154,22 @@ namespace Simhopp
 
         public void RemoveJudgeFromContest()
         {
-            throw new NotImplementedException();
+            // Collect the chosen judge, gets the full name of the judge
+            var judge = View.ListBoxLocalJudges.SelectedItem;
+
+            Judge judgeToBeRemoved = null;
+
+            // find the right Judge object
+            foreach(var j in ContestJudgeList)
+            {
+                if (j.GetFullName() == (string)judge)
+                    judgeToBeRemoved = j;
+            }
+
+            // remove from contestlist
+            ContestJudgeList.Remove(judgeToBeRemoved);
+
+            UpdateListBoxes();
         }
 
         public void AddJudgeToContest()
