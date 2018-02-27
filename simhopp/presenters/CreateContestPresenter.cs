@@ -109,7 +109,20 @@ namespace Simhopp
 
         public void RemoveContestantFromContest()
         {
-            throw new NotImplementedException();
+            var contestant = View.ListBoxLocalContestants.SelectedItem;
+
+            Contestant contestantToBeRemoved = null;
+
+            foreach(var c in ContestContestantList)
+            {
+                if (c.GetFullName() == (string)contestant)
+                    contestantToBeRemoved = c;
+            }
+
+            ContestContestantList.Remove(contestantToBeRemoved);
+
+            UpdateListBoxes();
+
         }
 
         public void AddContestantToContest()
