@@ -186,6 +186,7 @@ namespace Simhopp
             this.buttonRemoveJudgeFromContest.TabIndex = 12;
             this.buttonRemoveJudgeFromContest.Text = "Ta bort domare";
             this.buttonRemoveJudgeFromContest.UseVisualStyleBackColor = true;
+            this.buttonRemoveJudgeFromContest.Click += new System.EventHandler(this.buttonRemoveJudgeFromContest_Click);
             // 
             // listBoxLocalJudges
             // 
@@ -304,6 +305,11 @@ namespace Simhopp
         private void buttonRemoveContestantFromContest_Click(object sender, EventArgs e)
         {
             this.EventRemoveContestantFromContest?.Invoke();
+        }
+
+        private void buttonRemoveJudgeFromContest_Click(object sender, EventArgs e)
+        {
+            this.EventRemoveJudgeFromContest?.Invoke();
         }
     }
 }
