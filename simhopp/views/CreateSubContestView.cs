@@ -94,6 +94,7 @@ namespace Simhopp
             this.buttonAddSubContest.TabIndex = 25;
             this.buttonAddSubContest.Text = "Lägg till deltävling";
             this.buttonAddSubContest.UseVisualStyleBackColor = true;
+            this.buttonAddSubContest.Click += new System.EventHandler(this.buttonAddSubContest_Click);
             // 
             // listBoxSubContestContestants
             // 
@@ -155,6 +156,11 @@ namespace Simhopp
         private void buttonAddContestantToSubContest_Click(object sender, EventArgs e)
         {
             this.EventAddContestantToSubContest?.Invoke();
+        }
+
+        private void buttonAddSubContest_Click(object sender, EventArgs e)
+        {
+            this.EventAddSubContest?.Invoke();
         }
     }
 }
