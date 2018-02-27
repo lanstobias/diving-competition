@@ -93,18 +93,64 @@ namespace Simhopp
         {
             // TODO:
             // Kolla så att data är korrekt formatterat 
+            bool stringAreValid = false;
+            if (window.StringCheckFormat(View.TextBoxName.Text))
+            {
+                if (window.StringCheckFormat(View.TextBoxCity.Text))
+                {
+                    if (window.StringCheckFormat(View.TextBoxArena.Text))
+                        stringAreValid = true;
+                    else
+                        MessageBox.Show("Simhallsnamn är ej giltigt.");
+                }
+                else
+                    MessageBox.Show("Stadsnamn är ej giltigt.");
+            }
+            else
+                MessageBox.Show("Tävlingsnamn är ej giltigt.");
 
-            ContestInfo contestInfo = new ContestInfo(View.TextBoxName.Text, View.TextBoxCity.Text, StartDate, EndDate, View.TextBoxArena.Text);
+            bool areDatesSet = false;
+            // The dates have DateTime.MinValue if they have not been set manually 
+            if(StartDate != DateTime.MinValue)
+            {
+                if (EndDate != DateTime.MinValue)
+                    areDatesSet = true;
+                else
+                    MessageBox.Show("Välj slutdatum.");
+            }
+            else
+                MessageBox.Show("Välj startdatum.");
 
-            // Listorna byggs upp med hjälp av listboxarna.
+
+            // check if any judges or contestans have been added to the contest
+            bool areListsFilled = false;
+            if (ContestJudgeList.Count > 2)
+            {
+                if (ContestContestantList.Count > 1)
+                    areListsFilled = true;
+                else
+                    MessageBox.Show("Måste minst vara 2 deltagare på en tävling.");
+            }
+            else
+                MessageBox.Show("Måste minst vara 3 domare på en tävling.");
+
+
+            // if everything is okay, create the contest and move to subcontestview
+            if (stringAreValid && areDatesSet && areListsFilled)
+            {
+                ContestInfo contestInfo = new ContestInfo(View.TextBoxName.Text, View.TextBoxCity.Text, StartDate, EndDate, View.TextBoxArena.Text);
+
+                // Listorna byggs upp med hjälp av listboxarna.
+
+                Contest contest = new Contest(contestInfo, ContestJudgeList, ContestContestantList);
+
+                CreateSubContestView createSubContestView = new CreateSubContestView();
+
+                CreateSubContestPresenter createSubContestPresenter = new CreateSubContestPresenter(createSubContestView, window, contest);
+
+                window.ChangePanel(createSubContestView, View);
+            }
             
-            Contest contest = new Contest(contestInfo, ContestJudgeList, ContestContestantList);
-
-            CreateSubContestView createSubContestView = new CreateSubContestView();
-
-            CreateSubContestPresenter createSubContestPresenter = new CreateSubContestPresenter(createSubContestView, window, contest);
-
-            window.ChangePanel(createSubContestView, View);
         }
 
         public void RemoveContestantFromContest()
