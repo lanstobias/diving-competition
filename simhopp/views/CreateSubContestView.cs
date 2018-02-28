@@ -32,6 +32,14 @@ namespace Simhopp
 
         public TextBox TextBoxName { get { return textBoxName; } set { textBoxName = value; } }
 
+        public Label LabelContestName { get { return labelContestName; } set { labelContestName = value; } }
+
+        public Button ButtonUpdateSubContest { get { return buttonUpdateSubContest; } set { buttonUpdateSubContest = value; } }
+
+        public Button ButtonCancelEdit { get { return buttonCancelEdit; } set { buttonCancelEdit = value; } }
+
+        public Button ButtonAddSubContest { get { return buttonAddSubContest; } set { buttonAddSubContest = value; } }
+
         public CreateSubContestView()
         {
             InitializeComponent();
