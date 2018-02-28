@@ -13,5 +13,20 @@ namespace DatabaseSpikes
         {
 
         }
+
+        public void AddPerson()
+        {
+            Person bob = new Person(1, "Bob", "Dylan", 89, "hej@hej.com", "male", "2324324", "pappersgatan");
+            Database database = new Database();
+
+            try
+            {
+                database.StorePerson(bob);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+            }
+        }
     }
 }
