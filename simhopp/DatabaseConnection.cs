@@ -46,7 +46,7 @@ namespace Simhopp
         /// Open a connection to the databas.
         /// </summary>
         /// <returns></returns>
-        private bool OpenConnection()
+        public bool OpenConnection()
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Simhopp
         /// Close an opened connection to the database.
         /// </summary>
         /// <returns></returns>
-        private bool CloseConnection()
+        public bool CloseConnection()
         {
             try
             {
