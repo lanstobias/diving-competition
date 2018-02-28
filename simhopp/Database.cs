@@ -15,6 +15,21 @@ namespace Simhopp
         {
         }
 
+        public void ExecuteQuery(string query)
+        {
+            if (DBConnection.OpenConnection())
+            {
+                MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
+                var queryResult = command.ExecuteNonQuery();
+
+                DBConnection.CloseConnection();
+            }
+            else
+            {
+                throw new Exception("No connection");
+            }
+        }
+
         public void StorePerson(Person person)
         {
             // Table info
