@@ -19,9 +19,9 @@ namespace Simhopp
         #region Constructor
         public DatabaseConnection()
         {
-            server = "localhost";
-            database = "connectcsharptomysql";
-            userID = "username";
+            server = "tomat.trickip.net";
+            database = "simhopp";
+            userID = "root";
             password = "gallian0";
 
             InitializeConnection();
