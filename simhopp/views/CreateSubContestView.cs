@@ -18,11 +18,26 @@ namespace Simhopp
         private System.Windows.Forms.Button buttonAddContestantToSubContest;
         private System.Windows.Forms.ListBox listBoxContestContestants;
         private System.Windows.Forms.Label label1;
+        private TextBox textBoxName;
+        private ListBox listBoxSubContests;
+        private Button buttonFinalizeContest;
+        private Button buttonAddSubContest;
+        private ListBox listBoxSubContestContestants;
+        private Button buttonRemoveContestantFromSubContest;
+        private Button buttonAddContestantToSubContest;
+        private ListBox listBoxContestContestants;
+        private Label labelContestName;
+        private Button buttonCancelEdit;
+        private Button buttonUpdateSubContest;
+        private Label labelSubContestName;
 
         public event DelegateAddContestantToSubContest EventAddContestantToSubContest;
         public event DelegateRemoveContestantFromSubContest EventRemoveContestantFromSubContest;
         public event DelegateAddSubContest EventAddSubContest;
         public event DelegateFinalizeContest EventFinalizeContest;
+        public event DelegateSubContestSelected EventSubContestSelected;
+        public event DelegateUpdateSubContest EventUpdateSubContest;
+        public event DelegateCancelEdit EventCancelEdit;
 
         public ListBox ListBoxSubContestContestants { get { return listBoxSubContestContestants; } set { listBoxSubContestContestants = value; } }
 
@@ -47,7 +62,7 @@ namespace Simhopp
 
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelSubContestName = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.buttonFinalizeContest = new System.Windows.Forms.Button();
             this.buttonAddSubContest = new System.Windows.Forms.Button();
@@ -56,11 +71,17 @@ namespace Simhopp
             this.buttonAddContestantToSubContest = new System.Windows.Forms.Button();
             this.listBoxContestContestants = new System.Windows.Forms.ListBox();
             this.listBoxSubContests = new System.Windows.Forms.ListBox();
+            this.labelContestName = new System.Windows.Forms.Label();
+            this.buttonUpdateSubContest = new System.Windows.Forms.Button();
+            this.buttonCancelEdit = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.buttonCancelEdit);
+            this.mainPanel.Controls.Add(this.buttonUpdateSubContest);
+            this.mainPanel.Controls.Add(this.labelContestName);
             this.mainPanel.Controls.Add(this.listBoxSubContests);
             this.mainPanel.Controls.Add(this.buttonFinalizeContest);
             this.mainPanel.Controls.Add(this.buttonAddSubContest);
@@ -69,16 +90,17 @@ namespace Simhopp
             this.mainPanel.Controls.Add(this.buttonAddContestantToSubContest);
             this.mainPanel.Controls.Add(this.listBoxContestContestants);
             this.mainPanel.Controls.Add(this.textBoxName);
-            this.mainPanel.Controls.Add(this.label1);
+            this.mainPanel.Controls.Add(this.labelSubContestName);
             // 
-            // label1
+            // labelSubContestName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Deltävling";
+            this.labelSubContestName.AutoSize = true;
+            this.labelSubContestName.Location = new System.Drawing.Point(39, 47);
+            this.labelSubContestName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSubContestName.Name = "labelSubContestName";
+            this.labelSubContestName.Size = new System.Drawing.Size(85, 13);
+            this.labelSubContestName.TabIndex = 0;
+            this.labelSubContestName.Text = "Deltävlingsnamn";
             // 
             // textBoxName
             // 
@@ -123,6 +145,7 @@ namespace Simhopp
             this.buttonRemoveContestantFromSubContest.TabIndex = 23;
             this.buttonRemoveContestantFromSubContest.Text = "Ta bort från deltävling";
             this.buttonRemoveContestantFromSubContest.UseVisualStyleBackColor = true;
+            this.buttonRemoveContestantFromSubContest.Click += new System.EventHandler(this.buttonRemoveContestantFromSubContest_Click);
             // 
             // buttonAddContestantToSubContest
             // 
@@ -151,6 +174,37 @@ namespace Simhopp
             this.listBoxSubContests.Name = "listBoxSubContests";
             this.listBoxSubContests.Size = new System.Drawing.Size(186, 184);
             this.listBoxSubContests.TabIndex = 27;
+            this.ListBoxSubContests.SelectedIndexChanged += new EventHandler(listBoxSubContests_SelectionChanged);
+            // 
+            // labelContestName
+            // 
+            this.labelContestName.AutoSize = true;
+            this.labelContestName.Location = new System.Drawing.Point(39, 15);
+            this.labelContestName.Name = "labelContestName";
+            this.labelContestName.Size = new System.Drawing.Size(0, 13);
+            this.labelContestName.TabIndex = 28;
+            // 
+            // buttonUpdateSubContest
+            // 
+            this.buttonUpdateSubContest.Location = new System.Drawing.Point(329, 181);
+            this.buttonUpdateSubContest.Name = "buttonUpdateSubContest";
+            this.buttonUpdateSubContest.Size = new System.Drawing.Size(125, 23);
+            this.buttonUpdateSubContest.TabIndex = 29;
+            this.buttonUpdateSubContest.Text = "Uppdatera";
+            this.buttonUpdateSubContest.UseVisualStyleBackColor = true;
+            this.buttonUpdateSubContest.Click += new EventHandler(buttonUpdateSubContest_Click);
+            this.buttonUpdateSubContest.Visible = false;
+            // 
+            // buttonCancelEdit
+            // 
+            this.buttonCancelEdit.Location = new System.Drawing.Point(329, 207);
+            this.buttonCancelEdit.Name = "buttonCancelEdit";
+            this.buttonCancelEdit.Size = new System.Drawing.Size(125, 23);
+            this.buttonCancelEdit.TabIndex = 30;
+            this.buttonCancelEdit.Text = "Cancel";
+            this.buttonCancelEdit.UseVisualStyleBackColor = true;
+            this.buttonCancelEdit.Click += new EventHandler(buttonCancelEdit_Click);
+            this.buttonCancelEdit.Visible = false;
             // 
             // CreateSubContestView
             // 
@@ -171,6 +225,26 @@ namespace Simhopp
         private void buttonAddSubContest_Click(object sender, EventArgs e)
         {
             this.EventAddSubContest?.Invoke();
+        }
+
+        private void buttonRemoveContestantFromSubContest_Click(object sender, EventArgs e)
+        {
+            this.EventRemoveContestantFromSubContest?.Invoke();
+        }
+
+        private void listBoxSubContests_SelectionChanged(object sender, EventArgs e)
+        {
+            this.EventSubContestSelected?.Invoke();
+        }
+
+        private void buttonUpdateSubContest_Click(object sender, EventArgs e)
+        {
+            this.EventUpdateSubContest?.Invoke();
+        }
+
+        private void buttonCancelEdit_Click(object sender, EventArgs e)
+        {
+            this.EventCancelEdit?.Invoke();
         }
     }
 }
