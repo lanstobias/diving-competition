@@ -11,6 +11,8 @@ namespace DatabaseSpikes
     {
         static void Main(string[] args)
         {
+            DatabasePerson databasePerson = new DatabasePerson();
+            databasePerson.AddPerson();
             
             Console.ReadKey();
         }
