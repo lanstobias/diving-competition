@@ -70,7 +70,19 @@ namespace Simhopp
 
         private void RemoveContestantFromSubContest()
         {
-            throw new NotImplementedException();
+            string contestant = View.ListBoxSubContestContestants.SelectedItem as string;
+
+            Contestant contestantToBeRemoved = null;
+
+            foreach(var c in SubContestContestants)
+            {
+                if (c.GetFullName() == contestant)
+                    contestantToBeRemoved = c;
+            }
+
+            SubContestContestants.Remove(contestantToBeRemoved);
+
+            View.ListBoxSubContestContestants.Items.Remove(contestant);
         }
 
         private void AddContestantToSubContest()
