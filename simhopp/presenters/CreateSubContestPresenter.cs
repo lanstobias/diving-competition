@@ -13,12 +13,15 @@ namespace Simhopp
 
         private ProjectMainWindow window;
 
+        #region Properties
         public Contest CurrentContest { get; set; }
 
         public ContestantList SubContestContestants { get; set; } = new ContestantList();
 
-        public SubContestBranchList SubContests { get; set; } = new SubContestBranchList();
+        public SubContestBranchList SubContests { get; set; } = new SubContestBranchList(); 
+        #endregion
 
+        #region Constructor
         public CreateSubContestPresenter(CreateSubContestView view, ProjectMainWindow window, Contest contest)
         {
             this.View = view;
@@ -27,7 +30,7 @@ namespace Simhopp
             CurrentContest = contest;
 
             //Fyller på contestants från contest
-            foreach(var contestant in contest.Contestants)
+            foreach (var contestant in contest.Contestants)
             {
                 View.ListBoxContestContestants.Items.Add(contestant.GetFullName());
             }
@@ -36,8 +39,10 @@ namespace Simhopp
             View.EventRemoveContestantFromSubContest += RemoveContestantFromSubContest;
             View.EventAddSubContest += AddSubContest;
             View.EventFinalizeContest += FinalizeContest;
-        }
+        } 
+        #endregion
 
+        #region Methods
         private void FinalizeContest()
         {
             throw new NotImplementedException();
@@ -48,7 +53,7 @@ namespace Simhopp
             //TODO kolla så korrekt data
             bool isDataValid = false;
 
-            if(window.StringCheckFormat(View.TextBoxName.Text))
+            if (window.StringCheckFormat(View.TextBoxName.Text))
             {
                 if (SubContestContestants.Count != 0)
                     isDataValid = true;
@@ -58,10 +63,10 @@ namespace Simhopp
             else
                 MessageBox.Show("Tävlingsnamn ej korrekt. Får ej innehålla specialtecken, förutom _ och -");
 
-            if(isDataValid)
+            if (isDataValid)
             {
                 SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, SubContestContestants);
-           
+
                 SubContests.Add(subContestBranch);
                 View.ListBoxSubContests.Items.Add(subContestBranch.Name);
             }
@@ -105,9 +110,10 @@ namespace Simhopp
                     SubContestContestants.Add(contestantToBeAdded);
                     View.ListBoxSubContestContestants.Items.Add(contestantToBeAdded.GetFullName());
                 }
-       
+
 
             }
-        }
+        } 
+        #endregion
     }
 }
