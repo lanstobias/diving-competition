@@ -42,6 +42,9 @@ namespace Simhopp
             View.EventFinalizeContest += FinalizeContest;
             View.EventSubContestSelected += SubContestSelected;
             View.EventUpdateSubContest += UpdateSubContest;
+            View.EventCancelEdit += CancelEditOfSubContest;
+        }
+
         /// <summary>
         /// Clears the various data that the user has entered
         /// </summary>
@@ -58,6 +61,12 @@ namespace Simhopp
             View.ButtonCancelEdit.Visible = false;
             View.ButtonAddSubContest.Enabled = true;
         }
+
+        private void CancelEditOfSubContest()
+        {
+            ClearInputs();
+        }
+
         /// <summary>
         /// Updates a selected sub contest
         /// </summary>
