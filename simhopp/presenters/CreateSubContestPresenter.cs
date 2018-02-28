@@ -40,6 +40,7 @@ namespace Simhopp
             View.EventRemoveContestantFromSubContest += RemoveContestantFromSubContest;
             View.EventAddSubContest += AddSubContest;
             View.EventFinalizeContest += FinalizeContest;
+            View.EventSubContestSelected += SubContestSelected;
         /// <summary>
         /// Clears the various data that the user has entered
         /// </summary>
@@ -56,6 +57,43 @@ namespace Simhopp
             View.ButtonCancelEdit.Visible = false;
             View.ButtonAddSubContest.Enabled = true;
         }
+        /// <summary>
+        /// Is triggered when a created subcontest is selected. Opens it up for editing
+        /// </summary>
+        private void SubContestSelected()
+        {
+            string subContestName = View.ListBoxSubContests.SelectedItem as string;
+
+            if(SelectedSubContest == null)
+            {
+                foreach (var sc in SubContests)
+                {
+                    if (sc.Name == subContestName)
+                    {
+                        SelectedSubContest = sc;
+
+                        View.TextBoxName.Text = SelectedSubContest.Name;
+
+                        SubContestContestants.Clear();
+
+                        SubContestContestants = SelectedSubContest.BranchContestants.DeepCopy();
+
+                        foreach (var c in SelectedSubContest.BranchContestants)
+                        {
+                            View.ListBoxSubContestContestants.Items.Add(c.GetFullName());
+                        }
+                            
+
+                        // display the edit buttons and make add button unclickable
+                        View.ButtonUpdateSubContest.Visible = true;
+                        View.ButtonCancelEdit.Visible = true;
+                        View.ButtonAddSubContest.Enabled = false;
+                    }
+                        
+
+                }
+            }
+            
         }
 
         private void FinalizeContest()
