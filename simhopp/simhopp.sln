@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSimhopp", "..\testsimho
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spikes", "Spikes", "{B4D3DB6D-ED20-4FDE-A206-FFA2FF1C3468}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSpikes", "..\DatabaseSpikes\DatabaseSpikes.csproj", "{A68C2D83-8EC0-4365-948A-F9D79F3BF167}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,9 +25,16 @@ Global
 		{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A296FE6-8AA0-44E7-B97F-55E51C1D4E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A68C2D83-8EC0-4365-948A-F9D79F3BF167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68C2D83-8EC0-4365-948A-F9D79F3BF167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68C2D83-8EC0-4365-948A-F9D79F3BF167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68C2D83-8EC0-4365-948A-F9D79F3BF167}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A68C2D83-8EC0-4365-948A-F9D79F3BF167} = {B4D3DB6D-ED20-4FDE-A206-FFA2FF1C3468}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26066BD0-B8CA-48BF-9ECF-B4094D05FEE6}

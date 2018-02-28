@@ -8,7 +8,7 @@ namespace Simhopp
     public class DatabaseConnection
     {
         #region Fields
-        private MySqlConnection connection;
+        public MySqlConnection Connection { get; private set; }
 
         private string server;
         private string database;
@@ -19,9 +19,9 @@ namespace Simhopp
         #region Constructor
         public DatabaseConnection()
         {
-            server = "localhost";
-            database = "connectcsharptomysql";
-            userID = "username";
+            server = "tomat.trickip.net";
+            database = "simhopp";
+            userID = "root";
             password = "gallian0";
 
             InitializeConnection();
@@ -39,18 +39,18 @@ namespace Simhopp
             connectionString.Password = password;
             connectionString.Database = database;
 
-            connection = new MySqlConnection(connectionString.ToString());
+            Connection = new MySqlConnection(connectionString.ToString());
         }
 
         /// <summary>
         /// Open a connection to the databas.
         /// </summary>
         /// <returns></returns>
-        private bool OpenConnection()
+        public bool OpenConnection()
         {
             try
             {
-                connection.Open();
+                Connection.Open();
                 return true;
             }
             catch (MySqlException e)
@@ -68,6 +68,7 @@ namespace Simhopp
                         MessageBox.Show("Wrong username or password.");
                         break;
                 }
+                MessageBox.Show("Error:" + e.Number.ToString());
                 return false;
             }
         }
@@ -76,11 +77,11 @@ namespace Simhopp
         /// Close an opened connection to the database.
         /// </summary>
         /// <returns></returns>
-        private bool CloseConnection()
+        public bool CloseConnection()
         {
             try
             {
-                connection.Close();
+                Connection.Close();
                 return true;
             }
             catch (MySqlException e)
