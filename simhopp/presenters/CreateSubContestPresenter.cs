@@ -19,6 +19,8 @@ namespace Simhopp
 
         public SubContestBranchList SubContests { get; set; } = new SubContestBranchList();
 
+        public SubContestBranch SelectedSubContest { get; set; } = null;
+
         public CreateSubContestPresenter(CreateSubContestView view, ProjectMainWindow window, Contest contest)
         {
             this.View = view;
@@ -60,14 +62,20 @@ namespace Simhopp
 
             if(isDataValid)
             {
-                SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, SubContestContestants);
+                
+                SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, SubContestContestants.DeepCopy());
            
                 SubContests.Add(subContestBranch);
                 View.ListBoxSubContests.Items.Add(subContestBranch.Name);
-            }
 
+                // clear the inputs
+                ClearInputs();
+            }
         }
 
+        /// <summary>
+        /// Remove a contestant that has been selected to participate 
+        /// </summary>
         private void RemoveContestantFromSubContest()
         {
             string contestant = View.ListBoxSubContestContestants.SelectedItem as string;
