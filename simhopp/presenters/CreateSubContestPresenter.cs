@@ -28,6 +28,8 @@ namespace Simhopp
 
             CurrentContest = contest;
 
+            this.View.LabelContestName.Text = CurrentContest.Info.Name;
+
             //Fyller på contestants från contest
             foreach(var contestant in contest.Contestants)
             {
@@ -38,6 +40,22 @@ namespace Simhopp
             View.EventRemoveContestantFromSubContest += RemoveContestantFromSubContest;
             View.EventAddSubContest += AddSubContest;
             View.EventFinalizeContest += FinalizeContest;
+        /// <summary>
+        /// Clears the various data that the user has entered
+        /// </summary>
+        private void ClearInputs()
+        {
+            View.TextBoxName.Clear();
+            View.ListBoxSubContestContestants.Items.Clear();
+            View.ListBoxContestContestants.ClearSelected();
+            View.ListBoxSubContests.ClearSelected();
+            SubContestContestants.Clear();
+            SelectedSubContest = null;
+
+            View.ButtonUpdateSubContest.Visible = false;
+            View.ButtonCancelEdit.Visible = false;
+            View.ButtonAddSubContest.Enabled = true;
+        }
         }
 
         private void FinalizeContest()
