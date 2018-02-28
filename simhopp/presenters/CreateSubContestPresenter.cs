@@ -13,13 +13,18 @@ namespace Simhopp
 
         private ProjectMainWindow window;
 
+        #region Properties
         public Contest CurrentContest { get; set; }
 
         public ContestantList SubContestContestants { get; set; } = new ContestantList();
 
-        public SubContestBranchList SubContests { get; set; } = new SubContestBranchList();
-
+        public SubContestBranchList SubContests { get; set; } = new SubContestBranchList(); 
+        #endregion
+        
         public SubContestBranch SelectedSubContest { get; set; } = null;
+
+
+        #region Constructor
 
         public CreateSubContestPresenter(CreateSubContestView view, ProjectMainWindow window, Contest contest)
         {
@@ -31,7 +36,7 @@ namespace Simhopp
             this.View.LabelContestName.Text = CurrentContest.Info.Name;
 
             //Fyller på contestants från contest
-            foreach(var contestant in contest.Contestants)
+            foreach (var contestant in contest.Contestants)
             {
                 View.ListBoxContestContestants.Items.Add(contestant.GetFullName());
             }
@@ -40,11 +45,15 @@ namespace Simhopp
             View.EventRemoveContestantFromSubContest += RemoveContestantFromSubContest;
             View.EventAddSubContest += AddSubContest;
             View.EventFinalizeContest += FinalizeContest;
+
             View.EventSubContestSelected += SubContestSelected;
             View.EventUpdateSubContest += UpdateSubContest;
             View.EventCancelEdit += CancelEditOfSubContest;
         }
 
+        #endregion
+
+        #region Methods
         /// <summary>
         /// Clears the various data that the user has entered
         /// </summary>
@@ -72,7 +81,7 @@ namespace Simhopp
         /// </summary>
         private void UpdateSubContest()
         {
-            if(SelectedSubContest != null)
+            if (SelectedSubContest != null)
             {
 
                 SelectedSubContest.Name = View.TextBoxName.Text;
@@ -87,7 +96,7 @@ namespace Simhopp
 
                 ClearInputs();
             }
-            
+
         }
 
         /// <summary>
@@ -97,7 +106,7 @@ namespace Simhopp
         {
             string subContestName = View.ListBoxSubContests.SelectedItem as string;
 
-            if(SelectedSubContest == null)
+            if (SelectedSubContest == null)
             {
                 foreach (var sc in SubContests)
                 {
@@ -115,20 +124,19 @@ namespace Simhopp
                         {
                             View.ListBoxSubContestContestants.Items.Add(c.GetFullName());
                         }
-                            
+
 
                         // display the edit buttons and make add button unclickable
                         View.ButtonUpdateSubContest.Visible = true;
                         View.ButtonCancelEdit.Visible = true;
                         View.ButtonAddSubContest.Enabled = false;
                     }
-                        
+
 
                 }
             }
-            
-        }
 
+        }
         private void FinalizeContest()
         {
             throw new NotImplementedException();
@@ -139,7 +147,7 @@ namespace Simhopp
             //TODO kolla så korrekt data
             bool isDataValid = false;
 
-            if(window.StringCheckFormat(View.TextBoxName.Text))
+            if (window.StringCheckFormat(View.TextBoxName.Text))
             {
                 if (SubContestContestants.Count != 0)
                     isDataValid = true;
@@ -149,8 +157,9 @@ namespace Simhopp
             else
                 MessageBox.Show("Tävlingsnamn ej korrekt. Får ej innehålla specialtecken, förutom _ och -");
 
-            if(isDataValid)
+            if (isDataValid)
             {
+
                 
                 SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, SubContestContestants.DeepCopy());
            
@@ -214,9 +223,10 @@ namespace Simhopp
                     SubContestContestants.Add(contestantToBeAdded);
                     View.ListBoxSubContestContestants.Items.Add(contestantToBeAdded.GetFullName());
                 }
-       
+
 
             }
-        }
+        } 
+        #endregion
     }
 }

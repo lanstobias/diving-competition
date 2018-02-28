@@ -69,6 +69,7 @@
     <Compile Include="models\SubContestBranchList.cs" />
     <Compile Include="presenters\CreateContestPresenter.cs" />
     <Compile Include="presenters\CreateSubContestPresenter.cs" />
+    <Compile Include="presenters\JudgeDivePresenter.cs" />
     <Compile Include="presenters\MainMenuPresenter.cs" />
     <Compile Include="ProjectMainWindow.cs">
       <SubType>Form</SubType>
@@ -98,7 +99,11 @@
     </Compile>
     <Compile Include="views\ICreateContestView.cs" />
     <Compile Include="views\ICreateSubContestView.cs" />
+    <Compile Include="views\IJudgeDiveView.cs" />
     <Compile Include="views\IMainMenuView.cs" />
+    <Compile Include="views\JudgeDiveView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="views\MainMenuView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -128,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\CreateSubContestView.resx">
       <DependentUpon>CreateSubContestView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\JudgeDiveView.resx">
+      <DependentUpon>JudgeDiveView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\MainMenuView.resx">
       <DependentUpon>MainMenuView.cs</DependentUpon>
