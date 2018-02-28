@@ -17,6 +17,7 @@ namespace Simhopp
         {
             this.SubContestBranch = subContestBranch;
         }
+        #endregion
 
         internal bool Exists(Dive dive)
         {
@@ -29,6 +30,17 @@ namespace Simhopp
             return false;
         }
 
-        #endregion
+        public DiveList DeepCopy()
+        {
+            DiveList diveList = new DiveList(this.SubContestBranch);
+
+            foreach (var d in this)
+            {
+                diveList.Add(new Dive(d.Code, d.Scores));
+            }
+
+            return diveList;
+        }
+
     }
 }
