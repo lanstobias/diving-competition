@@ -8,7 +8,7 @@ namespace Simhopp
     public class DatabaseConnection
     {
         #region Fields
-        private MySqlConnection connection;
+        public MySqlConnection Connection { get; private set; }
 
         private string server;
         private string database;
