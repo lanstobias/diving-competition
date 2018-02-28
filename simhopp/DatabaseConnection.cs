@@ -39,7 +39,7 @@ namespace Simhopp
             connectionString.Password = password;
             connectionString.Database = database;
 
-            connection = new MySqlConnection(connectionString.ToString());
+            Connection = new MySqlConnection(connectionString.ToString());
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Simhopp
         {
             try
             {
-                connection.Open();
+                Connection.Open();
                 return true;
             }
             catch (MySqlException e)
@@ -80,7 +80,7 @@ namespace Simhopp
         {
             try
             {
-                connection.Close();
+                Connection.Close();
                 return true;
             }
             catch (MySqlException e)
