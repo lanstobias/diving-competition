@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="views\ICreateContestView.cs" />
     <Compile Include="views\ICreateSubContestView.cs" />
+    <Compile Include="views\IJudgeDiveView.cs" />
     <Compile Include="views\IMainMenuView.cs" />
     <Compile Include="views\MainMenuView.cs">
       <SubType>UserControl</SubType>
