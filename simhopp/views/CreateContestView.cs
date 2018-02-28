@@ -22,13 +22,14 @@ namespace Simhopp
         private System.Windows.Forms.ListBox listBoxGlobalJudges;
         private System.Windows.Forms.Button buttonSetStartDate;
         private System.Windows.Forms.Label labelStartDate;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelCity;
         private System.Windows.Forms.TextBox textBoxArena;
         private Label labelName;
         private System.Windows.Forms.Label labelContestInfo;
         private System.Windows.Forms.TextBox textBoxCity;
         private Label labelEndDate;
         private Button buttonSetEndDate;
+        private Label labelArena;
         private System.Windows.Forms.TextBox textBoxName;
 
         public event DelegateSetStartDate EventSetStartDate;
@@ -64,7 +65,7 @@ namespace Simhopp
             this.labelContestInfo = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxArena = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelCity = new System.Windows.Forms.Label();
             this.labelStartDate = new System.Windows.Forms.Label();
             this.buttonSetStartDate = new System.Windows.Forms.Button();
             this.listBoxGlobalJudges = new System.Windows.Forms.ListBox();
@@ -81,11 +82,13 @@ namespace Simhopp
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.buttonSetEndDate = new System.Windows.Forms.Button();
             this.labelEndDate = new System.Windows.Forms.Label();
+            this.labelArena = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.labelArena);
             this.mainPanel.Controls.Add(this.labelEndDate);
             this.mainPanel.Controls.Add(this.buttonSetEndDate);
             this.mainPanel.Controls.Add(this.textBoxCity);
@@ -102,7 +105,7 @@ namespace Simhopp
             this.mainPanel.Controls.Add(this.listBoxGlobalJudges);
             this.mainPanel.Controls.Add(this.buttonSetStartDate);
             this.mainPanel.Controls.Add(this.labelStartDate);
-            this.mainPanel.Controls.Add(this.label1);
+            this.mainPanel.Controls.Add(this.labelCity);
             this.mainPanel.Controls.Add(this.textBoxArena);
             this.mainPanel.Controls.Add(this.labelName);
             this.mainPanel.Controls.Add(this.labelContestInfo);
@@ -110,59 +113,66 @@ namespace Simhopp
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(68, 56);
+            this.textBoxName.Location = new System.Drawing.Point(24, 51);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(129, 26);
+            this.textBoxName.Size = new System.Drawing.Size(87, 20);
             this.textBoxName.TabIndex = 0;
             // 
             // labelContestInfo
             // 
             this.labelContestInfo.AutoSize = true;
-            this.labelContestInfo.Location = new System.Drawing.Point(52, 19);
+            this.labelContestInfo.Location = new System.Drawing.Point(35, 12);
+            this.labelContestInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelContestInfo.Name = "labelContestInfo";
-            this.labelContestInfo.Size = new System.Drawing.Size(145, 20);
+            this.labelContestInfo.Size = new System.Drawing.Size(98, 13);
             this.labelContestInfo.TabIndex = 1;
             this.labelContestInfo.Text = "Tävlingsinformation";
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(3, 56);
+            this.labelName.Location = new System.Drawing.Point(21, 36);
+            this.labelName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(51, 20);
+            this.labelName.Size = new System.Drawing.Size(35, 13);
             this.labelName.TabIndex = 2;
-            this.labelName.Text = "label1";
+            this.labelName.Text = "Namn";
             // 
             // textBoxArena
             // 
-            this.textBoxArena.Location = new System.Drawing.Point(257, 56);
+            this.textBoxArena.Location = new System.Drawing.Point(133, 51);
+            this.textBoxArena.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxArena.Name = "textBoxArena";
-            this.textBoxArena.Size = new System.Drawing.Size(129, 26);
+            this.textBoxArena.Size = new System.Drawing.Size(87, 20);
             this.textBoxArena.TabIndex = 3;
             // 
-            // label1
+            // labelCity
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(203, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.labelCity.AutoSize = true;
+            this.labelCity.Location = new System.Drawing.Point(130, 36);
+            this.labelCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCity.Name = "labelCity";
+            this.labelCity.Size = new System.Drawing.Size(29, 13);
+            this.labelCity.TabIndex = 6;
+            this.labelCity.Text = "Stad";
             // 
             // labelStartDate
             // 
             this.labelStartDate.AutoSize = true;
-            this.labelStartDate.Location = new System.Drawing.Point(546, 104);
+            this.labelStartDate.Location = new System.Drawing.Point(332, 31);
+            this.labelStartDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(51, 20);
+            this.labelStartDate.Size = new System.Drawing.Size(35, 13);
             this.labelStartDate.TabIndex = 7;
-            this.labelStartDate.Text = "label1";
+            this.labelStartDate.Text = "";
             // 
             // buttonSetStartDate
             // 
-            this.buttonSetStartDate.Location = new System.Drawing.Point(550, 56);
+            this.buttonSetStartDate.Location = new System.Drawing.Point(335, 46);
+            this.buttonSetStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSetStartDate.Name = "buttonSetStartDate";
-            this.buttonSetStartDate.Size = new System.Drawing.Size(102, 45);
+            this.buttonSetStartDate.Size = new System.Drawing.Size(94, 29);
             this.buttonSetStartDate.TabIndex = 9;
             this.buttonSetStartDate.Text = "Välj startdatum";
             this.buttonSetStartDate.UseVisualStyleBackColor = true;
@@ -171,17 +181,18 @@ namespace Simhopp
             // listBoxGlobalJudges
             // 
             this.listBoxGlobalJudges.FormattingEnabled = true;
-            this.listBoxGlobalJudges.ItemHeight = 20;
-            this.listBoxGlobalJudges.Location = new System.Drawing.Point(65, 157);
+            this.listBoxGlobalJudges.Location = new System.Drawing.Point(43, 102);
+            this.listBoxGlobalJudges.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxGlobalJudges.Name = "listBoxGlobalJudges";
-            this.listBoxGlobalJudges.Size = new System.Drawing.Size(186, 184);
+            this.listBoxGlobalJudges.Size = new System.Drawing.Size(125, 121);
             this.listBoxGlobalJudges.TabIndex = 10;
             // 
             // buttonAddJudgeToContest
             // 
-            this.buttonAddJudgeToContest.Location = new System.Drawing.Point(257, 157);
+            this.buttonAddJudgeToContest.Location = new System.Drawing.Point(171, 102);
+            this.buttonAddJudgeToContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddJudgeToContest.Name = "buttonAddJudgeToContest";
-            this.buttonAddJudgeToContest.Size = new System.Drawing.Size(102, 45);
+            this.buttonAddJudgeToContest.Size = new System.Drawing.Size(68, 29);
             this.buttonAddJudgeToContest.TabIndex = 11;
             this.buttonAddJudgeToContest.Text = "Lägg till domare";
             this.buttonAddJudgeToContest.UseVisualStyleBackColor = true;
@@ -189,9 +200,10 @@ namespace Simhopp
             // 
             // buttonRemoveJudgeFromContest
             // 
-            this.buttonRemoveJudgeFromContest.Location = new System.Drawing.Point(257, 261);
+            this.buttonRemoveJudgeFromContest.Location = new System.Drawing.Point(171, 170);
+            this.buttonRemoveJudgeFromContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRemoveJudgeFromContest.Name = "buttonRemoveJudgeFromContest";
-            this.buttonRemoveJudgeFromContest.Size = new System.Drawing.Size(102, 45);
+            this.buttonRemoveJudgeFromContest.Size = new System.Drawing.Size(68, 29);
             this.buttonRemoveJudgeFromContest.TabIndex = 12;
             this.buttonRemoveJudgeFromContest.Text = "Ta bort domare";
             this.buttonRemoveJudgeFromContest.UseVisualStyleBackColor = true;
@@ -200,26 +212,28 @@ namespace Simhopp
             // listBoxLocalJudges
             // 
             this.listBoxLocalJudges.FormattingEnabled = true;
-            this.listBoxLocalJudges.ItemHeight = 20;
-            this.listBoxLocalJudges.Location = new System.Drawing.Point(496, 157);
+            this.listBoxLocalJudges.Location = new System.Drawing.Point(331, 102);
+            this.listBoxLocalJudges.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxLocalJudges.Name = "listBoxLocalJudges";
-            this.listBoxLocalJudges.Size = new System.Drawing.Size(186, 184);
+            this.listBoxLocalJudges.Size = new System.Drawing.Size(125, 121);
             this.listBoxLocalJudges.TabIndex = 13;
             // 
             // buttonAddNewJudgeToDB
             // 
-            this.buttonAddNewJudgeToDB.Location = new System.Drawing.Point(7, 157);
+            this.buttonAddNewJudgeToDB.Location = new System.Drawing.Point(5, 102);
+            this.buttonAddNewJudgeToDB.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddNewJudgeToDB.Name = "buttonAddNewJudgeToDB";
-            this.buttonAddNewJudgeToDB.Size = new System.Drawing.Size(51, 35);
+            this.buttonAddNewJudgeToDB.Size = new System.Drawing.Size(34, 23);
             this.buttonAddNewJudgeToDB.TabIndex = 14;
             this.buttonAddNewJudgeToDB.Text = "Skapa domare";
             this.buttonAddNewJudgeToDB.UseVisualStyleBackColor = true;
             // 
             // buttonAddNewContestantToDB
             // 
-            this.buttonAddNewContestantToDB.Location = new System.Drawing.Point(7, 360);
+            this.buttonAddNewContestantToDB.Location = new System.Drawing.Point(5, 234);
+            this.buttonAddNewContestantToDB.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddNewContestantToDB.Name = "buttonAddNewContestantToDB";
-            this.buttonAddNewContestantToDB.Size = new System.Drawing.Size(51, 35);
+            this.buttonAddNewContestantToDB.Size = new System.Drawing.Size(34, 23);
             this.buttonAddNewContestantToDB.TabIndex = 19;
             this.buttonAddNewContestantToDB.Text = "Skapa deltagare";
             this.buttonAddNewContestantToDB.UseVisualStyleBackColor = true;
@@ -227,17 +241,18 @@ namespace Simhopp
             // listBoxLocalContestants
             // 
             this.listBoxLocalContestants.FormattingEnabled = true;
-            this.listBoxLocalContestants.ItemHeight = 20;
-            this.listBoxLocalContestants.Location = new System.Drawing.Point(496, 360);
+            this.listBoxLocalContestants.Location = new System.Drawing.Point(331, 234);
+            this.listBoxLocalContestants.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxLocalContestants.Name = "listBoxLocalContestants";
-            this.listBoxLocalContestants.Size = new System.Drawing.Size(186, 184);
+            this.listBoxLocalContestants.Size = new System.Drawing.Size(125, 121);
             this.listBoxLocalContestants.TabIndex = 18;
             // 
             // buttonRemoveContestantFromContest
             // 
-            this.buttonRemoveContestantFromContest.Location = new System.Drawing.Point(257, 464);
+            this.buttonRemoveContestantFromContest.Location = new System.Drawing.Point(171, 302);
+            this.buttonRemoveContestantFromContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRemoveContestantFromContest.Name = "buttonRemoveContestantFromContest";
-            this.buttonRemoveContestantFromContest.Size = new System.Drawing.Size(102, 45);
+            this.buttonRemoveContestantFromContest.Size = new System.Drawing.Size(68, 29);
             this.buttonRemoveContestantFromContest.TabIndex = 17;
             this.buttonRemoveContestantFromContest.Text = "Ta bort deltagare";
             this.buttonRemoveContestantFromContest.UseVisualStyleBackColor = true;
@@ -245,9 +260,10 @@ namespace Simhopp
             // 
             // buttonAddContestantToContest
             // 
-            this.buttonAddContestantToContest.Location = new System.Drawing.Point(257, 360);
+            this.buttonAddContestantToContest.Location = new System.Drawing.Point(171, 234);
+            this.buttonAddContestantToContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddContestantToContest.Name = "buttonAddContestantToContest";
-            this.buttonAddContestantToContest.Size = new System.Drawing.Size(102, 45);
+            this.buttonAddContestantToContest.Size = new System.Drawing.Size(68, 29);
             this.buttonAddContestantToContest.TabIndex = 16;
             this.buttonAddContestantToContest.Text = "Lägg till deltagare";
             this.buttonAddContestantToContest.UseVisualStyleBackColor = true;
@@ -256,17 +272,18 @@ namespace Simhopp
             // listBoxGlobalContestants
             // 
             this.listBoxGlobalContestants.FormattingEnabled = true;
-            this.listBoxGlobalContestants.ItemHeight = 20;
-            this.listBoxGlobalContestants.Location = new System.Drawing.Point(65, 360);
+            this.listBoxGlobalContestants.Location = new System.Drawing.Point(43, 234);
+            this.listBoxGlobalContestants.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxGlobalContestants.Name = "listBoxGlobalContestants";
-            this.listBoxGlobalContestants.Size = new System.Drawing.Size(186, 184);
+            this.listBoxGlobalContestants.Size = new System.Drawing.Size(125, 121);
             this.listBoxGlobalContestants.TabIndex = 15;
             // 
             // buttonGoToSubContest
             // 
-            this.buttonGoToSubContest.Location = new System.Drawing.Point(618, 550);
+            this.buttonGoToSubContest.Location = new System.Drawing.Point(412, 357);
+            this.buttonGoToSubContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGoToSubContest.Name = "buttonGoToSubContest";
-            this.buttonGoToSubContest.Size = new System.Drawing.Size(102, 45);
+            this.buttonGoToSubContest.Size = new System.Drawing.Size(68, 29);
             this.buttonGoToSubContest.TabIndex = 20;
             this.buttonGoToSubContest.Text = "OK";
             this.buttonGoToSubContest.UseVisualStyleBackColor = true;
@@ -274,34 +291,48 @@ namespace Simhopp
             // 
             // textBoxCity
             // 
-            this.textBoxCity.Location = new System.Drawing.Point(415, 56);
+            this.textBoxCity.Location = new System.Drawing.Point(244, 51);
+            this.textBoxCity.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCity.Name = "textBoxCity";
-            this.textBoxCity.Size = new System.Drawing.Size(129, 26);
+            this.textBoxCity.Size = new System.Drawing.Size(87, 20);
             this.textBoxCity.TabIndex = 21;
             // 
             // buttonSetEndDate
             // 
-            this.buttonSetEndDate.Location = new System.Drawing.Point(658, 56);
+            this.buttonSetEndDate.Location = new System.Drawing.Point(425, 46);
+            this.buttonSetEndDate.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSetEndDate.Name = "buttonSetEndDate";
-            this.buttonSetEndDate.Size = new System.Drawing.Size(102, 45);
+            this.buttonSetEndDate.Size = new System.Drawing.Size(86, 29);
             this.buttonSetEndDate.TabIndex = 22;
-            this.buttonSetEndDate.Text = "Välj startdatum";
+            this.buttonSetEndDate.Text = "Välj slutdatum";
             this.buttonSetEndDate.UseVisualStyleBackColor = true;
             this.buttonSetEndDate.Click += new System.EventHandler(this.buttonSetEndDate_Click);
             // 
             // labelEndDate
             // 
             this.labelEndDate.AutoSize = true;
-            this.labelEndDate.Location = new System.Drawing.Point(669, 104);
+            this.labelEndDate.Location = new System.Drawing.Point(422, 31);
+            this.labelEndDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEndDate.Name = "labelEndDate";
-            this.labelEndDate.Size = new System.Drawing.Size(51, 20);
+            this.labelEndDate.Size = new System.Drawing.Size(35, 13);
             this.labelEndDate.TabIndex = 23;
-            this.labelEndDate.Text = "label1";
+            this.labelEndDate.Text = "";
+            // 
+            // labelArena
+            // 
+            this.labelArena.AutoSize = true;
+            this.labelArena.Location = new System.Drawing.Point(241, 36);
+            this.labelArena.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelArena.Name = "labelArena";
+            this.labelArena.Size = new System.Drawing.Size(35, 13);
+            this.labelArena.TabIndex = 24;
+            this.labelArena.Text = "Arena";
             // 
             // CreateContestView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Location = new System.Drawing.Point(0, 0);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateContestView";
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
