@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="DatePicker.cs">
       <SubType>Form</SubType>
