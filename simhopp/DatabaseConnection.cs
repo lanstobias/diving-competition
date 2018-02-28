@@ -68,6 +68,7 @@ namespace Simhopp
                         MessageBox.Show("Wrong username or password.");
                         break;
                 }
+                MessageBox.Show("Error:" + e.Number.ToString());
                 return false;
             }
         }
