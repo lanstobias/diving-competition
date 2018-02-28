@@ -11,6 +11,7 @@ namespace Simhopp
     public delegate void DelegateAddSubContest();
     public delegate void DelegateFinalizeContest();
     public delegate void DelegateSubContestSelected();
+    public delegate void DelegateUpdateSubContest();
 
     public interface ICreateSubContestView
     {
@@ -19,6 +20,7 @@ namespace Simhopp
         event DelegateAddSubContest EventAddSubContest;
         event DelegateFinalizeContest EventFinalizeContest;
         event DelegateSubContestSelected EventSubContestSelected;
+        event DelegateUpdateSubContest EventUpdateSubContest;
 
     }
 }

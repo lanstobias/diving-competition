@@ -41,6 +41,7 @@ namespace Simhopp
             View.EventAddSubContest += AddSubContest;
             View.EventFinalizeContest += FinalizeContest;
             View.EventSubContestSelected += SubContestSelected;
+            View.EventUpdateSubContest += UpdateSubContest;
         /// <summary>
         /// Clears the various data that the user has entered
         /// </summary>
@@ -57,6 +58,29 @@ namespace Simhopp
             View.ButtonCancelEdit.Visible = false;
             View.ButtonAddSubContest.Enabled = true;
         }
+        /// <summary>
+        /// Updates a selected sub contest
+        /// </summary>
+        private void UpdateSubContest()
+        {
+            if(SelectedSubContest != null)
+            {
+
+                SelectedSubContest.Name = View.TextBoxName.Text;
+                SelectedSubContest.BranchContestants.Clear();
+
+                SelectedSubContest.BranchContestants = SubContestContestants.DeepCopy();
+
+                View.ListBoxSubContests.Items.Clear();
+
+                foreach (var sc in SubContests)
+                    View.ListBoxSubContests.Items.Add(sc.Name);
+
+                ClearInputs();
+            }
+            
+        }
+
         /// <summary>
         /// Is triggered when a created subcontest is selected. Opens it up for editing
         /// </summary>
