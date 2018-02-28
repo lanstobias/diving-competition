@@ -9,15 +9,6 @@ namespace Simhopp
 {
     public class CreateSubContestView : PanelViewControl , ICreateSubContestView
     {
-        private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.ListBox listBoxSubContests;
-        private System.Windows.Forms.Button buttonFinalizeContest;
-        private System.Windows.Forms.Button buttonAddSubContest;
-        private System.Windows.Forms.ListBox listBoxSubContestContestants;
-        private System.Windows.Forms.Button buttonRemoveContestantFromSubContest;
-        private System.Windows.Forms.Button buttonAddContestantToSubContest;
-        private System.Windows.Forms.ListBox listBoxContestContestants;
-        private System.Windows.Forms.Label label1;
         private TextBox textBoxName;
         private ListBox listBoxSubContests;
         private Button buttonFinalizeContest;
