@@ -216,14 +216,14 @@ namespace testsimhopp
             // getting same data from our Contest object
             ResultDictionary r = contest.GetSubContestResultDictionary(subContest);
 
-            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual(3, r.Count);
 
-            foreach (var score in result)
+            foreach (var score in r)
             {
                 Console.WriteLine(score.Key.FirstName + ": " + score.Value);
             }
 
-            Assert.AreEqual(315, result.First().Value);
+            Assert.AreEqual(315, r.First().Value);
 
         }
     }
