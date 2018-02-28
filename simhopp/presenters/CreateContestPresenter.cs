@@ -47,9 +47,26 @@ namespace Simhopp
             View.EventCreateSubContest += GoToCreateSubContest;
 
 
+            FillWithData();
+
+        } 
+        #endregion
+
+        #region Methods
+        // Temporary method to initialize stuff with dummy values for easy testing
+        public void FillWithData()
+        {
+            View.TextBoxName.Text = "Test comp";
+            View.TextBoxArena.Text = "Gustavsvik";
+            View.TextBoxCity.Text = "Örebro";
+
+            StartDate = DateTime.Now;
+            EndDate = DateTime.MaxValue;
+
+
             // detta ska komma från databasen
             Judge judge1 = new Judge("Karl", "Mal");
-            Judge judge2 = new Judge("LAban", "Asda");
+            Judge judge2 = new Judge("Laban", "Asda");
             Judge judge3 = new Judge("Leg", "Shin");
             Judge judge4 = new Judge("Handy", "Bandy");
             Judge judge5 = new Judge("Sammy", "Rol");
@@ -78,10 +95,21 @@ namespace Simhopp
             foreach (var contestant in GlobalContestantList)
                 View.ListBoxGlobalContestants.Items.Add(contestant.GetFullName());
 
-        } 
-        #endregion
+            ContestJudgeList.Add(judge1);
+            ContestJudgeList.Add(judge2);
+            ContestJudgeList.Add(judge3);
 
-        #region Methods
+            ContestContestantList.Add(kalle);
+            ContestContestantList.Add(pelle);
+
+            View.LabelStartDate.Text = StartDate.ToShortDateString();
+            View.LabelEndDate.Text = EndDate.ToShortDateString();
+
+            UpdateListBoxes();
+
+        }
+
+
         public void UpdateListBoxes()
         {
             View.ListBoxLocalJudges.Items.Clear();
@@ -96,7 +124,6 @@ namespace Simhopp
 
         public void GoToCreateSubContest()
         {
-            // TODO:
             // Kolla så att data är korrekt formatterat 
             bool stringAreValid = false;
             if (window.StringCheckFormat(View.TextBoxName.Text))
