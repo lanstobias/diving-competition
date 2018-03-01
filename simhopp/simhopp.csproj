@@ -68,6 +68,7 @@
     <Compile Include="models\ScoreComparer.cs" />
     <Compile Include="models\SubContestBranch.cs" />
     <Compile Include="models\SubContestBranchList.cs" />
+    <Compile Include="presenters\ContestPresenter.cs" />
     <Compile Include="presenters\CreateContestPresenter.cs" />
     <Compile Include="presenters\CreateSubContestPresenter.cs" />
     <Compile Include="presenters\JudgeDivePresenter.cs" />
@@ -92,12 +93,16 @@
     <Compile Include="models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="views\ContestView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="views\CreateContestView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="views\CreateSubContestView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="views\IContestView.cs" />
     <Compile Include="views\ICreateContestView.cs" />
     <Compile Include="views\ICreateSubContestView.cs" />
     <Compile Include="views\IJudgeDiveView.cs" />
@@ -129,6 +134,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="views\ContestView.resx">
+      <DependentUpon>ContestView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\CreateContestView.resx">
       <DependentUpon>CreateContestView.cs</DependentUpon>
     </EmbeddedResource>
