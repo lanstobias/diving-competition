@@ -93,6 +93,9 @@
     <Compile Include="models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="views\AddDiveView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="views\ContestView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,6 +105,7 @@
     <Compile Include="views\CreateSubContestView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="views\IAddDiveView.cs" />
     <Compile Include="views\IContestView.cs" />
     <Compile Include="views\ICreateContestView.cs" />
     <Compile Include="views\ICreateSubContestView.cs" />
@@ -134,6 +138,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="views\AddDiveView.resx">
+      <DependentUpon>AddDiveView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\ContestView.resx">
       <DependentUpon>ContestView.cs</DependentUpon>
     </EmbeddedResource>
