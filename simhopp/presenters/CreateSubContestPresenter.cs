@@ -154,7 +154,7 @@ namespace Simhopp
             //TODO kolla så korrekt data
             bool isDataValid = false;
 
-            if (window.StringCheckFormat(View.TextBoxName.Text))
+            if (Program.StringCheckFormat(View.TextBoxName.Text))
             {
                 if (SubContestContestants.Count != 0)
                     isDataValid = true;
