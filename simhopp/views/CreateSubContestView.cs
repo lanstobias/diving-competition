@@ -116,6 +116,7 @@ namespace Simhopp
             this.buttonFinalizeContest.TabIndex = 26;
             this.buttonFinalizeContest.Text = "Skapa Tävling";
             this.buttonFinalizeContest.UseVisualStyleBackColor = true;
+            this.buttonFinalizeContest.Click += new EventHandler(ButtonFinalizeContest_Click);
             // 
             // buttonAddSubContest
             // 
@@ -239,6 +240,11 @@ namespace Simhopp
             this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        private void ButtonFinalizeContest_Click(object sender, EventArgs e)
+        {
+            this.EventFinalizeContest?.Invoke();
         }
 
         private void buttonAddContestantToSubContest_Click(object sender, EventArgs e)
