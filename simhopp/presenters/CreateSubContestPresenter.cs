@@ -63,7 +63,7 @@ namespace Simhopp
             View.ListBoxSubContestContestants.Items.Clear();
             View.ListBoxContestContestants.ClearSelected();
             View.ListBoxSubContests.ClearSelected();
-            SubContestContestants.Clear();
+            //SubContestContestants.Clear();
             SelectedSubContest = null;
 
             View.ButtonUpdateSubContest.Visible = false;
@@ -106,40 +106,47 @@ namespace Simhopp
         {
             string subContestName = View.ListBoxSubContests.SelectedItem as string;
 
-            if (SelectedSubContest == null)
+            foreach (var sc in SubContests)
             {
-                foreach (var sc in SubContests)
+                if (sc.Name == subContestName)
                 {
-                    if (sc.Name == subContestName)
+                    SelectedSubContest = sc;
+
+                    View.TextBoxName.Text = SelectedSubContest.Name;
+
+                    SubContestContestants.Clear();
+
+                    View.ListBoxSubContestContestants.Items.Clear();
+
+                    SubContestContestants = SelectedSubContest.BranchContestants.DeepCopy();
+
+                    foreach (var c in SelectedSubContest.BranchContestants)
                     {
-                        SelectedSubContest = sc;
-
-                        View.TextBoxName.Text = SelectedSubContest.Name;
-
-                        SubContestContestants.Clear();
-
-                        SubContestContestants = SelectedSubContest.BranchContestants.DeepCopy();
-
-                        foreach (var c in SelectedSubContest.BranchContestants)
-                        {
-                            View.ListBoxSubContestContestants.Items.Add(c.GetFullName());
-                        }
-
-
-                        // display the edit buttons and make add button unclickable
-                        View.ButtonUpdateSubContest.Visible = true;
-                        View.ButtonCancelEdit.Visible = true;
-                        View.ButtonAddSubContest.Enabled = false;
+                        View.ListBoxSubContestContestants.Items.Add(c.GetFullName());
                     }
 
+                    
 
+
+                    // display the edit buttons and make add button unclickable
+                    View.ButtonUpdateSubContest.Visible = true;
+                    View.ButtonCancelEdit.Visible = true;
+                    View.ButtonAddSubContest.Enabled = false;
                 }
             }
+
+            if (SelectedSubContest == null)
+            {
+                
+            }
+
 
         }
         private void FinalizeContest()
         {
-            throw new NotImplementedException();
+            ContestView contestView = new ContestView();
+            ContestPresenter contestPresenter = new ContestPresenter(contestView, window, CurrentContest);
+            window.ChangePanel(contestView, View);
         }
 
         private void AddSubContest()
@@ -160,13 +167,20 @@ namespace Simhopp
             if (isDataValid)
             {
 
-                
-                SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, SubContestContestants.DeepCopy());
+                List<Contestant> list = SubContestContestants.ToList();
+                ContestantList contestantList = new ContestantList();
+                foreach (var c in list)
+                    contestantList.Add(c);
+
+                SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, contestantList);
            
                 SubContests.Add(subContestBranch);
                 View.ListBoxSubContests.Items.Add(subContestBranch.Name);
 
+                CurrentContest.SubContestBranches.Add(subContestBranch);
+
                 // clear the inputs
+                SubContestContestants.Clear();
                 ClearInputs();
             }
         }
