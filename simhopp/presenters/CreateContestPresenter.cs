@@ -112,6 +112,17 @@ namespace Simhopp
 
         public void UpdateListBoxes()
         {
+            // globala listboxes från dbn
+            View.ListBoxGlobalJudges.Items.Clear();
+            View.ListBoxGlobalContestants.Items.Clear();
+
+            foreach (var judge in GlobalJudgeList)
+                View.ListBoxGlobalJudges.Items.Add(judge.GetFullName());
+
+            foreach (var contestant in GlobalContestantList)
+                View.ListBoxGlobalContestants.Items.Add(contestant.GetFullName());
+
+            // lokala listboxes
             View.ListBoxLocalJudges.Items.Clear();
             View.ListBoxLocalContestants.Items.Clear();
 
@@ -238,9 +249,54 @@ namespace Simhopp
 
         }
 
+        public void AddJudgeToDB()
+        {
+            var addPerson = new AddPersonForm();
+
+            if (addPerson.ShowDialog() == DialogResult.OK)
+            {
+                Database db = new Database();
+                foreach (var p in addPerson.PersonList)
+                {
+                    //try
+                    //{
+                    //    db.StorePerson(p);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Console.WriteLine(e.Message.ToString());
+                    //}
+
+                    GlobalJudgeList.Add((Judge)p);
+                }
+
+                UpdateListBoxes();
+            }
+        }
+
         public void AddContestantToDB()
         {
-            throw new NotImplementedException();
+            var addPerson = new AddPersonForm();
+
+            if (addPerson.ShowDialog() == DialogResult.OK)
+            {
+                Database db = new Database();
+                foreach (var p in addPerson.PersonList)
+                {
+                    //try
+                    //{
+                    //    db.StorePerson(p);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Console.WriteLine(e.Message.ToString());
+                    //}
+
+                    GlobalContestantList.Add( (Contestant) p );
+                }
+
+                UpdateListBoxes();
+            }
         }
 
         public void RemoveJudgeFromContest()
@@ -296,11 +352,6 @@ namespace Simhopp
             }
 
             UpdateListBoxes();
-        }
-
-        public void AddJudgeToDB()
-        {
-            throw new NotImplementedException();
         }
 
         public void SetStartDate()

@@ -163,9 +163,8 @@ namespace Simhopp
             this.labelStartDate.Location = new System.Drawing.Point(332, 31);
             this.labelStartDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(35, 13);
+            this.labelStartDate.Size = new System.Drawing.Size(0, 13);
             this.labelStartDate.TabIndex = 7;
-            this.labelStartDate.Text = "";
             // 
             // buttonSetStartDate
             // 
@@ -220,22 +219,23 @@ namespace Simhopp
             // 
             // buttonAddNewJudgeToDB
             // 
-            this.buttonAddNewJudgeToDB.Location = new System.Drawing.Point(5, 102);
+            this.buttonAddNewJudgeToDB.Location = new System.Drawing.Point(15, 102);
             this.buttonAddNewJudgeToDB.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddNewJudgeToDB.Name = "buttonAddNewJudgeToDB";
-            this.buttonAddNewJudgeToDB.Size = new System.Drawing.Size(34, 23);
+            this.buttonAddNewJudgeToDB.Size = new System.Drawing.Size(20, 20);
             this.buttonAddNewJudgeToDB.TabIndex = 14;
-            this.buttonAddNewJudgeToDB.Text = "Skapa domare";
+            this.buttonAddNewJudgeToDB.Text = "+";
             this.buttonAddNewJudgeToDB.UseVisualStyleBackColor = true;
+            this.buttonAddNewJudgeToDB.Click += new EventHandler(ButtonAddNewJudgeToDB_Click);
             // 
             // buttonAddNewContestantToDB
             // 
-            this.buttonAddNewContestantToDB.Location = new System.Drawing.Point(5, 234);
+            this.buttonAddNewContestantToDB.Location = new System.Drawing.Point(15, 234);
             this.buttonAddNewContestantToDB.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddNewContestantToDB.Name = "buttonAddNewContestantToDB";
-            this.buttonAddNewContestantToDB.Size = new System.Drawing.Size(34, 23);
+            this.buttonAddNewContestantToDB.Size = new System.Drawing.Size(20, 20);
             this.buttonAddNewContestantToDB.TabIndex = 19;
-            this.buttonAddNewContestantToDB.Text = "Skapa deltagare";
+            this.buttonAddNewContestantToDB.Text = "+";
             this.buttonAddNewContestantToDB.UseVisualStyleBackColor = true;
             // 
             // listBoxLocalContestants
@@ -314,9 +314,8 @@ namespace Simhopp
             this.labelEndDate.Location = new System.Drawing.Point(422, 31);
             this.labelEndDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEndDate.Name = "labelEndDate";
-            this.labelEndDate.Size = new System.Drawing.Size(35, 13);
+            this.labelEndDate.Size = new System.Drawing.Size(0, 13);
             this.labelEndDate.TabIndex = 23;
-            this.labelEndDate.Text = "";
             // 
             // labelArena
             // 
@@ -338,6 +337,11 @@ namespace Simhopp
             this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        private void ButtonAddNewJudgeToDB_Click(object sender, EventArgs e)
+        {
+            this.EventAddJudgeToDB?.Invoke();
         }
 
         private void buttonSetStartDate_Click(object sender, EventArgs e)
