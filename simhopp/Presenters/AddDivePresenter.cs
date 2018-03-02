@@ -43,6 +43,10 @@ namespace Simhopp
             }
         }
 
+        private bool ValidateData()
+        {
+            // todo: Kolla så datan är korrekt
+            return true;
         }
     }
 }
