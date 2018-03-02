@@ -70,6 +70,7 @@
     <Compile Include="DatePicker.Designer.cs">
       <DependentUpon>DatePicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers.cs" />
     <Compile Include="models\ResultDictionary.cs" />
     <Compile Include="models\ScoreComparer.cs" />
     <Compile Include="models\SubContestBranch.cs" />
