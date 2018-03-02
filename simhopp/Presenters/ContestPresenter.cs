@@ -56,11 +56,30 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Opens up a AddDiveView form and waits for the result
+        /// </summary>
         private void AddDive()
         {
+            SubContestBranch subContestBranch = GetSelectedSubContest();
+            Contestant contestant = GetSelectedContestant();
+            
             AddDiveView addDiveView = new AddDiveView();
-            AddDivePresenter addDivePresenter = new AddDivePresenter(addDiveView, window, CurrentContest);
-            addDiveView.Show();
+            AddDivePresenter addDivePresenter = new AddDivePresenter(addDiveView, window, subContestBranch, contestant);
+
+            if(subContestBranch != null && contestant != null)
+            {
+                if (addDiveView.ShowDialog() == DialogResult.OK)
+                {
+                    UpdateDivesListBox();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Fills up ListBoxDives with the dives tied to a contestant
+        /// </summary>
+        /// <param name="contestant">The contestant with the dives to be presented</param>
         public void UpdateDivesListBox()
         {
             Contestant contestant = GetSelectedContestant();
