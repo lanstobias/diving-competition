@@ -63,7 +63,9 @@ namespace Simhopp
 
         private void AddDive()
         {
-            throw new NotImplementedException();
+            AddDiveView addDiveView = new AddDiveView();
+            AddDivePresenter addDivePresenter = new AddDivePresenter(addDiveView, window, CurrentContest);
+            addDiveView.Show();
         }
 
         #endregion
