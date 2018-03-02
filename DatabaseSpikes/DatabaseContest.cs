@@ -13,5 +13,22 @@ namespace DatabaseSpikes
         {
 
         }
+
+        public void AddContestInfo()
+        {
+            DateTime endDate = new DateTime(2018, 03, 05);
+            ContestInfo contestInto = new ContestInfo("Bra simhoppstävling", "Örebro", DateTime.Now, endDate, "Gustavsvik");
+
+            Database database = new Database();
+
+            try
+            {
+                database.PushContestInfo(contestInto);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+            }
+        }
     }
 }
