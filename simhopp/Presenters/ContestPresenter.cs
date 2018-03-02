@@ -66,6 +66,19 @@ namespace Simhopp
             AddDiveView addDiveView = new AddDiveView();
             AddDivePresenter addDivePresenter = new AddDivePresenter(addDiveView, window, CurrentContest);
             addDiveView.Show();
+        private Contestant GetSelectedContestant()
+        {
+            var selectedContestantName = View.ListBoxContestants.SelectedItem as string;
+
+            foreach(var contestant in GetSelectedSubContest().BranchContestants)
+            {
+                if (contestant.GetFullName() == selectedContestantName)
+                    return contestant;
+            }
+
+            return null;
+        }
+
         private SubContestBranch GetSelectedSubContest()
         {
             var selectedSubContestName = View.ComboBoxSubContests.SelectedItem as string;
