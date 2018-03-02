@@ -118,6 +118,27 @@ namespace Simhopp
         {
             throw new NotImplementedException();
         }
+
+        public long PushContestInfo(ContestInfo contestInfo)
+        {
+            string table = "contest";
+
+            var name = contestInfo.Name;
+            var city = contestInfo.City;
+            var arena = contestInfo.Arena;
+            var startDate = contestInfo.StartDate;
+            var endDate = contestInfo.EndDate;
+
+            string query = $"INSERT INTO {table} ";
+            query += $"(name, city, arena, startDate, endDate) ";
+            query += $"VALUES(";
+            query += $"'{name}','{city}','{arena}','{Helpers.SQLDateFormat(startDate)}','{Helpers.SQLDateFormat(endDate)}'";
+            query += $")";
+
+            long lastInsertedId = ExecuteQuery(query);
+            return lastInsertedId;
+        }
+
         private long PushSubContestBranch(SubContestBranch branch)
         {
             throw new NotImplementedException();
