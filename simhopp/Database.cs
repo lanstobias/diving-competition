@@ -71,6 +71,14 @@ namespace Simhopp
         {
             throw new NotImplementedException();
         }
+
+        public void PushContest(Contest contest)
+        {
+            var contestID = PushContestInfo(contest.Info);
+            PushJudgeList();
+            PushSubContestBranches(contest.SubContestBranches, contestID);
+        }
+
         private long PushDive(long branchID, long contestantID)
         {
             throw new NotImplementedException();
