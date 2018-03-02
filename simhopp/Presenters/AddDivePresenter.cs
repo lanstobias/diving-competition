@@ -17,15 +17,22 @@ namespace Simhopp
         public Contestant CurrentContestant { get; set; }
 
 
-        public AddDivePresenter(AddDiveView view, ProjectMainWindow window, SubContestBranch subContest, Contestant contestant)
+        public AddDivePresenter(AddDiveView view, ProjectMainWindow window, SubContestBranch subContest, Contestant contestant, Dive dive = null)
         {
             this.View = view;
             this.window = window;
             this.SubContest = subContest;
             CurrentContestant = contestant;
 
+            if(dive != null)
+            {
+                View.TextBoxDiveCode.Text = dive.Code.Code;
+                View.TextBoxDiveMultiplier.Text = dive.Code.Multiplier.ToString();
+            }
+
             View.EventAddDive += AddDiveToContestant;
         }
+
 
         public void AddDiveToContestant()
         {
@@ -45,8 +52,18 @@ namespace Simhopp
 
         private bool ValidateData()
         {
-            // todo: Kolla så datan är korrekt
-            return true;
+            bool isCodeValid = Program.StringCheckFormat(View.TextBoxDiveCode.Text);
+
+            double multiplier = 0;
+            bool isMultiplierValid = double.TryParse(View.TextBoxDiveMultiplier.Text, out multiplier);
+
+
+            if (!isCodeValid)
+                View.TextBoxDiveCode.BackColor = System.Drawing.Color.Red;
+            if (!isMultiplierValid)
+                View.TextBoxDiveMultiplier.BackColor = System.Drawing.Color.Red;
+
+            return isCodeValid && isMultiplierValid;
         }
     }
 }
