@@ -74,6 +74,7 @@
     <Compile Include="models\ScoreComparer.cs" />
     <Compile Include="models\SubContestBranch.cs" />
     <Compile Include="models\SubContestBranchList.cs" />
+    <Compile Include="presenters\AddDivePresenter.cs" />
     <Compile Include="presenters\ContestPresenter.cs" />
     <Compile Include="presenters\CreateContestPresenter.cs" />
     <Compile Include="presenters\CreateSubContestPresenter.cs" />
