@@ -24,6 +24,7 @@ namespace Simhopp
         private Button buttonPause;
         private Button buttonCancelModify;
         private Button buttonRemoveDive;
+        private Button buttonModifyDive;
         private System.Windows.Forms.Label labelContestName;
 
         public event DelegateAddJump EventAddJump;
@@ -33,6 +34,7 @@ namespace Simhopp
         public event DelegateCloseContest EventCloseContest;
         public event DelegateDiveSelection EventDiveSelection;
         public event DelegateModifyDive EventModifyDive;
+        public event DelegateCancelDiveEdit EventCancelDiveEdit;
         public event DelegateRemoveDive EventRemoveDive;
 
         public ComboBox ComboBoxSubContests { get { return comboBoxSubContests; } set { comboBoxSubContests = value; } }
@@ -46,6 +48,8 @@ namespace Simhopp
 
         public Button ButtonModifyDive { get { return buttonModifyDive; } set { buttonModifyDive = value; } }
         public Button ButtonRemoveDive { get { return buttonRemoveDive; } set { buttonRemoveDive = value; } }
+        public Button ButtonCancelModify { get { return buttonCancelModify; } set { buttonCancelModify = value; } }
+
         public ContestView()
         {
             InitializeComponent();
@@ -69,11 +73,13 @@ namespace Simhopp
             this.buttonCloseContest = new System.Windows.Forms.Button();
             this.buttonModifyDive = new System.Windows.Forms.Button();
             this.buttonRemoveDive = new System.Windows.Forms.Button();
+            this.buttonCancelModify = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.buttonCancelModify);
             this.mainPanel.Controls.Add(this.buttonRemoveDive);
             this.mainPanel.Controls.Add(this.buttonModifyDive);
             this.mainPanel.Controls.Add(this.buttonCloseContest);
@@ -249,6 +255,18 @@ namespace Simhopp
             this.buttonRemoveDive.UseVisualStyleBackColor = true;
             this.buttonRemoveDive.Visible = false;
             this.buttonRemoveDive.Click += new EventHandler(ButtonRemoveDive_Click);
+            // 
+            // buttonCancelModify
+            // 
+            this.buttonCancelModify.Location = new System.Drawing.Point(282, 291);
+            this.buttonCancelModify.Name = "buttonCancelModify";
+            this.buttonCancelModify.Size = new System.Drawing.Size(82, 23);
+            this.buttonCancelModify.TabIndex = 16;
+            this.buttonCancelModify.Text = "Cancel";
+            this.buttonCancelModify.UseVisualStyleBackColor = true;
+            this.buttonCancelModify.Visible = false;
+            this.buttonCancelModify.Click += new EventHandler(ButtonCancelModify_Click);
+            // 
             // ContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -268,6 +286,11 @@ namespace Simhopp
         private void ButtonRemoveDive_Click(object sender, EventArgs e)
         {
             this.EventRemoveDive?.Invoke();
+        }
+
+        private void ButtonCancelModify_Click(object sender, EventArgs e)
+        {
+            this.EventCancelDiveEdit?.Invoke();
         }
         private void ListBoxContestants_SelectedIndexChanged(object sender, EventArgs e)
         {

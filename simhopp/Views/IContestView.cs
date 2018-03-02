@@ -14,6 +14,7 @@ namespace Simhopp
     public delegate void DelegateCloseContest();
     public delegate void DelegateModifyDive();
     public delegate void DelegateRemoveDive();
+    public delegate void DelegateCancelDiveEdit();
 
     public interface IContestView
     {
@@ -24,6 +25,7 @@ namespace Simhopp
         event DelegatePauseContest EventPauseContest;
         event DelegateCloseContest EventCloseContest;
         event DelegateModifyDive EventModifyDive;
+        event DelegateCancelDiveEdit EventCancelDiveEdit;
         event DelegateRemoveDive EventRemoveDive;
     }
 }

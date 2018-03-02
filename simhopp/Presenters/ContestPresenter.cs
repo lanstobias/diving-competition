@@ -33,6 +33,7 @@ namespace Simhopp
             View.EventDiveSelection += EnableModifyDive;
             View.EventModifyDive += ModifyDive;
             View.EventRemoveDive += RemoveDive;
+            View.EventCancelDiveEdit += CancelModifyDive;
 
             Initialize();
         }
@@ -87,6 +88,14 @@ namespace Simhopp
         {
             GetSelectedSubContest().RemoveExistingDive(GetSelectedContestant(), GetSelectedDive());
             UpdateDivesListBox();
+        }
+
+        private void CancelModifyDive()
+        {
+            View.ListBoxDives.ClearSelected();
+            View.ButtonCancelModify.Visible = false;
+            View.ButtonModifyDive.Visible = false;
+            View.ButtonRemoveDive.Visible = false;
         }
         private void UpdateContestantListBox()
         {
