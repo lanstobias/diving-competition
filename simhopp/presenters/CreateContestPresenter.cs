@@ -112,6 +112,17 @@ namespace Simhopp
 
         public void UpdateListBoxes()
         {
+            // globala listboxes från dbn
+            View.ListBoxGlobalJudges.Items.Clear();
+            View.ListBoxGlobalContestants.Items.Clear();
+
+            foreach (var judge in GlobalJudgeList)
+                View.ListBoxGlobalJudges.Items.Add(judge.GetFullName());
+
+            foreach (var contestant in GlobalContestantList)
+                View.ListBoxGlobalContestants.Items.Add(contestant.GetFullName());
+
+            // lokala listboxes
             View.ListBoxLocalJudges.Items.Clear();
             View.ListBoxLocalContestants.Items.Clear();
 
@@ -126,11 +137,11 @@ namespace Simhopp
         {
             // Kolla så att data är korrekt formatterat 
             bool stringAreValid = false;
-            if (window.StringCheckFormat(View.TextBoxName.Text))
+            if (Program.StringCheckFormat(View.TextBoxName.Text))
             {
-                if (window.StringCheckFormat(View.TextBoxCity.Text))
+                if (Program.StringCheckFormat(View.TextBoxCity.Text))
                 {
-                    if (window.StringCheckFormat(View.TextBoxArena.Text))
+                    if (Program.StringCheckFormat(View.TextBoxArena.Text))
                         stringAreValid = true;
                     else
                         MessageBox.Show("Simhallsnamn är ej giltigt.");
@@ -238,9 +249,54 @@ namespace Simhopp
 
         }
 
+        public void AddJudgeToDB()
+        {
+            var addPerson = new AddPersonForm();
+
+            if (addPerson.ShowDialog() == DialogResult.OK)
+            {
+                Database db = new Database();
+                foreach (var p in addPerson.PersonList)
+                {
+                    //try
+                    //{
+                    //    db.StorePerson(p);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Console.WriteLine(e.Message.ToString());
+                    //}
+
+                    GlobalJudgeList.Add((Judge)p);
+                }
+
+                UpdateListBoxes();
+            }
+        }
+
         public void AddContestantToDB()
         {
-            throw new NotImplementedException();
+            var addPerson = new AddPersonForm();
+
+            if (addPerson.ShowDialog() == DialogResult.OK)
+            {
+                Database db = new Database();
+                foreach (var p in addPerson.PersonList)
+                {
+                    //try
+                    //{
+                    //    db.StorePerson(p);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Console.WriteLine(e.Message.ToString());
+                    //}
+
+                    GlobalContestantList.Add( (Contestant) p );
+                }
+
+                UpdateListBoxes();
+            }
         }
 
         public void RemoveJudgeFromContest()
@@ -296,11 +352,6 @@ namespace Simhopp
             }
 
             UpdateListBoxes();
-        }
-
-        public void AddJudgeToDB()
-        {
-            throw new NotImplementedException();
         }
 
         public void SetStartDate()

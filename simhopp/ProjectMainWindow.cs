@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -45,16 +44,6 @@ namespace Simhopp
             CurrentPanel = viewToLoad;
             
         }
-
-        // check if a string is formatted correctly
-        public bool StringCheckFormat(string s)
-        {
-            Regex regex = new Regex(@"^[a-öA-Ö0-9_ -]+$");
-
-            if (regex.IsMatch(s))
-                return true;
-
-            return false;
-        }
+        
     }
 }
