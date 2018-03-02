@@ -25,6 +25,9 @@ namespace Simhopp
             CurrentContest = contest;
             View.EventAddJump += AddDive;
             View.EventSubContestSelection += DiplaySubContest;
+            View.EventPauseContest += PauseContest;
+            View.EventCloseContest += CloseContest;
+
 
             Initialize();
         }
@@ -68,6 +71,15 @@ namespace Simhopp
             addDiveView.Show();
         }
 
+        private void PauseContest()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CloseContest()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }
