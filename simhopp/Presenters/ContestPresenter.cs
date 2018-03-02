@@ -32,6 +32,8 @@ namespace Simhopp
             Initialize();
         }
 
+
+
         #endregion
 
         #region Functions
@@ -41,6 +43,14 @@ namespace Simhopp
             {
                 View.ComboBoxSubContests.Items.Add(sc.Name);
             }
+
+            View.LabelContestName.Text = CurrentContest.Info.Name;
+            View.LabelCity.Text = CurrentContest.Info.City;
+            View.LabelArena.Text = CurrentContest.Info.Arena;
+            View.LabelStartDate.Text = CurrentContest.Info.StartDate.ToShortDateString();
+            View.LabelEndDate.Text = CurrentContest.Info.EndDate.ToShortDateString();
+
+
         }
 
         private void DiplaySubContest()
