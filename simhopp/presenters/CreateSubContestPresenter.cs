@@ -73,6 +73,7 @@ namespace Simhopp
 
         private void CancelEditOfSubContest()
         {
+            SubContestContestants.Clear();
             ClearInputs();
         }
 
@@ -89,6 +90,8 @@ namespace Simhopp
 
                 SelectedSubContest.BranchContestants = SubContestContestants.DeepCopy();
 
+
+                SubContestContestants.Clear();
                 View.ListBoxSubContests.Items.Clear();
 
                 foreach (var sc in SubContests)
@@ -124,9 +127,7 @@ namespace Simhopp
                     {
                         View.ListBoxSubContestContestants.Items.Add(c.GetFullName());
                     }
-
                     
-
 
                     // display the edit buttons and make add button unclickable
                     View.ButtonUpdateSubContest.Visible = true;
@@ -166,12 +167,13 @@ namespace Simhopp
 
             if (isDataValid)
             {
-
+                // Make a copy of the gathered SubContestants
                 List<Contestant> list = SubContestContestants.ToList();
                 ContestantList contestantList = new ContestantList();
                 foreach (var c in list)
                     contestantList.Add(c);
 
+                // Create the subcontest
                 SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, contestantList);
            
                 SubContests.Add(subContestBranch);
