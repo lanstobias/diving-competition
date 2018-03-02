@@ -24,7 +24,7 @@ namespace Simhopp
             this.window = window;
             CurrentContest = contest;
             View.EventAddJump += AddDive;
-            View.EventSubContestSelection += DiplaySubContest;
+            View.EventSubContestSelection += UpdateContestantListBox;
 
             Initialize();
         }
@@ -40,16 +40,9 @@ namespace Simhopp
             }
         }
 
-        private void DiplaySubContest()
+        private void UpdateContestantListBox()
         {
-            var selectedSubContestName = View.ComboBoxSubContests.SelectedItem as string;
-            SubContestBranch selectedSubContest = null;
-
-            foreach(var sc in CurrentContest.SubContestBranches)
-            {
-                if (selectedSubContestName == sc.Name)
-                    selectedSubContest = sc;
-            }
+            SubContestBranch selectedSubContest = GetSelectedSubContest();
 
             if(selectedSubContest != null)
             {
