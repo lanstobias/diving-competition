@@ -12,13 +12,17 @@ namespace Simhopp
 
         private ProjectMainWindow window;
 
-        public Contest CurrentContest { get; set; }
+        public SubContestBranch SubContest { get; set; }
 
-        public AddDivePresenter(AddDiveView view, ProjectMainWindow window, Contest contest)
+        public Contestant CurrentContestant { get; set; }
+
+
+        public AddDivePresenter(AddDiveView view, ProjectMainWindow window, SubContestBranch subContest, Contestant contestant)
         {
             this.View = view;
             this.window = window;
-            CurrentContest = contest;
+            this.SubContest = subContest;
+            CurrentContestant = contestant;
         }
     }
 }
