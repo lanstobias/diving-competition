@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Simhopp
 {
@@ -25,6 +26,7 @@ namespace Simhopp
             CurrentContest = contest;
             View.EventAddJump += AddDive;
             View.EventSubContestSelection += UpdateContestantListBox;
+            View.EventContestantSelection += UpdateDivesListBox;
 
             Initialize();
         }
@@ -59,6 +61,27 @@ namespace Simhopp
             AddDiveView addDiveView = new AddDiveView();
             AddDivePresenter addDivePresenter = new AddDivePresenter(addDiveView, window, CurrentContest);
             addDiveView.Show();
+        public void UpdateDivesListBox()
+        {
+            Contestant contestant = GetSelectedContestant();
+
+            if(contestant != null)
+            {
+                foreach(var divelist in contestant.DiveLists)
+                {
+                    if(divelist.SubContestBranch == GetSelectedSubContest())
+                    {
+                        View.ListBoxDives.Items.Clear();
+                        foreach(var dive in divelist)
+                        {
+                            View.ListBoxDives.Items.Add("Kod: " + dive.Code.Code + " - Multiplier: " + dive.Code.Multiplier);
+                        }
+                        
+                    }
+                }
+            }
+        }
+
         private Contestant GetSelectedContestant()
         {
             var selectedContestantName = View.ListBoxContestants.SelectedItem as string;
