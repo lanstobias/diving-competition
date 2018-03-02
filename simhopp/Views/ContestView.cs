@@ -22,6 +22,7 @@ namespace Simhopp
         private Label labelEndDate;
         private Button buttonCloseContest;
         private Button buttonPause;
+        private Button buttonCancelModify;
         private System.Windows.Forms.Label labelContestName;
 
         public event DelegateAddJump EventAddJump;
@@ -30,6 +31,7 @@ namespace Simhopp
         public event DelegatePauseContest EventPauseContest;
         public event DelegateCloseContest EventCloseContest;
         public event DelegateDiveSelection EventDiveSelection;
+        public event DelegateModifyDive EventModifyDive;
 
         public ComboBox ComboBoxSubContests { get { return comboBoxSubContests; } set { comboBoxSubContests = value; } }
         public ListBox ListBoxContestants { get { return listBoxContestants; } set { listBoxContestants = value; } }
@@ -40,6 +42,7 @@ namespace Simhopp
         public Label LabelStartDate { get { return labelStartDate; } set { labelStartDate = value; } }
         public Label LabelEndDate { get { return labelEndDate; } set { labelEndDate = value; } }
 
+        public Button ButtonModifyDive { get { return buttonModifyDive; } set { buttonModifyDive = value; } }
         public ContestView()
         {
             InitializeComponent();
@@ -61,11 +64,13 @@ namespace Simhopp
             this.labelEndDate = new System.Windows.Forms.Label();
             this.buttonPause = new System.Windows.Forms.Button();
             this.buttonCloseContest = new System.Windows.Forms.Button();
+            this.buttonModifyDive = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.buttonModifyDive);
             this.mainPanel.Controls.Add(this.buttonCloseContest);
             this.mainPanel.Controls.Add(this.buttonPause);
             this.mainPanel.Controls.Add(this.labelEndDate);
@@ -218,6 +223,16 @@ namespace Simhopp
             this.buttonCloseContest.Text = "Avsluta";
             this.buttonCloseContest.UseVisualStyleBackColor = true;
             // 
+            // buttonModifyDive
+            // 
+            this.buttonModifyDive.Location = new System.Drawing.Point(282, 233);
+            this.buttonModifyDive.Name = "buttonModifyDive";
+            this.buttonModifyDive.Size = new System.Drawing.Size(82, 23);
+            this.buttonModifyDive.TabIndex = 14;
+            this.buttonModifyDive.Text = "Ändra";
+            this.buttonModifyDive.UseVisualStyleBackColor = true;
+            this.buttonModifyDive.Visible = false;
+            this.buttonModifyDive.Click += new System.EventHandler(this.buttonModifyDive_Click);
             // ContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -228,6 +243,10 @@ namespace Simhopp
             this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+        private void buttonModifyDive_Click(object sender, EventArgs e)
+        {
+            this.EventModifyDive?.Invoke();
         }
 
         private void ListBoxContestants_SelectedIndexChanged(object sender, EventArgs e)

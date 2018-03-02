@@ -31,6 +31,7 @@ namespace Simhopp
             View.EventSubContestSelection += UpdateContestantListBox;
             View.EventContestantSelection += UpdateDivesListBox;
             View.EventDiveSelection += EnableModifyDive;
+            View.EventModifyDive += ModifyDive;
 
             Initialize();
         }
@@ -62,6 +63,24 @@ namespace Simhopp
             View.ButtonRemoveDive.Visible = true;
         }
 
+        private void ModifyDive()
+        {
+            SubContestBranch subContestBranch = GetSelectedSubContest();
+            Contestant contestant = GetSelectedContestant();
+            Dive dive = GetSelectedDive();
+            AddDiveView modifyView = new AddDiveView();
+            AddDivePresenter presenter = new AddDivePresenter(modifyView, window, subContestBranch, contestant, dive);
+
+            if (subContestBranch != null && contestant != null && dive != null)
+            {
+                if (modifyView.ShowDialog() == DialogResult.OK)
+                {
+                    subContestBranch.RemoveExistingDive(contestant, dive);
+                    UpdateDivesListBox();
+                }
+            }
+
+        }
         private void UpdateContestantListBox()
         {
             SubContestBranch selectedSubContest = GetSelectedSubContest();
