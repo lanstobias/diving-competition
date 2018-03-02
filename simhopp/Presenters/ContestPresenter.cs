@@ -30,6 +30,7 @@ namespace Simhopp
 
             View.EventSubContestSelection += UpdateContestantListBox;
             View.EventContestantSelection += UpdateDivesListBox;
+            View.EventDiveSelection += EnableModifyDive;
 
             Initialize();
         }
@@ -53,6 +54,12 @@ namespace Simhopp
             View.LabelEndDate.Text = CurrentContest.Info.EndDate.ToShortDateString();
 
 
+
+        private void EnableModifyDive()
+        {
+            View.ButtonCancelModify.Visible = true;
+            View.ButtonModifyDive.Visible = true;
+            View.ButtonRemoveDive.Visible = true;
         }
 
         private void UpdateContestantListBox()

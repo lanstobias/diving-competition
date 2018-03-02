@@ -9,6 +9,7 @@ namespace Simhopp
     public delegate void DelegateAddJump();
     public delegate void DelegateSubContestSelection();
     public delegate void DelegateContestantSelection();
+    public delegate void DelegateDiveSelection();
     public delegate void DelegatePauseContest();
     public delegate void DelegateCloseContest();
 
@@ -17,6 +18,7 @@ namespace Simhopp
         event DelegateAddJump EventAddJump;
         event DelegateSubContestSelection EventSubContestSelection;
         event DelegateContestantSelection EventContestantSelection;
+        event DelegateDiveSelection EventDiveSelection;
         event DelegatePauseContest EventPauseContest;
         event DelegateCloseContest EventCloseContest;
     }

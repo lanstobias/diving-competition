@@ -29,6 +29,7 @@ namespace Simhopp
         public event DelegateContestantSelection EventContestantSelection;
         public event DelegatePauseContest EventPauseContest;
         public event DelegateCloseContest EventCloseContest;
+        public event DelegateDiveSelection EventDiveSelection;
 
         public ComboBox ComboBoxSubContests { get { return comboBoxSubContests; } set { comboBoxSubContests = value; } }
         public ListBox ListBoxContestants { get { return listBoxContestants; } set { listBoxContestants = value; } }
