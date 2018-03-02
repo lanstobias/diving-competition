@@ -49,11 +49,33 @@ namespace Simhopp
             View.EventSubContestSelected += SubContestSelected;
             View.EventUpdateSubContest += UpdateSubContest;
             View.EventCancelEdit += CancelEditOfSubContest;
+
+            // temp 
+            FillWithData();
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Temporär metod som lägger till en färdig deltävling
+        /// </summary>
+        private void FillWithData()
+        {
+            SubContestBranch testSubContest = new SubContestBranch("Deltävling1", CurrentContest, CurrentContest.Contestants);
+
+            SubContests.Add(testSubContest);
+            View.ListBoxSubContests.Items.Add(testSubContest.Name);
+
+            CurrentContest.SubContestBranches.Add(testSubContest);
+
+            // clear the inputs
+            SubContestContestants.Clear();
+            ClearInputs();
+
+        }
+
         /// <summary>
         /// Clears the various data that the user has entered
         /// </summary>
