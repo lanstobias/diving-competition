@@ -12,13 +12,41 @@ namespace Simhopp
 
         private ProjectMainWindow window;
 
-        public Contest CurrentContest { get; set; }
+        public SubContestBranch SubContest { get; set; }
 
-        public AddDivePresenter(AddDiveView view, ProjectMainWindow window, Contest contest)
+        public Contestant CurrentContestant { get; set; }
+
+
+        public AddDivePresenter(AddDiveView view, ProjectMainWindow window, SubContestBranch subContest, Contestant contestant)
         {
             this.View = view;
             this.window = window;
-            CurrentContest = contest;
+            this.SubContest = subContest;
+            CurrentContestant = contestant;
+
+            View.EventAddDive += AddDiveToContestant;
+        }
+
+        public void AddDiveToContestant()
+        {
+            if(ValidateData())
+            {
+                double multiplier = double.Parse(View.TextBoxDiveMultiplier.Text);
+                string code = View.TextBoxDiveCode.Text;
+
+                Dive diveTobeAdded = new Dive(new DiveCode(multiplier, code));
+
+                SubContest.AddNewDive(CurrentContestant, diveTobeAdded);
+
+                View.DialogResult = System.Windows.Forms.DialogResult.OK;
+                View.Close();
+            }
+        }
+
+        private bool ValidateData()
+        {
+            // todo: Kolla så datan är korrekt
+            return true;
         }
     }
 }

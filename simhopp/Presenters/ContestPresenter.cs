@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Simhopp
 {
@@ -28,6 +29,8 @@ namespace Simhopp
             View.EventPauseContest += PauseContest;
             View.EventCloseContest += CloseContest;
 
+            View.EventSubContestSelection += UpdateContestantListBox;
+            View.EventContestantSelection += UpdateDivesListBox;
 
             Initialize();
         }
@@ -53,16 +56,9 @@ namespace Simhopp
 
         }
 
-        private void DiplaySubContest()
+        private void UpdateContestantListBox()
         {
-            var selectedSubContestName = View.ComboBoxSubContests.SelectedItem as string;
-            SubContestBranch selectedSubContest = null;
-
-            foreach(var sc in CurrentContest.SubContestBranches)
-            {
-                if (selectedSubContestName == sc.Name)
-                    selectedSubContest = sc;
-            }
+            SubContestBranch selectedSubContest = GetSelectedSubContest();
 
             if(selectedSubContest != null)
             {
@@ -74,11 +70,74 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Opens up a AddDiveView form and waits for the result
+        /// </summary>
         private void AddDive()
         {
+            SubContestBranch subContestBranch = GetSelectedSubContest();
+            Contestant contestant = GetSelectedContestant();
+            
             AddDiveView addDiveView = new AddDiveView();
-            AddDivePresenter addDivePresenter = new AddDivePresenter(addDiveView, window, CurrentContest);
-            addDiveView.Show();
+            AddDivePresenter addDivePresenter = new AddDivePresenter(addDiveView, window, subContestBranch, contestant);
+
+            if(subContestBranch != null && contestant != null)
+            {
+                if (addDiveView.ShowDialog() == DialogResult.OK)
+                {
+                    UpdateDivesListBox();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Fills up ListBoxDives with the dives tied to a contestant
+        /// </summary>
+        /// <param name="contestant">The contestant with the dives to be presented</param>
+        public void UpdateDivesListBox()
+        {
+            Contestant contestant = GetSelectedContestant();
+
+            if(contestant != null)
+            {
+                foreach(var divelist in contestant.DiveLists)
+                {
+                    if(divelist.SubContestBranch == GetSelectedSubContest())
+                    {
+                        View.ListBoxDives.Items.Clear();
+                        foreach(var dive in divelist)
+                        {
+                            View.ListBoxDives.Items.Add("Kod: " + dive.Code.Code + " - Multiplier: " + dive.Code.Multiplier);
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        private Contestant GetSelectedContestant()
+        {
+            var selectedContestantName = View.ListBoxContestants.SelectedItem as string;
+
+            foreach(var contestant in GetSelectedSubContest().BranchContestants)
+            {
+                if (contestant.GetFullName() == selectedContestantName)
+                    return contestant;
+            }
+
+            return null;
+        }
+
+        private SubContestBranch GetSelectedSubContest()
+        {
+            var selectedSubContestName = View.ComboBoxSubContests.SelectedItem as string;
+
+            foreach (var subContest in CurrentContest.SubContestBranches)
+            {
+                if (selectedSubContestName == subContest.Name)
+                    return subContest;
+            }
+            return null;
         }
 
         private void PauseContest()
