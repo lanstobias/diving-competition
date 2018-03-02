@@ -168,6 +168,7 @@ namespace Simhopp
             this.listBoxDives.Name = "listBoxDives";
             this.listBoxDives.Size = new System.Drawing.Size(180, 224);
             this.listBoxDives.TabIndex = 5;
+            this.listBoxDives.SelectedIndexChanged += new System.EventHandler(this.ListBoxDives_SelectedIndexChanged);
             // 
             // buttonAddJump
             // 
@@ -292,6 +293,12 @@ namespace Simhopp
         {
             this.EventCancelDiveEdit?.Invoke();
         }
+
+        private void ListBoxDives_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.EventDiveSelection?.Invoke();
+        }
+
         private void ListBoxContestants_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.EventContestantSelection?.Invoke();

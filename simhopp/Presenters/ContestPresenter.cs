@@ -97,15 +97,28 @@ namespace Simhopp
             View.ButtonModifyDive.Visible = false;
             View.ButtonRemoveDive.Visible = false;
         }
+
+        /// <summary>
+        /// Is called when the selection is change in the combobox with subcontests
+        /// </summary>
         private void UpdateContestantListBox()
         {
             SubContestBranch selectedSubContest = GetSelectedSubContest();
 
             if(selectedSubContest != null)
             {
+                // Clear the listboxes
                 View.ListBoxContestants.Items.Clear();
+                View.ListBoxDives.Items.Clear();
+
                 foreach(var c in selectedSubContest.BranchContestants)
                 {
+                    //ListViewItem contestantItem = new ListViewItem(c.FirstName);
+                    //contestantItem.SubItems.Add(c.LastName);
+                    //contestantItem.SubItems.Add(c.Age.ToString());
+
+                    //View.ListViewContestants.Items.Add(contestantItem);
+
                     View.ListBoxContestants.Items.Add(c.GetFullName());
                 }
             }
@@ -141,11 +154,11 @@ namespace Simhopp
 
             if(contestant != null)
             {
-                foreach(var divelist in contestant.DiveLists)
+                View.ListBoxDives.Items.Clear();
+                foreach (var divelist in contestant.DiveLists)
                 {
                     if(divelist.SubContestBranch == GetSelectedSubContest())
                     {
-                        View.ListBoxDives.Items.Clear();
                         foreach(var dive in divelist)
                         {
                             View.ListBoxDives.Items.Add("Kod: " + dive.Code.Code + " - Multiplier: " + dive.Code.Multiplier);
@@ -178,6 +191,27 @@ namespace Simhopp
                 if (selectedSubContestName == subContest.Name)
                     return subContest;
             }
+            return null;
+        }
+
+        private Dive GetSelectedDive()
+        {
+            var selectedDiveIndex = View.ComboBoxSubContests.SelectedIndex;
+
+            int i = 0;
+            foreach(var diveList in GetSelectedContestant().DiveLists)
+            {
+                if (diveList.SubContestBranch == GetSelectedSubContest())
+                {
+                    foreach (var dive in diveList)
+                    {
+                        if (i++ == selectedDiveIndex)
+                            return dive;
+                    }
+
+                }
+            }
+            
             return null;
         }
 
