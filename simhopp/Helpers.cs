@@ -8,5 +8,9 @@ namespace Simhopp
 {
     public static class Helpers
     {
+        public static string SQLDateFormat(DateTime date)
+        {
+           return date.ToString("yyyy-MM-dd");
+        }
     }
 }
