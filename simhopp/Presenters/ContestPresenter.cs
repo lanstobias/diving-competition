@@ -25,11 +25,16 @@ namespace Simhopp
             this.window = window;
             CurrentContest = contest;
             View.EventAddJump += AddDive;
+            View.EventPauseContest += PauseContest;
+            View.EventCloseContest += CloseContest;
+
             View.EventSubContestSelection += UpdateContestantListBox;
             View.EventContestantSelection += UpdateDivesListBox;
 
             Initialize();
         }
+
+
 
         #endregion
 
@@ -40,6 +45,14 @@ namespace Simhopp
             {
                 View.ComboBoxSubContests.Items.Add(sc.Name);
             }
+
+            View.LabelContestName.Text = CurrentContest.Info.Name;
+            View.LabelCity.Text = CurrentContest.Info.City;
+            View.LabelArena.Text = CurrentContest.Info.Arena;
+            View.LabelStartDate.Text = CurrentContest.Info.StartDate.ToShortDateString();
+            View.LabelEndDate.Text = CurrentContest.Info.EndDate.ToShortDateString();
+
+
         }
 
         private void UpdateContestantListBox()
@@ -126,6 +139,15 @@ namespace Simhopp
             return null;
         }
 
+        private void PauseContest()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CloseContest()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }
