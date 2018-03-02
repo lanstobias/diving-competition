@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Simhopp
 {
-    class ContestPresenter
+    public class ContestPresenter
     {
         #region Properties
         public ContestView View { get; set; }
@@ -45,7 +45,7 @@ namespace Simhopp
         #region Functions
         private void Initialize()
         {
-            foreach(var sc in CurrentContest.SubContestBranches)
+            foreach (var sc in CurrentContest.SubContestBranches)
             {
                 View.ComboBoxSubContests.Items.Add(sc.Name);
             }
@@ -56,7 +56,7 @@ namespace Simhopp
             View.LabelStartDate.Text = CurrentContest.Info.StartDate.ToShortDateString();
             View.LabelEndDate.Text = CurrentContest.Info.EndDate.ToShortDateString();
 
-
+        }
 
         private void EnableModifyDive()
         {
