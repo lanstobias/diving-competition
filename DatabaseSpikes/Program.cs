@@ -11,8 +11,11 @@ namespace DatabaseSpikes
     {
         static void Main(string[] args)
         {
-            DatabasePerson databasePerson = new DatabasePerson();
-            databasePerson.AddPerson();
+            //DatabasePerson databasePerson = new DatabasePerson();
+            //databasePerson.AddPerson();
+
+            //DatabaseContest databaseContest = new DatabaseContest();
+            //databaseContest.AddContestInfo();
             
             Console.ReadKey();
         }
