@@ -83,6 +83,37 @@ namespace Simhopp
         {
             throw new NotImplementedException();
         }
+
+        private void PushSubContestBranches(SubContestBranchList branches, long contestID)
+        {
+            // FIXA METODER AV DETTA
+
+            long branchID, contestantID, diveID;
+
+            foreach (var branch in branches)
+            {
+                branchID = PushSubContestBranch(branch);
+
+                foreach (var contestant in branch.BranchContestants)
+                {
+                    contestantID = PushContestant(contestant, branchID, contestID);
+
+                    foreach (var diveList in contestant.DiveLists)
+                    {
+                        foreach (var dive in diveList)
+                        {
+                            diveID = PushDive(branchID, contestantID);
+
+                            foreach (var score in dive.Scores)
+                            {
+                                PushScore(score, diveID);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void PushScore(Score score, long diveID)
         {
             throw new NotImplementedException();
