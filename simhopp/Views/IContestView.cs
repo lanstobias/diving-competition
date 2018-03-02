@@ -8,10 +8,12 @@ namespace Simhopp
 {
     public delegate void DelegateAddJump();
     public delegate void DelegateSubContestSelection();
+    public delegate void DelegateContestantSelection();
 
     public interface IContestView
     {
         event DelegateAddJump EventAddJump;
         event DelegateSubContestSelection EventSubContestSelection;
+        event DelegateContestantSelection EventContestantSelection;
     }
 }

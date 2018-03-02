@@ -20,6 +20,7 @@ namespace Simhopp
 
         public event DelegateAddJump EventAddJump;
         public event DelegateSubContestSelection EventSubContestSelection;
+        public event DelegateContestantSelection EventContestantSelection;
 
         public ComboBox ComboBoxSubContests { get { return comboBoxSubContests; } set { comboBoxSubContests = value; } }
         public ListBox ListBoxContestants { get { return listBoxContestants; } set { listBoxContestants = value; } }
@@ -90,6 +91,7 @@ namespace Simhopp
             this.listBoxContestants.Name = "listBoxContestants";
             this.listBoxContestants.Size = new System.Drawing.Size(121, 147);
             this.listBoxContestants.TabIndex = 3;
+            this.listBoxContestants.SelectedIndexChanged += new EventHandler(ListBoxContestants_SelectedIndexChanged);
             // 
             // labelContestants
             // 
@@ -136,6 +138,11 @@ namespace Simhopp
             this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        private void ListBoxContestants_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.EventContestantSelection?.Invoke();
         }
 
         private void ComboBoxSubContests_SelectedIndexChanged(object sender, EventArgs e)
