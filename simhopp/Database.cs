@@ -54,5 +54,43 @@ namespace Simhopp
 
             ExecuteQuery(query);
         }
+
+        public Person FetchPerson()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Judge StoreJudgeInJudgeList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Contestant StoreContestantInContestantList()
+        {
+            throw new NotImplementedException();
+        }
+        private long PushDive(long branchID, long contestantID)
+        {
+            throw new NotImplementedException();
+        }
+        private void PushScore(Score score, long diveID)
+        {
+            throw new NotImplementedException();
+        }
+        private long PushSubContestBranch(SubContestBranch branch)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PushJudgeList()
+        {
+            throw new NotImplementedException();
+        }
+
+        private long PushContestant(Contestant contestant, long branchID, long contestId)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
