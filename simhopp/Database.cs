@@ -15,7 +15,7 @@ namespace Simhopp
         {
         }
 
-        public void ExecuteQuery(string query)
+        public long ExecuteQuery(string query)
         {
             if (DBConnection.OpenConnection())
             {
@@ -23,6 +23,8 @@ namespace Simhopp
                 var queryResult = command.ExecuteNonQuery();
 
                 DBConnection.CloseConnection();
+
+                return command.LastInsertedId;
             }
             else
             {
