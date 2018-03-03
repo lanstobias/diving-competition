@@ -90,10 +90,10 @@ namespace Simhopp
             GlobalContestantList.Add(anna);
 
             foreach (var judge in GlobalJudgeList)
-                View.ListBoxGlobalJudges.Items.Add(judge.GetFullName());
+                View.ListViewGlobalJudges.Items.Add(judge.GetFullName());
 
             foreach (var contestant in GlobalContestantList)
-                View.ListBoxGlobalContestants.Items.Add(contestant.GetFullName());
+                View.ListViewGlobalContestants.Items.Add(contestant.GetFullName());
 
             ContestJudgeList.Add(judge1);
             ContestJudgeList.Add(judge2);
@@ -108,29 +108,53 @@ namespace Simhopp
             UpdateListBoxes();
 
         }
-
-
         public void UpdateListBoxes()
         {
             // globala listboxes från dbn
-            View.ListBoxGlobalJudges.Items.Clear();
-            View.ListBoxGlobalContestants.Items.Clear();
 
-            foreach (var judge in GlobalJudgeList)
-                View.ListBoxGlobalJudges.Items.Add(judge.GetFullName());
+            View.ListViewGlobalJudges.Items.Clear();
+
+            View.ListViewGlobalContestants.Items.Clear();
+
+            foreach(var judge in GlobalJudgeList)
+            {
+                ListViewItem listViewGlobalJudgesItems = new ListViewItem(judge.FirstName);
+                listViewGlobalJudgesItems.SubItems.Add(judge.LastName);
+
+                View.ListViewGlobalJudges.Items.Add(listViewGlobalJudgesItems);
+            }
 
             foreach (var contestant in GlobalContestantList)
-                View.ListBoxGlobalContestants.Items.Add(contestant.GetFullName());
+            {
+                ListViewItem listViewGlobalContestantsItems = new ListViewItem(contestant.FirstName);
+                listViewGlobalContestantsItems.SubItems.Add(contestant.LastName);
+
+                View.ListViewGlobalContestants.Items.Add(listViewGlobalContestantsItems);
+            }
 
             // lokala listboxes
-            View.ListBoxLocalJudges.Items.Clear();
-            View.ListBoxLocalContestants.Items.Clear();
+            View.ListViewLocalContestants.Items.Clear();
+
+            View.ListViewLocalJudges.Items.Clear();
 
             foreach (var judge in ContestJudgeList)
-                View.ListBoxLocalJudges.Items.Add(judge.GetFullName());
+            {
+                ListViewItem listViewLocalJudgesItems = new ListViewItem(judge.FirstName);
+                listViewLocalJudgesItems.SubItems.Add(judge.LastName);
+
+                View.ListViewLocalJudges.Items.Add(listViewLocalJudgesItems);
+
+            }
 
             foreach (var contestant in ContestContestantList)
-                View.ListBoxLocalContestants.Items.Add(contestant.GetFullName());
+            {
+                ListViewItem listViewLocalContestantsItems = new ListViewItem(contestant.FirstName);
+                listViewLocalContestantsItems.SubItems.Add(contestant.LastName);
+
+                View.ListViewLocalContestants.Items.Add(listViewLocalContestantsItems);
+
+            }
+
         }
 
         public void GoToCreateSubContest()
@@ -198,13 +222,15 @@ namespace Simhopp
 
         public void RemoveContestantFromContest()
         {
-            var contestant = View.ListBoxLocalContestants.SelectedItem;
+            var contestantFirstName = View.ListViewLocalContestants.SelectedItems[0].SubItems[0].Text;
+
+            var contestantLastName = View.ListViewLocalContestants.SelectedItems[0].SubItems[1].Text;
 
             Contestant contestantToBeRemoved = null;
 
             foreach (var c in ContestContestantList)
             {
-                if (c.GetFullName() == (string)contestant)
+                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
                     contestantToBeRemoved = c;
             }
 
@@ -216,12 +242,14 @@ namespace Simhopp
 
         public void AddContestantToContest()
         {
-            var contestant = View.ListBoxGlobalContestants.SelectedItem;
+            var contestantFirstName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[0].Text;
+            var contestantLastName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[1].Text;
+
             bool isAdded = false;
 
             foreach (var c in ContestContestantList)
             {
-                if (c.GetFullName() == (string)contestant)
+                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
                 {
                     isAdded = true;
                     MessageBox.Show("Deltagare är redan tillagd!");
@@ -235,7 +263,7 @@ namespace Simhopp
             {
                 foreach (var c in GlobalContestantList)
                 {
-                    if (c.GetFullName() == (string)contestant)
+                    if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
                     {
                         contestantToBeAdded = c;
                     }
@@ -302,14 +330,15 @@ namespace Simhopp
         public void RemoveJudgeFromContest()
         {
             // Collect the chosen judge, gets the full name of the judge
-            var judge = View.ListBoxLocalJudges.SelectedItem;
+            var judgeFirstName = View.ListViewLocalJudges.SelectedItems[0].SubItems[0].Text;
+            var judgeLastName = View.ListViewLocalJudges.SelectedItems[0].SubItems[1].Text;
 
             Judge judgeToBeRemoved = null;
 
             // find the right Judge object
             foreach (var j in ContestJudgeList)
             {
-                if (j.GetFullName() == (string)judge)
+                if (String.Equals(j.FirstName,judgeFirstName) && String.Equals(j.LastName,judgeLastName))
                     judgeToBeRemoved = j;
             }
 
@@ -322,13 +351,15 @@ namespace Simhopp
         public void AddJudgeToContest()
         {
             // Collect the chosen judge
-            var judge = View.ListBoxGlobalJudges.SelectedItem;
+            var judgeFirstName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[0].Text;
+
+            var judgeLastName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[1].Text;
             bool isAdded = false;
 
             // Check if judge is already added to the contest
             foreach (var j in ContestJudgeList)
             {
-                if (j.GetFullName() == (string)judge)
+                if (String.Equals(j.FirstName,judgeFirstName) && String.Equals(j.LastName,judgeLastName))
                 {
                     isAdded = true;
                     MessageBox.Show("Domare är redan tillagd!");
@@ -343,7 +374,7 @@ namespace Simhopp
             {
                 foreach (var j in GlobalJudgeList)
                 {
-                    if (j.GetFullName() == (string)judge)
+                    if (String.Equals(j.FirstName, judgeFirstName) && String.Equals(j.LastName, judgeLastName))
                         judgeToBeAdded = j;
                 }
 
