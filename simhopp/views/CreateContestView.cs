@@ -11,15 +11,11 @@ namespace Simhopp
     {
         private System.Windows.Forms.Button buttonGoToSubContest;
         private System.Windows.Forms.Button buttonAddNewContestantToDB;
-        private System.Windows.Forms.ListBox listBoxLocalContestants;
         private System.Windows.Forms.Button buttonRemoveContestantFromContest;
         private System.Windows.Forms.Button buttonAddContestantToContest;
-        private ListBox listBoxGlobalContestants;
         private System.Windows.Forms.Button buttonAddNewJudgeToDB;
-        private System.Windows.Forms.ListBox listBoxLocalJudges;
         private System.Windows.Forms.Button buttonRemoveJudgeFromContest;
         private System.Windows.Forms.Button buttonAddJudgeToContest;
-        private System.Windows.Forms.ListBox listBoxGlobalJudges;
         private System.Windows.Forms.Button buttonSetStartDate;
         private System.Windows.Forms.Label labelStartDate;
         private System.Windows.Forms.Label labelCity;
@@ -30,6 +26,18 @@ namespace Simhopp
         private Label labelEndDate;
         private Button buttonSetEndDate;
         private Label labelArena;
+        private ListView listViewGlobalJudges;
+        private ColumnHeader columnFirstName;
+        private ColumnHeader columnLastName;
+        private ListView listViewLocalJudges;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ListView listViewLocalContestants;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        private ListView listViewGlobalContestants;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
         private System.Windows.Forms.TextBox textBoxName;
 
         public event DelegateSetStartDate EventSetStartDate;
@@ -46,13 +54,12 @@ namespace Simhopp
         public TextBox TextBoxName { get { return textBoxName; } set { textBoxName = value; } }
         public TextBox TextBoxCity { get { return textBoxCity; } set { textBoxCity = value; } }
         public TextBox TextBoxArena { get { return textBoxArena; } set { textBoxArena = value; } }
-        public ListBox ListBoxGlobalJudges { get { return listBoxGlobalJudges; } set { listBoxGlobalJudges = value; } }
-        public ListBox ListBoxLocalJudges { get { return listBoxLocalJudges; } set { listBoxLocalJudges = value; } }
-        public ListBox ListBoxGlobalContestants { get { return listBoxGlobalContestants; } set { listBoxGlobalJudges = value; } }
-        public ListBox ListBoxLocalContestants { get { return listBoxLocalContestants; } set { listBoxLocalContestants = value; } }
         public Label LabelStartDate { get { return labelStartDate; } set { labelStartDate = value; } }
         public Label LabelEndDate { get { return labelEndDate; } set { labelEndDate = value; } }
-
+        public ListView ListViewGlobalJudges { get { return listViewGlobalJudges; } set { listViewGlobalJudges = value; } }
+        public ListView ListViewLocalJudges { get { return listViewLocalJudges; } set { listViewLocalJudges = value; } }
+        public ListView ListViewGlobalContestants { get { return listViewGlobalContestants; } set { listViewGlobalContestants = value; } }
+        public ListView ListViewLocalContestants { get { return listViewLocalContestants; }set { listViewLocalContestants = value; } } 
         public CreateContestView()
         {
             InitializeComponent();
@@ -68,41 +75,49 @@ namespace Simhopp
             this.labelCity = new System.Windows.Forms.Label();
             this.labelStartDate = new System.Windows.Forms.Label();
             this.buttonSetStartDate = new System.Windows.Forms.Button();
-            this.listBoxGlobalJudges = new System.Windows.Forms.ListBox();
             this.buttonAddJudgeToContest = new System.Windows.Forms.Button();
             this.buttonRemoveJudgeFromContest = new System.Windows.Forms.Button();
-            this.listBoxLocalJudges = new System.Windows.Forms.ListBox();
             this.buttonAddNewJudgeToDB = new System.Windows.Forms.Button();
             this.buttonAddNewContestantToDB = new System.Windows.Forms.Button();
-            this.listBoxLocalContestants = new System.Windows.Forms.ListBox();
             this.buttonRemoveContestantFromContest = new System.Windows.Forms.Button();
             this.buttonAddContestantToContest = new System.Windows.Forms.Button();
-            this.listBoxGlobalContestants = new System.Windows.Forms.ListBox();
             this.buttonGoToSubContest = new System.Windows.Forms.Button();
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.buttonSetEndDate = new System.Windows.Forms.Button();
             this.labelEndDate = new System.Windows.Forms.Label();
             this.labelArena = new System.Windows.Forms.Label();
+            this.listViewGlobalJudges = new System.Windows.Forms.ListView();
+            this.columnFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewLocalJudges = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewGlobalContestants = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewLocalContestants = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.listViewLocalContestants);
+            this.mainPanel.Controls.Add(this.listViewGlobalContestants);
+            this.mainPanel.Controls.Add(this.listViewLocalJudges);
+            this.mainPanel.Controls.Add(this.listViewGlobalJudges);
             this.mainPanel.Controls.Add(this.labelArena);
             this.mainPanel.Controls.Add(this.labelEndDate);
             this.mainPanel.Controls.Add(this.buttonSetEndDate);
             this.mainPanel.Controls.Add(this.textBoxCity);
             this.mainPanel.Controls.Add(this.buttonGoToSubContest);
             this.mainPanel.Controls.Add(this.buttonAddNewContestantToDB);
-            this.mainPanel.Controls.Add(this.listBoxLocalContestants);
             this.mainPanel.Controls.Add(this.buttonRemoveContestantFromContest);
             this.mainPanel.Controls.Add(this.buttonAddContestantToContest);
-            this.mainPanel.Controls.Add(this.listBoxGlobalContestants);
             this.mainPanel.Controls.Add(this.buttonAddNewJudgeToDB);
-            this.mainPanel.Controls.Add(this.listBoxLocalJudges);
             this.mainPanel.Controls.Add(this.buttonRemoveJudgeFromContest);
             this.mainPanel.Controls.Add(this.buttonAddJudgeToContest);
-            this.mainPanel.Controls.Add(this.listBoxGlobalJudges);
             this.mainPanel.Controls.Add(this.buttonSetStartDate);
             this.mainPanel.Controls.Add(this.labelStartDate);
             this.mainPanel.Controls.Add(this.labelCity);
@@ -170,15 +185,6 @@ namespace Simhopp
             this.buttonSetStartDate.UseVisualStyleBackColor = true;
             this.buttonSetStartDate.Click += new System.EventHandler(this.buttonSetStartDate_Click);
             // 
-            // listBoxGlobalJudges
-            // 
-            this.listBoxGlobalJudges.FormattingEnabled = true;
-            this.listBoxGlobalJudges.ItemHeight = 20;
-            this.listBoxGlobalJudges.Location = new System.Drawing.Point(64, 157);
-            this.listBoxGlobalJudges.Name = "listBoxGlobalJudges";
-            this.listBoxGlobalJudges.Size = new System.Drawing.Size(186, 184);
-            this.listBoxGlobalJudges.TabIndex = 10;
-            // 
             // buttonAddJudgeToContest
             // 
             this.buttonAddJudgeToContest.Location = new System.Drawing.Point(256, 157);
@@ -199,15 +205,6 @@ namespace Simhopp
             this.buttonRemoveJudgeFromContest.UseVisualStyleBackColor = true;
             this.buttonRemoveJudgeFromContest.Click += new System.EventHandler(this.buttonRemoveJudgeFromContest_Click);
             // 
-            // listBoxLocalJudges
-            // 
-            this.listBoxLocalJudges.FormattingEnabled = true;
-            this.listBoxLocalJudges.ItemHeight = 20;
-            this.listBoxLocalJudges.Location = new System.Drawing.Point(496, 157);
-            this.listBoxLocalJudges.Name = "listBoxLocalJudges";
-            this.listBoxLocalJudges.Size = new System.Drawing.Size(186, 184);
-            this.listBoxLocalJudges.TabIndex = 13;
-            // 
             // buttonAddNewJudgeToDB
             // 
             this.buttonAddNewJudgeToDB.Location = new System.Drawing.Point(22, 157);
@@ -226,15 +223,6 @@ namespace Simhopp
             this.buttonAddNewContestantToDB.TabIndex = 19;
             this.buttonAddNewContestantToDB.Text = "+";
             this.buttonAddNewContestantToDB.UseVisualStyleBackColor = true;
-            // 
-            // listBoxLocalContestants
-            // 
-            this.listBoxLocalContestants.FormattingEnabled = true;
-            this.listBoxLocalContestants.ItemHeight = 20;
-            this.listBoxLocalContestants.Location = new System.Drawing.Point(496, 360);
-            this.listBoxLocalContestants.Name = "listBoxLocalContestants";
-            this.listBoxLocalContestants.Size = new System.Drawing.Size(186, 184);
-            this.listBoxLocalContestants.TabIndex = 18;
             // 
             // buttonRemoveContestantFromContest
             // 
@@ -255,15 +243,6 @@ namespace Simhopp
             this.buttonAddContestantToContest.Text = "Lägg till deltagare";
             this.buttonAddContestantToContest.UseVisualStyleBackColor = true;
             this.buttonAddContestantToContest.Click += new System.EventHandler(this.buttonAddContestantToContest_Click);
-            // 
-            // listBoxGlobalContestants
-            // 
-            this.listBoxGlobalContestants.FormattingEnabled = true;
-            this.listBoxGlobalContestants.ItemHeight = 20;
-            this.listBoxGlobalContestants.Location = new System.Drawing.Point(64, 360);
-            this.listBoxGlobalContestants.Name = "listBoxGlobalContestants";
-            this.listBoxGlobalContestants.Size = new System.Drawing.Size(186, 184);
-            this.listBoxGlobalContestants.TabIndex = 15;
             // 
             // buttonGoToSubContest
             // 
@@ -308,6 +287,86 @@ namespace Simhopp
             this.labelArena.Size = new System.Drawing.Size(60, 20);
             this.labelArena.TabIndex = 24;
             this.labelArena.Text = "Simhall";
+            // 
+            // listViewGlobalJudges
+            // 
+            this.listViewGlobalJudges.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnFirstName,
+            this.columnLastName});
+            this.listViewGlobalJudges.Location = new System.Drawing.Point(43, 102);
+            this.listViewGlobalJudges.Name = "listViewGlobalJudges";
+            this.listViewGlobalJudges.Size = new System.Drawing.Size(147, 121);
+            this.listViewGlobalJudges.TabIndex = 25;
+            this.listViewGlobalJudges.UseCompatibleStateImageBehavior = false;
+            this.listViewGlobalJudges.View = System.Windows.Forms.View.Details;
+            // 
+            // columnFirstName
+            // 
+            this.columnFirstName.Text = "Förnamn";
+            // 
+            // columnLastName
+            // 
+            this.columnLastName.Text = "Efternamn";
+            // 
+            // listViewLocalJudges
+            // 
+            this.listViewLocalJudges.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listViewLocalJudges.Location = new System.Drawing.Point(333, 102);
+            this.listViewLocalJudges.Name = "listViewLocalJudges";
+            this.listViewLocalJudges.Size = new System.Drawing.Size(147, 121);
+            this.listViewLocalJudges.TabIndex = 26;
+            this.listViewLocalJudges.UseCompatibleStateImageBehavior = false;
+            this.listViewLocalJudges.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Förnamn";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Efternamn";
+            // 
+            // listViewGlobalContestants
+            // 
+            this.listViewGlobalContestants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4});
+            this.listViewGlobalContestants.Location = new System.Drawing.Point(43, 234);
+            this.listViewGlobalContestants.Name = "listViewGlobalContestants";
+            this.listViewGlobalContestants.Size = new System.Drawing.Size(147, 121);
+            this.listViewGlobalContestants.TabIndex = 27;
+            this.listViewGlobalContestants.UseCompatibleStateImageBehavior = false;
+            this.listViewGlobalContestants.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Förnamn";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Efternamn";
+            // 
+            // listViewLocalContestants
+            // 
+            this.listViewLocalContestants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6});
+            this.listViewLocalContestants.Location = new System.Drawing.Point(333, 234);
+            this.listViewLocalContestants.Name = "listViewLocalContestants";
+            this.listViewLocalContestants.Size = new System.Drawing.Size(147, 121);
+            this.listViewLocalContestants.TabIndex = 28;
+            this.listViewLocalContestants.UseCompatibleStateImageBehavior = false;
+            this.listViewLocalContestants.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Förnamn";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Efternamn";
             // 
             // CreateContestView
             // 
