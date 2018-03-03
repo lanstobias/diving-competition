@@ -62,6 +62,7 @@
     <Compile Include="AddPersonForm.Designer.cs">
       <DependentUpon>AddPersonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckDataInput.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="DatePicker.cs">
