@@ -161,11 +161,11 @@ namespace Simhopp
         {
             // Kolla så att data är korrekt formatterat 
             bool stringAreValid = false;
-            if (Program.StringCheckFormat(View.TextBoxName.Text))
+            if (CheckDataInput.StringCheckFormat(View.TextBoxName.Text))
             {
-                if (Program.StringCheckFormat(View.TextBoxCity.Text))
+                if (CheckDataInput.StringCheckFormat(View.TextBoxCity.Text))
                 {
-                    if (Program.StringCheckFormat(View.TextBoxArena.Text))
+                    if (CheckDataInput.StringCheckFormat(View.TextBoxArena.Text))
                         stringAreValid = true;
                     else
                         MessageBox.Show("Simhallsnamn är ej giltigt.");

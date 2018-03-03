@@ -52,7 +52,7 @@ namespace Simhopp
 
         private bool ValidateData()
         {
-            bool isCodeValid = Program.StringCheckFormat(View.TextBoxDiveCode.Text);
+            bool isCodeValid = CheckDataInput.StringCheckFormat(View.TextBoxDiveCode.Text);
 
             double multiplier = 0;
             bool isMultiplierValid = double.TryParse(View.TextBoxDiveMultiplier.Text, out multiplier);
