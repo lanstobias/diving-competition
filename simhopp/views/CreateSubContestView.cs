@@ -22,6 +22,14 @@ namespace Simhopp
         private Button buttonUpdateSubContest;
         private Label labelSubContestContestants;
         private Label labelContestContestants;
+        private ListView listViewContestContestants;
+        private ListView listViewSubContestConstestants;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ListView listViewSubContests;
+        private ColumnHeader columnSubContest;
+        private ColumnHeader columnFirstName;
+        private ColumnHeader columnLastName;
         private Label labelSubContestName;
 
         public event DelegateAddContestantToSubContest EventAddContestantToSubContest;
@@ -48,6 +56,9 @@ namespace Simhopp
 
         public Button ButtonAddSubContest { get { return buttonAddSubContest; } set { buttonAddSubContest = value; } }
 
+        public ListView ListViewContestContestants { get { return listViewContestContestants; } set { listViewContestContestants = value; } }
+        public ListView ListViewSubContestContestants { get { return listViewSubContestConstestants; } set { listViewSubContestConstestants = value; } }
+        public ListView ListViewSubContests { get { return listViewSubContests; } set { listViewSubContests = value; } }
         public CreateSubContestView()
         {
             InitializeComponent();
@@ -69,11 +80,22 @@ namespace Simhopp
             this.buttonCancelEdit = new System.Windows.Forms.Button();
             this.labelContestContestants = new System.Windows.Forms.Label();
             this.labelSubContestContestants = new System.Windows.Forms.Label();
+            this.listViewContestContestants = new System.Windows.Forms.ListView();
+            this.columnFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewSubContests = new System.Windows.Forms.ListView();
+            this.columnSubContest = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewSubContestConstestants = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.listViewSubContestConstestants);
+            this.mainPanel.Controls.Add(this.listViewSubContests);
+            this.mainPanel.Controls.Add(this.listViewContestContestants);
             this.mainPanel.Controls.Add(this.labelSubContestContestants);
             this.mainPanel.Controls.Add(this.labelContestContestants);
             this.mainPanel.Controls.Add(this.buttonCancelEdit);
@@ -116,7 +138,7 @@ namespace Simhopp
             this.buttonFinalizeContest.TabIndex = 26;
             this.buttonFinalizeContest.Text = "Skapa Tävling";
             this.buttonFinalizeContest.UseVisualStyleBackColor = true;
-            this.buttonFinalizeContest.Click += new EventHandler(ButtonFinalizeContest_Click);
+            this.buttonFinalizeContest.Click += new System.EventHandler(this.ButtonFinalizeContest_Click);
             // 
             // buttonAddSubContest
             // 
@@ -230,6 +252,63 @@ namespace Simhopp
             this.labelSubContestContestants.TabIndex = 32;
             this.labelSubContestContestants.Text = "Deltagare i deltävling";
             // 
+            // listViewContestContestants
+            // 
+            this.listViewContestContestants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnFirstName,
+            this.columnLastName});
+            this.listViewContestContestants.Location = new System.Drawing.Point(29, 111);
+            this.listViewContestContestants.Name = "listViewContestContestants";
+            this.listViewContestContestants.Size = new System.Drawing.Size(121, 97);
+            this.listViewContestContestants.TabIndex = 33;
+            this.listViewContestContestants.UseCompatibleStateImageBehavior = false;
+            this.listViewContestContestants.View = System.Windows.Forms.View.Details;
+            // 
+            // columnFirstName
+            // 
+            this.columnFirstName.Text = "Förnamn";
+            // 
+            // columnLastName
+            // 
+            this.columnLastName.Text = "Efternamn";
+            // 
+            // listViewSubContests
+            // 
+            this.listViewSubContests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnSubContest});
+            this.listViewSubContests.Location = new System.Drawing.Point(158, 10);
+            this.listViewSubContests.Name = "listViewSubContests";
+            this.listViewSubContests.Size = new System.Drawing.Size(121, 97);
+            this.listViewSubContests.TabIndex = 34;
+            this.listViewSubContests.UseCompatibleStateImageBehavior = false;
+            this.listViewSubContests.View = System.Windows.Forms.View.Details;
+            this.listViewSubContests.SelectedIndexChanged += new System.EventHandler(this.listViewSubContests_SelectedIndexChanged);
+            // 
+            // columnSubContest
+            // 
+            this.columnSubContest.Text = "Deltävling";
+            this.columnSubContest.Width = 67;
+            // 
+            // listViewSubContestConstestants
+            // 
+            this.listViewSubContestConstestants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listViewSubContestConstestants.Location = new System.Drawing.Point(172, 135);
+            this.listViewSubContestConstestants.Name = "listViewSubContestConstestants";
+            this.listViewSubContestConstestants.Size = new System.Drawing.Size(121, 97);
+            this.listViewSubContestConstestants.TabIndex = 35;
+            this.listViewSubContestConstestants.UseCompatibleStateImageBehavior = false;
+            this.listViewSubContestConstestants.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Förnamn";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Efternamn";
+            // 
             // CreateSubContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +354,11 @@ namespace Simhopp
         private void buttonCancelEdit_Click(object sender, EventArgs e)
         {
             this.EventCancelEdit?.Invoke();
+        }
+
+        private void listViewSubContests_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.EventSubContestSelected?.Invoke();
         }
     }
 }
