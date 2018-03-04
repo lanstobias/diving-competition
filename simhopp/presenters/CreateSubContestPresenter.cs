@@ -38,7 +38,12 @@ namespace Simhopp
             //Fyller på contestants från contest
             foreach (var contestant in contest.Contestants)
             {
-                View.ListBoxContestContestants.Items.Add(contestant.GetFullName());
+                //View.ListBoxContestContestants.Items.Add(contestant.GetFullName());
+                ListViewItem listViewContestContestantsItem = new ListViewItem(contestant.FirstName);
+                listViewContestContestantsItem.SubItems.Add(contestant.LastName);
+
+                View.ListViewContestContestants.Items.Add(listViewContestContestantsItem);
+
             }
 
             View.EventAddContestantToSubContest += AddContestantToSubContest;
@@ -66,8 +71,10 @@ namespace Simhopp
             SubContestBranch testSubContest = new SubContestBranch("Deltävling1", CurrentContest, CurrentContest.Contestants);
 
             SubContests.Add(testSubContest);
-            View.ListBoxSubContests.Items.Add(testSubContest.Name);
+            //View.ListBoxSubContests.Items.Add(testSubContest.Name);
 
+            View.ListViewSubContests.Items.Add(testSubContest.Name);
+                
             CurrentContest.SubContestBranches.Add(testSubContest);
 
             // clear the inputs
@@ -82,10 +89,15 @@ namespace Simhopp
         private void ClearInputs()
         {
             View.TextBoxName.Clear();
-            View.ListBoxSubContestContestants.Items.Clear();
-            View.ListBoxContestContestants.ClearSelected();
-            View.ListBoxSubContests.ClearSelected();
-            //SubContestContestants.Clear();
+            //View.ListBoxSubContestContestants.Items.Clear();
+            //View.ListBoxContestContestants.ClearSelected();
+            //View.ListBoxSubContests.ClearSelected();
+            View.ListViewSubContestContestants.Items.Clear();
+            View.ListViewContestContestants.SelectedItems.Clear();
+            View.ListViewSubContests.SelectedItems.Clear();
+            SubContestContestants.Clear();
+
+
             SelectedSubContest = null;
 
             View.ButtonUpdateSubContest.Visible = false;
@@ -114,10 +126,20 @@ namespace Simhopp
 
 
                 SubContestContestants.Clear();
-                View.ListBoxSubContests.Items.Clear();
+                //View.ListBoxSubContests.Items.Clear();
+                View.ListViewSubContests.Items.Clear();
 
-                foreach (var sc in SubContests)
-                    View.ListBoxSubContests.Items.Add(sc.Name);
+                //foreach (var sc in SubContests)
+                //    View.ListBoxSubContests.Items.Add(sc.Name);
+
+                foreach(var sc in SubContests)
+                {
+                    ListViewItem listViewSubContestsItems = new ListViewItem(sc.Name);
+
+                    View.ListViewSubContests.Items.Add(listViewSubContestsItems);
+                }
+
+
 
                 ClearInputs();
             }
@@ -126,14 +148,17 @@ namespace Simhopp
 
         /// <summary>
         /// Is triggered when a created subcontest is selected. Opens it up for editing
-        /// </summary>
+        /// </summary> 
+        // FIXA DETTA
         private void SubContestSelected()
         {
-            string subContestName = View.ListBoxSubContests.SelectedItem as string;
+            //string subContestName = View.ListBoxSubContests.SelectedItem as string;
+
+            var subContestName = View.ListViewSubContests.SelectedItems[0];
 
             foreach (var sc in SubContests)
             {
-                if (sc.Name == subContestName)
+                if (sc.Name == subContestName.Text)
                 {
                     SelectedSubContest = sc;
 
@@ -141,13 +166,18 @@ namespace Simhopp
 
                     SubContestContestants.Clear();
 
-                    View.ListBoxSubContestContestants.Items.Clear();
+                    //View.ListBoxSubContestContestants.Items.Clear();
+                    View.ListViewSubContestContestants.Items.Clear();
 
                     SubContestContestants = SelectedSubContest.BranchContestants.DeepCopy();
 
                     foreach (var c in SelectedSubContest.BranchContestants)
                     {
-                        View.ListBoxSubContestContestants.Items.Add(c.GetFullName());
+                        //View.ListBoxSubContestContestants.Items.Add(c.GetFullName());
+                        ListViewItem listViewSubContestContestantsItems = new ListViewItem(c.FirstName);
+                        listViewSubContestContestantsItems.SubItems.Add(c.LastName);
+
+                        View.ListViewSubContestContestants.Items.Add(listViewSubContestContestantsItems);
                     }
                     
 
@@ -199,7 +229,8 @@ namespace Simhopp
                 SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, contestantList);
            
                 SubContests.Add(subContestBranch);
-                View.ListBoxSubContests.Items.Add(subContestBranch.Name);
+                //View.ListBoxSubContests.Items.Add(subContestBranch.Name);
+                View.ListViewSubContests.Items.Add(subContestBranch.Name);
 
                 CurrentContest.SubContestBranches.Add(subContestBranch);
 
@@ -212,31 +243,42 @@ namespace Simhopp
         /// <summary>
         /// Remove a contestant that has been selected to participate 
         /// </summary>
+        // FIXA DETTA
         private void RemoveContestantFromSubContest()
         {
-            string contestant = View.ListBoxSubContestContestants.SelectedItem as string;
+            var contestantFirstName = View.ListViewContestContestants.SelectedItems[0].SubItems[0].Text;
+            var contestantLastName = View.ListViewContestContestants.SelectedItems[0].SubItems[1].Text;
 
             Contestant contestantToBeRemoved = null;
 
             foreach(var c in SubContestContestants)
             {
-                if (c.GetFullName() == contestant)
-                    contestantToBeRemoved = c;
+                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
+                {
+                    contestantToBeRemoved = c;                 
+                }
+
             }
 
-            SubContestContestants.Remove(contestantToBeRemoved);
 
-            View.ListBoxSubContestContestants.Items.Remove(contestant);
+            SubContestContestants.Remove(contestantToBeRemoved);
+            //View.ListBoxSubContestContestants.Items.Remove(contestant);
+
+            View.ListViewSubContestContestants.Items.Remove(View.ListViewSubContestContestants.SelectedItems[0]);
+
+
         }
 
         private void AddContestantToSubContest()
         {
-            var contestant = View.ListBoxContestContestants.SelectedItem;
+            var contestantFirstName = View.ListViewContestContestants.SelectedItems[0].SubItems[0].Text;
+            var contestantLastName = View.ListViewContestContestants.SelectedItems[0].SubItems[1].Text;
+
             bool isAdded = false;
 
             foreach (var c in SubContestContestants)
             {
-                if (c.GetFullName() == (string)contestant)
+                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
                 {
                     isAdded = true;
                     MessageBox.Show("Deltagare är redan tillagd!");
@@ -250,7 +292,7 @@ namespace Simhopp
             {
                 foreach (var c in CurrentContest.Contestants)
                 {
-                    if (c.GetFullName() == (string)contestant)
+                    if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
                     {
                         contestantToBeAdded = c;
                     }
@@ -259,7 +301,12 @@ namespace Simhopp
                 if (contestantToBeAdded != null)
                 {
                     SubContestContestants.Add(contestantToBeAdded);
-                    View.ListBoxSubContestContestants.Items.Add(contestantToBeAdded.GetFullName());
+                    //View.ListBoxSubContestContestants.Items.Add(contestantToBeAdded.GetFullName());
+
+                    ListViewItem listViewSubContestContestantsItem = new ListViewItem(contestantToBeAdded.FirstName);
+                    listViewSubContestContestantsItem.SubItems.Add(contestantToBeAdded.LastName);
+
+                    View.ListViewSubContestContestants.Items.Add(listViewSubContestContestantsItem);
                 }
 
 
