@@ -115,6 +115,22 @@ namespace Simhopp
         private long PushDive(long branchID, long contestantID)
         {
             throw new NotImplementedException();
+        private void PushJudge(Judge judge, long contestID)
+        {
+            // Table info
+            string table = "judge";
+
+            // Contest info
+            var personID = judge.ID;
+
+            // Build query
+            string query = $"INSERT INTO {table} ";
+            query += $"(personID, contestID) ";
+            query += $"VALUES(";
+            query += $"'{personID}','{contestID}'";
+            query += $")";
+
+            ExecuteQuery(query);
         }
 
         private void PushSubContestBranches(SubContestBranchList branches, long contestID)
