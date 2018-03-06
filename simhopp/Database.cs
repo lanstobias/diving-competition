@@ -45,7 +45,7 @@ namespace Simhopp
         public void PushContest(Contest contest)
         {
             long contestID = PushContestInfo(contest.Info);
-            PushJudgeList();
+            PushJudgeList(contest.Judges, contestID);
             PushSubContestBranches(contest.SubContestBranches, contestID);
         }
 
