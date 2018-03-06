@@ -222,22 +222,29 @@ namespace Simhopp
 
         public void RemoveContestantFromContest()
         {
-            var contestantFirstName = View.ListViewLocalContestants.SelectedItems[0].SubItems[0].Text;
-
-            var contestantLastName = View.ListViewLocalContestants.SelectedItems[0].SubItems[1].Text;
-
-            Contestant contestantToBeRemoved = null;
-
-            foreach (var c in ContestContestantList)
+            try
             {
-                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
-                    contestantToBeRemoved = c;
-            }
+                var contestantFirstName = View.ListViewLocalContestants.SelectedItems[0].SubItems[0].Text;
 
-            ContestContestantList.Remove(contestantToBeRemoved);
+                var contestantLastName = View.ListViewLocalContestants.SelectedItems[0].SubItems[1].Text;
+
+                Contestant contestantToBeRemoved = null;
+
+                foreach (var c in ContestContestantList)
+                {
+                    if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
+                        contestantToBeRemoved = c;
+                }
+
+                ContestContestantList.Remove(contestantToBeRemoved);
 
                 UpdateListViews();
+            }
 
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en deltagare!");
+            }
         }
 
         public void AddContestantToContest()
