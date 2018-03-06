@@ -38,7 +38,6 @@ namespace Simhopp
             //Fyller på contestants från contest
             foreach (var contestant in contest.Contestants)
             {
-                //View.ListBoxContestContestants.Items.Add(contestant.GetFullName());
                 ListViewItem listViewContestContestantsItem = new ListViewItem(contestant.FirstName);
                 listViewContestContestantsItem.SubItems.Add(contestant.LastName);
 
@@ -68,18 +67,18 @@ namespace Simhopp
         /// </summary>
         private void FillWithData()
         {
-            SubContestBranch testSubContest = new SubContestBranch("Deltävling1", CurrentContest, CurrentContest.Contestants);
+            //SubContestBranch testSubContest = new SubContestBranch("Deltävling1", CurrentContest, CurrentContest.Contestants);
 
-            SubContests.Add(testSubContest);
-            //View.ListBoxSubContests.Items.Add(testSubContest.Name);
+            //SubContests.Add(testSubContest);
+            ////View.ListBoxSubContests.Items.Add(testSubContest.Name);
 
-            View.ListViewSubContests.Items.Add(testSubContest.Name);
+            //View.ListViewSubContests.Items.Add(testSubContest.Name);
                 
-            CurrentContest.SubContestBranches.Add(testSubContest);
+            //CurrentContest.SubContestBranches.Add(testSubContest);
 
-            // clear the inputs
-            SubContestContestants.Clear();
-            ClearInputs();
+            //// clear the inputs
+            //SubContestContestants.Clear();
+            //ClearInputs();
 
         }
 
@@ -89,12 +88,11 @@ namespace Simhopp
         private void ClearInputs()
         {
             View.TextBoxName.Clear();
-            //View.ListBoxSubContestContestants.Items.Clear();
-            //View.ListBoxContestContestants.ClearSelected();
-            //View.ListBoxSubContests.ClearSelected();
             View.ListViewSubContestContestants.Items.Clear();
             View.ListViewContestContestants.SelectedItems.Clear();
             View.ListViewSubContests.SelectedItems.Clear();
+
+
             SubContestContestants.Clear();
 
 
@@ -126,20 +124,14 @@ namespace Simhopp
 
 
                 SubContestContestants.Clear();
-                //View.ListBoxSubContests.Items.Clear();
                 View.ListViewSubContests.Items.Clear();
 
-                //foreach (var sc in SubContests)
-                //    View.ListBoxSubContests.Items.Add(sc.Name);
-
-                foreach(var sc in SubContests)
+                foreach (var sc in SubContests)
                 {
                     ListViewItem listViewSubContestsItems = new ListViewItem(sc.Name);
 
                     View.ListViewSubContests.Items.Add(listViewSubContestsItems);
                 }
-
-
 
                 ClearInputs();
             }
@@ -152,47 +144,47 @@ namespace Simhopp
         // FIXA DETTA
         private void SubContestSelected()
         {
-            //string subContestName = View.ListBoxSubContests.SelectedItem as string;
 
-            var subContestName = View.ListViewSubContests.SelectedItems[0];
-
-            foreach (var sc in SubContests)
+            if (View.ListViewSubContests.SelectedItems.Count == 1)
             {
-                if (sc.Name == subContestName.Text)
+                var subContestName = View.ListViewSubContests.SelectedItems[0].Text;
+                foreach (var sc in SubContests)
                 {
-                    SelectedSubContest = sc;
-
-                    View.TextBoxName.Text = SelectedSubContest.Name;
-
-                    SubContestContestants.Clear();
-
-                    //View.ListBoxSubContestContestants.Items.Clear();
-                    View.ListViewSubContestContestants.Items.Clear();
-
-                    SubContestContestants = SelectedSubContest.BranchContestants.DeepCopy();
-
-                    foreach (var c in SelectedSubContest.BranchContestants)
+                    if (sc.Name == subContestName)
                     {
-                        //View.ListBoxSubContestContestants.Items.Add(c.GetFullName());
-                        ListViewItem listViewSubContestContestantsItems = new ListViewItem(c.FirstName);
-                        listViewSubContestContestantsItems.SubItems.Add(c.LastName);
+                        SelectedSubContest = sc;
 
-                        View.ListViewSubContestContestants.Items.Add(listViewSubContestContestantsItems);
+                        View.TextBoxName.Text = SelectedSubContest.Name;
+
+                        SubContestContestants.Clear();
+
+                        View.ListViewSubContestContestants.Items.Clear();
+
+                        SubContestContestants = SelectedSubContest.BranchContestants.DeepCopy();
+
+                        foreach (var c in SelectedSubContest.BranchContestants)
+                        {
+                       
+                            ListViewItem listViewSubContestContestantsItems = new ListViewItem(c.FirstName);
+                            listViewSubContestContestantsItems.SubItems.Add(c.LastName);
+
+                            View.ListViewSubContestContestants.Items.Add(listViewSubContestContestantsItems);
+                        }
+
+
+                        // display the edit buttons and make add button unclickable
+                        View.ButtonUpdateSubContest.Visible = true;
+                        View.ButtonCancelEdit.Visible = true;
+                        View.ButtonAddSubContest.Enabled = false;
                     }
-                    
-
-                    // display the edit buttons and make add button unclickable
-                    View.ButtonUpdateSubContest.Visible = true;
-                    View.ButtonCancelEdit.Visible = true;
-                    View.ButtonAddSubContest.Enabled = false;
                 }
-            }
 
-            if (SelectedSubContest == null)
-            {
-                
-            }
+                if (SelectedSubContest == null)
+                {
 
+                }
+
+            }
 
         }
         private void FinalizeContest()
@@ -204,7 +196,7 @@ namespace Simhopp
 
         private void AddSubContest()
         {
-            //TODO kolla så korrekt data
+            //kolla så korrekt data
             bool isDataValid = false;
 
             if (CheckDataInput.StringCheckFormat(View.TextBoxName.Text))
@@ -229,7 +221,6 @@ namespace Simhopp
                 SubContestBranch subContestBranch = new SubContestBranch(View.TextBoxName.Text, CurrentContest, contestantList);
            
                 SubContests.Add(subContestBranch);
-                //View.ListBoxSubContests.Items.Add(subContestBranch.Name);
                 View.ListViewSubContests.Items.Add(subContestBranch.Name);
 
                 CurrentContest.SubContestBranches.Add(subContestBranch);
@@ -243,75 +234,83 @@ namespace Simhopp
         /// <summary>
         /// Remove a contestant that has been selected to participate 
         /// </summary>
-        // FIXA DETTA
         private void RemoveContestantFromSubContest()
         {
-            var contestantFirstName = View.ListViewContestContestants.SelectedItems[0].SubItems[0].Text;
-            var contestantLastName = View.ListViewContestContestants.SelectedItems[0].SubItems[1].Text;
-
-            Contestant contestantToBeRemoved = null;
-
-            foreach(var c in SubContestContestants)
+            try
             {
-                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
+                var contestantFirstName = View.ListViewSubContestContestants.SelectedItems[0].SubItems[0].Text;
+                var contestantLastName = View.ListViewSubContestContestants.SelectedItems[0].SubItems[1].Text;
+
+                Contestant contestantToBeRemoved = null;
+
+                foreach (var c in SubContestContestants)
                 {
-                    contestantToBeRemoved = c;                 
+                    if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
+                    {
+                        contestantToBeRemoved = c;
+                    }
                 }
 
+
+                SubContestContestants.Remove(contestantToBeRemoved);
+
+                View.ListViewSubContestContestants.Items.Remove(View.ListViewSubContestContestants.SelectedItems[0]);
+
             }
-
-
-            SubContestContestants.Remove(contestantToBeRemoved);
-            //View.ListBoxSubContestContestants.Items.Remove(contestant);
-
-            View.ListViewSubContestContestants.Items.Remove(View.ListViewSubContestContestants.SelectedItems[0]);
-
-
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en deltagare!");
+            }
         }
 
         private void AddContestantToSubContest()
         {
-            var contestantFirstName = View.ListViewContestContestants.SelectedItems[0].SubItems[0].Text;
-            var contestantLastName = View.ListViewContestContestants.SelectedItems[0].SubItems[1].Text;
-
-            bool isAdded = false;
-
-            foreach (var c in SubContestContestants)
+            try
             {
-                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
-                {
-                    isAdded = true;
-                    MessageBox.Show("Deltagare är redan tillagd!");
-                    break;
-                }
-            }
+                var contestantFirstName = View.ListViewContestContestants.SelectedItems[0].SubItems[0].Text;
+                var contestantLastName = View.ListViewContestContestants.SelectedItems[0].SubItems[1].Text;
 
-            Contestant contestantToBeAdded = null;
+                bool isAdded = false;
 
-            if (!isAdded)
-            {
-                foreach (var c in CurrentContest.Contestants)
+                foreach (var c in SubContestContestants)
                 {
                     if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
                     {
-                        contestantToBeAdded = c;
+                        isAdded = true;
+                        MessageBox.Show("Deltagare är redan tillagd!");
+                        break;
                     }
                 }
 
-                if (contestantToBeAdded != null)
+                Contestant contestantToBeAdded = null;
+
+                if (!isAdded)
                 {
-                    SubContestContestants.Add(contestantToBeAdded);
-                    //View.ListBoxSubContestContestants.Items.Add(contestantToBeAdded.GetFullName());
+                    foreach (var c in CurrentContest.Contestants)
+                    {
+                        if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
+                        {
+                            contestantToBeAdded = c;
+                        }
+                    }
 
-                    ListViewItem listViewSubContestContestantsItem = new ListViewItem(contestantToBeAdded.FirstName);
-                    listViewSubContestContestantsItem.SubItems.Add(contestantToBeAdded.LastName);
+                    if (contestantToBeAdded != null)
+                    {
+                        SubContestContestants.Add(contestantToBeAdded);
 
-                    View.ListViewSubContestContestants.Items.Add(listViewSubContestContestantsItem);
+                        ListViewItem listViewSubContestContestantsItem = new ListViewItem(contestantToBeAdded.FirstName);
+                        listViewSubContestContestantsItem.SubItems.Add(contestantToBeAdded.LastName);
+
+                        View.ListViewSubContestContestants.Items.Add(listViewSubContestContestantsItem);
+                    }
                 }
-
-
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en deltagare!");
+            }
+            }
+            
         } 
         #endregion
     }
-}
