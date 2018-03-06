@@ -249,38 +249,46 @@ namespace Simhopp
 
         public void AddContestantToContest()
         {
-            var contestantFirstName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[0].Text;
-            var contestantLastName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[1].Text;
-
-            bool isAdded = false;
-
-            foreach (var c in ContestContestantList)
+            try
             {
-                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
-                {
-                    isAdded = true;
-                    MessageBox.Show("Deltagare är redan tillagd!");
-                    break;
-                }
-            }
+                var contestantFirstName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[0].Text;
+                var contestantLastName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[1].Text;
 
-            Contestant contestantToBeAdded = null;
+                bool isAdded = false;
 
-            if (!isAdded)
-            {
-                foreach (var c in GlobalContestantList)
+                foreach (var c in ContestContestantList)
                 {
                     if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
                     {
-                        contestantToBeAdded = c;
+                        isAdded = true;
+                        MessageBox.Show("Deltagare är redan tillagd!");
+                        break;
                     }
                 }
 
-                if (contestantToBeAdded != null)
-                    ContestContestantList.Add(contestantToBeAdded);
+                Contestant contestantToBeAdded = null;
 
+                if (!isAdded)
+                {
+                    foreach (var c in GlobalContestantList)
+                    {
+                        if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
+                        {
+                            contestantToBeAdded = c;
+                        }
+                    }
+
+                    if (contestantToBeAdded != null)
+                        ContestContestantList.Add(contestantToBeAdded);
+
+                }
                 UpdateListViews();
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en deltagare!");
+            }
+            
 
         }
 
