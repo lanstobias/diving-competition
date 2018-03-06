@@ -113,8 +113,14 @@ namespace Simhopp
         }
 
         private long PushDive(long branchID, long contestantID)
+        private void PushJudgeList(JudgeList judges, long contestID)
         {
-            throw new NotImplementedException();
+            foreach (var judge in judges)
+            {
+                PushJudge(judge, contestID);
+            }
+        }
+
         private void PushJudge(Judge judge, long contestID)
         {
             // Table info
@@ -208,7 +214,6 @@ namespace Simhopp
             return contestantID;
         }
 
-        private void PushJudgeList()
         {
             throw new NotImplementedException();
         }
