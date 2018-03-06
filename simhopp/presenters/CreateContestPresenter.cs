@@ -105,10 +105,10 @@ namespace Simhopp
             View.LabelStartDate.Text = StartDate.ToShortDateString();
             View.LabelEndDate.Text = EndDate.ToShortDateString();
 
-            UpdateListBoxes();
+            UpdateListViews();
 
         }
-        public void UpdateListBoxes()
+        public void UpdateListViews()
         {
             // globala listboxes från dbn
 
@@ -236,7 +236,7 @@ namespace Simhopp
 
             ContestContestantList.Remove(contestantToBeRemoved);
 
-            UpdateListBoxes();
+                UpdateListViews();
 
         }
 
@@ -272,8 +272,8 @@ namespace Simhopp
                 if (contestantToBeAdded != null)
                     ContestContestantList.Add(contestantToBeAdded);
 
+                UpdateListViews();
             }
-            UpdateListBoxes();
 
         }
 
@@ -298,7 +298,7 @@ namespace Simhopp
                     GlobalJudgeList.Add((Judge)p);
                 }
 
-                UpdateListBoxes();
+                UpdateListViews();
             }
         }
 
@@ -323,7 +323,7 @@ namespace Simhopp
                     GlobalContestantList.Add( (Contestant) p );
                 }
 
-                UpdateListBoxes();
+                UpdateListViews();
             }
         }
 
@@ -345,7 +345,7 @@ namespace Simhopp
             // remove from contestlist
             ContestJudgeList.Remove(judgeToBeRemoved);
 
-            UpdateListBoxes();
+                UpdateListViews();
         }
 
         public void AddJudgeToContest()
@@ -380,9 +380,9 @@ namespace Simhopp
 
                 if (judgeToBeAdded != null)
                     ContestJudgeList.Add(judgeToBeAdded);
+                UpdateListViews();
             }
 
-            UpdateListBoxes();
         }
 
         public void SetStartDate()
