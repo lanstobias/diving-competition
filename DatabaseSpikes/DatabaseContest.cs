@@ -190,5 +190,21 @@ namespace DatabaseSpikes
                 Console.WriteLine(e.Message.ToString());
             }
         }
+
+        public void AddContest()
+        {
+            Database database = new Database();
+
+            Contest testContest = createTestContest();
+
+            try
+            {
+                database.PushContest(testContest);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+            }
+        }
     }
 }
