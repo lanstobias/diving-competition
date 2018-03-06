@@ -1,20 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 namespace Simhopp
 {
     public class Database
     {
+        #region Properties
         private DatabaseConnection DBConnection = new DatabaseConnection();
+        #endregion
 
+        #region Constructors
         public Database()
         {
         }
+        #endregion
 
+        #region Public methods
         public long ExecuteQuery(string query)
         {
             if (DBConnection.OpenConnection())
@@ -30,6 +31,13 @@ namespace Simhopp
             {
                 throw new Exception("No connection");
             }
+        }
+
+        public void PushContest(Contest contest)
+        {
+            var contestID = PushContestInfo(contest.Info);
+            PushJudgeList();
+            PushSubContestBranches(contest.SubContestBranches, contestID);
         }
 
         public void StorePerson(Person person)
@@ -72,11 +80,27 @@ namespace Simhopp
             throw new NotImplementedException();
         }
 
-        public void PushContest(Contest contest)
+        #endregion
+
+        #region Private methods
+        public long PushContestInfo(ContestInfo contestInfo)
         {
-            var contestID = PushContestInfo(contest.Info);
-            PushJudgeList();
-            PushSubContestBranches(contest.SubContestBranches, contestID);
+            string table = "contest";
+
+            var name = contestInfo.Name;
+            var city = contestInfo.City;
+            var arena = contestInfo.Arena;
+            var startDate = contestInfo.StartDate;
+            var endDate = contestInfo.EndDate;
+
+            string query = $"INSERT INTO {table} ";
+            query += $"(name, city, arena, startDate, endDate) ";
+            query += $"VALUES(";
+            query += $"'{name}','{city}','{arena}','{Helpers.SQLDateFormat(startDate)}','{Helpers.SQLDateFormat(endDate)}'";
+            query += $")";
+
+            long lastInsertedId = ExecuteQuery(query);
+            return lastInsertedId;
         }
 
         private long PushDive(long branchID, long contestantID)
@@ -119,26 +143,6 @@ namespace Simhopp
             throw new NotImplementedException();
         }
 
-        public long PushContestInfo(ContestInfo contestInfo)
-        {
-            string table = "contest";
-
-            var name = contestInfo.Name;
-            var city = contestInfo.City;
-            var arena = contestInfo.Arena;
-            var startDate = contestInfo.StartDate;
-            var endDate = contestInfo.EndDate;
-
-            string query = $"INSERT INTO {table} ";
-            query += $"(name, city, arena, startDate, endDate) ";
-            query += $"VALUES(";
-            query += $"'{name}','{city}','{arena}','{Helpers.SQLDateFormat(startDate)}','{Helpers.SQLDateFormat(endDate)}'";
-            query += $")";
-
-            long lastInsertedId = ExecuteQuery(query);
-            return lastInsertedId;
-        }
-
         private long PushSubContestBranch(SubContestBranch branch)
         {
             throw new NotImplementedException();
@@ -153,6 +157,6 @@ namespace Simhopp
         {
             throw new NotImplementedException();
         }
-
+        #endregion
     }
 }
