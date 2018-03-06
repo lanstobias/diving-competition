@@ -112,7 +112,6 @@ namespace Simhopp
             return lastInsertedId;
         }
 
-        private long PushDive(long branchID, long contestantID)
         private void PushJudgeList(JudgeList judges, long contestID)
         {
             foreach (var judge in judges)
@@ -213,8 +212,24 @@ namespace Simhopp
             return contestantID;
         }
 
+        private long PushDive(Dive dive, long branchID, long contestantID)
         {
-            throw new NotImplementedException();
+            // Table info
+            string table = "dive";
+
+            // Contest info
+            var name = dive.Name;
+            var code = dive.Code.Code;
+            var multiplier = dive.Code.Multiplier;
+
+            // Build query
+            string query = $"INSERT INTO {table} ";
+            query += $"(name, code, multiplier, contestantID, branchID) ";
+            query += $"VALUES(";
+            query += $"'{name}','{code}', '{multiplier}', '{contestantID}', '{branchID}'";
+            query += $")";
+
+            return ExecuteQuery(query);
         }
 
         private void PushScore(Score score, long diveID, long contestID)
