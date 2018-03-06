@@ -344,23 +344,31 @@ namespace Simhopp
 
         public void RemoveJudgeFromContest()
         {
-            // Collect the chosen judge, gets the full name of the judge
-            var judgeFirstName = View.ListViewLocalJudges.SelectedItems[0].SubItems[0].Text;
-            var judgeLastName = View.ListViewLocalJudges.SelectedItems[0].SubItems[1].Text;
-
-            Judge judgeToBeRemoved = null;
-
-            // find the right Judge object
-            foreach (var j in ContestJudgeList)
+            try
             {
-                if (String.Equals(j.FirstName,judgeFirstName) && String.Equals(j.LastName,judgeLastName))
-                    judgeToBeRemoved = j;
-            }
+                // Collect the chosen judge, gets the full name of the judge
+                var judgeFirstName = View.ListViewLocalJudges.SelectedItems[0].SubItems[0].Text;
+                var judgeLastName = View.ListViewLocalJudges.SelectedItems[0].SubItems[1].Text;
 
-            // remove from contestlist
-            ContestJudgeList.Remove(judgeToBeRemoved);
+                Judge judgeToBeRemoved = null;
+
+                // find the right Judge object
+                foreach (var j in ContestJudgeList)
+                {
+                    if (String.Equals(j.FirstName, judgeFirstName) && String.Equals(j.LastName, judgeLastName))
+                        judgeToBeRemoved = j;
+                }
+
+                // remove from contestlist
+                ContestJudgeList.Remove(judgeToBeRemoved);
 
                 UpdateListViews();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en domare!");
+            }
+           
         }
 
         public void AddJudgeToContest()
