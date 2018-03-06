@@ -182,8 +182,30 @@ namespace Simhopp
             return ExecuteQuery(query);
         }
 
+        private long PushContestant(Contestant contestant, long branchID, long contestID)
         {
-            throw new NotImplementedException();
+            // Contestant info
+            var personID = contestant.ID;
+
+            // Build contestant query
+            string query = $"INSERT INTO contestant";
+            query += $"(personID, contestID) ";
+            query += $"VALUES(";
+            query += $"'{personID}','{contestID}'";
+            query += $")";
+
+            long contestantID = ExecuteQuery(query);
+
+            // Build branch_contestant query
+            query = $"INSERT INTO branch_contestant";
+            query += $"(contestantID, branchID) ";
+            query += $"VALUES(";
+            query += $"'{contestantID}','{branchID}'";
+            query += $")";
+
+            ExecuteQuery(query);
+
+            return contestantID;
         }
 
         private void PushJudgeList()
@@ -191,7 +213,6 @@ namespace Simhopp
             throw new NotImplementedException();
         }
 
-        private long PushContestant(Contestant contestant, long branchID, long contestId)
         {
             throw new NotImplementedException();
         }
