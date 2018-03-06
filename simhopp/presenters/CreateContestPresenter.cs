@@ -373,37 +373,46 @@ namespace Simhopp
 
         public void AddJudgeToContest()
         {
-            // Collect the chosen judge
-            var judgeFirstName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[0].Text;
-
-            var judgeLastName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[1].Text;
-            bool isAdded = false;
-
-            // Check if judge is already added to the contest
-            foreach (var j in ContestJudgeList)
+            try
             {
-                if (String.Equals(j.FirstName,judgeFirstName) && String.Equals(j.LastName,judgeLastName))
-                {
-                    isAdded = true;
-                    MessageBox.Show("Domare är redan tillagd!");
-                    break;
-                }
-            }
+                // Collect the chosen judge
+                var judgeFirstName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[0].Text;
 
-            // Collect the correct Judge object
-            Judge judgeToBeAdded = null;
+                var judgeLastName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[1].Text;
+                bool isAdded = false;
 
-            if (!isAdded)
-            {
-                foreach (var j in GlobalJudgeList)
+                // Check if judge is already added to the contest
+                foreach (var j in ContestJudgeList)
                 {
                     if (String.Equals(j.FirstName, judgeFirstName) && String.Equals(j.LastName, judgeLastName))
-                        judgeToBeAdded = j;
+                    {
+                        isAdded = true;
+                        MessageBox.Show("Domare är redan tillagd!");
+                        break;
+                    }
                 }
 
-                if (judgeToBeAdded != null)
-                    ContestJudgeList.Add(judgeToBeAdded);
+                // Collect the correct Judge object
+                Judge judgeToBeAdded = null;
+
+                if (!isAdded)
+                {
+                    foreach (var j in GlobalJudgeList)
+                    {
+                        if (String.Equals(j.FirstName, judgeFirstName) && String.Equals(j.LastName, judgeLastName))
+                            judgeToBeAdded = j;
+                    }
+
+                    if (judgeToBeAdded != null)
+                        ContestJudgeList.Add(judgeToBeAdded);
+                }
+
                 UpdateListViews();
+            }
+            
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en domare!");
             }
 
         }
