@@ -38,6 +38,10 @@ namespace Simhopp
             get;set;
         }
 
+        public string Name
+        {
+            get; set;
+        }
         #endregion
 
         #region Functions
