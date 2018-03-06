@@ -169,7 +169,6 @@ namespace Simhopp
             }
         }
 
-        private void PushScore(Score score, long diveID)
         private long PushSubContestBranch(SubContestBranch branch, long contestID)
         {
             // Table info
@@ -218,8 +217,23 @@ namespace Simhopp
             throw new NotImplementedException();
         }
 
+        private void PushScore(Score score, long diveID, long contestID)
         {
-            throw new NotImplementedException();
+            // Table info
+            string table = "point";
+
+            // Contest info
+            var point = score.Value;
+            var judgeID = score.Judge.ID;
+
+            // Build query
+            string query = $"INSERT INTO {table} ";
+            query += $"(point, diveID, judgeID, contestID) ";
+            query += $"VALUES(";
+            query += $"'{point}','{diveID}', '{judgeID}', '{contestID}'";
+            query += $")";
+
+            ExecuteQuery(query);
         }
         #endregion
     }
