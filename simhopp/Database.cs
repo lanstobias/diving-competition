@@ -88,7 +88,6 @@ namespace Simhopp
         {
             throw new NotImplementedException();
         }
-
         #endregion
 
         #region Private methods
@@ -146,7 +145,7 @@ namespace Simhopp
 
             foreach (var branch in branches)
             {
-                branchID = PushSubContestBranch(branch);
+                branchID = PushSubContestBranch(branch, contestID);
 
                 foreach (var contestant in branch.BranchContestants)
                 {
@@ -156,11 +155,11 @@ namespace Simhopp
                     {
                         foreach (var dive in diveList)
                         {
-                            diveID = PushDive(branchID, contestantID);
+                            diveID = PushDive(dive, branchID, contestantID);
 
                             foreach (var score in dive.Scores)
                             {
-                                PushScore(score, diveID);
+                                PushScore(score, diveID, contestID);
                             }
                         }
                     }
