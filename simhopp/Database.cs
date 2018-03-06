@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using MySql.Data.MySqlClient;
 
 namespace Simhopp
@@ -21,7 +22,15 @@ namespace Simhopp
             if (DBConnection.OpenConnection())
             {
                 MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
-                var queryResult = command.ExecuteNonQuery();
+
+                try
+                {
+                    var queryResult = command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
 
                 DBConnection.CloseConnection();
 
