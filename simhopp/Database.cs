@@ -164,11 +164,24 @@ namespace Simhopp
         }
 
         private void PushScore(Score score, long diveID)
+        private long PushSubContestBranch(SubContestBranch branch, long contestID)
         {
-            throw new NotImplementedException();
+            // Table info
+            string table = "branch";
+
+            // Contest info
+            var name = branch.Name;
+
+            // Build query
+            string query = $"INSERT INTO {table} ";
+            query += $"(name, contestID) ";
+            query += $"VALUES(";
+            query += $"'{name}','{contestID}'";
+            query += $")";
+
+            return ExecuteQuery(query);
         }
 
-        private long PushSubContestBranch(SubContestBranch branch)
         {
             throw new NotImplementedException();
         }
