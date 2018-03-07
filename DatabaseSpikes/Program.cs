@@ -17,8 +17,17 @@ namespace DatabaseSpikes
             //DatabaseContest databaseContest = new DatabaseContest();
             //databaseContest.AddContestInfo();
 
-            DatabaseContest databaseContest = new DatabaseContest();
-            databaseContest.AddContest();
+            //DatabaseContest databaseContest = new DatabaseContest();
+            //databaseContest.AddContest();
+
+            DatabasePerson databasePerson = new DatabasePerson();
+            List<Person> persons = databasePerson.FetchPersons();
+
+            Console.WriteLine("Skriv ut personer:");
+            foreach (var person in persons)
+            {
+                Console.Write(person.ID + ": " + person.GetFullName() + " " + person.Age + "\n");
+            }
 
             Console.ReadKey();
         }
