@@ -100,7 +100,7 @@
             this.textBoxSSN.Location = new System.Drawing.Point(66, 137);
             this.textBoxSSN.Name = "textBoxSSN";
             this.textBoxSSN.Size = new System.Drawing.Size(130, 20);
-            this.textBoxSSN.TabIndex = 11;
+            this.textBoxSSN.TabIndex = 12;
             // 
             // labelSSN
             // 
@@ -145,7 +145,7 @@
             this.comboBoxGender.Location = new System.Drawing.Point(66, 110);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(130, 21);
-            this.comboBoxGender.TabIndex = 12;
+            this.comboBoxGender.TabIndex = 11;
             // 
             // textBoxAddress
             // 
