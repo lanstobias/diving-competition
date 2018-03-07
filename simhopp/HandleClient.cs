@@ -54,7 +54,7 @@ namespace Simhopp
                 
                 while (true)
                 {
-                    Server.Update();
+                    
                     if (AcceptPoints)
                         StreamWriter.WriteLine("open");
                     

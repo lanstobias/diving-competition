@@ -127,17 +127,6 @@ namespace Simhopp
             }
         }
 
-        public void Update()
-        {
-            contestPresenter.View.ListViewJudgeClients.Clear();
-            foreach(var client in ClientList)
-            {
-                contestPresenter.View?.Invoke(new InvokeJudgeListView(
-                () => { contestPresenter.AddToClientList(client); }
-                ));
-            }
-        }
-
         public void KillThreads()
         {
             threadServer.IsBackground = true;
