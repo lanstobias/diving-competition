@@ -189,7 +189,7 @@ namespace Simhopp
             }
         }
 
-        internal void AddToClientList(HandleClient client)
+        internal void AddToClientListView(HandleClient client)
         {
             ListViewItem clientItem = new ListViewItem(client.ClientName);
             clientItem.SubItems.Add(client.Points.ToString());
