@@ -77,9 +77,6 @@ namespace Simhopp
         {
 
 
-        public Contestant StoreContestantInContestantList()
-        {
-            throw new NotImplementedException();
         }
         #endregion
 
