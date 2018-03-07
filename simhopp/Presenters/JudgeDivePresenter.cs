@@ -21,7 +21,9 @@ namespace Simhopp
 
         private Thread threadClient = null;
         private double points = -1;
-        private string message = "";
+
+        private StreamReader sr = null;
+        private StreamWriter sw = null;
 
         public JudgeDivePresenter(JudgeDiveView view, ProjectMainWindow window)
         {
@@ -55,61 +57,31 @@ namespace Simhopp
             try
             {
                 // get ip from public serverlist
-                WebClient request = new WebClient();
-                string url = "ftp://files.000webhost.com/simhoppServers.txt";
-
-                // Get network credentials.
-                request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
-
-                string ip = "127.0.0.1";
-
-                try
-                {
-                    byte[] bytes = request.DownloadData(url);
-                    ip = System.Text.Encoding.UTF8.GetString(bytes);
-                }
-                catch
-                {
-                    // do something
-                }
+                string ip = GetServerIp();
 
                 Int32 port = 27015;
                 client = new TcpClient(ip, port);
 
-                StreamReader sr = new StreamReader(client.GetStream());
-                StreamWriter sw = new StreamWriter(client.GetStream());
+                sr = new StreamReader(client.GetStream());
+                sw = new StreamWriter(client.GetStream());
+
+                sw.WriteLine("Login " + JudgeName);
+                sw.Flush();
 
                 String str = "";
-
-                bool firstRun = true;
                 
 
                 while (!str.StartsWith("quit"))
                 {
                     str = sr.ReadLine();
 
-                    if (str.StartsWith("l ") && firstRun)
-                    {
-                        sw.WriteLine("Login " + JudgeName);
-                        firstRun = false;
-                    }
-
+                    
                     // server har skickat ut att den vill ha något
                     if (str.StartsWith("give"))
                     {
-                        sw.WriteLine(" ");
                         ToggleButtonSend();
                     }
-                    // knappen är tryckt
-                    else if (str.StartsWith("open") && sendPoints)
-                    {
-                        ToggleButtonSend();
-                        sw.WriteLine(message);
-                        sendPoints = false;
-                    }
-
-                    message = "";
-                    sw.Flush();
+                    
                 }
             }
             catch (IOException ioe)
@@ -121,12 +93,12 @@ namespace Simhopp
                 client?.Close();
             }
         }
-
-        bool sendPoints = false;
+        
         private void GiveScore()
         {
-            message = "Points " + points;
-            sendPoints = true;
+            ToggleButtonSend();
+            sw.WriteLine("Points " + points);
+            sw.Flush();
         }
 
         private void ToggleButtonSend()
@@ -134,6 +106,30 @@ namespace Simhopp
             View.Invoke(new InvokeButtonGiveScore(
                 () => { View.ButtonGiveScore.Enabled = !(View.ButtonGiveScore.Enabled); }
                 ));
+        }
+
+        public string GetServerIp()
+        {
+            WebClient request = new WebClient();
+            string url = "ftp://files.000webhost.com/simhoppServers.txt";
+
+            // Get network credentials.
+            request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
+
+            string ip = "127.0.0.1";
+
+            try
+            {
+                byte[] bytes = request.DownloadData(url);
+                ip = System.Text.Encoding.UTF8.GetString(bytes);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Could not connect to serverlist...");
+                window.GoBackToPreviuosPanel();
+            }
+
+            return ip;
         }
     }
 }

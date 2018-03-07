@@ -33,11 +33,11 @@ namespace Simhopp
             this.contestPresenter = contest;
             this.Server = server;
             this.Client = client;
-            ClientName = "Client " + id;
+            ClientName = "";
 
             ThreadClient = new Thread(ClientThread);
             ThreadClient.IsBackground = true;
-            ThreadClient.Name = ClientName;
+            ThreadClient.Name = "Client " + id;
             ThreadClient.Start();
             
         }
@@ -52,31 +52,26 @@ namespace Simhopp
                 StreamReader = new StreamReader(NetworkStream);
                 StreamWriter = new StreamWriter(NetworkStream);
                 
+
                 while (true)
                 {
-                    
-                    if (AcceptPoints)
-                        StreamWriter.WriteLine("open");
-                    
-
                     msg = StreamReader.ReadLine();
 
                     if (msg == null || msg.StartsWith("quit"))
                     {
                         break;
                     }
-                    else if(msg.StartsWith("Login "))
+                    else if (msg.StartsWith("Login "))
                     {
                         ClientName = msg.Substring(6);
+                        Server.UpdateJudgeListView();
                     }
                     else if (msg.StartsWith("Points "))
                     {
                         Points = Convert.ToDouble(msg.Substring(7));
-                        AddPointToList(ClientName, Points.ToString());
+                        AddPointToList(Points.ToString());
 
                     }
-                    
-                    StreamWriter.Flush();
                 }
 
             }
@@ -102,10 +97,13 @@ namespace Simhopp
 
         }
 
-        public void AddPointToList(string client, string point)
+        public void AddPointToList(string point)
         {
             contestPresenter.View.Invoke(new InvokeContestPresenter(
-                () => { lock (contestPresenter.View.ListViewJudgeClients) { contestPresenter.AddToPointList(client, point); } }
+                () => { lock (contestPresenter.View.ListViewJudgeClients)
+                {
+                    contestPresenter.AddToPointList(ClientName, point);
+                } }
                 ));
         }
     }

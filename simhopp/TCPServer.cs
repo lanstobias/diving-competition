@@ -84,8 +84,8 @@ namespace Simhopp
             foreach (var client in ClientList)
             {
                 client.AcceptPoints = true;
-                client.StreamWriter.WriteLine("give");
-                client.StreamWriter.Flush();
+                client.StreamWriter?.WriteLine("give");
+                client.StreamWriter?.Flush();
             }
         }
 
@@ -112,8 +112,7 @@ namespace Simhopp
                     HandleClient c = new HandleClient(this, client, (ClientList.Count + 1), contestPresenter);
 
                     
-                    UpdateJudgeListView(c);
-                    
+                    AddToJudgeListView(c);
                 }
 
             }
@@ -136,16 +135,25 @@ namespace Simhopp
             }
         }
 
-        private void UpdateJudgeListView(HandleClient client)
+        private void AddToJudgeListView(HandleClient client)
         {
             lock (ClientList)
             {
-                ClientList.Add(client);
+                if(!ClientList.Contains(client))
+                    ClientList.Add(client);
             }
 
             contestPresenter.View?.Invoke(new InvokeJudgeListView(
-                () => { contestPresenter.AddToClientList(client); }
+                () => { contestPresenter.AddToClientListView(client); }
                 ));
+           
+        }
+
+        public void UpdateJudgeListView()
+        {
+            contestPresenter.View?.Invoke(new InvokeJudgeListView(
+               () => { contestPresenter.RefreshClientListView(); }
+               ));
         }
     }
 }
