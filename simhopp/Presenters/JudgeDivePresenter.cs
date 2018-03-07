@@ -20,10 +20,12 @@ namespace Simhopp
         private ProjectMainWindow window;
 
         private Thread threadClient = null;
-        private double points = -1;
+        private double Points { get; set; } = -1;
 
         private StreamReader sr = null;
         private StreamWriter sw = null;
+
+        private TcpClient client = null;
 
         public JudgeDivePresenter(JudgeDiveView view, ProjectMainWindow window)
         {
@@ -43,17 +45,18 @@ namespace Simhopp
             threadClient.Start();
         }
 
+        /// <summary>
+        /// Sets the Points property to whatever the pointslider is set to
+        /// </summary>
         private void SetPoints()
         {
-            points = (double)View.SliderPoints.Value / 2;
-            View.LabelPoints.Text = points.ToString();
+            Points = (double)View.SliderPoints.Value / 2;
+            View.LabelPoints.Text = Points.ToString();
         }
 
         public void RunClient()
         {
-            TcpClient client = null;
-
-
+            
             try
             {
                 // get ip from public serverlist
@@ -65,18 +68,19 @@ namespace Simhopp
                 sr = new StreamReader(client.GetStream());
                 sw = new StreamWriter(client.GetStream());
 
+                // Send a message to the server that u wish to login 
                 sw.WriteLine("Login " + JudgeName);
                 sw.Flush();
 
                 String str = "";
                 
-
                 while (!str.StartsWith("quit"))
                 {
-                    str = sr.ReadLine();
 
+                    // read what the server has to say
+                    str = sr.ReadLine();
                     
-                    // server har skickat ut att den vill ha något
+                    
                     if (str.StartsWith("give"))
                     {
                         ToggleButtonSend();
@@ -94,13 +98,19 @@ namespace Simhopp
             }
         }
         
+        /// <summary>
+        /// Writes a message with the points to the server
+        /// </summary>
         private void GiveScore()
         {
             ToggleButtonSend();
-            sw.WriteLine("Points " + points);
+            sw.WriteLine("Points " + Points);
             sw.Flush();
         }
 
+        /// <summary>
+        /// Enable/disable ButtonGiveScore
+        /// </summary>
         private void ToggleButtonSend()
         {
             View.Invoke(new InvokeButtonGiveScore(
@@ -108,6 +118,11 @@ namespace Simhopp
                 ));
         }
 
+        /// <summary>
+        /// This method collects the servers ip from a serverList stored on a FTP.
+        /// Right now it uses a free shitty ftp but this can be easily changed
+        /// </summary>
+        /// <returns>A string containing the IP</returns>
         public string GetServerIp()
         {
             WebClient request = new WebClient();
@@ -126,6 +141,7 @@ namespace Simhopp
             catch(Exception e)
             {
                 MessageBox.Show("Could not connect to serverlist...");
+                client?.Close();
                 window.GoBackToPreviuosPanel();
             }
 
