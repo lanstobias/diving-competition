@@ -39,8 +39,6 @@ namespace Simhopp
             View.EventRequestPoints += RequestPointsFromJudges;
 
             Initialize();
-        }
-
 
             Server = new TCPServer();
             Server.TieToContest(this);
@@ -95,6 +93,50 @@ namespace Simhopp
                 }
             }
 
+        }
+
+        internal void AddToPointList(string client, string point)
+        {
+            bool AllPointsCollected = true;
+
+            if(View.ListViewJudgeClients.Items.Count == CurrentContest.Judges.Count)
+            {
+                ScoreList scoreList = new ScoreList();
+                foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
+                {
+                    if(clientItem.SubItems[1].ForeColor != System.Drawing.Color.Green)
+                    {
+                        // någon av poängerna har inte kommit in
+                        AllPointsCollected = false;
+                    }
+                    else
+                    {
+                        // Fixa: ta in rätt judge här
+                        foreach(var judge in CurrentContest.Judges)
+                        {
+                            if(judge.GetFullName() == client)
+                                scoreList.Add(new Score(Convert.ToDouble(clientItem.SubItems[1].Text), judge));
+                        }
+                        
+                    }
+                }
+
+                if (AllPointsCollected)
+                {
+                    GetSelectedDive().Scores = scoreList;
+                }
+            }
+
+            foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
+            {
+                if (clientItem.Text == client)
+                {
+                    clientItem.SubItems[1].Text = point;
+                    clientItem.SubItems[1].ForeColor = System.Drawing.Color.Green;
+                }
+            }
+
+            
         }
 
         private void RemoveDive()
