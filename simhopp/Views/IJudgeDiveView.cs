@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 namespace Simhopp
 {
     public delegate void DelegateGiveScore();
+    public delegate void DelegatePointSliderChanged();
 
     public interface IJudgeDiveView
     {
         event DelegateGiveScore EventGiveScore;
+        event DelegatePointSliderChanged EventPointSliderChanged;
     }
 }

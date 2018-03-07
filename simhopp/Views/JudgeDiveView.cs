@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Simhopp
 {
@@ -16,9 +17,17 @@ namespace Simhopp
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label labelPoints;
+        private System.Windows.Forms.TrackBar sliderPoints;
         private System.Windows.Forms.TextBox textBox1;
 
+        public System.Windows.Forms.Button ButtonGiveScore { get { return buttonGiveScore; } set { buttonGiveScore = value; } }
+        public TrackBar SliderPoints { get { return sliderPoints; } set { sliderPoints = value; } }
+        public Label LabelPoints { get { return labelPoints; } set { labelPoints = value; } }
+
         public event DelegateGiveScore EventGiveScore;
+        public event DelegatePointSliderChanged EventPointSliderChanged;
+
         public JudgeDiveView()
         {
             InitializeComponent();
@@ -36,11 +45,16 @@ namespace Simhopp
             this.labelScore = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.buttonGiveScore = new System.Windows.Forms.Button();
+            this.sliderPoints = new System.Windows.Forms.TrackBar();
+            this.labelPoints = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderPoints)).BeginInit();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.labelPoints);
+            this.mainPanel.Controls.Add(this.sliderPoints);
             this.mainPanel.Controls.Add(this.buttonGiveScore);
             this.mainPanel.Controls.Add(this.textBox4);
             this.mainPanel.Controls.Add(this.labelScore);
@@ -102,7 +116,7 @@ namespace Simhopp
             // labelScore
             // 
             this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(141, 269);
+            this.labelScore.Location = new System.Drawing.Point(141, 243);
             this.labelScore.Name = "labelScore";
             this.labelScore.Size = new System.Drawing.Size(59, 13);
             this.labelScore.TabIndex = 6;
@@ -110,19 +124,38 @@ namespace Simhopp
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(206, 262);
+            this.textBox4.Location = new System.Drawing.Point(206, 205);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 7;
             // 
             // buttonGiveScore
             // 
+            this.buttonGiveScore.Enabled = false;
             this.buttonGiveScore.Location = new System.Drawing.Point(206, 299);
             this.buttonGiveScore.Name = "buttonGiveScore";
             this.buttonGiveScore.Size = new System.Drawing.Size(100, 51);
             this.buttonGiveScore.TabIndex = 8;
             this.buttonGiveScore.Text = "Ge Poäng";
             this.buttonGiveScore.UseVisualStyleBackColor = true;
+            this.buttonGiveScore.Click += new System.EventHandler(this.buttonGiveScore_Click);
+            // 
+            // sliderPoints
+            // 
+            this.sliderPoints.Location = new System.Drawing.Point(206, 231);
+            this.sliderPoints.Maximum = 20;
+            this.sliderPoints.Name = "sliderPoints";
+            this.sliderPoints.Size = new System.Drawing.Size(104, 45);
+            this.sliderPoints.TabIndex = 9;
+            this.sliderPoints.ValueChanged += new System.EventHandler(this.sliderPoints_ValueChanged);
+            // 
+            // labelPoints
+            // 
+            this.labelPoints.AutoSize = true;
+            this.labelPoints.Location = new System.Drawing.Point(226, 263);
+            this.labelPoints.Name = "labelPoints";
+            this.labelPoints.Size = new System.Drawing.Size(0, 13);
+            this.labelPoints.TabIndex = 10;
             // 
             // JudgeDiveView
             // 
@@ -131,8 +164,19 @@ namespace Simhopp
             this.Name = "JudgeDiveView";
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderPoints)).EndInit();
             this.ResumeLayout(false);
 
+        }
+
+        private void buttonGiveScore_Click(object sender, EventArgs e)
+        {
+            this.EventGiveScore?.Invoke();
+        }
+
+        private void sliderPoints_ValueChanged(object sender, EventArgs e)
+        {
+            this.EventPointSliderChanged?.Invoke();
         }
     }
 }
