@@ -21,13 +21,6 @@ namespace Simhopp
             View.EventCreateNewContest += gotoCreateContestView;
             View.EventJudgeContest += GotoJudgeContest;
         }
-
-        private void GotoJudgeContest()
-        {
-            JudgeDiveView judgeView = new JudgeDiveView();
-            JudgeDivePresenter presenter = new JudgeDivePresenter(judgeView, window);
-            window.ChangePanel(judgeView, (PanelViewControl)View);
-        }
         #endregion
 
         public void gotoCreateContestView()
@@ -35,6 +28,13 @@ namespace Simhopp
             CreateContestView newView = new CreateContestView();
             CreateContestPresenter presenter = new CreateContestPresenter(newView,window);
             window.ChangePanel(newView, (PanelViewControl)View);   // ChangePanel(ny view, cameFrom)
+        }
+
+        private void GotoJudgeContest()
+        {
+            JudgeDiveView judgeView = new JudgeDiveView();
+            JudgeDivePresenter presenter = new JudgeDivePresenter(judgeView, window);
+            window.ChangePanel(judgeView, (PanelViewControl)View);
         }
     }
 }
