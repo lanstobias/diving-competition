@@ -63,19 +63,42 @@ namespace Simhopp
 
         }
 
+        /// <summary>
+        /// Call RequestPoints() in the Server.
+        /// This sends out a message to every client that the head Judge wants to collect scores
+        /// </summary>
         private void RequestPointsFromJudges()
         {
             Server.RequestPoints();
         }
 
+        /// <summary>
+        /// Open up a dive for editing
+        /// </summary>
         private void EnableModifyDive()
         {
             View.ButtonCancelModify.Visible = true;
             View.ButtonModifyDive.Visible = true;
             View.ButtonRemoveDive.Visible = true;
             View.ButtonRequestPoints.Enabled = true;
+            ResetPoints();
         }
 
+        /// <summary>
+        /// Close a dive for editing
+        /// </summary>
+        private void CancelModifyDive()
+        {
+            View.ButtonCancelModify.Visible = false;
+            View.ButtonModifyDive.Visible = false;
+            View.ButtonRemoveDive.Visible = false;
+            View.ButtonRequestPoints.Enabled = false;
+            ResetPoints();
+        }
+
+        /// <summary>
+        /// Updates a existing dive with new information
+        /// </summary>
         private void ModifyDive()
         {
             SubContestBranch subContestBranch = GetSelectedSubContest();
@@ -95,18 +118,27 @@ namespace Simhopp
 
         }
 
-        internal void AddToPointList(string client, string point)
+        /// <summary>
+        /// Ties a score to a specific judgeClient
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="score"></param>
+        internal void AddToPointList(string client, string score)
         {
             foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
             {
                 if (clientItem.Text == client)
                 {
-                    clientItem.SubItems[1].Text = point;
+                    clientItem.SubItems[1].Text = score;
                     clientItem.SubItems[1].BackColor = System.Drawing.Color.Green;
                 }
             }
         }
 
+        /// <summary>
+        /// Gathers up the scores that have come in from the various judges
+        /// However it will only create and store the ScoreList if all the scores have come in.
+        /// </summary>
         public void CollectPoints()
         {
             bool AllPointsCollected = true;
@@ -118,13 +150,13 @@ namespace Simhopp
                 {
                     if (clientItem.SubItems[1].Text == "-1")
                     {
-                        // någon av poängerna har inte kommit in
+                        // One of the scores have not come in
                         AllPointsCollected = false;
                         break;
                     }
                     else
                     {
-                        // Fixa: ta in rätt judge här
+                        // Find the right Judge 
                         foreach (var judge in CurrentContest.Judges)
                         {
                             if (judge.GetFullName() == clientItem.SubItems[0].Text)
@@ -138,30 +170,69 @@ namespace Simhopp
                     }
                 }
 
+                // All scores are in, go ahead and add the new ScoreList
                 if (AllPointsCollected)
                 {
                     GetSelectedDive().Scores = scoreList;
                     MessageBox.Show("Scores GATHERED!");
+
+                    CancelModifyDive();
+                    ResetPoints();
                 }
                 else
-                {
                     MessageBox.Show("Väntar fortfarande på poäng från domare!");
+                
+            }
+        }
+
+        /// <summary>
+        /// This resets old scores that are still in the ListView, will not delete any stored scores
+        /// </summary>
+        public void ResetPoints()
+        {
+            foreach (var client in Server.ClientList)
+            {
+                client.Points = -1;
+            }
+
+            RefreshClientListView();
+
+            foreach (var client in Server.ClientList)
+            {
+                foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
+                {
+                    if (client.ClientName == clientItem.Text)
+                    {
+                        Dive dive = GetSelectedDive();
+                        if (dive?.Scores != null)
+                        {
+                            foreach (var score in GetSelectedDive().Scores)
+                            {
+                                if (score.Judge.GetFullName() == clientItem.Text)
+                                {
+                                    clientItem.SubItems[1].Text = score.Value.ToString();
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            clientItem.SubItems[1].Text = "-1";
+                        }
+                    }
                 }
             }
         }
 
+        /// <summary>
+        /// FIXA
+        /// </summary>
         private void RemoveDive()
         {
+            // funkar ej 
             GetSelectedSubContest().RemoveExistingDive(GetSelectedContestant(), GetSelectedDive());
             UpdateDivesListView();
-        }
-
-        private void CancelModifyDive()
-        {
-            View.ListViewDives.SelectedItems.Clear();
-            View.ButtonCancelModify.Visible = false;
-            View.ButtonModifyDive.Visible = false;
-            View.ButtonRemoveDive.Visible = false;
         }
 
         /// <summary>
@@ -169,12 +240,13 @@ namespace Simhopp
         /// </summary>
         private void UpdateContestantListView()
         {
+            CancelModifyDive();
+
             SubContestBranch selectedSubContest = GetSelectedSubContest();
 
             if(selectedSubContest != null)
             {
                 // Clear the listviews
-
                 View.ListViewContestants.Items.Clear();
                 View.ListViewDives.Items.Clear();
 
@@ -187,8 +259,13 @@ namespace Simhopp
 
                 }
             }
+            
         }
 
+        /// <summary>
+        /// Adds a client to the ListView holding Judge clients
+        /// </summary>
+        /// <param name="client"></param>
         internal void AddToClientListView(HandleClient client)
         {
             ListViewItem clientItem = new ListViewItem(client.ClientName);
@@ -197,9 +274,13 @@ namespace Simhopp
             View.ListViewJudgeClients.Items.Add(clientItem);
         }
 
+        /// <summary>
+        /// Refreshes the listview containing Judge clients
+        /// </summary>
         internal void RefreshClientListView()
         {
-            View.ListViewJudgeClients.Items.Clear();
+
+            View.ListViewJudgeClients?.Items.Clear();
 
             foreach(var client in Server.ClientList)
             {
@@ -208,6 +289,7 @@ namespace Simhopp
 
                 View.ListViewJudgeClients.Items.Add(clientItem);
             }
+            
         }
 
         /// <summary>
@@ -236,6 +318,8 @@ namespace Simhopp
         /// <param name="contestant">The contestant with the dives to be presented</param>
         public void UpdateDivesListView()
         {
+            CancelModifyDive();
+
             Contestant contestant = GetSelectedContestant();
 
             if(contestant != null)
@@ -244,7 +328,8 @@ namespace Simhopp
                 View.ListViewDives.Items.Clear();
                 foreach (var divelist in contestant.DiveLists)
                 {
-                    if(divelist.SubContestBranch == GetSelectedSubContest())
+                    SubContestBranch subContest = GetSelectedSubContest();
+                    if (subContest != null && divelist.SubContestBranch == subContest)
                     {
                         foreach(var dive in divelist)
                         {
@@ -260,6 +345,10 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Get the selected contestant in ListViewContestants
+        /// </summary>
+        /// <returns>Contestant object or null if nothing is chosen</returns>
         private Contestant GetSelectedContestant()
         {
             try
@@ -269,7 +358,7 @@ namespace Simhopp
                     //var selectedContestantName = View.ListBoxContestants.SelectedItem as string;
                     var selectedContestantFirstName = View.ListViewContestants.SelectedItems[0].SubItems[0].Text;
                     var selectedContestantLastName = View.ListViewContestants.SelectedItems[0].SubItems[1].Text;
-
+                    
                     foreach (var contestant in GetSelectedSubContest().BranchContestants)
                     {
                         if (String.Equals(contestant.FirstName, selectedContestantFirstName) && String.Equals(contestant.LastName, selectedContestantLastName))
@@ -287,6 +376,10 @@ namespace Simhopp
             return null;
         }
 
+        /// <summary>
+        /// Get the selected SubContest in ComboBoxSubContests
+        /// </summary>
+        /// <returns>SubContestBranch object or null</returns>
         private SubContestBranch GetSelectedSubContest()
         {
 
@@ -298,27 +391,43 @@ namespace Simhopp
                     return subContest;
             }
 
-
             return null;
         }
 
+        /// <summary>
+        /// Get the selected Dive in ListViewDives
+        /// </summary>
+        /// <returns>Dive object or null if nothing is chosen</returns>
         private Dive GetSelectedDive()
         {
-            var selectedDiveIndex = View.ComboBoxSubContests.SelectedIndex;
-
-            int i = 0;
-            foreach(var diveList in GetSelectedContestant().DiveLists)
+            if(View.ListViewDives.SelectedIndices.Count != 0)
             {
-                if (diveList.SubContestBranch == GetSelectedSubContest())
-                {
-                    foreach (var dive in diveList)
-                    {
-                        if (i++ == selectedDiveIndex)
-                            return dive;
-                    }
+                var selectedDiveIndex = View.ListViewDives.SelectedIndices[0];
 
+                int i = 0;
+                Contestant contestant = GetSelectedContestant();
+
+                if (contestant != null)
+                {
+                    foreach (var diveList in contestant.DiveLists)
+                    {
+                        SubContestBranch subContest = GetSelectedSubContest();
+                        if (subContest != null)
+                        {
+                            if (diveList.SubContestBranch == subContest)
+                            {
+                                foreach (var dive in diveList)
+                                {
+                                    if (i++ == selectedDiveIndex)
+                                        return dive;
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
+            
             
             return null;
         }
