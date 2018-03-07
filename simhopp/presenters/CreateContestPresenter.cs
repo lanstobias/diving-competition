@@ -294,7 +294,7 @@ namespace Simhopp
 
         public void AddJudgeToDB()
         {
-            var addPerson = new AddPersonView();
+            var addPerson = new AddPersonForm();
 
             if (addPerson.ShowDialog() == DialogResult.OK)
             {
@@ -319,7 +319,7 @@ namespace Simhopp
 
         public void AddContestantToDB()
         {
-            var addPerson = new AddPersonView();
+            var addPerson = new AddPersonForm();
 
             if (addPerson.ShowDialog() == DialogResult.OK)
             {

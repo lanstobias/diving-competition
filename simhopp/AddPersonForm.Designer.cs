@@ -1,8 +1,6 @@
-﻿using System.Windows.Forms;
-
-namespace Simhopp
+﻿namespace Simhopp
 {
-    partial class AddPersonView
+    partial class AddPersonForm
     {
         /// <summary>
         /// Required designer variable.
@@ -21,8 +19,6 @@ namespace Simhopp
             }
             base.Dispose(disposing);
         }
-
-
 
         #region Windows Form Designer generated code
 
@@ -143,9 +139,6 @@ namespace Simhopp
             // comboBoxGender
             // 
             this.comboBoxGender.FormattingEnabled = true;
-            this.comboBoxGender.Items.AddRange(new object[] {
-            "Man",
-            "Kvinna"});
             this.comboBoxGender.Location = new System.Drawing.Point(66, 110);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(130, 21);
@@ -197,7 +190,7 @@ namespace Simhopp
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // AddPersonView
+            // AddPersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -219,7 +212,7 @@ namespace Simhopp
             this.Controls.Add(this.labelLastName);
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.labelFirstName);
-            this.Name = "AddPersonView";
+            this.Name = "AddPersonForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -56,13 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\PersonList.cs" />
-    <Compile Include="presenters\AddPersonPresenter.cs" />
-    <Compile Include="views\AddPersonView.cs">
+    <Compile Include="AddPersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\AddPersonView.Designer.cs">
-      <DependentUpon>AddPersonView.cs</DependentUpon>
+    <Compile Include="AddPersonForm.Designer.cs">
+      <DependentUpon>AddPersonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CheckDataInput.cs" />
     <Compile Include="Database.cs" />
@@ -125,7 +123,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="views\IAddDiveView.cs" />
-    <Compile Include="views\IAddPersonView.cs" />
     <Compile Include="views\IContestView.cs" />
     <Compile Include="views\ICreateContestView.cs" />
     <Compile Include="views\ICreateSubContestView.cs" />
@@ -143,8 +140,8 @@
     <Compile Include="views\PanelViewControl.Designer.cs">
       <DependentUpon>PanelViewControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="views\AddPersonView.resx">
-      <DependentUpon>AddPersonView.cs</DependentUpon>
+    <EmbeddedResource Include="AddPersonForm.resx">
+      <DependentUpon>AddPersonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatePicker.resx">
       <DependentUpon>DatePicker.cs</DependentUpon>
