@@ -63,7 +63,6 @@
       <DependentUpon>AddPersonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CheckDataInput.cs" />
-    <Compile Include="Client.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="DatePicker.cs">
@@ -72,6 +71,7 @@
     <Compile Include="DatePicker.Designer.cs">
       <DependentUpon>DatePicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="HandleClient.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +109,7 @@
     <Compile Include="models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TCPServer.cs" />
     <Compile Include="views\AddDiveView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatePicker.resx">
       <DependentUpon>DatePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectMainWindow.resx">
       <DependentUpon>ProjectMainWindow.cs</DependentUpon>
