@@ -16,6 +16,8 @@ namespace Simhopp
 
         public Contest CurrentContest { get; set; }
 
+        public TCPServer Server { get; set; }
+
         #endregion
 
         #region Constructor
@@ -39,6 +41,10 @@ namespace Simhopp
         }
 
 
+            Server = new TCPServer();
+            Server.TieToContest(this);
+        }
+        
 
         #endregion
 
@@ -68,6 +74,7 @@ namespace Simhopp
             View.ButtonCancelModify.Visible = true;
             View.ButtonModifyDive.Visible = true;
             View.ButtonRemoveDive.Visible = true;
+            View.ButtonRequestPoints.Enabled = true;
         }
 
         private void ModifyDive()
