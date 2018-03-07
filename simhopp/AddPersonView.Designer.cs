@@ -216,6 +216,7 @@
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.labelFirstName);
             this.Name = "AddPersonView";
+            this.Text = "Lägg till en person";
             this.ResumeLayout(false);
             this.PerformLayout();
 
