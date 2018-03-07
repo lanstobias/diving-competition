@@ -74,10 +74,7 @@ namespace Simhopp
             ExecuteQuery(query);
         }
 
-        public Person FetchPerson()
         {
-            throw new NotImplementedException();
-        }
 
         public Judge StoreJudgeInJudgeList()
         {
