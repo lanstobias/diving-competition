@@ -1,6 +1,6 @@
 ﻿namespace Simhopp
 {
-    partial class AddPersonForm
+    partial class AddPersonView
     {
         /// <summary>
         /// Required designer variable.

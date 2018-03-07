@@ -13,11 +13,11 @@ namespace Simhopp
     /// <summary>
     /// Simple form for gathering information about a Person
     /// </summary>
-    public partial class AddPersonForm : Form
+    public partial class AddPersonView : Form
     {
         public List<Person> PersonList { get; set; }
 
-        public AddPersonForm()
+        public AddPersonView()
         {
             // Define the border style of the form to a dialog box (no resize).
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -32,13 +32,14 @@ namespace Simhopp
             //Todo:
             // kolla så all data är korrekt (Program.StringFormatChecker(string)) och samla ihop det till ett nytt Person objekt.
             // lägg till i PersonList och resetta fälten för ny inmatning
+            EventSaveAndNew?.Invoke();
         }
 
         private void buttonSaveAndClose_Click(object sender, EventArgs e)
         {
             //Todo:
             // kolla så all data är korrekt (Program.StringFormatChecker(string)) och samla ihop det till ett nytt Person objekt.
-            
+            EventSaveAndClose?.Invoke();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
