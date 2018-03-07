@@ -37,6 +37,7 @@ namespace Simhopp
             View.EventRemoveDive += RemoveDive;
             View.EventCancelDiveEdit += CancelModifyDive;
             View.EventRequestPoints += RequestPointsFromJudges;
+            View.EventCollectPoints += CollectPoints;
 
             Initialize();
 
