@@ -13,7 +13,7 @@ namespace Simhopp
     public partial class ProjectMainWindow : Form
     {
         #region Properties
-        private PanelViewControl CurrentPanel { get; set; }
+        private PanelViewControl CurrentView { get; set; }
 
         // Holds the previous view that was presented.
         private PanelViewControl PreviousView { get; set; }
@@ -41,8 +41,19 @@ namespace Simhopp
             this.Controls.Add(viewToLoad);
 
             PreviousView = cameFrom;
-            CurrentPanel = viewToLoad;
-            
+            CurrentView = viewToLoad;
+        }
+
+        public void GoBackToPreviuosPanel()
+        {
+            if(PreviousView != null)
+            {
+                this.Controls.Remove(CurrentView);
+                this.Controls.Add(PreviousView);
+
+                PreviousView = null;
+                CurrentView = PreviousView;
+            } 
         }
         
     }
