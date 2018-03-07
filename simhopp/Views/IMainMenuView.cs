@@ -8,9 +8,11 @@ namespace Simhopp
 {
     #region Delegates
     public delegate void DelegateCreateNewContest();
+    public delegate void DelegateJudgeContest();
     #endregion
     interface IMainMenuView
     {
         event DelegateCreateNewContest EventCreateNewContest;
+        event DelegateJudgeContest EventJudgeContest;
     }
 }

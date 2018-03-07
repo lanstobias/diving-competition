@@ -31,6 +31,7 @@ namespace Simhopp
         }
 
         public event DelegateCreateNewContest EventCreateNewContest;
+        public event DelegateJudgeContest EventJudgeContest;
 
         private void CreateContestButton_Click(object sender, EventArgs e)
         {
@@ -82,6 +83,7 @@ namespace Simhopp
             this.judgeContestButton.TabIndex = 3;
             this.judgeContestButton.Text = "Bedöm tävling";
             this.judgeContestButton.UseVisualStyleBackColor = true;
+            this.judgeContestButton.Click += new System.EventHandler(this.judgeContestButton_Click);
             // 
             // exitButton
             // 
@@ -91,8 +93,13 @@ namespace Simhopp
             this.exitButton.TabIndex = 4;
             this.exitButton.Text = "Avsluta";
             this.exitButton.UseVisualStyleBackColor = true;
-            
-            
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
             // 
             // MainMenuView
             // 
@@ -104,5 +111,9 @@ namespace Simhopp
 
         }
 
+        private void judgeContestButton_Click(object sender, EventArgs e)
+        {
+            this.EventJudgeContest?.Invoke();
+        }
     }
 }
