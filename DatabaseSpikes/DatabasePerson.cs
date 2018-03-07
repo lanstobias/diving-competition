@@ -28,5 +28,23 @@ namespace DatabaseSpikes
                 Console.WriteLine(e.Message.ToString());
             }
         }
+
+        public List<Person> FetchPersons()
+        {
+            Database database = new Database();
+
+            try
+            {
+                List<Person> personList = database.FetchPersons();
+                return personList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+            }
+
+            // Return empty list
+            return new List<Person>();
+        }
     }
 }
