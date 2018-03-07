@@ -26,6 +26,16 @@ namespace Simhopp
 
             InitializeComponent();
         }
+        public TextBox TextBoxFirstName { get { return textBoxFirstName; } }
+        public TextBox TextBoxLastName { get { return textBoxLastName; } }
+        public TextBox TextBoxAge { get { return textBoxAge; } }
+        public TextBox TextBoxEmail { get { return textBoxEmail; } }
+        public ComboBox ComboBoxGender { get { return comboBoxGender; } }
+        public TextBox TextBoxSSN { get { return textBoxSSN; } }
+        public TextBox TextBoxAddress { get { return textBoxAddress; } }
+
+        public event DelegateSaveAndNew EventSaveAndNew;
+        public event DelegateSaveAndClose EventSaveAndClose;
 
         private void buttonSaveAndNew_Click(object sender, EventArgs e)
         {

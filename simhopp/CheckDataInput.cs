@@ -19,6 +19,15 @@ namespace Simhopp
 
             return false;
         }
+        public static bool EmailCheckFormat(string email)
+        {
+            Regex regex = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*@((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$");
+
+            if (regex.IsMatch(email))
+                return true;
+
+            return false;
+        }
 
     }
 }
