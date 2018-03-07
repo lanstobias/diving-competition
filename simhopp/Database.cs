@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
 
@@ -35,6 +36,34 @@ namespace Simhopp
                 DBConnection.CloseConnection();
 
                 return command.LastInsertedId;
+            }
+            else
+            {
+                throw new Exception("No connection");
+            }
+        }
+
+        public DataTable ExecuteFetch(string query)
+        {
+            if (DBConnection.OpenConnection())
+            {
+                DataTable resultDataTable = new DataTable();
+
+                MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+
+                try
+                {
+                    dataAdapter.Fill(resultDataTable);
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+
+                DBConnection.CloseConnection();
+
+                return resultDataTable;
             }
             else
             {
