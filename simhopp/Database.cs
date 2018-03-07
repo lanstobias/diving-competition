@@ -76,10 +76,6 @@ namespace Simhopp
 
         {
 
-        public Judge StoreJudgeInJudgeList()
-        {
-            throw new NotImplementedException();
-        }
 
         public Contestant StoreContestantInContestantList()
         {
