@@ -67,18 +67,18 @@ namespace Simhopp
         /// </summary>
         private void FillWithData()
         {
-            //SubContestBranch testSubContest = new SubContestBranch("Deltävling1", CurrentContest, CurrentContest.Contestants);
+            SubContestBranch testSubContest = new SubContestBranch("Deltävling1", CurrentContest, CurrentContest.Contestants);
 
-            //SubContests.Add(testSubContest);
-            ////View.ListBoxSubContests.Items.Add(testSubContest.Name);
+            SubContests.Add(testSubContest);
+            //View.ListBoxSubContests.Items.Add(testSubContest.Name);
 
-            //View.ListViewSubContests.Items.Add(testSubContest.Name);
-                
-            //CurrentContest.SubContestBranches.Add(testSubContest);
+            View.ListViewSubContests.Items.Add(testSubContest.Name);
 
-            //// clear the inputs
-            //SubContestContestants.Clear();
-            //ClearInputs();
+            CurrentContest.SubContestBranches.Add(testSubContest);
+
+            // clear the inputs
+            SubContestContestants.Clear();
+            ClearInputs();
 
         }
 
