@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
@@ -103,9 +104,27 @@ namespace Simhopp
             ExecuteQuery(query);
         }
 
+        public List<Person> FetchPersons()
         {
+            string query = "SELECT id, firstName, lastName, age, gender FROM person;";
 
+            DataTable personsDataTable = ExecuteFetch(query);
 
+            // Iterate through data table and add too person list
+            List<Person> personList = new List<Person>();
+            foreach (DataRow row in personsDataTable.Rows)
+            {
+                Person person = new Person();
+                person.ID = Int32.Parse(row["id"].ToString());
+                person.FirstName = row["firstName"].ToString();
+                person.LastName = row["lastName"].ToString();
+                person.Age = Int32.Parse(row["age"].ToString());
+                person.Gender = row["gender"].ToString();
+
+                personList.Add(person);
+            }
+
+            return personList;
         }
         #endregion
 
