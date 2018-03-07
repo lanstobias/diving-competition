@@ -58,6 +58,11 @@ namespace Simhopp
 
         }
 
+        private void RequestPointsFromJudges()
+        {
+            Server.RequestPoints();
+        }
+
         private void EnableModifyDive()
         {
             View.ButtonCancelModify.Visible = true;
