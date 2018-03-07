@@ -185,6 +185,19 @@ namespace Simhopp
             View.ListViewJudgeClients.Items.Add(clientItem);
         }
 
+        internal void RefreshClientListView()
+        {
+            View.ListViewJudgeClients.Items.Clear();
+
+            foreach(var client in Server.ClientList)
+            {
+                ListViewItem clientItem = new ListViewItem(client.ClientName);
+                clientItem.SubItems.Add(client.Points.ToString());
+
+                View.ListViewJudgeClients.Items.Add(clientItem);
+            }
+        }
+
         /// <summary>
         /// Opens up a AddDiveView form and waits for the result
         /// </summary>
