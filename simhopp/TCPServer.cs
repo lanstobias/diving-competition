@@ -89,13 +89,6 @@ namespace Simhopp
             }
         }
 
-        internal void RequestLogin(HandleClient client)
-        {
-           
-            client.StreamWriter.WriteLine("l ");
-            client.StreamWriter.Flush();
-            
-        }
 
         public void TieToContest(ContestPresenter contest)
         {
