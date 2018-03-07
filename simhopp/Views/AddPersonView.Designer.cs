@@ -139,6 +139,9 @@
             // comboBoxGender
             // 
             this.comboBoxGender.FormattingEnabled = true;
+            this.comboBoxGender.Items.AddRange(new object[] {
+            "Man",
+            "Kvinna"});
             this.comboBoxGender.Location = new System.Drawing.Point(66, 110);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(130, 21);
@@ -190,7 +193,7 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // AddPersonForm
+            // AddPersonView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -212,7 +215,7 @@
             this.Controls.Add(this.labelLastName);
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.labelFirstName);
-            this.Name = "AddPersonForm";
+            this.Name = "AddPersonView";
             this.ResumeLayout(false);
             this.PerformLayout();
 
