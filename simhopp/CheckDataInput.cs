@@ -29,5 +29,14 @@ namespace Simhopp
             return false;
         }
 
+        public static bool SSNCheckFormat(string ssn)
+        {
+            Regex regex = new Regex(@"^(?<date>\d{6}|\d{8})[-\s]?\d{4}$");
+
+            if (regex.IsMatch(ssn))
+                return true;
+
+            return false;
+        }
     }
 }
