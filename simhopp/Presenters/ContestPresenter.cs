@@ -36,6 +36,7 @@ namespace Simhopp
             View.EventModifyDive += ModifyDive;
             View.EventRemoveDive += RemoveDive;
             View.EventCancelDiveEdit += CancelModifyDive;
+            View.EventRequestPoints += RequestPointsFromJudges;
 
             Initialize();
         }
@@ -134,6 +135,14 @@ namespace Simhopp
                     View.ListBoxContestants.Items.Add(c.GetFullName());
                 }
             }
+        }
+
+        internal void AddToClientList(HandleClient client)
+        {
+            ListViewItem clientItem = new ListViewItem(client.ClientName);
+            clientItem.SubItems.Add(client.Points.ToString());
+
+            View.ListViewJudgeClients.Items.Add(clientItem);
         }
 
         /// <summary>
