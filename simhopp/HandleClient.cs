@@ -51,8 +51,7 @@ namespace Simhopp
                 NetworkStream = Client.GetStream();
                 StreamReader = new StreamReader(NetworkStream);
                 StreamWriter = new StreamWriter(NetworkStream);
-
-                Server.RequestLogin(this);
+                
                 while (true)
                 {
                     Server.Update();

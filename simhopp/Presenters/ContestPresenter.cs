@@ -44,8 +44,6 @@ namespace Simhopp
             Server.TieToContest(this);
         }
         
-
-        }
         #endregion
 
         #region Functions
