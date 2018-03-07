@@ -11,8 +11,15 @@ using System.Threading.Tasks;
 namespace Simhopp
 {
     public delegate void InvokeContestPresenter();
+
+    /// <summary>
+    /// HandleClient does what its name suggests.
+    /// It contains a TcpClient object and runs its own ClientThread,
+    /// Also has a referens to the TCPServer object where this (HandleClient) was created
+    /// </summary>
     public class HandleClient
     {
+        #region Properties
         public string ClientName { get; set; }
         public IPEndPoint EndPoint { get; set; } = null;
         public NetworkStream NetworkStream { get; set; } = null;
@@ -24,9 +31,11 @@ namespace Simhopp
 
         public double Points { get; set; } = -1;
 
-        public bool AcceptPoints { get; set; }
-
         private ContestPresenter contestPresenter;
+
+        #endregion
+
+        #region Constructor
 
         public HandleClient(TCPServer server, TcpClient client, int id, ContestPresenter contest)
         {
@@ -42,6 +51,12 @@ namespace Simhopp
             
         }
 
+        #endregion
+
+        #region Functions
+        /// <summary>
+        /// Listens for messages from a client
+        /// </summary>
         public void ClientThread()
         {
             string msg = "";
@@ -55,6 +70,7 @@ namespace Simhopp
 
                 while (true)
                 {
+                    // read what the client has to say
                     msg = StreamReader.ReadLine();
 
                     if (msg == null || msg.StartsWith("quit"))
@@ -97,6 +113,10 @@ namespace Simhopp
 
         }
 
+        /// <summary>
+        /// This method handles communication with the GUI-thread belonging to contestPresenter
+        /// </summary>
+        /// <param name="point">The score to be added</param>
         public void AddPointToList(string point)
         {
             contestPresenter.View.Invoke(new InvokeContestPresenter(
@@ -106,5 +126,7 @@ namespace Simhopp
                 } }
                 ));
         }
+
+        #endregion
     }
 }
