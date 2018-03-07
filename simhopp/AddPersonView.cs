@@ -73,6 +73,10 @@ namespace Simhopp
             else
                 MessageBox.Show("Du måste välja ett kön.");
 
+            if (Simhopp.CheckDataInput.SSNCheckFormat(TextBoxSSN.Text))
+                SSNIsValid = true;
+            else
+                MessageBox.Show("Personnumret är ej giltigt.");
 
             if (stringsAreValid && emailIsValid && ageIsValid && genderIsSelected && SSNIsValid)
                 return true;
