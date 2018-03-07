@@ -56,11 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddPersonForm.cs">
+    <Compile Include="models\PersonList.cs" />
+    <Compile Include="AddPersonView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPersonForm.Designer.cs">
-      <DependentUpon>AddPersonForm.cs</DependentUpon>
+    <Compile Include="AddPersonView.Designer.cs">
+      <DependentUpon>AddPersonView.cs</DependentUpon>
     </Compile>
     <Compile Include="CheckDataInput.cs" />
     <Compile Include="Database.cs" />
@@ -140,8 +141,8 @@
     <Compile Include="views\PanelViewControl.Designer.cs">
       <DependentUpon>PanelViewControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddPersonForm.resx">
-      <DependentUpon>AddPersonForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddPersonView.resx">
+      <DependentUpon>AddPersonView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatePicker.resx">
       <DependentUpon>DatePicker.cs</DependentUpon>

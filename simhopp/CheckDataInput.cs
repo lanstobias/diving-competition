@@ -19,6 +19,24 @@ namespace Simhopp
 
             return false;
         }
+        public static bool EmailCheckFormat(string email)
+        {
+            Regex regex = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*@((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$");
 
+            if (regex.IsMatch(email))
+                return true;
+
+            return false;
+        }
+
+        public static bool SSNCheckFormat(string ssn)
+        {
+            Regex regex = new Regex(@"^(?<date>\d{6}|\d{8})[-\s]?\d{4}$");
+
+            if (regex.IsMatch(ssn))
+                return true;
+
+            return false;
+        }
     }
 }

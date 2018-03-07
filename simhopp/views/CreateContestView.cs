@@ -450,6 +450,11 @@ namespace Simhopp
 
         }
 
+        private void buttonAddNewContestantToDB_Click(object sender, EventArgs e)
+        {
+            this.EventAddContestantToDB?.Invoke();
+        }
+
         private void ButtonAddNewJudgeToDB_Click(object sender, EventArgs e)
         {
             this.EventAddJudgeToDB?.Invoke();
