@@ -122,59 +122,53 @@ namespace Simhopp
             // 
             this.labelContestName.AutoSize = true;
             this.labelContestName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.labelContestName.Location = new System.Drawing.Point(34, 23);
-            this.labelContestName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelContestName.Location = new System.Drawing.Point(23, 15);
             this.labelContestName.Name = "labelContestName";
-            this.labelContestName.Size = new System.Drawing.Size(171, 29);
+            this.labelContestName.Size = new System.Drawing.Size(113, 20);
             this.labelContestName.TabIndex = 0;
             this.labelContestName.Text = "Contest name";
             // 
             // comboBoxSubContests
             // 
             this.comboBoxSubContests.FormattingEnabled = true;
-            this.comboBoxSubContests.Location = new System.Drawing.Point(40, 145);
-            this.comboBoxSubContests.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxSubContests.Location = new System.Drawing.Point(27, 94);
             this.comboBoxSubContests.Name = "comboBoxSubContests";
-            this.comboBoxSubContests.Size = new System.Drawing.Size(180, 28);
+            this.comboBoxSubContests.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSubContests.TabIndex = 1;
             this.comboBoxSubContests.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSubContests_SelectedIndexChanged);
             // 
             // labelSubContests
             // 
             this.labelSubContests.AutoSize = true;
-            this.labelSubContests.Location = new System.Drawing.Point(40, 120);
-            this.labelSubContests.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSubContests.Location = new System.Drawing.Point(27, 78);
             this.labelSubContests.Name = "labelSubContests";
-            this.labelSubContests.Size = new System.Drawing.Size(92, 20);
+            this.labelSubContests.Size = new System.Drawing.Size(63, 13);
             this.labelSubContests.TabIndex = 2;
             this.labelSubContests.Text = "Deltävlingar";
             // 
             // labelContestants
             // 
             this.labelContestants.AutoSize = true;
-            this.labelContestants.Location = new System.Drawing.Point(40, 285);
-            this.labelContestants.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelContestants.Location = new System.Drawing.Point(27, 185);
             this.labelContestants.Name = "labelContestants";
-            this.labelContestants.Size = new System.Drawing.Size(79, 20);
+            this.labelContestants.Size = new System.Drawing.Size(53, 13);
             this.labelContestants.TabIndex = 4;
             this.labelContestants.Text = "Deltagare";
             // 
             // labelDives
             // 
             this.labelDives.AutoSize = true;
-            this.labelDives.Location = new System.Drawing.Point(231, 285);
-            this.labelDives.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDives.Location = new System.Drawing.Point(154, 185);
             this.labelDives.Name = "labelDives";
-            this.labelDives.Size = new System.Drawing.Size(48, 20);
+            this.labelDives.Size = new System.Drawing.Size(33, 13);
             this.labelDives.TabIndex = 6;
             this.labelDives.Text = "Hopp";
             // 
             // buttonAddJump
             // 
-            this.buttonAddJump.Location = new System.Drawing.Point(423, 314);
-            this.buttonAddJump.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonAddJump.Location = new System.Drawing.Point(282, 204);
             this.buttonAddJump.Name = "buttonAddJump";
-            this.buttonAddJump.Size = new System.Drawing.Size(123, 35);
+            this.buttonAddJump.Size = new System.Drawing.Size(82, 23);
             this.buttonAddJump.TabIndex = 7;
             this.buttonAddJump.Text = "Lägg till hopp";
             this.buttonAddJump.UseVisualStyleBackColor = true;
@@ -183,63 +177,68 @@ namespace Simhopp
             // labelCity
             // 
             this.labelCity.AutoSize = true;
-            this.labelCity.Location = new System.Drawing.Point(236, 31);
+            this.labelCity.Location = new System.Drawing.Point(157, 20);
+            this.labelCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCity.Name = "labelCity";
-            this.labelCity.Size = new System.Drawing.Size(43, 20);
+            this.labelCity.Size = new System.Drawing.Size(29, 13);
             this.labelCity.TabIndex = 8;
             this.labelCity.Text = "Stad";
             // 
             // labelArena
             // 
             this.labelArena.AutoSize = true;
-            this.labelArena.Location = new System.Drawing.Point(312, 32);
+            this.labelArena.Location = new System.Drawing.Point(208, 21);
+            this.labelArena.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelArena.Name = "labelArena";
-            this.labelArena.Size = new System.Drawing.Size(60, 20);
+            this.labelArena.Size = new System.Drawing.Size(40, 13);
             this.labelArena.TabIndex = 9;
             this.labelArena.Text = "Simhall";
             // 
             // labelStartDate
             // 
             this.labelStartDate.AutoSize = true;
-            this.labelStartDate.Location = new System.Drawing.Point(418, 32);
+            this.labelStartDate.Location = new System.Drawing.Point(279, 21);
+            this.labelStartDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(86, 20);
+            this.labelStartDate.Size = new System.Drawing.Size(56, 13);
             this.labelStartDate.TabIndex = 10;
             this.labelStartDate.Text = "startdatum";
             // 
             // labelEndDate
             // 
             this.labelEndDate.AutoSize = true;
-            this.labelEndDate.Location = new System.Drawing.Point(544, 32);
+            this.labelEndDate.Location = new System.Drawing.Point(363, 21);
+            this.labelEndDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEndDate.Name = "labelEndDate";
-            this.labelEndDate.Size = new System.Drawing.Size(79, 20);
+            this.labelEndDate.Size = new System.Drawing.Size(52, 13);
             this.labelEndDate.TabIndex = 11;
             this.labelEndDate.Text = "slutdatum";
             // 
             // buttonPause
             // 
-            this.buttonPause.Location = new System.Drawing.Point(531, 83);
+            this.buttonPause.Location = new System.Drawing.Point(354, 54);
+            this.buttonPause.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonPause.Name = "buttonPause";
-            this.buttonPause.Size = new System.Drawing.Size(142, 68);
+            this.buttonPause.Size = new System.Drawing.Size(95, 44);
             this.buttonPause.TabIndex = 12;
             this.buttonPause.Text = "Pausa Tävling";
             this.buttonPause.UseVisualStyleBackColor = true;
             // 
             // buttonCloseContest
             // 
-            this.buttonCloseContest.Location = new System.Drawing.Point(531, 168);
+            this.buttonCloseContest.Location = new System.Drawing.Point(354, 109);
+            this.buttonCloseContest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonCloseContest.Name = "buttonCloseContest";
-            this.buttonCloseContest.Size = new System.Drawing.Size(142, 68);
+            this.buttonCloseContest.Size = new System.Drawing.Size(95, 44);
             this.buttonCloseContest.TabIndex = 13;
             this.buttonCloseContest.Text = "Avsluta";
             this.buttonCloseContest.UseVisualStyleBackColor = true;
             // 
             // buttonModifyDive
             // 
-            this.buttonModifyDive.Location = new System.Drawing.Point(423, 358);
-            this.buttonModifyDive.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonModifyDive.Location = new System.Drawing.Point(282, 233);
             this.buttonModifyDive.Name = "buttonModifyDive";
-            this.buttonModifyDive.Size = new System.Drawing.Size(123, 35);
+            this.buttonModifyDive.Size = new System.Drawing.Size(82, 23);
             this.buttonModifyDive.TabIndex = 14;
             this.buttonModifyDive.Text = "Ändra";
             this.buttonModifyDive.UseVisualStyleBackColor = true;
@@ -248,10 +247,9 @@ namespace Simhopp
             // 
             // buttonRemoveDive
             // 
-            this.buttonRemoveDive.Location = new System.Drawing.Point(422, 403);
-            this.buttonRemoveDive.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRemoveDive.Location = new System.Drawing.Point(281, 262);
             this.buttonRemoveDive.Name = "buttonRemoveDive";
-            this.buttonRemoveDive.Size = new System.Drawing.Size(123, 35);
+            this.buttonRemoveDive.Size = new System.Drawing.Size(82, 23);
             this.buttonRemoveDive.TabIndex = 15;
             this.buttonRemoveDive.Text = "Ta bort";
             this.buttonRemoveDive.UseVisualStyleBackColor = true;
@@ -260,10 +258,9 @@ namespace Simhopp
             // 
             // buttonCancelModify
             // 
-            this.buttonCancelModify.Location = new System.Drawing.Point(423, 448);
-            this.buttonCancelModify.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonCancelModify.Location = new System.Drawing.Point(282, 291);
             this.buttonCancelModify.Name = "buttonCancelModify";
-            this.buttonCancelModify.Size = new System.Drawing.Size(123, 35);
+            this.buttonCancelModify.Size = new System.Drawing.Size(82, 23);
             this.buttonCancelModify.TabIndex = 16;
             this.buttonCancelModify.Text = "Cancel";
             this.buttonCancelModify.UseVisualStyleBackColor = true;
@@ -272,13 +269,14 @@ namespace Simhopp
             // 
             // buttonRequestPoints
             // 
-            this.buttonRequestPoints.Location = new System.Drawing.Point(367, 204);
+            this.buttonRequestPoints.Enabled = false;
+            this.buttonRequestPoints.Location = new System.Drawing.Point(369, 204);
+            this.buttonRequestPoints.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonRequestPoints.Name = "buttonRequestPoints";
-            this.buttonRequestPoints.Size = new System.Drawing.Size(99, 23);
+            this.buttonRequestPoints.Size = new System.Drawing.Size(132, 22);
             this.buttonRequestPoints.TabIndex = 17;
             this.buttonRequestPoints.Text = "Begär bedömning";
             this.buttonRequestPoints.UseVisualStyleBackColor = true;
-            this.buttonRequestPoints.Enabled = false;
             this.buttonRequestPoints.Click += new System.EventHandler(this.buttonRequestPoints_Click);
             // 
             // listViewJudgeClients
@@ -286,9 +284,10 @@ namespace Simhopp
             this.listViewJudgeClients.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnJudge,
             this.columnPoints});
-            this.listViewJudgeClients.Location = new System.Drawing.Point(371, 233);
+            this.listViewJudgeClients.Location = new System.Drawing.Point(369, 230);
+            this.listViewJudgeClients.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewJudgeClients.Name = "listViewJudgeClients";
-            this.listViewJudgeClients.Size = new System.Drawing.Size(121, 127);
+            this.listViewJudgeClients.Size = new System.Drawing.Size(132, 121);
             this.listViewJudgeClients.TabIndex = 18;
             this.listViewJudgeClients.UseCompatibleStateImageBehavior = false;
             this.listViewJudgeClients.View = System.Windows.Forms.View.Details;
@@ -300,14 +299,16 @@ namespace Simhopp
             // columnPoints
             // 
             this.columnPoints.Text = "Points";
+            // 
             // listViewContestants
             // 
             this.listViewContestants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnFirstName,
             this.columnLastName});
-            this.listViewContestants.Location = new System.Drawing.Point(25, 314);
+            this.listViewContestants.Location = new System.Drawing.Point(17, 204);
+            this.listViewContestants.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewContestants.Name = "listViewContestants";
-            this.listViewContestants.Size = new System.Drawing.Size(180, 224);
+            this.listViewContestants.Size = new System.Drawing.Size(121, 147);
             this.listViewContestants.TabIndex = 17;
             this.listViewContestants.UseCompatibleStateImageBehavior = false;
             this.listViewContestants.View = System.Windows.Forms.View.Details;
@@ -316,7 +317,7 @@ namespace Simhopp
             // columnFirstName
             // 
             this.columnFirstName.Text = "Förnamn";
-            this.columnFirstName.Width = 82;
+            this.columnFirstName.Width = 63;
             // 
             // columnLastName
             // 
@@ -328,9 +329,10 @@ namespace Simhopp
             this.listViewDives.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnCode,
             this.columnMultiplier});
-            this.listViewDives.Location = new System.Drawing.Point(231, 314);
+            this.listViewDives.Location = new System.Drawing.Point(154, 204);
+            this.listViewDives.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewDives.Name = "listViewDives";
-            this.listViewDives.Size = new System.Drawing.Size(180, 224);
+            this.listViewDives.Size = new System.Drawing.Size(121, 147);
             this.listViewDives.TabIndex = 18;
             this.listViewDives.UseCompatibleStateImageBehavior = false;
             this.listViewDives.View = System.Windows.Forms.View.Details;
@@ -339,7 +341,7 @@ namespace Simhopp
             // columnCode
             // 
             this.columnCode.Text = "Code";
-            this.columnCode.Width = 70;
+            this.columnCode.Width = 61;
             // 
             // columnMultiplier
             // 
@@ -348,9 +350,9 @@ namespace Simhopp
             // 
             // ContestView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ContestView";
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
