@@ -30,8 +30,8 @@ namespace Simhopp
             View.EventPauseContest += PauseContest;
             View.EventCloseContest += CloseContest;
 
-            View.EventSubContestSelection += UpdateContestantListBox;
-            View.EventContestantSelection += UpdateDivesListBox;
+            View.EventSubContestSelection += UpdateContestantListView;
+            View.EventContestantSelection += UpdateDivesListView;
             View.EventDiveSelection += EnableModifyDive;
             View.EventModifyDive += ModifyDive;
             View.EventRemoveDive += RemoveDive;
@@ -45,6 +45,7 @@ namespace Simhopp
         }
         
 
+        }
         #endregion
 
         #region Functions
@@ -89,7 +90,7 @@ namespace Simhopp
                 if (modifyView.ShowDialog() == DialogResult.OK)
                 {
                     subContestBranch.RemoveExistingDive(contestant, dive);
-                    UpdateDivesListBox();
+                    UpdateDivesListView();
                 }
             }
 
@@ -142,12 +143,12 @@ namespace Simhopp
         private void RemoveDive()
         {
             GetSelectedSubContest().RemoveExistingDive(GetSelectedContestant(), GetSelectedDive());
-            UpdateDivesListBox();
+            UpdateDivesListView();
         }
 
         private void CancelModifyDive()
         {
-            View.ListBoxDives.ClearSelected();
+            View.ListViewDives.SelectedItems.Clear();
             View.ButtonCancelModify.Visible = false;
             View.ButtonModifyDive.Visible = false;
             View.ButtonRemoveDive.Visible = false;
@@ -156,25 +157,24 @@ namespace Simhopp
         /// <summary>
         /// Is called when the selection is change in the combobox with subcontests
         /// </summary>
-        private void UpdateContestantListBox()
+        private void UpdateContestantListView()
         {
             SubContestBranch selectedSubContest = GetSelectedSubContest();
 
             if(selectedSubContest != null)
             {
-                // Clear the listboxes
-                View.ListBoxContestants.Items.Clear();
-                View.ListBoxDives.Items.Clear();
+                // Clear the listviews
+
+                View.ListViewContestants.Items.Clear();
+                View.ListViewDives.Items.Clear();
 
                 foreach(var c in selectedSubContest.BranchContestants)
                 {
-                    //ListViewItem contestantItem = new ListViewItem(c.FirstName);
-                    //contestantItem.SubItems.Add(c.LastName);
-                    //contestantItem.SubItems.Add(c.Age.ToString());
+                    ListViewItem contestantItem = new ListViewItem(c.FirstName);
+                    contestantItem.SubItems.Add(c.LastName);
 
-                    //View.ListViewContestants.Items.Add(contestantItem);
+                    View.ListViewContestants.Items.Add(contestantItem);
 
-                    View.ListBoxContestants.Items.Add(c.GetFullName());
                 }
             }
         }
@@ -202,29 +202,34 @@ namespace Simhopp
             {
                 if (addDiveView.ShowDialog() == DialogResult.OK)
                 {
-                    UpdateDivesListBox();
+                    UpdateDivesListView();
                 }
             }
         }
 
         /// <summary>
-        /// Fills up ListBoxDives with the dives tied to a contestant
+        /// Fills up ListViewDives with the dives tied to a contestant
         /// </summary>
         /// <param name="contestant">The contestant with the dives to be presented</param>
-        public void UpdateDivesListBox()
+        public void UpdateDivesListView()
         {
             Contestant contestant = GetSelectedContestant();
 
             if(contestant != null)
             {
-                View.ListBoxDives.Items.Clear();
+                //View.ListBoxDives.Items.Clear();
+                View.ListViewDives.Items.Clear();
                 foreach (var divelist in contestant.DiveLists)
                 {
                     if(divelist.SubContestBranch == GetSelectedSubContest())
                     {
                         foreach(var dive in divelist)
                         {
-                            View.ListBoxDives.Items.Add("Kod: " + dive.Code.Code + " - Multiplier: " + dive.Code.Multiplier);
+                            //View.ListBoxDives.Items.Add("Kod: " + dive.Code.Code + " - Multiplier: " + dive.Code.Multiplier);
+                            ListViewItem DiveItems = new ListViewItem(dive.Code.Code);
+                            DiveItems.SubItems.Add(dive.Code.Multiplier.ToString());
+
+                            View.ListViewDives.Items.Add(DiveItems);
                         }
                         
                     }
@@ -234,12 +239,26 @@ namespace Simhopp
 
         private Contestant GetSelectedContestant()
         {
-            var selectedContestantName = View.ListBoxContestants.SelectedItem as string;
-
-            foreach(var contestant in GetSelectedSubContest().BranchContestants)
+            try
             {
-                if (contestant.GetFullName() == selectedContestantName)
-                    return contestant;
+                if (View.ListViewContestants.SelectedItems.Count == 1)
+                {
+                    //var selectedContestantName = View.ListBoxContestants.SelectedItem as string;
+                    var selectedContestantFirstName = View.ListViewContestants.SelectedItems[0].SubItems[0].Text;
+                    var selectedContestantLastName = View.ListViewContestants.SelectedItems[0].SubItems[1].Text;
+
+                    foreach (var contestant in GetSelectedSubContest().BranchContestants)
+                    {
+                        if (String.Equals(contestant.FirstName, selectedContestantFirstName) && String.Equals(contestant.LastName, selectedContestantLastName))
+                            return contestant;
+                    }
+                }
+
+            }
+
+            catch(ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en deltagare!");
             }
 
             return null;
@@ -247,6 +266,7 @@ namespace Simhopp
 
         private SubContestBranch GetSelectedSubContest()
         {
+
             var selectedSubContestName = View.ComboBoxSubContests.SelectedItem as string;
 
             foreach (var subContest in CurrentContest.SubContestBranches)
@@ -254,6 +274,8 @@ namespace Simhopp
                 if (selectedSubContestName == subContest.Name)
                     return subContest;
             }
+
+
             return null;
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using MySql.Data.MySqlClient;
 
 namespace Simhopp
@@ -21,7 +22,15 @@ namespace Simhopp
             if (DBConnection.OpenConnection())
             {
                 MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
-                var queryResult = command.ExecuteNonQuery();
+
+                try
+                {
+                    var queryResult = command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
 
                 DBConnection.CloseConnection();
 
@@ -35,8 +44,8 @@ namespace Simhopp
 
         public void PushContest(Contest contest)
         {
-            var contestID = PushContestInfo(contest.Info);
-            PushJudgeList();
+            long contestID = PushContestInfo(contest.Info);
+            PushJudgeList(contest.Judges, contestID);
             PushSubContestBranches(contest.SubContestBranches, contestID);
         }
 
@@ -79,7 +88,6 @@ namespace Simhopp
         {
             throw new NotImplementedException();
         }
-
         #endregion
 
         #region Private methods
@@ -103,9 +111,30 @@ namespace Simhopp
             return lastInsertedId;
         }
 
-        private long PushDive(long branchID, long contestantID)
+        private void PushJudgeList(JudgeList judges, long contestID)
         {
-            throw new NotImplementedException();
+            foreach (var judge in judges)
+            {
+                PushJudge(judge, contestID);
+            }
+        }
+
+        private void PushJudge(Judge judge, long contestID)
+        {
+            // Table info
+            string table = "judge";
+
+            // Contest info
+            var personID = judge.ID;
+
+            // Build query
+            string query = $"INSERT INTO {table} ";
+            query += $"(personID, contestID) ";
+            query += $"VALUES(";
+            query += $"'{personID}','{contestID}'";
+            query += $")";
+
+            ExecuteQuery(query);
         }
 
         private void PushSubContestBranches(SubContestBranchList branches, long contestID)
@@ -116,7 +145,7 @@ namespace Simhopp
 
             foreach (var branch in branches)
             {
-                branchID = PushSubContestBranch(branch);
+                branchID = PushSubContestBranch(branch, contestID);
 
                 foreach (var contestant in branch.BranchContestants)
                 {
@@ -126,11 +155,11 @@ namespace Simhopp
                     {
                         foreach (var dive in diveList)
                         {
-                            diveID = PushDive(branchID, contestantID);
+                            diveID = PushDive(dive, branchID, contestantID);
 
                             foreach (var score in dive.Scores)
                             {
-                                PushScore(score, diveID);
+                                PushScore(score, diveID, contestID);
                             }
                         }
                     }
@@ -138,24 +167,87 @@ namespace Simhopp
             }
         }
 
-        private void PushScore(Score score, long diveID)
+        private long PushSubContestBranch(SubContestBranch branch, long contestID)
         {
-            throw new NotImplementedException();
+            // Table info
+            string table = "branch";
+
+            // Contest info
+            var name = branch.Name;
+
+            // Build query
+            string query = $"INSERT INTO {table} ";
+            query += $"(name, contestID) ";
+            query += $"VALUES(";
+            query += $"'{name}','{contestID}'";
+            query += $")";
+
+            return ExecuteQuery(query);
         }
 
-        private long PushSubContestBranch(SubContestBranch branch)
+        private long PushContestant(Contestant contestant, long branchID, long contestID)
         {
-            throw new NotImplementedException();
+            // Contestant info
+            var personID = contestant.ID;
+
+            // Build contestant query
+            string query = $"INSERT INTO contestant";
+            query += $"(personID, contestID) ";
+            query += $"VALUES(";
+            query += $"'{personID}','{contestID}'";
+            query += $")";
+
+            long contestantID = ExecuteQuery(query);
+
+            // Build branch_contestant query
+            query = $"INSERT INTO branch_contestant";
+            query += $"(contestantID, branchID) ";
+            query += $"VALUES(";
+            query += $"'{contestantID}','{branchID}'";
+            query += $")";
+
+            ExecuteQuery(query);
+
+            return contestantID;
         }
 
-        private void PushJudgeList()
+        private long PushDive(Dive dive, long branchID, long contestantID)
         {
-            throw new NotImplementedException();
+            // Table info
+            string table = "dive";
+
+            // Contest info
+            var name = dive.Name;
+            var code = dive.Code.Code;
+            var multiplier = dive.Code.Multiplier;
+
+            // Build query
+            string query = $"INSERT INTO {table} ";
+            query += $"(name, code, multiplier, contestantID, branchID) ";
+            query += $"VALUES(";
+            query += $"'{name}','{code}', '{multiplier}', '{contestantID}', '{branchID}'";
+            query += $")";
+
+            return ExecuteQuery(query);
         }
 
-        private long PushContestant(Contestant contestant, long branchID, long contestId)
+        private void PushScore(Score score, long diveID, long contestID)
         {
-            throw new NotImplementedException();
+            // Table info
+            string table = "point";
+
+            // Contest info
+            var point = score.Value;
+            var judgeID = score.Judge.ID;
+
+            // Build query
+            string query = $"INSERT INTO {table} ";
+            query += $"(point, diveID, judgeID, contestID) ";
+            query += $"VALUES(";
+            query += $"'{point}','{diveID}', '{judgeID}', '{contestID}'";
+            query += $")";
+
+            ExecuteQuery(query);
         }
         #endregion
     }

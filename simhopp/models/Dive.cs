@@ -24,6 +24,13 @@ namespace Simhopp
             this.Code = code;
             this.Scores = scores;
         }
+
+        public Dive(DiveCode code, ScoreList scores, string name)
+        {
+            Code = code;
+            Scores = scores;
+            Name = name;
+        }
         #endregion
 
         #region Properties
@@ -38,6 +45,10 @@ namespace Simhopp
             get;set;
         }
 
+        public string Name
+        {
+            get; set;
+        }
         #endregion
 
         #region Functions

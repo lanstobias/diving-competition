@@ -105,10 +105,10 @@ namespace Simhopp
             View.LabelStartDate.Text = StartDate.ToShortDateString();
             View.LabelEndDate.Text = EndDate.ToShortDateString();
 
-            UpdateListBoxes();
+            UpdateListViews();
 
         }
-        public void UpdateListBoxes()
+        public void UpdateListViews()
         {
             // globala listboxes från dbn
 
@@ -222,58 +222,73 @@ namespace Simhopp
 
         public void RemoveContestantFromContest()
         {
-            var contestantFirstName = View.ListViewLocalContestants.SelectedItems[0].SubItems[0].Text;
-
-            var contestantLastName = View.ListViewLocalContestants.SelectedItems[0].SubItems[1].Text;
-
-            Contestant contestantToBeRemoved = null;
-
-            foreach (var c in ContestContestantList)
+            try
             {
-                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
-                    contestantToBeRemoved = c;
+                var contestantFirstName = View.ListViewLocalContestants.SelectedItems[0].SubItems[0].Text;
+
+                var contestantLastName = View.ListViewLocalContestants.SelectedItems[0].SubItems[1].Text;
+
+                Contestant contestantToBeRemoved = null;
+
+                foreach (var c in ContestContestantList)
+                {
+                    if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
+                        contestantToBeRemoved = c;
+                }
+
+                ContestContestantList.Remove(contestantToBeRemoved);
+
+                UpdateListViews();
             }
 
-            ContestContestantList.Remove(contestantToBeRemoved);
-
-            UpdateListBoxes();
-
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en deltagare!");
+            }
         }
 
         public void AddContestantToContest()
         {
-            var contestantFirstName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[0].Text;
-            var contestantLastName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[1].Text;
-
-            bool isAdded = false;
-
-            foreach (var c in ContestContestantList)
+            try
             {
-                if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
-                {
-                    isAdded = true;
-                    MessageBox.Show("Deltagare är redan tillagd!");
-                    break;
-                }
-            }
+                var contestantFirstName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[0].Text;
+                var contestantLastName = View.ListViewGlobalContestants.SelectedItems[0].SubItems[1].Text;
 
-            Contestant contestantToBeAdded = null;
+                bool isAdded = false;
 
-            if (!isAdded)
-            {
-                foreach (var c in GlobalContestantList)
+                foreach (var c in ContestContestantList)
                 {
                     if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
                     {
-                        contestantToBeAdded = c;
+                        isAdded = true;
+                        MessageBox.Show("Deltagare är redan tillagd!");
+                        break;
                     }
                 }
 
-                if (contestantToBeAdded != null)
-                    ContestContestantList.Add(contestantToBeAdded);
+                Contestant contestantToBeAdded = null;
 
+                if (!isAdded)
+                {
+                    foreach (var c in GlobalContestantList)
+                    {
+                        if (String.Equals(c.FirstName, contestantFirstName) && String.Equals(c.LastName, contestantLastName))
+                        {
+                            contestantToBeAdded = c;
+                        }
+                    }
+
+                    if (contestantToBeAdded != null)
+                        ContestContestantList.Add(contestantToBeAdded);
+
+                }
+                UpdateListViews();
             }
-            UpdateListBoxes();
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en deltagare!");
+            }
+            
 
         }
 
@@ -298,7 +313,7 @@ namespace Simhopp
                     GlobalJudgeList.Add((Judge)p);
                 }
 
-                UpdateListBoxes();
+                UpdateListViews();
             }
         }
 
@@ -323,66 +338,83 @@ namespace Simhopp
                     GlobalContestantList.Add( (Contestant) p );
                 }
 
-                UpdateListBoxes();
+                UpdateListViews();
             }
         }
 
         public void RemoveJudgeFromContest()
         {
-            // Collect the chosen judge, gets the full name of the judge
-            var judgeFirstName = View.ListViewLocalJudges.SelectedItems[0].SubItems[0].Text;
-            var judgeLastName = View.ListViewLocalJudges.SelectedItems[0].SubItems[1].Text;
-
-            Judge judgeToBeRemoved = null;
-
-            // find the right Judge object
-            foreach (var j in ContestJudgeList)
+            try
             {
-                if (String.Equals(j.FirstName,judgeFirstName) && String.Equals(j.LastName,judgeLastName))
-                    judgeToBeRemoved = j;
+                // Collect the chosen judge, gets the full name of the judge
+                var judgeFirstName = View.ListViewLocalJudges.SelectedItems[0].SubItems[0].Text;
+                var judgeLastName = View.ListViewLocalJudges.SelectedItems[0].SubItems[1].Text;
+
+                Judge judgeToBeRemoved = null;
+
+                // find the right Judge object
+                foreach (var j in ContestJudgeList)
+                {
+                    if (String.Equals(j.FirstName, judgeFirstName) && String.Equals(j.LastName, judgeLastName))
+                        judgeToBeRemoved = j;
+                }
+
+                // remove from contestlist
+                ContestJudgeList.Remove(judgeToBeRemoved);
+
+                UpdateListViews();
             }
-
-            // remove from contestlist
-            ContestJudgeList.Remove(judgeToBeRemoved);
-
-            UpdateListBoxes();
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en domare!");
+            }
+           
         }
 
         public void AddJudgeToContest()
         {
-            // Collect the chosen judge
-            var judgeFirstName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[0].Text;
-
-            var judgeLastName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[1].Text;
-            bool isAdded = false;
-
-            // Check if judge is already added to the contest
-            foreach (var j in ContestJudgeList)
+            try
             {
-                if (String.Equals(j.FirstName,judgeFirstName) && String.Equals(j.LastName,judgeLastName))
-                {
-                    isAdded = true;
-                    MessageBox.Show("Domare är redan tillagd!");
-                    break;
-                }
-            }
+                // Collect the chosen judge
+                var judgeFirstName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[0].Text;
 
-            // Collect the correct Judge object
-            Judge judgeToBeAdded = null;
+                var judgeLastName = View.ListViewGlobalJudges.SelectedItems[0].SubItems[1].Text;
+                bool isAdded = false;
 
-            if (!isAdded)
-            {
-                foreach (var j in GlobalJudgeList)
+                // Check if judge is already added to the contest
+                foreach (var j in ContestJudgeList)
                 {
                     if (String.Equals(j.FirstName, judgeFirstName) && String.Equals(j.LastName, judgeLastName))
-                        judgeToBeAdded = j;
+                    {
+                        isAdded = true;
+                        MessageBox.Show("Domare är redan tillagd!");
+                        break;
+                    }
                 }
 
-                if (judgeToBeAdded != null)
-                    ContestJudgeList.Add(judgeToBeAdded);
+                // Collect the correct Judge object
+                Judge judgeToBeAdded = null;
+
+                if (!isAdded)
+                {
+                    foreach (var j in GlobalJudgeList)
+                    {
+                        if (String.Equals(j.FirstName, judgeFirstName) && String.Equals(j.LastName, judgeLastName))
+                            judgeToBeAdded = j;
+                    }
+
+                    if (judgeToBeAdded != null)
+                        ContestJudgeList.Add(judgeToBeAdded);
+                }
+
+                UpdateListViews();
+            }
+            
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Välj en domare!");
             }
 
-            UpdateListBoxes();
         }
 
         public void SetStartDate()

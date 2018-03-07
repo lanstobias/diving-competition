@@ -16,7 +16,10 @@ namespace DatabaseSpikes
 
             //DatabaseContest databaseContest = new DatabaseContest();
             //databaseContest.AddContestInfo();
-            
+
+            DatabaseContest databaseContest = new DatabaseContest();
+            databaseContest.AddContest();
+
             Console.ReadKey();
         }
     }
