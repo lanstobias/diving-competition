@@ -96,46 +96,57 @@ namespace Simhopp
 
         internal void AddToPointList(string client, string point)
         {
+            foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
+            {
+                if (clientItem.Text == client)
+                {
+                    clientItem.SubItems[1].Text = point;
+                    clientItem.SubItems[1].BackColor = System.Drawing.Color.Green;
+                }
+            }
+        }
+
+        public void CollectPoints()
+        {
             bool AllPointsCollected = true;
 
-            if(View.ListViewJudgeClients.Items.Count == CurrentContest.Judges.Count)
+            if (View.ListViewJudgeClients.Items.Count == CurrentContest.Judges.Count)
             {
                 ScoreList scoreList = new ScoreList();
                 foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
                 {
-                    if(clientItem.SubItems[1].ForeColor != System.Drawing.Color.Green)
+                    if (clientItem.SubItems[1].Text == "-1")
                     {
                         // någon av poängerna har inte kommit in
                         AllPointsCollected = false;
+                        break;
                     }
                     else
                     {
                         // Fixa: ta in rätt judge här
-                        foreach(var judge in CurrentContest.Judges)
+                        foreach (var judge in CurrentContest.Judges)
                         {
-                            if(judge.GetFullName() == client)
+                            if (judge.GetFullName() == clientItem.SubItems[0].Text)
+                            {
                                 scoreList.Add(new Score(Convert.ToDouble(clientItem.SubItems[1].Text), judge));
+                                break;
+                            }
+                                
                         }
-                        
+
                     }
                 }
 
                 if (AllPointsCollected)
                 {
                     GetSelectedDive().Scores = scoreList;
+                    MessageBox.Show("Scores GATHERED!");
                 }
-            }
-
-            foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
-            {
-                if (clientItem.Text == client)
+                else
                 {
-                    clientItem.SubItems[1].Text = point;
-                    clientItem.SubItems[1].ForeColor = System.Drawing.Color.Green;
+                    MessageBox.Show("Väntar fortfarande på poäng från domare!");
                 }
             }
-
-            
         }
 
         private void RemoveDive()
