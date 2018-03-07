@@ -83,7 +83,6 @@ namespace Simhopp
         {
             foreach (var client in ClientList)
             {
-                client.AcceptPoints = true;
                 client.StreamWriter?.WriteLine("give");
                 client.StreamWriter?.Flush();
             }
@@ -143,7 +142,7 @@ namespace Simhopp
                     ClientList.Add(client);
             }
 
-            contestPresenter.View?.Invoke(new InvokeJudgeListView(
+            contestPresenter?.View?.Invoke(new InvokeJudgeListView(
                 () => { contestPresenter.AddToClientListView(client); }
                 ));
            
@@ -151,7 +150,7 @@ namespace Simhopp
 
         public void UpdateJudgeListView()
         {
-            contestPresenter.View?.Invoke(new InvokeJudgeListView(
+            contestPresenter?.View?.Invoke(new InvokeJudgeListView(
                () => { contestPresenter.RefreshClientListView(); }
                ));
         }
