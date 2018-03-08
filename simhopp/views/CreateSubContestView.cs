@@ -113,96 +113,6 @@ namespace Simhopp
             this.textBoxName.Size = new System.Drawing.Size(154, 26);
             this.textBoxName.TabIndex = 1;
             // 
-            // buttonFinalizeContest
-            // 
-            this.buttonFinalizeContest.Location = new System.Drawing.Point(664, 531);
-            this.buttonFinalizeContest.Name = "buttonFinalizeContest";
-            this.buttonFinalizeContest.Size = new System.Drawing.Size(102, 66);
-            this.buttonFinalizeContest.TabIndex = 26;
-            this.buttonFinalizeContest.Text = "Skapa Tävling";
-            this.buttonFinalizeContest.UseVisualStyleBackColor = true;
-            this.buttonFinalizeContest.Click += new System.EventHandler(this.ButtonFinalizeContest_Click);
-            // 
-            // buttonAddSubContest
-            // 
-            this.buttonAddSubContest.Location = new System.Drawing.Point(474, 208);
-            this.buttonAddSubContest.Name = "buttonAddSubContest";
-            this.buttonAddSubContest.Size = new System.Drawing.Size(188, 35);
-            this.buttonAddSubContest.TabIndex = 25;
-            this.buttonAddSubContest.Text = "Lägg till deltävling";
-            this.buttonAddSubContest.UseVisualStyleBackColor = true;
-            this.buttonAddSubContest.Click += new System.EventHandler(this.buttonAddSubContest_Click);
-            // 
-            // buttonRemoveContestantFromSubContest
-            // 
-            this.buttonRemoveContestantFromSubContest.Location = new System.Drawing.Point(237, 458);
-            this.buttonRemoveContestantFromSubContest.Name = "buttonRemoveContestantFromSubContest";
-            this.buttonRemoveContestantFromSubContest.Size = new System.Drawing.Size(231, 45);
-            this.buttonRemoveContestantFromSubContest.TabIndex = 23;
-            this.buttonRemoveContestantFromSubContest.Text = "Ta bort från deltävling";
-            this.buttonRemoveContestantFromSubContest.UseVisualStyleBackColor = true;
-            this.buttonRemoveContestantFromSubContest.Click += new System.EventHandler(this.buttonRemoveContestantFromSubContest_Click);
-            // 
-            // buttonAddContestantToSubContest
-            // 
-            this.buttonAddContestantToSubContest.Location = new System.Drawing.Point(237, 408);
-            this.buttonAddContestantToSubContest.Name = "buttonAddContestantToSubContest";
-            this.buttonAddContestantToSubContest.Size = new System.Drawing.Size(231, 45);
-            this.buttonAddContestantToSubContest.TabIndex = 22;
-            this.buttonAddContestantToSubContest.Text = "Lägg till i deltävling";
-            this.buttonAddContestantToSubContest.UseVisualStyleBackColor = true;
-            this.buttonAddContestantToSubContest.Click += new System.EventHandler(this.buttonAddContestantToSubContest_Click);
-            // 
-            // labelContestName
-            // 
-            this.labelContestName.AutoSize = true;
-            this.labelContestName.Location = new System.Drawing.Point(39, 15);
-            this.labelContestName.Name = "labelContestName";
-            this.labelContestName.Size = new System.Drawing.Size(0, 20);
-            this.labelContestName.TabIndex = 28;
-            // 
-            // buttonUpdateSubContest
-            // 
-            this.buttonUpdateSubContest.Location = new System.Drawing.Point(474, 249);
-            this.buttonUpdateSubContest.Name = "buttonUpdateSubContest";
-            this.buttonUpdateSubContest.Size = new System.Drawing.Size(188, 34);
-            this.buttonUpdateSubContest.TabIndex = 29;
-            this.buttonUpdateSubContest.Text = "Uppdatera";
-            this.buttonUpdateSubContest.UseVisualStyleBackColor = true;
-            this.buttonUpdateSubContest.Visible = false;
-            this.buttonUpdateSubContest.Click += new System.EventHandler(this.buttonUpdateSubContest_Click);
-            // 
-            // buttonCancelEdit
-            // 
-            this.buttonCancelEdit.Location = new System.Drawing.Point(474, 289);
-            this.buttonCancelEdit.Name = "buttonCancelEdit";
-            this.buttonCancelEdit.Size = new System.Drawing.Size(188, 31);
-            this.buttonCancelEdit.TabIndex = 30;
-            this.buttonCancelEdit.Text = "Cancel";
-            this.buttonCancelEdit.UseVisualStyleBackColor = true;
-            this.buttonCancelEdit.Visible = false;
-            this.buttonCancelEdit.Click += new System.EventHandler(this.buttonCancelEdit_Click);
-            // 
-            // labelContestContestants
-            // 
-            this.labelContestContestants.AutoSize = true;
-            this.labelContestContestants.Location = new System.Drawing.Point(25, 339);
-            this.labelContestContestants.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelContestContestants.Name = "labelContestContestants";
-            this.labelContestContestants.Size = new System.Drawing.Size(135, 20);
-            this.labelContestContestants.TabIndex = 31;
-            this.labelContestContestants.Text = "Deltagare i tävling";
-            // 
-            // labelSubContestContestants
-            // 
-            this.labelSubContestContestants.AutoSize = true;
-            this.labelSubContestContestants.Location = new System.Drawing.Point(470, 337);
-            this.labelSubContestContestants.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelSubContestContestants.Name = "labelSubContestContestants";
-            this.labelSubContestContestants.Size = new System.Drawing.Size(156, 20);
-            this.labelSubContestContestants.TabIndex = 32;
-            this.labelSubContestContestants.Text = "Deltagare i deltävling";
-            // 
             // listViewContestContestants
             // 
             this.listViewContestContestants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -212,7 +122,7 @@ namespace Simhopp
             this.listViewContestContestants.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listViewContestContestants.Name = "listViewContestContestants";
             this.listViewContestContestants.Size = new System.Drawing.Size(186, 184);
-            this.listViewContestContestants.TabIndex = 33;
+            this.listViewContestContestants.TabIndex = 2;
             this.listViewContestContestants.UseCompatibleStateImageBehavior = false;
             this.listViewContestContestants.View = System.Windows.Forms.View.Details;
             // 
@@ -224,23 +134,15 @@ namespace Simhopp
             // 
             this.columnLastName.Text = "Efternamn";
             // 
-            // listViewSubContests
+            // buttonAddContestantToSubContest
             // 
-            this.listViewSubContests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnSubContest});
-            this.listViewSubContests.Location = new System.Drawing.Point(476, 16);
-            this.listViewSubContests.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listViewSubContests.Name = "listViewSubContests";
-            this.listViewSubContests.Size = new System.Drawing.Size(186, 184);
-            this.listViewSubContests.TabIndex = 34;
-            this.listViewSubContests.UseCompatibleStateImageBehavior = false;
-            this.listViewSubContests.View = System.Windows.Forms.View.Details;
-            this.listViewSubContests.SelectedIndexChanged += new System.EventHandler(this.listViewSubContests_SelectedIndexChanged);
-            // 
-            // columnSubContest
-            // 
-            this.columnSubContest.Text = "Deltävling";
-            this.columnSubContest.Width = 67;
+            this.buttonAddContestantToSubContest.Location = new System.Drawing.Point(237, 408);
+            this.buttonAddContestantToSubContest.Name = "buttonAddContestantToSubContest";
+            this.buttonAddContestantToSubContest.Size = new System.Drawing.Size(231, 45);
+            this.buttonAddContestantToSubContest.TabIndex = 3;
+            this.buttonAddContestantToSubContest.Text = "Lägg till i deltävling";
+            this.buttonAddContestantToSubContest.UseVisualStyleBackColor = true;
+            this.buttonAddContestantToSubContest.Click += new System.EventHandler(this.buttonAddContestantToSubContest_Click);
             // 
             // listViewSubContestConstestants
             // 
@@ -251,7 +153,7 @@ namespace Simhopp
             this.listViewSubContestConstestants.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listViewSubContestConstestants.Name = "listViewSubContestConstestants";
             this.listViewSubContestConstestants.Size = new System.Drawing.Size(186, 184);
-            this.listViewSubContestConstestants.TabIndex = 35;
+            this.listViewSubContestConstestants.TabIndex = 4;
             this.listViewSubContestConstestants.UseCompatibleStateImageBehavior = false;
             this.listViewSubContestConstestants.View = System.Windows.Forms.View.Details;
             // 
@@ -262,6 +164,104 @@ namespace Simhopp
             // columnHeader2
             // 
             this.columnHeader2.Text = "Efternamn";
+            // 
+            // buttonRemoveContestantFromSubContest
+            // 
+            this.buttonRemoveContestantFromSubContest.Location = new System.Drawing.Point(237, 458);
+            this.buttonRemoveContestantFromSubContest.Name = "buttonRemoveContestantFromSubContest";
+            this.buttonRemoveContestantFromSubContest.Size = new System.Drawing.Size(231, 45);
+            this.buttonRemoveContestantFromSubContest.TabIndex = 5;
+            this.buttonRemoveContestantFromSubContest.Text = "Ta bort från deltävling";
+            this.buttonRemoveContestantFromSubContest.UseVisualStyleBackColor = true;
+            this.buttonRemoveContestantFromSubContest.Click += new System.EventHandler(this.buttonRemoveContestantFromSubContest_Click);
+            // 
+            // buttonAddSubContest
+            // 
+            this.buttonAddSubContest.Location = new System.Drawing.Point(474, 208);
+            this.buttonAddSubContest.Name = "buttonAddSubContest";
+            this.buttonAddSubContest.Size = new System.Drawing.Size(188, 35);
+            this.buttonAddSubContest.TabIndex = 6;
+            this.buttonAddSubContest.Text = "Lägg till deltävling";
+            this.buttonAddSubContest.UseVisualStyleBackColor = true;
+            this.buttonAddSubContest.Click += new System.EventHandler(this.buttonAddSubContest_Click);
+            // 
+            // buttonFinalizeContest
+            // 
+            this.buttonFinalizeContest.Location = new System.Drawing.Point(664, 531);
+            this.buttonFinalizeContest.Name = "buttonFinalizeContest";
+            this.buttonFinalizeContest.Size = new System.Drawing.Size(102, 66);
+            this.buttonFinalizeContest.TabIndex = 7;
+            this.buttonFinalizeContest.Text = "Skapa Tävling";
+            this.buttonFinalizeContest.UseVisualStyleBackColor = true;
+            this.buttonFinalizeContest.Click += new System.EventHandler(this.ButtonFinalizeContest_Click);
+            // 
+            // listViewSubContests
+            // 
+            this.listViewSubContests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnSubContest});
+            this.listViewSubContests.Location = new System.Drawing.Point(476, 16);
+            this.listViewSubContests.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewSubContests.Name = "listViewSubContests";
+            this.listViewSubContests.Size = new System.Drawing.Size(186, 184);
+            this.listViewSubContests.TabIndex = 8;
+            this.listViewSubContests.UseCompatibleStateImageBehavior = false;
+            this.listViewSubContests.View = System.Windows.Forms.View.Details;
+            this.listViewSubContests.SelectedIndexChanged += new System.EventHandler(this.listViewSubContests_SelectedIndexChanged);
+            // 
+            // columnSubContest
+            // 
+            this.columnSubContest.Text = "Deltävling";
+            this.columnSubContest.Width = 67;
+            // 
+            // buttonUpdateSubContest
+            // 
+            this.buttonUpdateSubContest.Location = new System.Drawing.Point(474, 249);
+            this.buttonUpdateSubContest.Name = "buttonUpdateSubContest";
+            this.buttonUpdateSubContest.Size = new System.Drawing.Size(188, 34);
+            this.buttonUpdateSubContest.TabIndex = 9;
+            this.buttonUpdateSubContest.Text = "Uppdatera";
+            this.buttonUpdateSubContest.UseVisualStyleBackColor = true;
+            this.buttonUpdateSubContest.Visible = false;
+            this.buttonUpdateSubContest.Click += new System.EventHandler(this.buttonUpdateSubContest_Click);
+            // 
+            // buttonCancelEdit
+            // 
+            this.buttonCancelEdit.Location = new System.Drawing.Point(474, 289);
+            this.buttonCancelEdit.Name = "buttonCancelEdit";
+            this.buttonCancelEdit.Size = new System.Drawing.Size(188, 31);
+            this.buttonCancelEdit.TabIndex = 10;
+            this.buttonCancelEdit.Text = "Cancel";
+            this.buttonCancelEdit.UseVisualStyleBackColor = true;
+            this.buttonCancelEdit.Visible = false;
+            this.buttonCancelEdit.Click += new System.EventHandler(this.buttonCancelEdit_Click);
+            // 
+            // labelContestName
+            // 
+            this.labelContestName.AutoSize = true;
+            this.labelContestName.Location = new System.Drawing.Point(39, 15);
+            this.labelContestName.Name = "labelContestName";
+            this.labelContestName.Size = new System.Drawing.Size(0, 20);
+            this.labelContestName.TabIndex = 11;
+            // 
+            // labelContestContestants
+            // 
+            this.labelContestContestants.AutoSize = true;
+            this.labelContestContestants.Location = new System.Drawing.Point(25, 339);
+            this.labelContestContestants.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelContestContestants.Name = "labelContestContestants";
+            this.labelContestContestants.Size = new System.Drawing.Size(135, 20);
+            this.labelContestContestants.TabIndex = 12;
+            this.labelContestContestants.Text = "Deltagare i tävling";
+            // 
+            // labelSubContestContestants
+            // 
+            this.labelSubContestContestants.AutoSize = true;
+            this.labelSubContestContestants.Location = new System.Drawing.Point(470, 337);
+            this.labelSubContestContestants.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSubContestContestants.Name = "labelSubContestContestants";
+            this.labelSubContestContestants.Size = new System.Drawing.Size(156, 20);
+            this.labelSubContestContestants.TabIndex = 13;
+            this.labelSubContestContestants.Text = "Deltagare i deltävling";
             // 
             // CreateSubContestView
             // 
