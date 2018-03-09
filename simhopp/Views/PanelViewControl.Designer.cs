@@ -33,9 +33,9 @@
             // 
             // MainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(4, 4);
+            this.mainPanel.Location = new System.Drawing.Point(4, 20);
             this.mainPanel.Name = "MainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(513, 390);
+            this.mainPanel.Size = new System.Drawing.Size(513, 430);
             this.mainPanel.TabIndex = 0;
             // 
             // PanelViewControl
@@ -45,7 +45,7 @@
             this.Controls.Add(this.mainPanel);
             this.Location = new System.Drawing.Point(12, 12);
             this.Name = "PanelViewControl";
-            this.Size = new System.Drawing.Size(520, 397);
+            this.Size = new System.Drawing.Size(520, 410);
             this.ResumeLayout(false);
 
         }

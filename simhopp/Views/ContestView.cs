@@ -364,6 +364,7 @@ namespace Simhopp
             this.buttonCollectPoints.UseVisualStyleBackColor = true;
             this.buttonCollectPoints.Click += new System.EventHandler(this.buttonCollectPoints_Click);
             // 
+            this.buttonCollectPoints.Click += new System.EventHandler(this.buttonCollectPoints_Click);
             // ContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

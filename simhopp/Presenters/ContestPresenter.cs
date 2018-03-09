@@ -438,7 +438,12 @@ namespace Simhopp
 
         private void CloseContest()
         {
-            Server.RemoveIpFromServerList();
+            ResultView resultView = new ResultView();
+
+            ResultPresenter resultPresenter = new ResultPresenter(resultView, window, CurrentContest);
+
+            window.ChangePanel(resultView, View);
+
         }
         #endregion
     }

@@ -90,6 +90,7 @@
     <Compile Include="presenters\CreateSubContestPresenter.cs" />
     <Compile Include="presenters\JudgeDivePresenter.cs" />
     <Compile Include="presenters\MainMenuPresenter.cs" />
+    <Compile Include="presenters\ResultPresenter.cs" />
     <Compile Include="ProjectMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +148,9 @@
     <Compile Include="views\PanelViewControl.Designer.cs">
       <DependentUpon>PanelViewControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\ResultView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="AddPersonView.resx">
       <DependentUpon>AddPersonView.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\PanelViewControl.resx">
       <DependentUpon>PanelViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\ResultView.resx">
+      <DependentUpon>ResultView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

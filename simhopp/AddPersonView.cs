@@ -17,12 +17,16 @@ namespace Simhopp
     {
         public List<Person> PersonList { get; set; }
 
-        public AddPersonView()
+        public string Role { get; set; }
+
+        public AddPersonView(string role)
         {
             // Define the border style of the form to a dialog box (no resize).
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
             PersonList = new List<Person>();
+
+            this.Role = role;
 
             InitializeComponent();
         }
@@ -83,6 +87,32 @@ namespace Simhopp
 
             return false;
         }
+        
+        public void CreatePerson()
+        {
+            
+            if (CheckDataInput() == true)
+            {
+                int ID = 1;
+                Person p = null;
+
+                if (Role == "judge")
+                {
+                    p = new Judge(ID, TextBoxFirstName.Text, TextBoxLastName.Text, int.Parse(TextBoxAge.Text), TextBoxEmail.Text, ComboBoxGender.SelectedItem.ToString(),TextBoxSSN.Text, TextBoxAddress.Text);
+
+                }
+                else
+                {
+                    p = new Contestant(ID, TextBoxFirstName.Text, TextBoxLastName.Text, int.Parse(TextBoxAge.Text), TextBoxEmail.Text, ComboBoxGender.SelectedItem.ToString(), TextBoxSSN.Text, TextBoxAddress.Text);
+                }
+
+                PersonList.Add(p);
+
+                ClearInputs();
+
+                MessageBox.Show("En ny person har skapats!");
+            }
+        }
 
         public void ClearInputs()
         {
@@ -101,36 +131,15 @@ namespace Simhopp
             //Todo:
             // kolla så all data är korrekt (Program.StringFormatChecker(string)) och samla ihop det till ett nytt Person objekt.
             // lägg till i PersonList och resetta fälten för ny inmatning
-            if (CheckDataInput() == true)
-            {
-                int ID = 1;
-
-                Person p = new Judge(ID, TextBoxFirstName.Text, TextBoxLastName.Text, int.Parse(TextBoxAge.Text), TextBoxEmail.Text, ComboBoxGender.SelectedItem.ToString(), TextBoxAddress.Text);
-
-                PersonList.Add(p);
-
-                ClearInputs();
-
-                MessageBox.Show("En ny person har skapats!");
-            }
+            CreatePerson();
         }
 
         private void buttonSaveAndClose_Click(object sender, EventArgs e)
         {
             //Todo:
             // kolla så all data är korrekt (Program.StringFormatChecker(string)) och samla ihop det till ett nytt Person objekt.
-            if (CheckDataInput() == true)
-            {
-                int ID = 1;
 
-                Person p = new Judge(ID, TextBoxFirstName.Text, TextBoxLastName.Text, int.Parse(TextBoxAge.Text), TextBoxEmail.Text, ComboBoxGender.SelectedItem.ToString(), TextBoxAddress.Text);
-
-                PersonList.Add(p);
-
-                ClearInputs();
-
-                MessageBox.Show("En ny person har skapats!");
-            }
+            CreatePerson();
 
             this.DialogResult = DialogResult.OK;
             this.Close();
