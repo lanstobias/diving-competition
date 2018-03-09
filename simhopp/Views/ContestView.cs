@@ -363,6 +363,7 @@ namespace Simhopp
             // 
             this.columnPoints.Text = "Points";
             // 
+            this.buttonCollectPoints.Click += new System.EventHandler(this.buttonCollectPoints_Click);
             // ContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,6 +418,11 @@ namespace Simhopp
         private void buttonCollectPoints_Click(object sender, EventArgs e)
         {
             this.EventCollectPoints?.Invoke();
+        }
+
+        private void buttonCloseContest_Click(object sender, EventArgs e)
+        {
+            this.EventCloseContest?.Invoke();
         }
     }
 }
