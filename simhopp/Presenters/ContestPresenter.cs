@@ -129,7 +129,6 @@ namespace Simhopp
                 if (clientItem.Text == client)
                 {
                     clientItem.SubItems[1].Text = score;
-                    clientItem.SubItems[1].BackColor = System.Drawing.Color.Green;
                 }
             }
         }
@@ -160,7 +159,8 @@ namespace Simhopp
                         {
                             if (judge.GetFullName() == clientItem.SubItems[0].Text)
                             {
-                                scoreList.Add(new Score(Convert.ToDouble(clientItem.SubItems[1].Text), judge));
+                                double score = double.Parse(clientItem.SubItems[1].Text);
+                                scoreList.Add(new Score(score, judge));
                                 break;
                             }
                                 
@@ -438,6 +438,8 @@ namespace Simhopp
 
         private void CloseContest()
         {
+            Server.RemoveIpFromServerList();
+
             ResultView resultView = new ResultView();
 
             ResultPresenter resultPresenter = new ResultPresenter(resultView, window, CurrentContest);

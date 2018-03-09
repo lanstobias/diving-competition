@@ -29,7 +29,7 @@ namespace Simhopp
         public Thread ThreadClient { get; set; } = null;
         public TCPServer Server { get; set; } = null;
 
-        public double Points { get; set; } = -1;
+        public string Points { get; set; } = "-1";
 
         private ContestPresenter contestPresenter;
 
@@ -84,7 +84,7 @@ namespace Simhopp
                     }
                     else if (msg.StartsWith("Points "))
                     {
-                        Points = Convert.ToDouble(msg.Substring(7));
+                        Points = msg.Substring(7);
                         AddPointToList(Points.ToString());
 
                     }
