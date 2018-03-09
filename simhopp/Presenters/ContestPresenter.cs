@@ -191,7 +191,7 @@ namespace Simhopp
         {
             foreach (var client in Server.ClientList)
             {
-                client.Points = -1;
+                client.Points = "-1";
             }
 
             RefreshClientListView();
