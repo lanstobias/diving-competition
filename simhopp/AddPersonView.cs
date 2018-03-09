@@ -18,11 +18,16 @@ namespace Simhopp
         public List<Person> PersonList { get; set; }
 
         public AddPersonView()
+        public string Role { get; set; }
+
+        public AddPersonView(string role)
         {
             // Define the border style of the form to a dialog box (no resize).
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
             PersonList = new List<Person>();
+
+            this.Role = role;
 
             InitializeComponent();
         }
