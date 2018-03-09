@@ -63,8 +63,7 @@ namespace Simhopp
             
             try
             {
-
-                Int32 port = 27015;
+                Int32 port = 9058;
                 client = new TcpClient(ServerIp, port);
 
                 sr = new StreamReader(client.GetStream());
@@ -90,9 +89,9 @@ namespace Simhopp
                     
                 }
             }
-            catch (IOException ioe)
+            catch (SocketException)
             {
-                client?.Close();
+                MessageBox.Show("Kan inte ansluta till server...");
             }
             finally
             {

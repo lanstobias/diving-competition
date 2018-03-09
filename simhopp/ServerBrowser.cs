@@ -55,7 +55,7 @@ namespace Simhopp
         {
             List<string> serverList = new List<string>();
             WebClient request = new WebClient();
-            string url = "ftp://files.000webhost.com/simhoppServers.txt";
+            string url = "ftp://files.000webhost.com/simhopp/simhoppServers.txt";
 
             // Get network credentials.
             request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
