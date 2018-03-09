@@ -39,7 +39,7 @@ namespace Simhopp
         {
             if(ValidateData())
             {
-                double multiplier = double.Parse(View.TextBoxDiveMultiplier.Text);
+                double multiplier = double.Parse(View.TextBoxDiveMultiplier.Text, CultureInfo.InvariantCulture);
                 string code = View.TextBoxDiveCode.Text;
 
                 Dive diveTobeAdded = new Dive(new DiveCode(multiplier, code));
