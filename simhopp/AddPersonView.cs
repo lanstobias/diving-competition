@@ -17,7 +17,6 @@ namespace Simhopp
     {
         public List<Person> PersonList { get; set; }
 
-        public AddPersonView()
         public string Role { get; set; }
 
         public AddPersonView(string role)
