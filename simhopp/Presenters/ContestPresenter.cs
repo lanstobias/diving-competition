@@ -174,7 +174,6 @@ namespace Simhopp
                 if (AllPointsCollected)
                 {
                     GetSelectedDive().Scores = scoreList;
-                    MessageBox.Show("Scores GATHERED!");
 
                     CancelModifyDive();
                     ResetPoints();
