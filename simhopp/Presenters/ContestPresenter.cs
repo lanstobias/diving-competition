@@ -439,7 +439,12 @@ namespace Simhopp
 
         private void CloseContest()
         {
-            throw new NotImplementedException();
+            ResultView resultView = new ResultView();
+
+            ResultPresenter resultPresenter = new ResultPresenter(resultView, window, CurrentContest);
+
+            window.ChangePanel(resultView, View);
+
         }
         #endregion
     }
