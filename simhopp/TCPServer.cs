@@ -23,6 +23,8 @@ namespace Simhopp
 
         private ContestPresenter contestPresenter = null;
 
+        private string url = "ftp://files.000webhost.com/simhoppServers.txt";
+
         public static TCPServer Instance(ContestPresenter contest)
         {
             if (server == null)
@@ -69,53 +71,33 @@ namespace Simhopp
 
         private void AddIpToServerList()
         {
-            //// hämta hem serverlistan så detta ip kan läggas till
-            //WebClient webClient = new WebClient();
-
-
-            //// Loggin in på ftp:n
-            //webClient.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
-
-            //string hostList = "";
-
-            //try
-            //{
-            //    byte[] bytes = webClient.DownloadData(url);
-            //    hostList = System.Text.Encoding.UTF8.GetString(bytes);
-            //}
-            //catch (Exception e)
-            //{
-            //    MessageBox.Show("Could not connect to serverlist...");
-            //}
-
-
-            // Get the object used to communicate with the server.
-            string url = "ftp://files.000webhost.com/simhoppServers.txt";
-
+            // Create a ftp request on the chosen url
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
+
+            // use the AppendFile method
             request.Method = WebRequestMethods.Ftp.AppendFile;
             
-
-            // Get network credentials.
+            // Get ftp credentials.
             request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
 
-            // Write the ipLists bytes into the request stream.
             string finalHostList = HostInfo + "\n";
 
-            Stream request_stream = request.GetRequestStream();
-            byte[] bytes = Encoding.UTF8.GetBytes(finalHostList);
+            // Write the new host to the server list
+            using (Stream request_stream = request.GetRequestStream())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(finalHostList);
 
-            request.ContentLength = bytes.Length;
+                request.ContentLength = bytes.Length;
 
-            request_stream.Write(bytes, 0, bytes.Length);
-            request_stream.Close();
+                request_stream.Write(bytes, 0, bytes.Length);
+                request_stream.Close();
+            }
         }
 
         public void RemoveIpFromServerList()
         {
             // hämta hem serverlistan så detta ip kan tas bort till
             WebClient webClient = new WebClient();
-            string url = "ftp://files.000webhost.com/simhoppServers.txt";
 
             // Loggin in på ftp:n
             webClient.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
@@ -140,7 +122,7 @@ namespace Simhopp
             // Get network credentials.
             request.Credentials = webClient.Credentials;
 
-            // Write the ipLists bytes into the request stream.
+            // Find the start index of the host in the hostList
             int index = ipList.IndexOfAny(HostInfo.ToCharArray());
 
             ipList = ipList.Remove(index, (HostInfo + "\n").Length);
