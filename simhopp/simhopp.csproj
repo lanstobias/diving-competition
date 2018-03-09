@@ -110,6 +110,12 @@
     <Compile Include="models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerBrowser.Designer.cs">
+      <DependentUpon>ServerBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="TCPServer.cs" />
     <Compile Include="views\AddDiveView.cs">
       <SubType>Form</SubType>
@@ -162,6 +168,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ServerBrowser.resx">
+      <DependentUpon>ServerBrowser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\AddDiveView.resx">
       <DependentUpon>AddDiveView.cs</DependentUpon>
     </EmbeddedResource>
