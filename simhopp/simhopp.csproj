@@ -90,6 +90,7 @@
     <Compile Include="presenters\CreateSubContestPresenter.cs" />
     <Compile Include="presenters\JudgeDivePresenter.cs" />
     <Compile Include="presenters\MainMenuPresenter.cs" />
+    <Compile Include="presenters\ResultPresenter.cs" />
     <Compile Include="ProjectMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
