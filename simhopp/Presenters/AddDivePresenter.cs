@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,7 +56,7 @@ namespace Simhopp
             bool isCodeValid = CheckDataInput.StringCheckFormat(View.TextBoxDiveCode.Text);
 
             double multiplier = 0;
-            bool isMultiplierValid = double.TryParse(View.TextBoxDiveMultiplier.Text, out multiplier);
+            bool isMultiplierValid = double.TryParse(View.TextBoxDiveMultiplier.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out multiplier);
 
 
             if (!isCodeValid)
