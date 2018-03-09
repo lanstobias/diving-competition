@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -159,7 +160,7 @@ namespace Simhopp
                         {
                             if (judge.GetFullName() == clientItem.SubItems[0].Text)
                             {
-                                double score = double.Parse(clientItem.SubItems[1].Text);
+                                double score = double.Parse(clientItem.SubItems[1].Text, CultureInfo.InvariantCulture);
                                 scoreList.Add(new Score(score, judge));
                                 break;
                             }
