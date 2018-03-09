@@ -41,8 +41,7 @@ namespace Simhopp
 
             Initialize();
 
-            Server = new TCPServer();
-            Server.TieToContest(this);
+            Server = new TCPServer(this);
         }
         
         #endregion
@@ -439,7 +438,7 @@ namespace Simhopp
 
         private void CloseContest()
         {
-            throw new NotImplementedException();
+            Server.RemoveIpFromServerList();
         }
         #endregion
     }

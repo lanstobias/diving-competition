@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Simhopp
 {
@@ -18,21 +19,24 @@ namespace Simhopp
 
         public List<HandleClient> ClientList { get; set; } = new List<HandleClient>();
 
+        public string HostInfo { get; set; } = "";
+
         private ContestPresenter contestPresenter = null;
 
-        public static TCPServer Instance()
+        public static TCPServer Instance(ContestPresenter contest)
         {
             if (server == null)
-                server = new TCPServer();
+                server = new TCPServer(contest);
             return server;
         }
 
         private Int32 port = 27015;
-        private IPAddress localAddress = IPAddress.Parse("127.0.0.1");
+        private IPAddress serverIp = IPAddress.Parse("127.0.0.1");
+       
         private TcpListener tcpListener = null;
         private Thread threadServer = null;
 
-        public TCPServer()
+        public TCPServer(ContestPresenter contest)
         {
             // Hämta ditt ip
             IPHostEntry host;
@@ -41,11 +45,15 @@ namespace Simhopp
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    localAddress = ip;
+                    serverIp = ip;
                 }
             }
 
-            UploadServerList();
+            this.contestPresenter = contest;
+
+            HostInfo = contestPresenter.CurrentContest.Info.Name + ":" + serverIp.ToString();
+
+            AddIpToServerList();
 
             // kallar Instance()
             server = this;
@@ -57,24 +65,91 @@ namespace Simhopp
             threadServer.Start();
         }
 
-        private void UploadServerList()
+
+
+        private void AddIpToServerList()
         {
+            // hämta hem serverlistan så detta ip kan läggas till
+            WebClient webClient = new WebClient();
+            string url = "ftp://files.000webhost.com/simhoppServers.txt";
+
+            // Loggin in på ftp:n
+            webClient.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
+
+            string hostList = "";
+
+            try
+            {
+                byte[] bytes = webClient.DownloadData(url);
+                hostList = System.Text.Encoding.UTF8.GetString(bytes);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Could not connect to serverlist...");
+            }
+
 
             // Get the object used to communicate with the server.
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://files.000webhost.com/simhoppServers.txt");
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
             request.Method = WebRequestMethods.Ftp.UploadFile;
 
             // Get network credentials.
-            request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
+            request.Credentials = webClient.Credentials;
 
-            // Write the text's bytes into the request stream.
-            string text = localAddress.ToString();
-            request.ContentLength = text.Length;
+            // Write the ipLists bytes into the request stream.
+            hostList += HostInfo + "\n";
+
+            request.ContentLength = hostList.Length;
+            
 
             using (Stream request_stream = request.GetRequestStream())
             {
-                byte[] bytes = Encoding.UTF8.GetBytes(text);
-                request_stream.Write(bytes, 0, text.Length);
+                byte[] bytes = Encoding.UTF8.GetBytes(hostList);
+                request_stream.Write(bytes, 0, hostList.Length);
+                request_stream.Close();
+            }
+        }
+
+        public void RemoveIpFromServerList()
+        {
+            // hämta hem serverlistan så detta ip kan tas bort till
+            WebClient webClient = new WebClient();
+            string url = "ftp://files.000webhost.com/simhoppServers.txt";
+
+            // Loggin in på ftp:n
+            webClient.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
+
+            string ipList = "";
+
+            try
+            {
+                byte[] bytes = webClient.DownloadData(url);
+                ipList = System.Text.Encoding.UTF8.GetString(bytes);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Could not connect to serverlist...");
+            }
+
+
+            // Get the object used to communicate with the server.
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
+            request.Method = WebRequestMethods.Ftp.UploadFile;
+
+            // Get network credentials.
+            request.Credentials = webClient.Credentials;
+
+            // Write the ipLists bytes into the request stream.
+            int index = ipList.IndexOfAny(HostInfo.ToCharArray());
+
+            ipList = ipList.Remove(index, (HostInfo + "\n").Length);
+
+            request.ContentLength = ipList.Length;
+
+            using (Stream request_stream = request.GetRequestStream())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(ipList);
+                request_stream.Write(bytes, 0, ipList.Length);
                 request_stream.Close();
             }
         }
@@ -91,7 +166,7 @@ namespace Simhopp
 
         public void TieToContest(ContestPresenter contest)
         {
-            this.contestPresenter = contest;
+            //this.contestPresenter = contest;
         }
 
         // lyssnar efter clienter
@@ -99,7 +174,7 @@ namespace Simhopp
         {
             try
             {
-                tcpListener = new TcpListener(localAddress, port);
+                tcpListener = new TcpListener(serverIp, port);
                 tcpListener.Start();
 
                 while (true)
@@ -121,6 +196,8 @@ namespace Simhopp
             }
             finally
             {
+                RemoveIpFromServerList();
+                KillThreads();
                 tcpListener.Stop();
             }
         }
