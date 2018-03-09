@@ -41,8 +41,7 @@ namespace Simhopp
 
             Initialize();
 
-            Server = new TCPServer();
-            Server.TieToContest(this);
+            Server = new TCPServer(this);
         }
         
         #endregion
