@@ -190,6 +190,7 @@ namespace Simhopp
             threadServer.IsBackground = true;
             foreach (var client in ClientList)
             {
+                client.StreamWriter.WriteLine("quit");
                 client.ThreadClient.IsBackground = true;
             }
         }

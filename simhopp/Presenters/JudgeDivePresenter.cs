@@ -45,7 +45,7 @@ namespace Simhopp
             View.EventPointSliderChanged += SetPoints;
 
             threadClient = new Thread(RunClient);
-            threadClient.IsBackground = false;
+            threadClient.IsBackground = true;
             threadClient.Start();
         }
 
@@ -96,7 +96,11 @@ namespace Simhopp
             }
             finally
             {
+                sw.WriteLine("quit");
                 client?.Close();
+                MessageBox.Show("disconnected from server");
+
+                window.GoBackToStartMenu();
             }
         }
         

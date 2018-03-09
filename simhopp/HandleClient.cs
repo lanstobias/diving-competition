@@ -106,7 +106,7 @@ namespace Simhopp
                     }
 
                 }
-
+                Server.UpdateJudgeListView();
                 ThreadClient.Abort();
 
             }
