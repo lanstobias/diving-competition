@@ -38,6 +38,14 @@ namespace Simhopp
             this.Close();
         }
 
+        private void ConnectToIp(string ip)
+        {
+            ChosenIp = ip;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
         /// <summary>
         /// This method collects the list of servers/contest that are active from a file stored on a FTP.
         /// Right now it uses a free shitty ftp but this can easily be changed
@@ -47,7 +55,7 @@ namespace Simhopp
         {
             List<string> serverList = new List<string>();
             WebClient request = new WebClient();
-            string url = "ftp://files.000webhost.com/simhoppServers.txt";
+            string url = "ftp://files.000webhost.com/simhopp/simhoppServers.txt";
 
             // Get network credentials.
             request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
@@ -87,6 +95,18 @@ namespace Simhopp
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             Connect();
+        }
+
+        private void buttonConnectToIP_Click(object sender, EventArgs e)
+        {
+            
+            string input = InputDialog.OpenDialog("Skriv in det ip du vill ansluta till");
+
+            if (input != "" && CheckDataInput.IpAddressCheckFormat(input))
+                ConnectToIp(input);
+
+            else
+                MessageBox.Show("Inte en korrekt ip-adress!");
         }
     }
 }

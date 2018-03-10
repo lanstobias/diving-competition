@@ -95,7 +95,6 @@ namespace Simhopp
             finally
             {
                 Client.Close();
-                ThreadClient.IsBackground = true;
 
                 foreach (var client in Server.ClientList)
                 {
@@ -106,9 +105,8 @@ namespace Simhopp
                     }
 
                 }
-
+                Server.UpdateJudgeListView();
                 ThreadClient.Abort();
-
             }
 
         }
