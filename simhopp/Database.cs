@@ -33,20 +33,21 @@ namespace Simhopp
         {
             if (DBConnection.OpenConnection())
             {
-                MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
-
-                try
+                using (MySqlCommand command = new MySqlCommand(query, DBConnection.Connection))
                 {
-                    var queryResult = command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
-                }
+                    try
+                    {
+                        var queryResult = command.ExecuteNonQuery();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
 
-                DBConnection.CloseConnection();
+                    DBConnection.CloseConnection();
 
-                return command.LastInsertedId;
+                    return command.LastInsertedId;
+                }
             }
             else
             {
