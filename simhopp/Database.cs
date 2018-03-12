@@ -64,23 +64,24 @@ namespace Simhopp
         {
             if (DBConnection.OpenConnection())
             {
-                DataTable resultDataTable = new DataTable();
-
-                MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
-
-                try
+                using (DataTable resultDataTable = new DataTable())
                 {
-                    dataAdapter.Fill(resultDataTable);
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
-                }
+                    MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
+                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
 
-                DBConnection.CloseConnection();
+                    try
+                    {
+                        dataAdapter.Fill(resultDataTable);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
 
-                return resultDataTable;
+                    DBConnection.CloseConnection();
+
+                    return resultDataTable;
+                }
             }
             else
             {
