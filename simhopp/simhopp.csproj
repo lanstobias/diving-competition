@@ -56,6 +56,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputDialog.Designer.cs">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Auth.cs" />
     <Compile Include="models\PersonList.cs" />
     <Compile Include="AddPersonView.cs">
       <SubType>Form</SubType>
@@ -90,6 +97,7 @@
     <Compile Include="presenters\CreateSubContestPresenter.cs" />
     <Compile Include="presenters\JudgeDivePresenter.cs" />
     <Compile Include="presenters\MainMenuPresenter.cs" />
+    <Compile Include="presenters\ResultPresenter.cs" />
     <Compile Include="ProjectMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +118,12 @@
     <Compile Include="models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerBrowser.Designer.cs">
+      <DependentUpon>ServerBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="TCPServer.cs" />
     <Compile Include="views\AddDiveView.cs">
       <SubType>Form</SubType>
@@ -141,11 +155,17 @@
     <Compile Include="views\PanelViewControl.Designer.cs">
       <DependentUpon>PanelViewControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\ResultView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="AddPersonView.resx">
       <DependentUpon>AddPersonView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatePicker.resx">
       <DependentUpon>DatePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputDialog.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -162,6 +182,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ServerBrowser.resx">
+      <DependentUpon>ServerBrowser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\AddDiveView.resx">
       <DependentUpon>AddDiveView.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\PanelViewControl.resx">
       <DependentUpon>PanelViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\ResultView.resx">
+      <DependentUpon>ResultView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

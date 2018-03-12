@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,8 @@ namespace Simhopp
         {
             if(ValidateData())
             {
-                double multiplier = double.Parse(View.TextBoxDiveMultiplier.Text);
+                double multiplier = double.Parse(View.TextBoxDiveMultiplier.Text,CultureInfo.InvariantCulture);
+                double multiplier = double.Parse(View.TextBoxDiveMultiplier.Text, CultureInfo.InvariantCulture);
                 string code = View.TextBoxDiveCode.Text;
 
                 Dive diveTobeAdded = new Dive(new DiveCode(multiplier, code));
@@ -55,7 +57,7 @@ namespace Simhopp
             bool isCodeValid = CheckDataInput.StringCheckFormat(View.TextBoxDiveCode.Text);
 
             double multiplier = 0;
-            bool isMultiplierValid = double.TryParse(View.TextBoxDiveMultiplier.Text, out multiplier);
+            bool isMultiplierValid = double.TryParse(View.TextBoxDiveMultiplier.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out multiplier);
 
 
             if (!isCodeValid)

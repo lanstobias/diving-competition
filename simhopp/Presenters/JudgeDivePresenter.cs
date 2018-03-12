@@ -27,8 +27,12 @@ namespace Simhopp
 
         private TcpClient client = null;
 
-        public JudgeDivePresenter(JudgeDiveView view, ProjectMainWindow window)
+        private string ServerIp { get; set; }
+
+        public JudgeDivePresenter(JudgeDiveView view, ProjectMainWindow window, string serverIp)
         {
+            this.ServerIp = serverIp;
+
             LoginForm login = new LoginForm();
             if(login.ShowDialog() == DialogResult.OK)
             {
@@ -41,7 +45,7 @@ namespace Simhopp
             View.EventPointSliderChanged += SetPoints;
 
             threadClient = new Thread(RunClient);
-            threadClient.IsBackground = false;
+            threadClient.IsBackground = true;
             threadClient.Start();
         }
 
@@ -59,11 +63,8 @@ namespace Simhopp
             
             try
             {
-                // get ip from public serverlist
-                string ip = GetServerIp();
-
-                Int32 port = 27015;
-                client = new TcpClient(ip, port);
+                Int32 port = 9058;
+                client = new TcpClient(ServerIp, port);
 
                 sr = new StreamReader(client.GetStream());
                 sw = new StreamWriter(client.GetStream());
@@ -88,13 +89,17 @@ namespace Simhopp
                     
                 }
             }
-            catch (IOException ioe)
+            catch (SocketException)
             {
-                client?.Close();
+                MessageBox.Show("Kan inte ansluta till server...");
             }
             finally
             {
+                sw.WriteLine("quit");
                 client?.Close();
+                MessageBox.Show("disconnected from server");
+
+                window.GoBackToStartMenu();
             }
         }
         
@@ -118,34 +123,6 @@ namespace Simhopp
                 ));
         }
 
-        /// <summary>
-        /// This method collects the servers ip from a serverList stored on a FTP.
-        /// Right now it uses a free shitty ftp but this can be easily changed
-        /// </summary>
-        /// <returns>A string containing the IP</returns>
-        public string GetServerIp()
-        {
-            WebClient request = new WebClient();
-            string url = "ftp://files.000webhost.com/simhoppServers.txt";
-
-            // Get network credentials.
-            request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
-
-            string ip = "127.0.0.1";
-
-            try
-            {
-                byte[] bytes = request.DownloadData(url);
-                ip = System.Text.Encoding.UTF8.GetString(bytes);
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("Could not connect to serverlist...");
-                client?.Close();
-                window.GoBackToPreviuosPanel();
-            }
-
-            return ip;
-        }
+        
     }
 }

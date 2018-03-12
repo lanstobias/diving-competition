@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,12 +40,13 @@ namespace Simhopp
             View.EventRequestPoints += RequestPointsFromJudges;
             View.EventCollectPoints += CollectPoints;
 
+            window.FormClosing += ParentForm_FormClosing;
+
             Initialize();
 
-            Server = new TCPServer();
-            Server.TieToContest(this);
+            Server = new TCPServer(this);
         }
-        
+
         #endregion
 
         #region Functions
@@ -61,6 +63,16 @@ namespace Simhopp
             View.LabelStartDate.Text = CurrentContest.Info.StartDate.ToShortDateString();
             View.LabelEndDate.Text = CurrentContest.Info.EndDate.ToShortDateString();
 
+        }
+
+        private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ShutdownServer();
+        }
+
+        private void ShutdownServer()
+        {
+            Server.Kill();
         }
 
         /// <summary>
@@ -130,7 +142,6 @@ namespace Simhopp
                 if (clientItem.Text == client)
                 {
                     clientItem.SubItems[1].Text = score;
-                    clientItem.SubItems[1].BackColor = System.Drawing.Color.Green;
                 }
             }
         }
@@ -161,7 +172,8 @@ namespace Simhopp
                         {
                             if (judge.GetFullName() == clientItem.SubItems[0].Text)
                             {
-                                scoreList.Add(new Score(Convert.ToDouble(clientItem.SubItems[1].Text), judge));
+                                double score = double.Parse(clientItem.SubItems[1].Text, CultureInfo.InvariantCulture);
+                                scoreList.Add(new Score(score, judge));
                                 break;
                             }
                                 
@@ -174,7 +186,6 @@ namespace Simhopp
                 if (AllPointsCollected)
                 {
                     GetSelectedDive().Scores = scoreList;
-                    MessageBox.Show("Scores GATHERED!");
 
                     CancelModifyDive();
                     ResetPoints();
@@ -192,7 +203,7 @@ namespace Simhopp
         {
             foreach (var client in Server.ClientList)
             {
-                client.Points = -1;
+                client.Points = "-1";
             }
 
             RefreshClientListView();
@@ -439,7 +450,14 @@ namespace Simhopp
 
         private void CloseContest()
         {
-            throw new NotImplementedException();
+            Server.RemoveIpFromServerList();
+
+            ResultView resultView = new ResultView();
+
+            ResultPresenter resultPresenter = new ResultPresenter(resultView, window, CurrentContest);
+
+            window.ChangePanel(resultView, View);
+
         }
         #endregion
     }

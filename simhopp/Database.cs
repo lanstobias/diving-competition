@@ -6,6 +6,10 @@ using MySql.Data.MySqlClient;
 
 namespace Simhopp
 {
+    /// <summary>
+    /// The main Database class.
+    /// Contains all methods for pushing and fetching objects to the database.
+    /// </summary>
     public class Database
     {
         #region Properties
@@ -19,24 +23,31 @@ namespace Simhopp
         #endregion
 
         #region Public methods
+        // TODO: Döp om osv..
+        /// <summary>
+        /// Execute a SQL-query against a open MySQL connection.
+        /// </summary>
+        /// <param name="query">SQL-query string.</param>
+        /// <returns>Last inserted ID.</returns>
         public long ExecuteQuery(string query)
         {
             if (DBConnection.OpenConnection())
             {
-                MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
-
-                try
+                using (MySqlCommand command = new MySqlCommand(query, DBConnection.Connection))
                 {
-                    var queryResult = command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
-                }
+                    try
+                    {
+                        var queryResult = command.ExecuteNonQuery();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
 
-                DBConnection.CloseConnection();
+                    DBConnection.CloseConnection();
 
-                return command.LastInsertedId;
+                    return command.LastInsertedId;
+                }
             }
             else
             {
@@ -44,27 +55,33 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Fetches rows from a MySQL database with 
+        /// </summary>
+        /// <param name="query">SQL-query string.</param>
+        /// <returns>The fetched rows as a DataTable object.</returns>
         public DataTable ExecuteFetch(string query)
         {
             if (DBConnection.OpenConnection())
             {
-                DataTable resultDataTable = new DataTable();
-
-                MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
-
-                try
+                using (DataTable resultDataTable = new DataTable())
                 {
-                    dataAdapter.Fill(resultDataTable);
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
-                }
+                    MySqlCommand command = new MySqlCommand(query, DBConnection.Connection);
+                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
 
-                DBConnection.CloseConnection();
+                    try
+                    {
+                        dataAdapter.Fill(resultDataTable);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
 
-                return resultDataTable;
+                    DBConnection.CloseConnection();
+
+                    return resultDataTable;
+                }
             }
             else
             {
@@ -72,6 +89,10 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Pushes a contest object to a MySQL database.
+        /// </summary>
+        /// <param name="contest">A contest object.</param>
         public void PushContest(Contest contest)
         {
             long contestID = PushContestInfo(contest.Info);
@@ -79,6 +100,10 @@ namespace Simhopp
             PushSubContestBranches(contest.SubContestBranches, contestID);
         }
 
+        /// <summary>
+        /// Pushes a person object to the databse.
+        /// </summary>
+        /// <param name="person">Person object.</param>
         public void StorePerson(Person person)
         {
             // Table info
@@ -104,6 +129,10 @@ namespace Simhopp
             ExecuteQuery(query);
         }
 
+        /// <summary>
+        /// Fetch a list of persons from a MySQL database.
+        /// </summary>
+        /// <returns>A list of the fetched person objects.</returns>
         public List<Person> FetchPersons()
         {
             string query = "SELECT id, firstName, lastName, age, gender FROM person;";
@@ -125,6 +154,42 @@ namespace Simhopp
             }
 
             return personList;
+        }
+
+        /// <summary>
+        /// Check if the email belongs to one person in the database.
+        /// </summary>
+        /// <param name="email"></param>
+        public bool MailBelongsToOnePerson(string email)
+        {
+            string query = $"SELECT id FROM person WHERE email=\"{email}\";";
+
+            DataTable dataTable = new DataTable();
+            dataTable = ExecuteFetch(query);
+
+            if (dataTable.Rows.Count == 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public string FetchPasswordFromEmail(string email)
+        {
+            if (MailBelongsToOnePerson(email))
+            {
+                string query = "SELECT `password` FROM `password` WHERE personID = (";
+                query += "SELECT id FROM person ";
+                query += $"WHERE email = \"{email}\"";
+                query += ");";
+
+                DataTable dataTable = ExecuteFetch(query);
+
+                return dataTable.Rows[0]["password"].ToString();
+            }
+
+            throw new Exception("Email does not belong to one person.");
         }
         #endregion
 

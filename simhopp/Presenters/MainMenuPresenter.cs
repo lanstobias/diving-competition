@@ -32,9 +32,16 @@ namespace Simhopp
 
         private void GotoJudgeContest()
         {
-            JudgeDiveView judgeView = new JudgeDiveView();
-            JudgeDivePresenter presenter = new JudgeDivePresenter(judgeView, window);
-            window.ChangePanel(judgeView, (PanelViewControl)View);
+            ServerBrowser serverBrowser = new ServerBrowser();
+
+            if(serverBrowser.ShowDialog() == DialogResult.OK)
+            {
+                JudgeDiveView judgeView = new JudgeDiveView();
+                JudgeDivePresenter presenter = new JudgeDivePresenter(judgeView, window, serverBrowser.ChosenIp);
+                window.ChangePanel(judgeView, (PanelViewControl)View);
+            }
+
+            
         }
     }
 }

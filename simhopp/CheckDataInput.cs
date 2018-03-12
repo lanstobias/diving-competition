@@ -38,5 +38,16 @@ namespace Simhopp
 
             return false;
         }
+
+        public static bool IpAddressCheckFormat(string ipAddress)
+        {
+            Regex regex = new Regex(@"^[0-9.]+$");
+
+            if (regex.IsMatch(ipAddress))
+                return true;
+
+            return false;
+        }
+
     }
 }
