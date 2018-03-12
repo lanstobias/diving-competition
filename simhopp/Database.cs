@@ -175,6 +175,11 @@ namespace Simhopp
             return false;
         }
 
+        /// <summary>
+        /// Fetch a password that belongs to the given email address.
+        /// </summary>
+        /// <param name="email">The email that belongs to the password.</param>
+        /// <returns>The password as a string.</returns>
         public string FetchPasswordFromEmail(string email)
         {
             if (MailBelongsToOnePerson(email))
