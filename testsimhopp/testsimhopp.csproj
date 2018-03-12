@@ -66,6 +66,7 @@
     <Compile Include="AuthTests.cs" />
     <Compile Include="CheckDataInputTest.cs" />
     <Compile Include="DatabaseConnectionTests.cs" />
+    <Compile Include="DatabaseTests.cs" />
     <Compile Include="DiveTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubContestBranchTests.cs" />
