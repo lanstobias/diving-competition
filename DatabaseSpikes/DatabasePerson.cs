@@ -64,5 +64,23 @@ namespace DatabaseSpikes
             // Return empty list
             return new List<Judge>();
         }
+
+        public List<Contestant> FetchContestants()
+        {
+            Database database = new Database();
+
+            try
+            {
+                List<Contestant> contestantList = database.FetchContestants();
+                return contestantList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+            }
+
+            // Return empty list
+            return new List<Contestant>();
+        }
     }
 }
