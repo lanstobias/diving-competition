@@ -196,6 +196,16 @@ namespace Simhopp
 
             throw new Exception("Email does not belong to one person.");
         }
+
+        private DataTable FetchSpecifiedRole(string roleName)
+        {
+            string query = "SELECT person.id, person.firstName, person.lastName, person.age, person.gender ";
+            query += "FROM person ";
+            query += "INNER JOIN role_person ON person.id = role_person.personID ";
+            query += $"WHERE role_person.roleID = (SELECT id FROM role WHERE `name`=\"{roleName}\");";
+
+            return ExecuteFetch(query);
+        }
         #endregion
 
         #region Private methods
