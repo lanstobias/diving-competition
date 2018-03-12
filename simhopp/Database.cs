@@ -174,6 +174,23 @@ namespace Simhopp
 
             return false;
         }
+
+        public string FetchPasswordFromEmail(string email)
+        {
+            if (MailBelongsToOnePerson(email))
+            {
+                string query = "SELECT `password` FROM `password` WHERE personID = (";
+                query += "SELECT id FROM person ";
+                query += $"WHERE email = \"{email}\"";
+                query += ");";
+
+                DataTable dataTable = ExecuteFetch(query);
+
+                return dataTable.Rows[0]["password"].ToString();
+            }
+
+            throw new Exception("Email does not belong to one person.");
+        }
         #endregion
 
         #region Private methods
