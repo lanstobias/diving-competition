@@ -13,6 +13,8 @@ namespace Simhopp
     public partial class ProjectMainWindow : Form
     {
         #region Properties
+        MainMenuView mainMenuView;
+        MainMenuPresenter mainMenuPresenter;
         private PanelViewControl CurrentView { get; set; }
 
         // Holds the previous view that was presented.
@@ -23,11 +25,17 @@ namespace Simhopp
         {
             InitializeComponent();
 
-            MainMenuView mainMenuView = new MainMenuView();
-            MainMenuPresenter mainMenuPresenter = new MainMenuPresenter(mainMenuView,this);
+            mainMenuView = new MainMenuView();
+            mainMenuPresenter = new MainMenuPresenter(mainMenuView,this);
 
             this.Controls.Add(mainMenuView);
 
+        }
+
+        public void GoBackToStartMenu()
+        {
+            this.Controls.Remove(CurrentView);
+            this.Controls.Add(mainMenuView);
         }
 
         /// <summary>

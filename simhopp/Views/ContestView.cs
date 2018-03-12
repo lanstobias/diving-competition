@@ -376,6 +376,7 @@ namespace Simhopp
             this.ResumeLayout(false);
 
         }
+
         private void buttonModifyDive_Click(object sender, EventArgs e)
         {
             this.EventModifyDive?.Invoke();

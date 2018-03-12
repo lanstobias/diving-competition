@@ -40,11 +40,13 @@ namespace Simhopp
             View.EventRequestPoints += RequestPointsFromJudges;
             View.EventCollectPoints += CollectPoints;
 
+            window.FormClosing += ParentForm_FormClosing;
+
             Initialize();
 
             Server = new TCPServer(this);
         }
-        
+
         #endregion
 
         #region Functions
@@ -61,6 +63,16 @@ namespace Simhopp
             View.LabelStartDate.Text = CurrentContest.Info.StartDate.ToShortDateString();
             View.LabelEndDate.Text = CurrentContest.Info.EndDate.ToShortDateString();
 
+        }
+
+        private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ShutdownServer();
+        }
+
+        private void ShutdownServer()
+        {
+            Server.Kill();
         }
 
         /// <summary>
@@ -174,7 +186,6 @@ namespace Simhopp
                 if (AllPointsCollected)
                 {
                     GetSelectedDive().Scores = scoreList;
-                    MessageBox.Show("Scores GATHERED!");
 
                     CancelModifyDive();
                     ResetPoints();
