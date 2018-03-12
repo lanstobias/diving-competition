@@ -60,6 +60,8 @@ namespace Simhopp
             FillWithData();
         }
 
+
+
         #endregion
 
         #region Methods
@@ -102,12 +104,29 @@ namespace Simhopp
 
             View.ButtonUpdateSubContest.Visible = false;
             View.ButtonCancelEdit.Visible = false;
+            View.ButtonRemoveSubContest.Visible = false;
             View.ButtonAddSubContest.Enabled = true;
         }
 
         private void CancelEditOfSubContest()
         {
             SubContestContestants.Clear();
+            ClearInputs();
+        }
+        /// <summary>
+        /// Removes a selected subcontest
+        /// </summary>
+        private void RemoveSubContest()
+        {
+            if (SelectedSubContest != null)
+            {
+
+                SubContests.Remove(SelectedSubContest);
+
+                View.ListViewSubContests.Items.Remove(View.ListViewSubContests.SelectedItems[0]);
+
+            }
+
             ClearInputs();
         }
 
@@ -177,6 +196,7 @@ namespace Simhopp
                         // display the edit buttons and make add button unclickable
                         View.ButtonUpdateSubContest.Visible = true;
                         View.ButtonCancelEdit.Visible = true;
+                        View.ButtonRemoveSubContest.Visible = true;
                         View.ButtonAddSubContest.Enabled = false;
                     }
                 }
