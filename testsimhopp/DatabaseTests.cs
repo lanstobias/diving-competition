@@ -27,5 +27,29 @@ namespace Simhopp.Tests
             Assert.IsTrue(shouldBeTrue);
             Assert.IsFalse(shouldBeFalse);
         }
+
+        [TestMethod()]
+        public void FetchPasswordFromEmailTest()
+        {
+            // Assign
+            Database database = new Database();
+            string givenEmail = "pelle@gmail.com";
+            string notExistingEmail = "noEmail@noemail.com";
+            string correctPassword = "cbfdac6008f9cab4083784cbd1874f76618d2a97";
+            string incorrectPassword = "incorrectpassword";
+
+            // Act
+            string returnedPassword = database.FetchPasswordFromEmail(givenEmail);
+
+            // Assert
+            try
+            {
+                string shouldThrowException = database.FetchPasswordFromEmail(notExistingEmail);
+                Assert.Fail();
+            } catch (Exception) { }
+
+            Assert.AreEqual(correctPassword, returnedPassword);
+            Assert.AreNotEqual(incorrectPassword, returnedPassword);
+        }
     }
 }
