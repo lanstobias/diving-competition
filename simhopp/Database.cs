@@ -229,6 +229,29 @@ namespace Simhopp
 
             return judgeList;
         }
+
+        public List<Contestant> FetchContestants()
+        {
+            DataTable contestantDataTable = FetchSpecifiedRole("contestant");
+
+            // Iterate through data table and add too person list
+            List<Contestant> contestantList = new List<Contestant>();
+            foreach (DataRow row in contestantDataTable.Rows)
+            {
+                Contestant contestant = new Contestant
+                {
+                    ID = Int32.Parse(row["id"].ToString()),
+                    FirstName = row["firstName"].ToString(),
+                    LastName = row["lastName"].ToString(),
+                    Age = Int32.Parse(row["age"].ToString()),
+                    Gender = row["gender"].ToString()
+                };
+
+                contestantList.Add(contestant);
+            }
+
+            return contestantList;
+        }
         #endregion
 
         #region Private methods
