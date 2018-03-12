@@ -6,6 +6,10 @@ using MySql.Data.MySqlClient;
 
 namespace Simhopp
 {
+    /// <summary>
+    /// The main Database class.
+    /// Contains all methods for pushing and fetching objects to the database.
+    /// </summary>
     public class Database
     {
         #region Properties
@@ -19,6 +23,12 @@ namespace Simhopp
         #endregion
 
         #region Public methods
+        // TODO: Döp om osv..
+        /// <summary>
+        /// Execute a SQL-query against a open MySQL connection.
+        /// </summary>
+        /// <param name="query">SQL-query string.</param>
+        /// <returns>Last inserted ID.</returns>
         public long ExecuteQuery(string query)
         {
             if (DBConnection.OpenConnection())
@@ -44,6 +54,11 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Fetches rows from a MySQL database with 
+        /// </summary>
+        /// <param name="query">SQL-query string.</param>
+        /// <returns>The fetched rows as a DataTable object.</returns>
         public DataTable ExecuteFetch(string query)
         {
             if (DBConnection.OpenConnection())
@@ -72,6 +87,10 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Pushes a contest object to a MySQL database.
+        /// </summary>
+        /// <param name="contest">A contest object.</param>
         public void PushContest(Contest contest)
         {
             long contestID = PushContestInfo(contest.Info);
@@ -79,6 +98,10 @@ namespace Simhopp
             PushSubContestBranches(contest.SubContestBranches, contestID);
         }
 
+        /// <summary>
+        /// Pushes a person object to the databse.
+        /// </summary>
+        /// <param name="person">Person object.</param>
         public void StorePerson(Person person)
         {
             // Table info
@@ -104,6 +127,10 @@ namespace Simhopp
             ExecuteQuery(query);
         }
 
+        /// <summary>
+        /// Fetch a list of persons from a MySQL database.
+        /// </summary>
+        /// <returns>A list of the fetched person objects.</returns>
         public List<Person> FetchPersons()
         {
             string query = "SELECT id, firstName, lastName, age, gender FROM person;";
