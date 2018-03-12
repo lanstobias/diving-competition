@@ -12,5 +12,9 @@ namespace Simhopp
         {
         }
 
+        public bool PasswordsMatch(string hashedGivenPassword, string hashedStoredPassword)
+        {
+            return (hashedGivenPassword == hashedStoredPassword);
+        }
     }
 }
