@@ -13,6 +13,7 @@ namespace Simhopp
     public delegate void DelegateSubContestSelected();
     public delegate void DelegateUpdateSubContest();
     public delegate void DelegateCancelEdit();
+    public delegate void DelegateRemoveSubContest();
 
     public interface ICreateSubContestView
     {
@@ -23,6 +24,7 @@ namespace Simhopp
         event DelegateSubContestSelected EventSubContestSelected;
         event DelegateUpdateSubContest EventUpdateSubContest;
         event DelegateCancelEdit EventCancelEdit;
+        event DelegateRemoveSubContest EventRemoveSubContest;
 
     }
 }

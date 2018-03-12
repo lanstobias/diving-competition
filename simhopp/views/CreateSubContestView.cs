@@ -37,6 +37,7 @@ namespace Simhopp
         public event DelegateSubContestSelected EventSubContestSelected;
         public event DelegateUpdateSubContest EventUpdateSubContest;
         public event DelegateCancelEdit EventCancelEdit;
+        public event DelegateRemoveSubContest EventRemoveSubContest;
 
         public TextBox TextBoxName { get { return textBoxName; } set { textBoxName = value; } }
 
@@ -280,6 +281,7 @@ namespace Simhopp
             this.buttonRemoveSubContest.Text = "Ta bort";
             this.buttonRemoveSubContest.UseVisualStyleBackColor = true;
             this.buttonRemoveSubContest.Visible = false;
+            this.buttonRemoveSubContest.Click += new System.EventHandler(this.buttonRemoveSubContest_Click);
             // 
             // CreateSubContestView
             // 
@@ -331,6 +333,11 @@ namespace Simhopp
         private void listViewSubContests_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.EventSubContestSelected?.Invoke();
+        }
+
+        private void buttonRemoveSubContest_Click(object sender, EventArgs e)
+        {
+            this.EventRemoveSubContest?.Invoke();
         }
     }
 }

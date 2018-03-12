@@ -53,6 +53,8 @@ namespace Simhopp
             View.EventSubContestSelected += SubContestSelected;
             View.EventUpdateSubContest += UpdateSubContest;
             View.EventCancelEdit += CancelEditOfSubContest;
+            View.EventRemoveSubContest += RemoveSubContest;
+
 
             // temp 
             FillWithData();
