@@ -105,27 +105,25 @@ namespace Simhopp
             // labelSubContestName
             // 
             this.labelSubContestName.AutoSize = true;
-            this.labelSubContestName.Location = new System.Drawing.Point(26, 52);
-            this.labelSubContestName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.labelSubContestName.Location = new System.Drawing.Point(39, 80);
+            this.labelSubContestName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSubContestName.Name = "labelSubContestName";
-            this.labelSubContestName.Size = new System.Drawing.Size(85, 13);
+            this.labelSubContestName.Size = new System.Drawing.Size(126, 20);
             this.labelSubContestName.TabIndex = 0;
             this.labelSubContestName.Text = "Deltävlingsnamn";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(29, 67);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxName.Location = new System.Drawing.Point(44, 103);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(104, 20);
+            this.textBoxName.Size = new System.Drawing.Size(154, 26);
             this.textBoxName.TabIndex = 1;
             // 
             // listViewContestContestants
             // 
-            this.buttonFinalizeContest.Location = new System.Drawing.Point(443, 345);
-            this.buttonFinalizeContest.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonFinalizeContest.Location = new System.Drawing.Point(664, 531);
             this.buttonFinalizeContest.Name = "buttonFinalizeContest";
-            this.buttonFinalizeContest.Size = new System.Drawing.Size(68, 43);
+            this.buttonFinalizeContest.Size = new System.Drawing.Size(102, 66);
             this.buttonFinalizeContest.TabIndex = 26;
             this.buttonFinalizeContest.Text = "Skapa Tävling";
             this.buttonFinalizeContest.UseVisualStyleBackColor = true;
@@ -143,10 +141,9 @@ namespace Simhopp
             // 
             // columnFirstName
             // 
-            this.buttonAddSubContest.Location = new System.Drawing.Point(186, 10);
-            this.buttonAddSubContest.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddSubContest.Location = new System.Drawing.Point(474, 208);
             this.buttonAddSubContest.Name = "buttonAddSubContest";
-            this.buttonAddSubContest.Size = new System.Drawing.Size(125, 23);
+            this.buttonAddSubContest.Size = new System.Drawing.Size(188, 35);
             this.buttonAddSubContest.TabIndex = 25;
             this.buttonAddSubContest.Text = "Lägg till deltävling";
             this.buttonAddSubContest.UseVisualStyleBackColor = true;
@@ -155,10 +152,9 @@ namespace Simhopp
             // 
             // columnLastName
             // 
-            this.buttonRemoveContestantFromSubContest.Location = new System.Drawing.Point(158, 298);
-            this.buttonRemoveContestantFromSubContest.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonRemoveContestantFromSubContest.Location = new System.Drawing.Point(237, 458);
             this.buttonRemoveContestantFromSubContest.Name = "buttonRemoveContestantFromSubContest";
-            this.buttonRemoveContestantFromSubContest.Size = new System.Drawing.Size(154, 29);
+            this.buttonRemoveContestantFromSubContest.Size = new System.Drawing.Size(231, 45);
             this.buttonRemoveContestantFromSubContest.TabIndex = 23;
             this.buttonRemoveContestantFromSubContest.Text = "Ta bort från deltävling";
             this.buttonRemoveContestantFromSubContest.UseVisualStyleBackColor = true;
@@ -167,10 +163,9 @@ namespace Simhopp
             // 
             // buttonAddContestantToSubContest
             // 
-            this.buttonAddContestantToSubContest.Location = new System.Drawing.Point(158, 265);
-            this.buttonAddContestantToSubContest.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddContestantToSubContest.Location = new System.Drawing.Point(237, 408);
             this.buttonAddContestantToSubContest.Name = "buttonAddContestantToSubContest";
-            this.buttonAddContestantToSubContest.Size = new System.Drawing.Size(154, 29);
+            this.buttonAddContestantToSubContest.Size = new System.Drawing.Size(231, 45);
             this.buttonAddContestantToSubContest.TabIndex = 22;
             this.buttonAddContestantToSubContest.Size = new System.Drawing.Size(231, 45);
             this.buttonAddContestantToSubContest.TabIndex = 3;
@@ -181,10 +176,9 @@ namespace Simhopp
             // listViewSubContestConstestants
             // 
             this.labelContestName.AutoSize = true;
-            this.labelContestName.Location = new System.Drawing.Point(26, 10);
-            this.labelContestName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelContestName.Location = new System.Drawing.Point(39, 15);
             this.labelContestName.Name = "labelContestName";
-            this.labelContestName.Size = new System.Drawing.Size(0, 13);
+            this.labelContestName.Size = new System.Drawing.Size(0, 20);
             this.labelContestName.TabIndex = 28;
             this.listViewSubContestConstestants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -255,10 +249,9 @@ namespace Simhopp
             // 
             // buttonUpdateSubContest
             // 
-            this.buttonUpdateSubContest.Location = new System.Drawing.Point(187, 37);
-            this.buttonUpdateSubContest.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonUpdateSubContest.Location = new System.Drawing.Point(474, 249);
             this.buttonUpdateSubContest.Name = "buttonUpdateSubContest";
-            this.buttonUpdateSubContest.Size = new System.Drawing.Size(125, 22);
+            this.buttonUpdateSubContest.Size = new System.Drawing.Size(188, 34);
             this.buttonUpdateSubContest.TabIndex = 29;
             this.buttonUpdateSubContest.Size = new System.Drawing.Size(188, 34);
             this.buttonUpdateSubContest.TabIndex = 9;
@@ -269,10 +262,9 @@ namespace Simhopp
             // 
             // buttonCancelEdit
             // 
-            this.buttonCancelEdit.Location = new System.Drawing.Point(187, 95);
-            this.buttonCancelEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCancelEdit.Location = new System.Drawing.Point(474, 289);
             this.buttonCancelEdit.Name = "buttonCancelEdit";
-            this.buttonCancelEdit.Size = new System.Drawing.Size(125, 20);
+            this.buttonCancelEdit.Size = new System.Drawing.Size(188, 31);
             this.buttonCancelEdit.TabIndex = 30;
             this.buttonCancelEdit.Size = new System.Drawing.Size(188, 31);
             this.buttonCancelEdit.TabIndex = 10;
@@ -292,9 +284,10 @@ namespace Simhopp
             // labelContestContestants
             // 
             this.labelContestContestants.AutoSize = true;
-            this.labelContestContestants.Location = new System.Drawing.Point(17, 220);
+            this.labelContestContestants.Location = new System.Drawing.Point(25, 339);
+            this.labelContestContestants.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelContestContestants.Name = "labelContestContestants";
-            this.labelContestContestants.Size = new System.Drawing.Size(92, 13);
+            this.labelContestContestants.Size = new System.Drawing.Size(135, 20);
             this.labelContestContestants.TabIndex = 31;
             this.labelContestContestants.Size = new System.Drawing.Size(135, 20);
             this.labelContestContestants.TabIndex = 12;
@@ -303,9 +296,10 @@ namespace Simhopp
             // labelSubContestContestants
             // 
             this.labelSubContestContestants.AutoSize = true;
-            this.labelSubContestContestants.Location = new System.Drawing.Point(313, 219);
+            this.labelSubContestContestants.Location = new System.Drawing.Point(470, 337);
+            this.labelSubContestContestants.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSubContestContestants.Name = "labelSubContestContestants";
-            this.labelSubContestContestants.Size = new System.Drawing.Size(106, 13);
+            this.labelSubContestContestants.Size = new System.Drawing.Size(156, 20);
             this.labelSubContestContestants.TabIndex = 32;
             this.labelSubContestContestants.Text = "Deltagare i deltävling";
             // 
@@ -314,9 +308,10 @@ namespace Simhopp
             this.listViewContestContestants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnFirstName,
             this.columnLastName});
-            this.listViewContestContestants.Location = new System.Drawing.Point(19, 237);
+            this.listViewContestContestants.Location = new System.Drawing.Point(29, 364);
+            this.listViewContestContestants.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listViewContestContestants.Name = "listViewContestContestants";
-            this.listViewContestContestants.Size = new System.Drawing.Size(125, 121);
+            this.listViewContestContestants.Size = new System.Drawing.Size(186, 184);
             this.listViewContestContestants.TabIndex = 33;
             this.listViewContestContestants.UseCompatibleStateImageBehavior = false;
             this.listViewContestContestants.View = System.Windows.Forms.View.Details;
@@ -333,9 +328,10 @@ namespace Simhopp
             // 
             this.listViewSubContests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnSubContest});
-            this.listViewSubContests.Location = new System.Drawing.Point(317, 10);
+            this.listViewSubContests.Location = new System.Drawing.Point(476, 16);
+            this.listViewSubContests.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listViewSubContests.Name = "listViewSubContests";
-            this.listViewSubContests.Size = new System.Drawing.Size(125, 121);
+            this.listViewSubContests.Size = new System.Drawing.Size(186, 184);
             this.listViewSubContests.TabIndex = 34;
             this.listViewSubContests.UseCompatibleStateImageBehavior = false;
             this.listViewSubContests.View = System.Windows.Forms.View.Details;
@@ -351,9 +347,10 @@ namespace Simhopp
             this.listViewSubContestConstestants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.listViewSubContestConstestants.Location = new System.Drawing.Point(317, 237);
+            this.listViewSubContestConstestants.Location = new System.Drawing.Point(476, 364);
+            this.listViewSubContestConstestants.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listViewSubContestConstestants.Name = "listViewSubContestConstestants";
-            this.listViewSubContestConstestants.Size = new System.Drawing.Size(125, 121);
+            this.listViewSubContestConstestants.Size = new System.Drawing.Size(186, 184);
             this.listViewSubContestConstestants.TabIndex = 35;
             this.listViewSubContestConstestants.UseCompatibleStateImageBehavior = false;
             this.listViewSubContestConstestants.View = System.Windows.Forms.View.Details;
@@ -375,17 +372,20 @@ namespace Simhopp
             this.buttonRemoveSubContest.Text = "Ta bort";
             this.buttonRemoveSubContest.UseVisualStyleBackColor = true;
             this.buttonRemoveSubContest.Visible = false;
+<<<<<<< HEAD
             this.buttonRemoveSubContest.Click += new System.EventHandler(this.buttonRemoveSubContest_Click);
             // 
             this.labelSubContestContestants.Size = new System.Drawing.Size(156, 20);
             this.labelSubContestContestants.TabIndex = 13;
             this.labelSubContestContestants.Text = "Deltagare i deltävling";
             // 
+=======
+>>>>>>> parent of 5b666fc... Omflyttning av knappar i CreateSubContestView
             // CreateSubContestView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.Name = "CreateSubContestView";
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
