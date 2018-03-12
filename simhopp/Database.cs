@@ -155,6 +155,25 @@ namespace Simhopp
 
             return personList;
         }
+
+        /// <summary>
+        /// Check if the email belongs to one person in the database.
+        /// </summary>
+        /// <param name="email"></param>
+        public bool MailBelongsToOnePerson(string email)
+        {
+            string query = $"SELECT id FROM person WHERE email=\"{email}\";";
+
+            DataTable dataTable = new DataTable();
+            dataTable = ExecuteFetch(query);
+
+            if (dataTable.Rows.Count == 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
         #endregion
 
         #region Private methods
