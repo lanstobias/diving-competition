@@ -206,6 +206,29 @@ namespace Simhopp
 
             return ExecuteFetch(query);
         }
+
+        public List<Judge> FetchJudges()
+        {
+            DataTable judgeDataTable = FetchSpecifiedRole("judge");
+
+            // Iterate through data table and add too person list
+            List<Judge> judgeList = new List<Judge>();
+            foreach (DataRow row in judgeDataTable.Rows)
+            {
+                Judge judge = new Judge
+                {
+                    ID = Int32.Parse(row["id"].ToString()),
+                    FirstName = row["firstName"].ToString(),
+                    LastName = row["lastName"].ToString(),
+                    Age = Int32.Parse(row["age"].ToString()),
+                    Gender = row["gender"].ToString()
+                };
+
+                judgeList.Add(judge);
+            }
+
+            return judgeList;
+        }
         #endregion
 
         #region Private methods
