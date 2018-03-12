@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthTests.cs" />
     <Compile Include="CheckDataInputTest.cs" />
     <Compile Include="DatabaseConnectionTests.cs" />
     <Compile Include="DiveTest.cs" />
