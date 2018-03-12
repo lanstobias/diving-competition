@@ -27,6 +27,7 @@ namespace Simhopp
         private ColumnHeader columnSubContest;
         private ColumnHeader columnFirstName;
         private ColumnHeader columnLastName;
+        private Button buttonRemoveSubContest;
         private Label labelSubContestName;
 
         public event DelegateAddContestantToSubContest EventAddContestantToSubContest;
@@ -46,6 +47,8 @@ namespace Simhopp
         public Button ButtonCancelEdit { get { return buttonCancelEdit; } set { buttonCancelEdit = value; } }
 
         public Button ButtonAddSubContest { get { return buttonAddSubContest; } set { buttonAddSubContest = value; } }
+
+        public Button ButtonRemoveSubContest { get { return buttonRemoveSubContest; } set { buttonRemoveSubContest = value; } }
 
         public ListView ListViewContestContestants { get { return listViewContestContestants; } set { listViewContestContestants = value; } }
         public ListView ListViewSubContestContestants { get { return listViewSubContestConstestants; } set { listViewSubContestConstestants = value; } }
@@ -76,11 +79,13 @@ namespace Simhopp
             this.listViewSubContestConstestants = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonRemoveSubContest = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.buttonRemoveSubContest);
             this.mainPanel.Controls.Add(this.listViewSubContestConstestants);
             this.mainPanel.Controls.Add(this.listViewSubContests);
             this.mainPanel.Controls.Add(this.listViewContestContestants);
@@ -263,6 +268,15 @@ namespace Simhopp
             // 
             this.columnHeader2.Text = "Efternamn";
             // 
+            // buttonRemoveSubContest
+            // 
+            this.buttonRemoveSubContest.Location = new System.Drawing.Point(186, 67);
+            this.buttonRemoveSubContest.Name = "buttonRemoveSubContest";
+            this.buttonRemoveSubContest.Size = new System.Drawing.Size(125, 23);
+            this.buttonRemoveSubContest.TabIndex = 36;
+            this.buttonRemoveSubContest.Text = "Ta bort";
+            this.buttonRemoveSubContest.UseVisualStyleBackColor = true;
+            this.buttonRemoveSubContest.Visible = false;
             // CreateSubContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
