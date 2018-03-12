@@ -69,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubContestBranchTests.cs" />
     <Compile Include="TestContest.cs" />
+    <Compile Include="HelpersTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
