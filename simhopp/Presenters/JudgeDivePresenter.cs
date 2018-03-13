@@ -117,9 +117,21 @@ namespace Simhopp
         /// Enable/disable ButtonGiveScore
         /// </summary>
         private void ToggleButtonSend()
+        /// <summary>
+        /// Takes information about a contest and puts said info into the correct labels in JudgeDiveView
+        /// </summary>
+        /// <param name="info">Need to be formated as such: Lyon Diving Event|Lyon|Venue</param>
+        private void UpdateContestInfo(string info)
         {
-            View.Invoke(new InvokeButtonGiveScore(
-                () => { View.ButtonGiveScore.Enabled = !(View.ButtonGiveScore.Enabled); }
+            string[] infoArr = info.Split('|');
+
+            View.Invoke(new InvokeJudgeDiveView(
+                () =>
+                {
+                    View.LabelContestName.Text = infoArr[0];
+                    View.LabelCity.Text = infoArr[1];
+                    View.LabelVenue.Text = infoArr[2];
+                }
                 ));
         }
 
