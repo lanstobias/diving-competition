@@ -33,6 +33,8 @@ namespace Simhopp
 
             CurrentContest = contest;
 
+            SubContests = CurrentContest.SubContestBranches;
+
             this.View.LabelContestName.Text = CurrentContest.Info.Name;
 
             //Fyller på contestants från contest
@@ -78,8 +80,6 @@ namespace Simhopp
 
             View.ListViewSubContests.Items.Add(testSubContest.Name);
 
-            CurrentContest.SubContestBranches.Add(testSubContest);
-
             // clear the inputs
             SubContestContestants.Clear();
             ClearInputs();
@@ -102,10 +102,7 @@ namespace Simhopp
 
             SelectedSubContest = null;
 
-            View.ButtonUpdateSubContest.Visible = false;
-            View.ButtonCancelEdit.Visible = false;
-            View.ButtonRemoveSubContest.Visible = false;
-            View.ButtonAddSubContest.Enabled = true;
+            ToggleButtons(false);
         }
 
         private void CancelEditOfSubContest()
@@ -113,6 +110,18 @@ namespace Simhopp
             SubContestContestants.Clear();
             ClearInputs();
         }
+
+        /// <summary>
+        /// Toggles various buttons on/off
+        /// </summary>
+        private void ToggleButtons(bool toggle)
+        {
+            View.ButtonUpdateSubContest.Visible = toggle;
+            View.ButtonCancelEdit.Visible = toggle;
+            View.ButtonRemoveSubContest.Visible = toggle;
+            View.ButtonAddSubContest.Enabled = !toggle;
+        }
+
         /// <summary>
         /// Removes a selected subcontest
         /// </summary>
@@ -120,11 +129,9 @@ namespace Simhopp
         {
             if (SelectedSubContest != null)
             {
-
                 SubContests.Remove(SelectedSubContest);
 
                 View.ListViewSubContests.Items.Remove(View.ListViewSubContests.SelectedItems[0]);
-
             }
 
             ClearInputs();
@@ -191,13 +198,9 @@ namespace Simhopp
 
                             View.ListViewSubContestContestants.Items.Add(listViewSubContestContestantsItems);
                         }
-
-
-                        // display the edit buttons and make add button unclickable
-                        View.ButtonUpdateSubContest.Visible = true;
-                        View.ButtonCancelEdit.Visible = true;
-                        View.ButtonRemoveSubContest.Visible = true;
-                        View.ButtonAddSubContest.Enabled = false;
+                        
+                        // open up the edit buttons.
+                        ToggleButtons(true);
                     }
                 }
 
@@ -209,6 +212,10 @@ namespace Simhopp
             }
 
         }
+
+        /// <summary>
+        /// Move on to the ContestView
+        /// </summary>
         private void FinalizeContest()
         {
             ContestView contestView = new ContestView();
@@ -216,9 +223,11 @@ namespace Simhopp
             window.ChangePanel(contestView, View);
         }
 
+        /// <summary>
+        /// Add a new subcontest to the contest
+        /// </summary>
         private void AddSubContest()
         {
-            //kolla så korrekt data
             bool isDataValid = false;
 
             if (CheckDataInput.StringCheckFormat(View.TextBoxName.Text))
@@ -244,8 +253,6 @@ namespace Simhopp
            
                 SubContests.Add(subContestBranch);
                 View.ListViewSubContests.Items.Add(subContestBranch.Name);
-
-                CurrentContest.SubContestBranches.Add(subContestBranch);
 
                 // clear the inputs
                 SubContestContestants.Clear();
@@ -285,6 +292,9 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Add a contestant to the new SubContest that is being created
+        /// </summary>
         private void AddContestantToSubContest()
         {
             try
