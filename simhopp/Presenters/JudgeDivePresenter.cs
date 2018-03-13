@@ -31,14 +31,9 @@ namespace Simhopp
 
         public JudgeDivePresenter(JudgeDiveView view, ProjectMainWindow window, string serverIp)
         {
-            this.ServerIp = serverIp;
-
-            LoginForm login = new LoginForm();
-            if(login.ShowDialog() == DialogResult.OK)
-            {
-                JudgeName = login.JudgeName;
-            }
-            this.View = view;
+            ServerIp = serverIp;
+            JudgeName = window.CurrentJudge.GetFullName();
+            View = view;
             this.window = window;
 
             View.EventGiveScore += GiveScore;
