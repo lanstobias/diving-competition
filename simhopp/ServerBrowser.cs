@@ -22,6 +22,8 @@ namespace Simhopp
         {
             InitializeComponent();
 
+            this.StartPosition = FormStartPosition.CenterParent;
+
             ServerList = GetServerList();
 
             foreach(var host in ServerList)

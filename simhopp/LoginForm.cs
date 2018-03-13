@@ -16,6 +16,7 @@ namespace Simhopp
         public LoginForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace Simhopp
 {
     /// <summary>
     /// Simple formdialog to handle string input from the user.
-    /// Since OpenDialog methods are static usage is very simple.
+    /// Since OpenDialog methods are static, usage is very simple.
     /// Example usage:
     /// string input = InputDialog.OpenDialog("Enter your name");
     /// </summary>
@@ -21,6 +21,8 @@ namespace Simhopp
         public InputDialog()
         {
             InitializeComponent();
+
+            this.StartPosition = FormStartPosition.CenterParent;
         }
 
         /// <summary>
