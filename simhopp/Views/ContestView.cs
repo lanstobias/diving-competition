@@ -135,7 +135,7 @@ namespace Simhopp
             // comboBoxSubContests
             // 
             this.comboBoxSubContests.FormattingEnabled = true;
-            this.comboBoxSubContests.Location = new System.Drawing.Point(27, 94);
+            this.comboBoxSubContests.Location = new System.Drawing.Point(27, 125);
             this.comboBoxSubContests.Name = "comboBoxSubContests";
             this.comboBoxSubContests.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSubContests.TabIndex = 0;
@@ -144,7 +144,7 @@ namespace Simhopp
             // labelSubContests
             // 
             this.labelSubContests.AutoSize = true;
-            this.labelSubContests.Location = new System.Drawing.Point(27, 78);
+            this.labelSubContests.Location = new System.Drawing.Point(27, 109);
             this.labelSubContests.Name = "labelSubContests";
             this.labelSubContests.Size = new System.Drawing.Size(63, 13);
             this.labelSubContests.TabIndex = 12;
@@ -181,7 +181,7 @@ namespace Simhopp
             // labelCity
             // 
             this.labelCity.AutoSize = true;
-            this.labelCity.Location = new System.Drawing.Point(157, 20);
+            this.labelCity.Location = new System.Drawing.Point(27, 54);
             this.labelCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCity.Name = "labelCity";
             this.labelCity.Size = new System.Drawing.Size(29, 13);
@@ -191,7 +191,7 @@ namespace Simhopp
             // labelArena
             // 
             this.labelArena.AutoSize = true;
-            this.labelArena.Location = new System.Drawing.Point(208, 21);
+            this.labelArena.Location = new System.Drawing.Point(27, 70);
             this.labelArena.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelArena.Name = "labelArena";
             this.labelArena.Size = new System.Drawing.Size(40, 13);
@@ -201,7 +201,7 @@ namespace Simhopp
             // labelStartDate
             // 
             this.labelStartDate.AutoSize = true;
-            this.labelStartDate.Location = new System.Drawing.Point(279, 21);
+            this.labelStartDate.Location = new System.Drawing.Point(154, 54);
             this.labelStartDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelStartDate.Name = "labelStartDate";
             this.labelStartDate.Size = new System.Drawing.Size(56, 13);
@@ -211,7 +211,7 @@ namespace Simhopp
             // labelEndDate
             // 
             this.labelEndDate.AutoSize = true;
-            this.labelEndDate.Location = new System.Drawing.Point(363, 21);
+            this.labelEndDate.Location = new System.Drawing.Point(154, 70);
             this.labelEndDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEndDate.Name = "labelEndDate";
             this.labelEndDate.Size = new System.Drawing.Size(52, 13);
@@ -364,7 +364,6 @@ namespace Simhopp
             this.buttonCollectPoints.UseVisualStyleBackColor = true;
             this.buttonCollectPoints.Click += new System.EventHandler(this.buttonCollectPoints_Click);
             // 
-            this.buttonCollectPoints.Click += new System.EventHandler(this.buttonCollectPoints_Click);
             // ContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
