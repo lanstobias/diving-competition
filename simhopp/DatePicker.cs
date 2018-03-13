@@ -17,6 +17,7 @@ namespace Simhopp
         public DatePicker()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent;
             SelectedDate = new DateTime();
         }
 
