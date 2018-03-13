@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Simhopp
 {
-    public delegate void InvokeButtonGiveScore();
+    public delegate void InvokeJudgeDiveView();
     public class JudgeDivePresenter
     {
         public string JudgeName { get; set; }
@@ -70,24 +70,27 @@ namespace Simhopp
                 sw = new StreamWriter(client.GetStream());
 
                 // Send a message to the server that u wish to login 
-                sw.WriteLine("Login " + JudgeName);
+                sw.WriteLine("Login:" + JudgeName);
                 sw.Flush();
 
-                String str = "";
+                String msg = "";
                 
-                while (!str.StartsWith("quit"))
+                while (!msg.StartsWith("quit"))
                 {
 
                     // read what the server has to say
-                    str = sr.ReadLine();
+                    msg = sr.ReadLine();
                     
-                    
-                    if (str.StartsWith("give"))
+                    if(msg.StartsWith("contest:"))
                     {
-                        ToggleButtonSend();
+                        UpdateContestInfo(msg.Substring(8));
                     }
-                    
+                    else if (msg.StartsWith("give"))
+                    {
+                        ToggleGiveScore();
+                    }
                 }
+                
             }
             catch (SocketException)
             {
@@ -95,7 +98,9 @@ namespace Simhopp
             }
             finally
             {
-                sw.WriteLine("quit");
+                if(client.Connected)
+                    sw.WriteLine("quit");
+
                 client?.Close();
                 MessageBox.Show("disconnected from server");
 
@@ -108,15 +113,35 @@ namespace Simhopp
         /// </summary>
         private void GiveScore()
         {
-            ToggleButtonSend();
-            sw.WriteLine("Points " + Points);
+            ToggleGiveScore();
+            sw.WriteLine("Points:" + Points);
             sw.Flush();
         }
 
         /// <summary>
         /// Enable/disable ButtonGiveScore
         /// </summary>
-        private void ToggleButtonSend()
+        private void ToggleGiveScore()
+        {
+            View.Invoke(new InvokeJudgeDiveView(
+                () => 
+                {
+                    View.ButtonGiveScore.Enabled = !(View.ButtonGiveScore.Enabled);
+
+                    if (View.ButtonGiveScore.Enabled)
+                    {
+                        View.LabelRequest.Text = "Poäng begärd av huvuddomare";
+                        View.LabelRequest.ForeColor = System.Drawing.Color.DarkGreen;
+                    }
+                    else
+                    {
+                        View.LabelRequest.Text = "Bedömning stängd";
+                        View.LabelRequest.ForeColor = System.Drawing.Color.DarkRed;
+                    }
+                }
+                ));
+        }
+
         /// <summary>
         /// Takes information about a contest and puts said info into the correct labels in JudgeDiveView
         /// </summary>

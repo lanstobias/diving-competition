@@ -77,12 +77,12 @@ namespace Simhopp
                     {
                         break;
                     }
-                    else if (msg.StartsWith("Login "))
+                    else if (msg.StartsWith("Login:"))
                     {
                         ClientName = msg.Substring(6);
                         Server.UpdateJudgeListView();
                     }
-                    else if (msg.StartsWith("Points "))
+                    else if (msg.StartsWith("Points:"))
                     {
                         Points = msg.Substring(7);
                         AddPointToList(Points.ToString());
