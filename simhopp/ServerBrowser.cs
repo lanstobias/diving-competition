@@ -108,5 +108,19 @@ namespace Simhopp
             else
                 MessageBox.Show("Inte en korrekt ip-adress!");
         }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            listBoxServers.Items.Clear();
+
+            foreach (var server in GetServerList())
+                listBoxServers.Items.Add(server);
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }

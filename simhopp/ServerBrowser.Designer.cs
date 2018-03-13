@@ -61,6 +61,7 @@
             this.buttonClose.TabIndex = 2;
             this.buttonClose.Text = "Stäng";
             this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonRefresh
             // 
@@ -70,6 +71,7 @@
             this.buttonRefresh.TabIndex = 3;
             this.buttonRefresh.Text = "Hämta igen";
             this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // buttonConnectToIP
             // 
