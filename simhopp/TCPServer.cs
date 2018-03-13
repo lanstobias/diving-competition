@@ -96,20 +96,24 @@ namespace Simhopp
             }
             finally
             {
-                
                 Kill();
-                tcpListener.Stop();
-                threadServer.Abort();
             }
         }
 
+        /// <summary>
+        /// Shutdown the server
+        /// </summary>
         public void Kill()
         {
             RemoveIpFromServerList();
+
             foreach (var client in ClientList)
             {
                 client.StreamWriter.WriteLine("quit");
             }
+
+            tcpListener.Stop();
+            threadServer.Abort();
         }
 
         public void ShutDown()
@@ -117,6 +121,10 @@ namespace Simhopp
             Run = false;
         }
 
+        /// <summary>
+        /// Finds and stores the servers local ip-address
+        /// </summary>
+        /// <returns>IPAddress</returns>
         private IPAddress GetInternalIP()
         {
             IPAddress ip = null;
@@ -133,15 +141,20 @@ namespace Simhopp
             return ip;
         }
 
+        /// <summary>
+        /// Finds and stores the servers public ip-address.
+        /// </summary>
+        /// <returns>IPAddress</returns>
         private IPAddress GetPublicIP()
         {
-            IPAddress ip = null;
+            IPAddress ip = IPAddress.Parse("127.0.0.1");
 
             using (WebClient webClient = new WebClient())
             {
+
                 try
                 {
-                    string text = webClient.DownloadString("http://checkip.dyndns.org");
+                    string text = webClient.DownloadString("http://checki.dyndns.org");
                     
                     text = text.Substring( text.LastIndexOfAny(": ".ToCharArray()) + 1 );
 
@@ -151,35 +164,51 @@ namespace Simhopp
                 }
                 catch (WebException)
                 {
-                    MessageBox.Show("Cannot get your public ip");
-                    //input dialog
+                    if(MessageBox.Show("Kan inte hitta din publika IP-adress. Tryck Ok för att skriva in den manuellt.") == DialogResult.OK)
+                    {
+                        string input = InputDialog.OpenDialog("Fyll i ditt ip");
+                        if (input != "" && CheckDataInput.IpAddressCheckFormat(input))
+                            ip = IPAddress.Parse(input);
+                    }
                 }
             }
 
             return ip;
         }
 
+        /// <summary>
+        /// Adds this servers ip-address to the online serverList
+        /// </summary>
         private void AddIpToServerList()
         {
-            // Create a ftp request on the chosen url
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
-
-            // use the AppendFile method
-            request.Method = WebRequestMethods.Ftp.AppendFile;
-
-            // Get ftp credentials.
-            request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
-
-            // Write the new host to the server list
-            using (Stream request_stream = request.GetRequestStream())
+            try
             {
-                byte[] bytes = Encoding.UTF8.GetBytes(HostInfo + "\n");
+                // Create a ftp request on the chosen url
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
 
-                request.ContentLength = bytes.Length;
+                // use the AppendFile method
+                request.Method = WebRequestMethods.Ftp.AppendFile;
 
-                request_stream.Write(bytes, 0, bytes.Length);
-                request_stream.Close();
+                // Get ftp credentials.
+                request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
+
+                // Write the new host to the server list
+                using (Stream request_stream = request.GetRequestStream())
+                {
+                    byte[] bytes = Encoding.UTF8.GetBytes(HostInfo + "\n");
+
+                    request.ContentLength = bytes.Length;
+
+                    request_stream.Write(bytes, 0, bytes.Length);
+                    request_stream.Close();
+                }
+
             }
+            catch (WebException)
+            {
+                MessageBox.Show("Kan inte ansluta till server listan!");
+            }
+            
         }
 
         public bool RemoveIpFromServerList()

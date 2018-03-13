@@ -65,12 +65,10 @@ namespace Simhopp
 
         }
 
+        /// <summary>
+        /// Is called the the mainwindow is closed
+        /// </summary>
         private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            ShutdownServer();
-        }
-
-        private void ShutdownServer()
         {
             Server.Kill();
         }
@@ -450,7 +448,7 @@ namespace Simhopp
 
         private void CloseContest()
         {
-            Server.RemoveIpFromServerList();
+            Server.Kill();
 
             ResultView resultView = new ResultView();
 
