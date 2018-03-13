@@ -10,7 +10,12 @@ using System.Windows.Forms;
 
 namespace Simhopp
 {
-
+    /// <summary>
+    /// Simple formdialog to handle string input from the user.
+    /// Since OpenDialog methods are static usage is very simple.
+    /// Example usage:
+    /// string input = InputDialog.OpenDialog("Enter your name");
+    /// </summary>
     public partial class InputDialog : Form
     {
         public InputDialog()
@@ -18,6 +23,10 @@ namespace Simhopp
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Open a dialog without a message
+        /// </summary>
+        /// <returns>A string with the users input</returns>
         public static string OpenDialog()
         {
             var inputDialog = new InputDialog();
@@ -35,6 +44,11 @@ namespace Simhopp
             return "";
         }
 
+        /// <summary>
+        /// Open a dialog with a message
+        /// </summary>
+        /// <param name="message">Message for user</param>
+        /// <returns>A string with the users input</returns>
         public static string OpenDialog(string message)
         {
             using (var inputDialog = new InputDialog())
