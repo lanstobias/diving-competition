@@ -207,12 +207,12 @@ namespace Simhopp
             return ExecuteFetch(query);
         }
 
-        public List<Judge> FetchJudges()
+        public JudgeList FetchJudges()
         {
             DataTable judgeDataTable = FetchSpecifiedRole("judge");
 
             // Iterate through data table and add too person list
-            List<Judge> judgeList = new List<Judge>();
+            JudgeList judgeList = new JudgeList();
             foreach (DataRow row in judgeDataTable.Rows)
             {
                 Judge judge = new Judge
@@ -230,12 +230,12 @@ namespace Simhopp
             return judgeList;
         }
 
-        public List<Contestant> FetchContestants()
+        public ContestantList FetchContestants()
         {
             DataTable contestantDataTable = FetchSpecifiedRole("contestant");
 
             // Iterate through data table and add too person list
-            List<Contestant> contestantList = new List<Contestant>();
+            ContestantList contestantList = new ContestantList();
             foreach (DataRow row in contestantDataTable.Rows)
             {
                 Contestant contestant = new Contestant
