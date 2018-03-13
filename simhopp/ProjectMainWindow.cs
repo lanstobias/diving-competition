@@ -19,16 +19,27 @@ namespace Simhopp
 
         // Holds the previous view that was presented.
         private PanelViewControl PreviousView { get; set; }
+
+        public Judge CurrentJudge { get; set; }
         #endregion
 
         public ProjectMainWindow()
         {
             InitializeComponent();
 
-            mainMenuView = new MainMenuView();
-            mainMenuPresenter = new MainMenuPresenter(mainMenuView,this);
+            LoginForm login = new LoginForm();
 
-            this.Controls.Add(mainMenuView);
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                CurrentJudge = login.Judge;
+                mainMenuView = new MainMenuView();
+                mainMenuPresenter = new MainMenuPresenter(mainMenuView, this);
+
+                this.Controls.Add(mainMenuView);
+            }
+            else
+                Environment.Exit(1);
+                
 
         }
 
