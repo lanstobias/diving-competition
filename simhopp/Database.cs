@@ -135,7 +135,7 @@ namespace Simhopp
         /// <returns>A list of the fetched person objects.</returns>
         public List<Person> FetchPersons()
         {
-            string query = "SELECT id, firstName, lastName, age, gender FROM person;";
+            string query = "SELECT id, firstName, lastName, age, gender, email FROM person;";
 
             DataTable personsDataTable = ExecuteFetch(query);
 
@@ -149,6 +149,7 @@ namespace Simhopp
                 person.LastName = row["lastName"].ToString();
                 person.Age = Int32.Parse(row["age"].ToString());
                 person.Gender = row["gender"].ToString();
+                person.Email = row["email"].ToString();
 
                 personList.Add(person);
             }
@@ -199,7 +200,7 @@ namespace Simhopp
 
         private DataTable FetchSpecifiedRole(string roleName)
         {
-            string query = "SELECT person.id, person.firstName, person.lastName, person.age, person.gender ";
+            string query = "SELECT person.id, person.firstName, person.lastName, person.age, person.gender, person.email ";
             query += "FROM person ";
             query += "INNER JOIN role_person ON person.id = role_person.personID ";
             query += $"WHERE role_person.roleID = (SELECT id FROM role WHERE `name`=\"{roleName}\");";
@@ -221,7 +222,8 @@ namespace Simhopp
                     FirstName = row["firstName"].ToString(),
                     LastName = row["lastName"].ToString(),
                     Age = Int32.Parse(row["age"].ToString()),
-                    Gender = row["gender"].ToString()
+                    Gender = row["gender"].ToString(),
+                    Email = row["email"].ToString()
                 };
 
                 judgeList.Add(judge);
@@ -244,7 +246,8 @@ namespace Simhopp
                     FirstName = row["firstName"].ToString(),
                     LastName = row["lastName"].ToString(),
                     Age = Int32.Parse(row["age"].ToString()),
-                    Gender = row["gender"].ToString()
+                    Gender = row["gender"].ToString(),
+                    Email = row["email"].ToString()
                 };
 
                 contestantList.Add(contestant);
