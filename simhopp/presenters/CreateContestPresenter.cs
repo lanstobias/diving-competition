@@ -56,61 +56,27 @@ namespace Simhopp
         // Temporary method to initialize stuff with dummy values for easy testing
         public void FillWithData()
         {
-            View.TextBoxName.Text = "Test comp";
-            View.TextBoxArena.Text = "Gustavsvik";
-            View.TextBoxCity.Text = "Örebro";
-
-            StartDate = DateTime.Now;
-            EndDate = DateTime.MaxValue;
-
-
-            // detta ska komma från databasen
-            Judge judge1 = new Judge("Karl", "Mal");
-            Judge judge2 = new Judge("Laban", "Asda");
-            Judge judge3 = new Judge("Leg", "Shin");
-            Judge judge4 = new Judge("Handy", "Bandy");
-            Judge judge5 = new Judge("Sammy", "Rol");
-
-            JudgeList judgeList = new JudgeList();
-            GlobalJudgeList.Add(judge1);
-            GlobalJudgeList.Add(judge2);
-            GlobalJudgeList.Add(judge3);
-            GlobalJudgeList.Add(judge4);
-            GlobalJudgeList.Add(judge5);
-
-            Contestant kalle = new Contestant("kalle", "Cool");
-            Contestant pelle = new Contestant("pelle", "Holm");
-            Contestant lars = new Contestant("Lars", "Lerin");
-            Contestant anna = new Contestant("Anna", "Annasson");
-
-            ContestantList contestantList = new ContestantList();
-            GlobalContestantList.Add(kalle);
-            GlobalContestantList.Add(pelle);
-            GlobalContestantList.Add(lars);
-            GlobalContestantList.Add(anna);
-
-            foreach (var judge in GlobalJudgeList)
-                View.ListViewGlobalJudges.Items.Add(judge.GetFullName());
-
-            foreach (var contestant in GlobalContestantList)
-                View.ListViewGlobalContestants.Items.Add(contestant.GetFullName());
-
-            ContestJudgeList.Add(judge1);
-            ContestJudgeList.Add(judge2);
-            ContestJudgeList.Add(judge3);
-
-            ContestContestantList.Add(kalle);
-            ContestContestantList.Add(pelle);
-
-            View.LabelStartDate.Text = StartDate.ToShortDateString();
-            View.LabelEndDate.Text = EndDate.ToShortDateString();
+            // Get judges and contestants from the database
+            Database database = new Database();
+            try
+            {
+                GlobalJudgeList = database.FetchJudges();
+                GlobalContestantList = database.FetchContestants();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+            }
 
             UpdateListViews();
 
         }
+
+        /// <summary>
+        /// Refreshes the ListViews
+        /// </summary>
         public void UpdateListViews()
         {
-            // globala listboxes från dbn
 
             View.ListViewGlobalJudges.Items.Clear();
 
@@ -220,6 +186,9 @@ namespace Simhopp
 
         }
 
+        /// <summary>
+        /// Removes a added contestant from the contest
+        /// </summary>
         public void RemoveContestantFromContest()
         {
             try
@@ -247,6 +216,9 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// add a contestant from the DB to the contest
+        /// </summary>
         public void AddContestantToContest()
         {
             try
@@ -342,6 +314,9 @@ namespace Simhopp
             }
         }
 
+        /// <summary>
+        /// Remove a added judge from the contest
+        /// </summary>
         public void RemoveJudgeFromContest()
         {
             try
@@ -371,6 +346,9 @@ namespace Simhopp
            
         }
 
+        /// <summary>
+        /// Add a judge from the DB to the contest
+        /// </summary>
         public void AddJudgeToContest()
         {
             try
