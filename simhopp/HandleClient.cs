@@ -66,7 +66,13 @@ namespace Simhopp
                 NetworkStream = Client.GetStream();
                 StreamReader = new StreamReader(NetworkStream);
                 StreamWriter = new StreamWriter(NetworkStream);
-                
+
+                ContestInfo info = contestPresenter.CurrentContest.Info;
+                msg = "contest:" + info.Name + "|" + info.City + "|" + info.Arena;
+                // contest: Example Event|c|Lyon|v|Arena
+
+                StreamWriter.WriteLine(msg);
+                StreamWriter.Flush();
 
                 while (true)
                 {
