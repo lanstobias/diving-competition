@@ -74,11 +74,6 @@ namespace Simhopp
             //Credentials = new NetworkCredential("pi", "gallian0"); ;
             Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
 
-            if (!AddIpToServerList())
-            {
-                contestPresenter.View.LabelServerIp.Text = "Server ip: " + serverIp + ":" + port;
-            }
-
             threadServer = new Thread(server.ThreadListener);
             threadServer.IsBackground = true;
             threadServer.Start();
@@ -91,6 +86,8 @@ namespace Simhopp
             {
                 tcpListener = new TcpListener(serverIp, port);
                 tcpListener.Start();
+
+                AddIpToServerList();
 
                 while (true)
                 {
@@ -106,6 +103,7 @@ namespace Simhopp
             }
             catch (SocketException e)
             {
+                Console.WriteLine(e.Message);
                 MessageBox.Show("Servern kan inte läggas upp. Manuel inmatning av poäng aktiverat.");
                 EnableManualJudging();
             }
@@ -124,7 +122,8 @@ namespace Simhopp
 
             foreach (var client in ClientList)
             {
-                client.StreamWriter.WriteLine("quit");
+                client.StreamWriter?.WriteLine("quit");
+                client.StreamWriter?.Flush();
             }
 
             tcpListener.Stop();
