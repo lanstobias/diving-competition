@@ -300,7 +300,7 @@ namespace Simhopp
                 {
                     try
                     {
-                        db.StorePerson(p);
+                        p.ID = (int)db.StorePerson(p);
                     }
                     catch (Exception e)
                     {

@@ -104,7 +104,7 @@ namespace Simhopp
         /// Pushes a person object to the databse.
         /// </summary>
         /// <param name="person">Person object.</param>
-        public void StorePerson(Person person)
+        public long StorePerson(Person person)
         {
             // Table info
             string table = "person";
@@ -125,7 +125,9 @@ namespace Simhopp
             query += $"'{firstName}','{lastName}',{age},'{email}','{gender}','{socialSecurityNr}','{address}'";
             query += $")";
 
-            ExecuteQuery(query);
+            long personID = ExecuteQuery(query);
+
+            return personID;
         }
 
         /// <summary>
