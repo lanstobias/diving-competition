@@ -110,7 +110,6 @@ namespace Simhopp
             string table = "person";
 
             // Person info
-            var id = person.ID;
             var firstName = person.FirstName;
             var lastName = person.LastName;
             var age = person.Age;
@@ -121,9 +120,9 @@ namespace Simhopp
 
             // Build query
             string query = $"INSERT INTO {table} ";
-            query += $"(id, firstName, lastName, age, email, gender, socialSecurityNr, address) ";
+            query += $"(firstName, lastName, age, email, gender, socialSecurityNr, address) ";
             query += $"VALUES(";
-            query += $"'{id}','{firstName}','{lastName}',{age},'{email}','{gender}',{socialSecurityNr},'{address}'";
+            query += $"'{firstName}','{lastName}',{age},'{email}','{gender}','{socialSecurityNr}','{address}'";
             query += $")";
 
             ExecuteQuery(query);
