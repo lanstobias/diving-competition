@@ -46,6 +46,7 @@ namespace Simhopp
             Initialize();
 
             Server = new TCPServer(this);
+            View.LabelServerIp.Text = "Server: " + Server.HostInfo;
         }
 
         #endregion
@@ -325,6 +326,7 @@ namespace Simhopp
 
         internal void ManualJudging()
         {
+            View.LabelServerIp.Text = "Server: Offline";
             Server = null;
             View.ButtonManualJudging.Visible = true;
             View.ButtonRequestPoints.Visible = false;
