@@ -34,6 +34,8 @@ namespace Simhopp
         private System.Windows.Forms.Label labelContestName;
         private System.Windows.Forms.ColumnHeader columnJudge;
         private Button buttonCollectPoints;
+        private Label labelServerIp;
+        private Button buttonManualJudging;
         private System.Windows.Forms.ColumnHeader columnPoints;
 
         public event DelegateAddJump EventAddJump;
@@ -47,6 +49,7 @@ namespace Simhopp
         public event DelegateRemoveDive EventRemoveDive;
         public event DelegateRequestPoints EventRequestPoints;
         public event DelegateCollectPoints EventCollectPoints;
+        public event DelegateManualJudging EventManualJudging;
 
         public ComboBox ComboBoxSubContests { get { return comboBoxSubContests; } set { comboBoxSubContests = value; } }
         public ListView ListViewContestants { get { return listViewContestants; } set { listViewContestants = value; } }
@@ -56,12 +59,13 @@ namespace Simhopp
         public Label LabelArena { get { return labelArena; } set { labelArena = value; } }
         public Label LabelStartDate { get { return labelStartDate; } set { labelStartDate = value; } }
         public Label LabelEndDate { get { return labelEndDate; } set { labelEndDate = value; } }
-
+        public Label LabelServerIp { get { return labelServerIp; } set { labelServerIp = value; } }
         public Button ButtonModifyDive { get { return buttonModifyDive; } set { buttonModifyDive = value; } }
         public Button ButtonRemoveDive { get { return buttonRemoveDive; } set { buttonRemoveDive = value; } }
         public Button ButtonCancelModify { get { return buttonCancelModify; } set { buttonCancelModify = value; } }
         public Button ButtonRequestPoints { get { return buttonRequestPoints; } set { buttonRequestPoints = value; } }
         public ListView ListViewJudgeClients { get { return listViewJudgeClients; } set { listViewJudgeClients = value; } }
+        public Button ButtonManualJudging { get { return buttonManualJudging; } set { buttonManualJudging = value; } }
 
         public ContestView()
         {
@@ -96,11 +100,15 @@ namespace Simhopp
             this.columnCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnMultiplier = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonCollectPoints = new System.Windows.Forms.Button();
+            this.labelServerIp = new System.Windows.Forms.Label();
+            this.buttonManualJudging = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.buttonManualJudging);
+            this.mainPanel.Controls.Add(this.labelServerIp);
             this.mainPanel.Controls.Add(this.buttonCollectPoints);
             this.mainPanel.Controls.Add(this.listViewJudgeClients);
             this.mainPanel.Controls.Add(this.buttonRequestPoints);
@@ -364,6 +372,28 @@ namespace Simhopp
             this.buttonCollectPoints.UseVisualStyleBackColor = true;
             this.buttonCollectPoints.Click += new System.EventHandler(this.buttonCollectPoints_Click);
             // 
+            // labelServerIp
+            // 
+            this.labelServerIp.AutoSize = true;
+            this.labelServerIp.Location = new System.Drawing.Point(351, 15);
+            this.labelServerIp.Name = "labelServerIp";
+            this.labelServerIp.Size = new System.Drawing.Size(55, 13);
+            this.labelServerIp.TabIndex = 20;
+            this.labelServerIp.Text = "Server ip: ";
+            // 
+            // buttonManualJudging
+            // 
+            this.buttonManualJudging.Enabled = false;
+            this.buttonManualJudging.Location = new System.Drawing.Point(369, 180);
+            this.buttonManualJudging.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonManualJudging.Name = "buttonManualJudging";
+            this.buttonManualJudging.Size = new System.Drawing.Size(132, 22);
+            this.buttonManualJudging.TabIndex = 21;
+            this.buttonManualJudging.Text = "Manuell bedömning";
+            this.buttonManualJudging.UseVisualStyleBackColor = true;
+            this.buttonManualJudging.Visible = false;
+            this.buttonManualJudging.Click += new System.EventHandler(this.buttonManualJudging_Click);
+            // 
             // ContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,6 +454,11 @@ namespace Simhopp
         private void buttonCloseContest_Click(object sender, EventArgs e)
         {
             this.EventCloseContest?.Invoke();
+        }
+
+        private void buttonManualJudging_Click(object sender, EventArgs e)
+        {
+            this.EventManualJudging?.Invoke();
         }
     }
 }
