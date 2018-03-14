@@ -15,6 +15,9 @@ namespace Simhopp
         #region Properties
         MainMenuView mainMenuView;
         MainMenuPresenter mainMenuPresenter;
+        public bool LAN { get; set; }
+        public int Port { get; set; }
+
         private PanelViewControl CurrentView { get; set; }
 
         // Holds the previous view that was presented.
@@ -90,7 +93,10 @@ namespace Simhopp
         private void inställningarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingsForm settingsForm = new SettingsForm();
-            
+
+            LAN = settingsForm.LAN;
+            Port = settingsForm.Port;
+
             settingsForm.Show();
 
         }
