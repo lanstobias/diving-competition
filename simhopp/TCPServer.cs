@@ -45,6 +45,9 @@ namespace Simhopp
 
         public TCPServer(ContestPresenter contest)
         {
+            LANServer = contest.window.LAN;
+            port = contest.window.Port;
+
             if (LANServer)
             {
                 serverIp = GetInternalIP();
