@@ -84,7 +84,7 @@ namespace Simhopp
                     }
                     else if (msg.StartsWith("give:"))
                     {
-                        ToggleGiveScore(msg.Substring(4));
+                        ToggleGiveScore(msg.Substring(5));
                     }
                 }
                 
