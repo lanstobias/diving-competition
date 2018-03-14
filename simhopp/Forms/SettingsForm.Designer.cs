@@ -53,7 +53,6 @@
             this.radioButtonLAN.Name = "radioButtonLAN";
             this.radioButtonLAN.Size = new System.Drawing.Size(65, 24);
             this.radioButtonLAN.TabIndex = 1;
-            this.radioButtonLAN.Checked = false;
             this.radioButtonLAN.TabStop = true;
             this.radioButtonLAN.Text = "LAN";
             this.radioButtonLAN.UseVisualStyleBackColor = true;
