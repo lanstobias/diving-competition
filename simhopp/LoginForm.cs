@@ -83,6 +83,12 @@ namespace Simhopp
                             break;
                         }
                     }
+                    // this should not happen
+                    if(Judge == null)
+                    {
+                        MessageBox.Show("Login failed...");
+                        return false;
+                    }
                     return true;
                 }
                 else
