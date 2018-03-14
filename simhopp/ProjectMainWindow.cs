@@ -18,12 +18,16 @@ namespace Simhopp
         public bool LAN { get; set; } = true;
         public int Port { get; set; }
 
+        private SettingsForm Settings { get; set; } = new SettingsForm();
+
+
         private PanelViewControl CurrentView { get; set; }
 
         // Holds the previous view that was presented.
         private PanelViewControl PreviousView { get; set; }
 
         public Judge CurrentJudge { get; set; }
+        public bool Offline { get; set; }
         #endregion
 
         public ProjectMainWindow()
@@ -92,13 +96,14 @@ namespace Simhopp
 
         private void inställningarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SettingsForm settingsForm = new SettingsForm();
+            if (Settings.IsDisposed)
+                Settings = new SettingsForm();
 
+            Settings.ShowDialog();
 
-            settingsForm.Show();
-
-            LAN = settingsForm.LAN;
-            Port = settingsForm.Port;
+            LAN = Settings.LAN;
+            Port = Settings.Port;
+            Offline = Settings.Offline;
 
         }
     }

@@ -15,6 +15,7 @@ namespace Simhopp
         public bool LAN { get; set; } = true;
 
         public int Port { get; set; } = 9058;
+        public bool Offline { get; set; } = false;
 
         public SettingsForm()
         {
@@ -38,6 +39,15 @@ namespace Simhopp
             textBoxPort.Visible = false;
 
         }
+        private void radioButtonOffline_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButtonOnline.Checked = false;
+            radioButtonLAN.Checked = false;
+            radioButtonOffline.Checked = true;
+            labelPort.Visible = false;
+            textBoxPort.Visible = false;
+            Offline = true;
+        }
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
@@ -48,7 +58,8 @@ namespace Simhopp
                 Port = Convert.ToInt32(textBoxPort.Text);
             }
 
-            this.Close();
+            this.Hide();
         }
+
     }
 }
