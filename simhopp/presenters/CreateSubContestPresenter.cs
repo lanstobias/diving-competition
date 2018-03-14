@@ -59,7 +59,7 @@ namespace Simhopp
 
 
             // temp 
-            FillWithData();
+            //FillWithData();
         }
 
 
