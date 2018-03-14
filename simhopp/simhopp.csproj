@@ -65,7 +65,7 @@
     <Compile Include="Forms\InputDialog.Designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Auth.cs" />
+    <Compile Include="Misc\Auth.cs" />
     <Compile Include="models\PersonList.cs" />
     <Compile Include="Forms\AddPersonView.cs">
       <SubType>Form</SubType>
@@ -73,17 +73,17 @@
     <Compile Include="Forms\AddPersonView.Designer.cs">
       <DependentUpon>AddPersonView.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckDataInput.cs" />
-    <Compile Include="Database.cs" />
-    <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="Misc\CheckDataInput.cs" />
+    <Compile Include="Database\Database.cs" />
+    <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Forms\DatePicker.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DatePicker.Designer.cs">
       <DependentUpon>DatePicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="HandleClient.cs" />
-    <Compile Include="Helpers.cs" />
+    <Compile Include="TCPServer\HandleClient.cs" />
+    <Compile Include="Misc\Helpers.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,7 +133,7 @@
     <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TCPServer.cs" />
+    <Compile Include="TCPServer\TCPServer.cs" />
     <Compile Include="views\AddDiveView.cs">
       <SubType>Form</SubType>
     </Compile>

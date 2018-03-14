@@ -18,7 +18,6 @@ namespace Simhopp
         private Button createContestButton;
         private Button loadContestButton;
         private Button judgeContestButton;
-        private Button exitButton;
         private Button button1;
         
 
@@ -43,14 +42,12 @@ namespace Simhopp
             this.createContestButton = new System.Windows.Forms.Button();
             this.loadContestButton = new System.Windows.Forms.Button();
             this.judgeContestButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.exitButton);
             this.mainPanel.Controls.Add(this.judgeContestButton);
             this.mainPanel.Controls.Add(this.loadContestButton);
             this.mainPanel.Controls.Add(this.createContestButton);
@@ -84,15 +81,6 @@ namespace Simhopp
             this.judgeContestButton.Text = "Bedöm tävling";
             this.judgeContestButton.UseVisualStyleBackColor = true;
             this.judgeContestButton.Click += new System.EventHandler(this.judgeContestButton_Click);
-            // 
-            // exitButton
-            // 
-            this.exitButton.Location = new System.Drawing.Point(212, 229);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
-            this.exitButton.TabIndex = 4;
-            this.exitButton.Text = "Avsluta";
-            this.exitButton.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
