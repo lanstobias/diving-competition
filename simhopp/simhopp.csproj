@@ -65,6 +65,12 @@
     <Compile Include="Forms\InputDialog.Designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ManualJudging.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ManualJudging.Designer.cs">
+      <DependentUpon>ManualJudging.cs</DependentUpon>
+    </Compile>
     <Compile Include="Misc\Auth.cs" />
     <Compile Include="models\PersonList.cs" />
     <Compile Include="Forms\AddPersonView.cs">
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ManualJudging.resx">
+      <DependentUpon>ManualJudging.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectMainWindow.resx">
       <DependentUpon>ProjectMainWindow.cs</DependentUpon>
