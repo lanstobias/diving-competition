@@ -36,6 +36,9 @@ namespace Simhopp
 
                 lvJudges.Items.Add(item);
             }
+
+            labelJudge.Text = judgeList[0].GetFullName();
+
         }
 
         private void buttonGiveScore_Click(object sender, EventArgs e)
@@ -83,7 +86,14 @@ namespace Simhopp
                     lvJudges.Items.Add(item);
                 }
             }
+
+            labelJudge.Text = judgeList[index].GetFullName();
+            lvJudges.Items[index++].Selected = true;
+            lvJudges.Select();
             
+
+            if (index == lvJudges.Items.Count)
+                index = 0;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

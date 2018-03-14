@@ -43,7 +43,7 @@
             // 
             this.labelPoints.AutoSize = true;
             this.labelPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.labelPoints.Location = new System.Drawing.Point(150, 197);
+            this.labelPoints.Location = new System.Drawing.Point(139, 33);
             this.labelPoints.Name = "labelPoints";
             this.labelPoints.Size = new System.Drawing.Size(18, 20);
             this.labelPoints.TabIndex = 14;
@@ -51,19 +51,19 @@
             // 
             // sliderPoints
             // 
-            this.sliderPoints.Location = new System.Drawing.Point(63, 235);
+            this.sliderPoints.Location = new System.Drawing.Point(52, 71);
             this.sliderPoints.Maximum = 20;
             this.sliderPoints.Name = "sliderPoints";
             this.sliderPoints.Size = new System.Drawing.Size(446, 45);
             this.sliderPoints.TabIndex = 13;
             this.sliderPoints.Value = 10;
-            this.sliderPoints.ValueChanged += new System.EventHandler(SliderPoints_ValueChanged);
+            this.sliderPoints.ValueChanged += new System.EventHandler(this.SliderPoints_ValueChanged);
             // 
             // buttonGiveScore
             // 
-            this.buttonGiveScore.Location = new System.Drawing.Point(239, 286);
+            this.buttonGiveScore.Location = new System.Drawing.Point(228, 122);
             this.buttonGiveScore.Name = "buttonGiveScore";
-            this.buttonGiveScore.Size = new System.Drawing.Size(100, 51);
+            this.buttonGiveScore.Size = new System.Drawing.Size(100, 29);
             this.buttonGiveScore.TabIndex = 12;
             this.buttonGiveScore.Text = "Sätt poäng";
             this.buttonGiveScore.UseVisualStyleBackColor = true;
@@ -73,7 +73,7 @@
             // 
             this.labelJudge.AutoSize = true;
             this.labelJudge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.labelJudge.Location = new System.Drawing.Point(60, 202);
+            this.labelJudge.Location = new System.Drawing.Point(49, 40);
             this.labelJudge.Name = "labelJudge";
             this.labelJudge.Size = new System.Drawing.Size(0, 13);
             this.labelJudge.TabIndex = 11;
@@ -93,9 +93,9 @@
             this.lvJudges.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
             this.colPoints});
-            this.lvJudges.Location = new System.Drawing.Point(256, 39);
+            this.lvJudges.Location = new System.Drawing.Point(52, 159);
             this.lvJudges.Name = "lvJudges";
-            this.lvJudges.Size = new System.Drawing.Size(178, 108);
+            this.lvJudges.Size = new System.Drawing.Size(409, 178);
             this.lvJudges.TabIndex = 17;
             this.lvJudges.UseCompatibleStateImageBehavior = false;
             this.lvJudges.View = System.Windows.Forms.View.Details;
@@ -103,7 +103,7 @@
             // colName
             // 
             this.colName.Text = "Namn";
-            this.colName.Width = 109;
+            this.colName.Width = 202;
             // 
             // colPoints
             // 

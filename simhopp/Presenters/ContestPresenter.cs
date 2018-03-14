@@ -47,8 +47,11 @@ namespace Simhopp
 
             Initialize();
 
-            Server = new TCPServer(this);
-            View.LabelServerIp.Text = "Server: " + Server.HostInfo;
+            if (!window.Offline)
+                Server = new TCPServer(this);
+            else
+                ManualJudging();
+            //View.LabelServerIp.Text = "Server: " + Serve;
         }
 
         #endregion
@@ -67,6 +70,9 @@ namespace Simhopp
             View.LabelStartDate.Text = CurrentContest.Info.StartDate.ToShortDateString();
             View.LabelEndDate.Text = CurrentContest.Info.EndDate.ToShortDateString();
 
+            ListViewItem headJudgeItem = new ListViewItem(window.CurrentJudge.GetFullName());
+            headJudgeItem.SubItems.Add("-1");
+            View.ListViewJudgeClients.Items.Add(headJudgeItem);
         }
 
         /// <summary>
@@ -263,15 +269,18 @@ namespace Simhopp
                                         clientItem.SubItems[1].Text = score.Value.ToString();
                                         break;
                                     }
-                                    else if (score.Judge == window.CurrentJudge)
-                                        View.LabelHeadPoints.Text = score.Value.ToString();
+                                    else if (score.Judge == window.CurrentJudge && score.Judge.GetFullName() == clientItem.Text)
+                                    {
+                                        clientItem.SubItems[1].Text = score.Value.ToString();
+                                    }
+                                        
                                 }
                                 break;
                             }
                             else
                             {
                                 clientItem.SubItems[1].Text = "-1";
-                                View.LabelHeadPoints.Text = "-1";
+                                
                             }
                         }
                     }
@@ -376,6 +385,10 @@ namespace Simhopp
 
             if (Server != null)
             {
+                ListViewItem headJudgeItem = new ListViewItem(window.CurrentJudge.GetFullName());
+                headJudgeItem.SubItems.Add("-1");
+                View.ListViewJudgeClients.Items.Add(headJudgeItem);
+
                 foreach (var client in Server.ClientList)
                 {
                     ListViewItem clientItem = new ListViewItem(client.ClientName);
