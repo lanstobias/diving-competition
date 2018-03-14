@@ -29,9 +29,9 @@ namespace Simhopp
 
         private ContestPresenter contestPresenter = null;
 
-         private string url = "ftp://files.000webhost.com/simhopp/simhoppServers.txt";
+        private string url = "ftp://files.000webhost.com/simhopp/simhoppServers.txt";
         //private string url = "tomat.trickip.net/simhopp/simhoppServers.txt";
-        
+
 
         private NetworkCredential Credentials;
 
@@ -44,7 +44,7 @@ namespace Simhopp
 
         private Int32 port = 9058;
         private IPAddress serverIp = IPAddress.Parse("127.0.0.1");
-       
+
         private TcpListener tcpListener = null;
         private Thread threadServer = null;
 
@@ -66,14 +66,17 @@ namespace Simhopp
             contestPresenter = contest;
 
             HostInfo = contestPresenter.CurrentContest.Info.Name + ":" + serverIp.ToString();
-            
+
             // kallar Instance()
             server = this;
 
             //Credentials = new NetworkCredential("pi", "gallian0"); ;
             Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
 
-            AddIpToServerList();
+            if (!AddIpToServerList())
+            {
+                contestPresenter.View.LabelServerIp.Text = "Server ip: " + serverIp + ":" + port;
+            }
 
             threadServer = new Thread(server.ThreadListener);
             threadServer.IsBackground = true;
@@ -85,7 +88,7 @@ namespace Simhopp
         {
             try
             {
-                tcpListener = new TcpListener(GetInternalIP(), port);
+                tcpListener = new TcpListener(serverIp, port);
                 tcpListener.Start();
 
                 while (true)
@@ -102,8 +105,8 @@ namespace Simhopp
             }
             catch (SocketException e)
             {
-                // hantera om servern inte kan sättas upp
-                // manuel input av poäng?
+                MessageBox.Show("Servern kan inte läggas upp. Manuel inmatning av poäng aktiverat.");
+                EnableManualJudging();
             }
             finally
             {
@@ -166,8 +169,8 @@ namespace Simhopp
                 try
                 {
                     string text = webClient.DownloadString("http://checki.dyndns.org");
-                    
-                    text = text.Substring( text.LastIndexOfAny(": ".ToCharArray()) + 1 );
+
+                    text = text.Substring(text.LastIndexOfAny(": ".ToCharArray()) + 1);
 
                     string ipAddr = text.Substring(0, text.IndexOf('<'));
 
@@ -175,7 +178,7 @@ namespace Simhopp
                 }
                 catch (WebException)
                 {
-                    if(MessageBox.Show("Kan inte hitta din publika IP-adress. Tryck Ok för att skriva in den manuellt.") == DialogResult.OK)
+                    if (MessageBox.Show("Kan inte hitta din publika IP-adress. Tryck Ok för att skriva in den manuellt.") == DialogResult.OK)
                     {
                         string input = InputDialog.OpenDialog("Fyll i ditt ip");
                         if (input != "" && CheckDataInput.IpAddressCheckFormat(input))
@@ -190,7 +193,7 @@ namespace Simhopp
         /// <summary>
         /// Adds this servers ip-address to the online serverList
         /// </summary>
-        private void AddIpToServerList()
+        private bool AddIpToServerList()
         {
             try
             {
@@ -240,8 +243,9 @@ namespace Simhopp
             catch (WebException)
             {
                 MessageBox.Show("Kan inte ansluta till server listan!");
+                return false;
             }
-            
+            return true;
         }
 
         public bool RemoveIpFromServerList()
@@ -275,7 +279,7 @@ namespace Simhopp
                 // Find the start index of the host in the hostList
                 int index = ipList.IndexOfAny(HostInfo.ToCharArray());
 
-                if(index != -1)
+                if (index != -1)
                 {
                     ipList = ipList.Remove(index, (HostInfo + "\n").Length);
 
@@ -288,7 +292,7 @@ namespace Simhopp
                         request_stream.Close();
                     }
                 }
-                
+
             }
 
             return true;
@@ -307,21 +311,31 @@ namespace Simhopp
         {
             lock (ClientList)
             {
-                if(!ClientList.Contains(client))
+                if (!ClientList.Contains(client))
                     ClientList.Add(client);
             }
 
-            contestPresenter?.View?.Invoke(new InvokeJudgeListView(
+            contestPresenter?.View?.Invoke(new InvokeContestPresenter(
                 () => { contestPresenter.AddToClientListView(client); }
                 ));
-           
+
         }
 
         public void UpdateJudgeListView()
         {
-            contestPresenter?.View?.Invoke(new InvokeJudgeListView(
+            contestPresenter?.View?.Invoke(new InvokeContestPresenter(
                () => { contestPresenter.RefreshClientListView(); }
                ));
+        }
+
+        private void EnableManualJudging()
+        {
+            contestPresenter?.View?.Invoke(new InvokeContestPresenter(
+                () =>
+                {
+                    contestPresenter.ManualJudging();
+                }));
+
         }
     }
 }
