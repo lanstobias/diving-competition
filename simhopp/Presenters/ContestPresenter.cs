@@ -13,7 +13,7 @@ namespace Simhopp
         #region Properties
         public ContestView View { get; set; }
 
-        private ProjectMainWindow window;
+        public ProjectMainWindow window;
 
         public Contest CurrentContest { get; set; }
 
