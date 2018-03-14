@@ -234,6 +234,7 @@ namespace Simhopp
             this.buttonAddNewJudgeToDB.Size = new System.Drawing.Size(20, 20);
             this.buttonAddNewJudgeToDB.TabIndex = 5;
             this.buttonAddNewJudgeToDB.Text = "+";
+            this.buttonAddNewJudgeToDB.Visible = false;
             this.buttonAddNewJudgeToDB.UseVisualStyleBackColor = true;
             this.buttonAddNewJudgeToDB.Click += new System.EventHandler(this.ButtonAddNewJudgeToDB_Click);
             // 
