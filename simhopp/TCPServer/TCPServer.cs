@@ -51,7 +51,7 @@ namespace Simhopp
         public TCPServer(ContestPresenter contest)
         {
             LANServer = contest.window.LAN;
-            port = contest.window.Port;
+
 
             if (LANServer)
             {
@@ -60,6 +60,7 @@ namespace Simhopp
             else
             {
                 serverIp = GetPublicIP();
+                port = contest.window.Port;
                 // the port will also need to be opened for the server
             }
 

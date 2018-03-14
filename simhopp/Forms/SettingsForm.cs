@@ -12,9 +12,9 @@ namespace Simhopp
 {
     public partial class SettingsForm : Form
     {
-        public bool LAN { get; set; }
+        public bool LAN { get; set; } = true;
 
-        public int Port { get; set; }
+        public int Port { get; set; } = 9058;
 
         public SettingsForm()
         {
