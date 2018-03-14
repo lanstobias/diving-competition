@@ -30,10 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hjälpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stängToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hjälpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resultatsidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inställningarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,10 +53,18 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inställningarToolStripMenuItem,
             this.stängToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
             this.fileToolStripMenuItem.Text = "Arkiv";
+            // 
+            // stängToolStripMenuItem
+            // 
+            this.stängToolStripMenuItem.Name = "stängToolStripMenuItem";
+            this.stängToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.stängToolStripMenuItem.Text = "Stäng";
+            this.stängToolStripMenuItem.Click += new System.EventHandler(this.stängToolStripMenuItem_Click);
             // 
             // hjälpToolStripMenuItem
             // 
@@ -66,24 +75,25 @@
             this.hjälpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
             this.hjälpToolStripMenuItem.Text = "Hjälp";
             // 
-            // stängToolStripMenuItem
-            // 
-            this.stängToolStripMenuItem.Name = "stängToolStripMenuItem";
-            this.stängToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.stängToolStripMenuItem.Text = "Stäng";
-            this.stängToolStripMenuItem.Click += new System.EventHandler(this.stängToolStripMenuItem_Click);
-            // 
             // manualToolStripMenuItem
             // 
             this.manualToolStripMenuItem.Name = "manualToolStripMenuItem";
-            this.manualToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.manualToolStripMenuItem.Size = new System.Drawing.Size(190, 30);
             this.manualToolStripMenuItem.Text = "Manual";
             // 
             // resultatsidaToolStripMenuItem
             // 
             this.resultatsidaToolStripMenuItem.Name = "resultatsidaToolStripMenuItem";
-            this.resultatsidaToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.resultatsidaToolStripMenuItem.Size = new System.Drawing.Size(190, 30);
             this.resultatsidaToolStripMenuItem.Text = "Resultatsida";
+            this.resultatsidaToolStripMenuItem.Click += new System.EventHandler(this.resultatsidaToolStripMenuItem_Click);
+            // 
+            // inställningarToolStripMenuItem
+            // 
+            this.inställningarToolStripMenuItem.Name = "inställningarToolStripMenuItem";
+            this.inställningarToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.inställningarToolStripMenuItem.Text = "Inställningar";
+            this.inställningarToolStripMenuItem.Click += new System.EventHandler(this.inställningarToolStripMenuItem_Click);
             // 
             // ProjectMainWindow
             // 
@@ -110,6 +120,7 @@
         private System.Windows.Forms.ToolStripMenuItem hjälpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manualToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resultatsidaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inställningarToolStripMenuItem;
     }
 }
 
