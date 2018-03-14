@@ -298,14 +298,15 @@ namespace Simhopp
                 Database db = new Database();
                 foreach (var p in addPerson.PersonList)
                 {
-                    //try
-                    //{
-                    //    db.StorePerson(p);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Console.WriteLine(e.Message.ToString());
-                    //}
+                    try
+                    {
+                        db.StorePerson(p);
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("asd");
+                        Console.WriteLine(e.Message.ToString());
+                    }
 
                     GlobalContestantList.Add( (Contestant) p );
                 }
