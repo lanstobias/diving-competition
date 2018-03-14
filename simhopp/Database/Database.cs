@@ -386,12 +386,13 @@ namespace Simhopp
             var name = dive.Name;
             var code = dive.Code.Code;
             var multiplier = dive.Code.Multiplier;
+            var finalScore = dive.FinalScore;
 
             // Build query
             string query = $"INSERT INTO {table} ";
-            query += $"(name, code, multiplier, contestantID, branchID) ";
+            query += $"(name, code, multiplier, contestantID, branchID, finalScore) ";
             query += $"VALUES(";
-            query += $"'{name}','{code}', '{multiplier}', '{contestantID}', '{branchID}'";
+            query += $"'{name}','{code}', '{multiplier}', '{contestantID}', '{branchID}', {finalScore}";
             query += $")";
 
             return ExecuteQuery(query);
