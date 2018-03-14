@@ -26,6 +26,9 @@ namespace Simhopp
         #region Constructor
         public ContestPresenter(ContestView view, ProjectMainWindow window, Contest contest)
         {
+            //disable go back
+            window.DisableBackButton();
+
             this.View = view;
             this.window = window;
             CurrentContest = contest;

@@ -21,7 +21,7 @@ namespace Simhopp
         private SettingsForm Settings { get; set; } = new SettingsForm();
         private PanelViewControl CurrentView { get; set; }
         private PanelViewControl PreviousView { get; set; }
-
+        
         // Holds the previous views that was presented earlier. Last in First out
         private Stack<PanelViewControl> PrevViewStack { get; set; }
 
@@ -54,10 +54,17 @@ namespace Simhopp
 
         }
 
+        public void DisableBackButton()
+        {
+            this.settingsGobackItem.Enabled = false;
+        }
+
         public void GoBackToStartMenu()
         {
             Controls.Remove(CurrentView);
             Controls.Add(mainMenuView);
+
+            this.settingsGobackItem.Enabled = true;
         }
 
         /// <summary>
