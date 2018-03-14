@@ -71,7 +71,7 @@ namespace Simhopp
         /// </summary>
         private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Server.Kill();
+            Server?.Kill();
         }
 
         /// <summary>
@@ -80,14 +80,22 @@ namespace Simhopp
         /// </summary>
         private void RequestPointsFromJudges()
         {
-            Server.RequestPoints();
+            Server?.RequestPoints();
         }
 
         /// <summary>
-        /// If the program is in offline mode, enable manual scoring by the headjudge
+        /// If the program is in offline mode, open up manual scoring by the headjudge
         /// </summary>
         private void OpenManualJudging()
         {
+            if(GetSelectedDive() != null)
+            {
+                ManualJudging judgingWindow = new ManualJudging(GetSelectedDive(), CurrentContest.Judges);
+                if(judgingWindow.ShowDialog() == DialogResult.OK)
+                {
+                    ResetPoints();
+                }
+            }
             
         }
 
@@ -183,7 +191,7 @@ namespace Simhopp
                                 scoreList.Add(new Score(score, judge));
                                 break;
                             }
-                                
+
                         }
 
                     }
@@ -199,7 +207,7 @@ namespace Simhopp
                 }
                 else
                     MessageBox.Show("Väntar fortfarande på poäng från domare!");
-                
+
             }
         }
 
@@ -208,39 +216,74 @@ namespace Simhopp
         /// </summary>
         public void ResetPoints()
         {
-            foreach (var client in Server.ClientList)
-            {
-                client.Points = "-1";
-            }
 
-            RefreshClientListView();
-
-            foreach (var client in Server.ClientList)
+            if (Server != null)
             {
-                foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
+                foreach (var client in Server.ClientList)
                 {
-                    if (client.ClientName == clientItem.Text)
+                    client.Points = "-1";
+                }
+
+                RefreshClientListView();
+
+
+                foreach (var client in Server.ClientList)
+                {
+                    foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
                     {
-                        Dive dive = GetSelectedDive();
-                        if (dive?.Scores != null)
+                        if (client.ClientName == clientItem.Text)
                         {
-                            foreach (var score in GetSelectedDive().Scores)
+                            Dive dive = GetSelectedDive();
+                            if (dive?.Scores != null)
                             {
-                                if (score.Judge.GetFullName() == clientItem.Text)
+                                foreach (var score in GetSelectedDive().Scores)
                                 {
-                                    clientItem.SubItems[1].Text = score.Value.ToString();
-                                    break;
+                                    if (score.Judge.GetFullName() == clientItem.Text)
+                                    {
+                                        clientItem.SubItems[1].Text = score.Value.ToString();
+                                        break;
+                                    }
                                 }
+                                break;
                             }
-                            break;
-                        }
-                        else
-                        {
-                            clientItem.SubItems[1].Text = "-1";
+                            else
+                            {
+                                clientItem.SubItems[1].Text = "-1";
+                            }
                         }
                     }
                 }
             }
+            else
+            {
+                foreach (var judge in CurrentContest.Judges)
+                {
+                    foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
+                    {
+                        if (judge.GetFullName() == clientItem.Text)
+                        {
+                            Dive dive = GetSelectedDive();
+                            if (dive?.Scores != null)
+                            {
+                                foreach (var score in GetSelectedDive().Scores)
+                                {
+                                    if (score.Judge.GetFullName() == clientItem.Text)
+                                    {
+                                        clientItem.SubItems[1].Text = score.Value.ToString();
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                            else
+                            {
+                                clientItem.SubItems[1].Text = "-1";
+                            }
+                        }
+                    }
+                }
+            }
+
         }
 
         /// <summary>
@@ -262,13 +305,13 @@ namespace Simhopp
 
             SubContestBranch selectedSubContest = GetSelectedSubContest();
 
-            if(selectedSubContest != null)
+            if (selectedSubContest != null)
             {
                 // Clear the listviews
                 View.ListViewContestants.Items.Clear();
                 View.ListViewDives.Items.Clear();
 
-                foreach(var c in selectedSubContest.BranchContestants)
+                foreach (var c in selectedSubContest.BranchContestants)
                 {
                     ListViewItem contestantItem = new ListViewItem(c.FirstName);
                     contestantItem.SubItems.Add(c.LastName);
@@ -277,7 +320,15 @@ namespace Simhopp
 
                 }
             }
-            
+
+        }
+
+        internal void ManualJudging()
+        {
+            Server = null;
+            View.ButtonManualJudging.Visible = true;
+            View.ButtonRequestPoints.Visible = false;
+            RefreshClientListView();
         }
 
         /// <summary>
@@ -299,14 +350,28 @@ namespace Simhopp
         {
             View.ListViewJudgeClients?.Items.Clear();
 
-            foreach(var client in Server.ClientList)
+            if (Server != null)
             {
-                ListViewItem clientItem = new ListViewItem(client.ClientName);
-                clientItem.SubItems.Add(client.Points.ToString());
+                foreach (var client in Server.ClientList)
+                {
+                    ListViewItem clientItem = new ListViewItem(client.ClientName);
+                    clientItem.SubItems.Add(client.Points.ToString());
 
-                View.ListViewJudgeClients.Items.Add(clientItem);
+                    View.ListViewJudgeClients.Items.Add(clientItem);
+                }
             }
-            
+            else
+            {
+                foreach (var judge in CurrentContest.Judges)
+                {
+                    ListViewItem judgeItem = new ListViewItem(judge.GetFullName());
+                    judgeItem.SubItems.Add("-1");
+
+                    View.ListViewJudgeClients.Items.Add(judgeItem);
+                }
+            }
+
+
         }
 
         /// <summary>
@@ -316,11 +381,11 @@ namespace Simhopp
         {
             SubContestBranch subContestBranch = GetSelectedSubContest();
             Contestant contestant = GetSelectedContestant();
-            
+
             AddDiveView addDiveView = new AddDiveView();
             AddDivePresenter addDivePresenter = new AddDivePresenter(addDiveView, window, subContestBranch, contestant);
 
-            if(subContestBranch != null && contestant != null)
+            if (subContestBranch != null && contestant != null)
             {
                 if (addDiveView.ShowDialog() == DialogResult.OK)
                 {
@@ -339,7 +404,7 @@ namespace Simhopp
 
             Contestant contestant = GetSelectedContestant();
 
-            if(contestant != null)
+            if (contestant != null)
             {
                 //View.ListBoxDives.Items.Clear();
                 View.ListViewDives.Items.Clear();
@@ -348,7 +413,7 @@ namespace Simhopp
                     SubContestBranch subContest = GetSelectedSubContest();
                     if (subContest != null && divelist.SubContestBranch == subContest)
                     {
-                        foreach(var dive in divelist)
+                        foreach (var dive in divelist)
                         {
                             //View.ListBoxDives.Items.Add("Kod: " + dive.Code.Code + " - Multiplier: " + dive.Code.Multiplier);
                             ListViewItem DiveItems = new ListViewItem(dive.Code.Code);
@@ -356,7 +421,7 @@ namespace Simhopp
 
                             View.ListViewDives.Items.Add(DiveItems);
                         }
-                        
+
                     }
                 }
             }
@@ -375,7 +440,7 @@ namespace Simhopp
                     //var selectedContestantName = View.ListBoxContestants.SelectedItem as string;
                     var selectedContestantFirstName = View.ListViewContestants.SelectedItems[0].SubItems[0].Text;
                     var selectedContestantLastName = View.ListViewContestants.SelectedItems[0].SubItems[1].Text;
-                    
+
                     foreach (var contestant in GetSelectedSubContest().BranchContestants)
                     {
                         if (String.Equals(contestant.FirstName, selectedContestantFirstName) && String.Equals(contestant.LastName, selectedContestantLastName))
@@ -385,7 +450,7 @@ namespace Simhopp
 
             }
 
-            catch(ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Välj en deltagare!");
             }
@@ -417,7 +482,7 @@ namespace Simhopp
         /// <returns>Dive object or null if nothing is chosen</returns>
         private Dive GetSelectedDive()
         {
-            if(View.ListViewDives.SelectedIndices.Count != 0)
+            if (View.ListViewDives.SelectedIndices.Count != 0)
             {
                 var selectedDiveIndex = View.ListViewDives.SelectedIndices[0];
 
@@ -444,8 +509,8 @@ namespace Simhopp
                     }
                 }
             }
-            
-            
+
+
             return null;
         }
 
@@ -465,9 +530,9 @@ namespace Simhopp
             {
                 Console.WriteLine(e.Message);
             }
-            
 
-            Server.Kill();
+
+            Server?.Kill();
 
             ResultView resultView = new ResultView();
 

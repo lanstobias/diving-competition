@@ -383,7 +383,6 @@ namespace Simhopp
             // 
             // buttonManualJudging
             // 
-            this.buttonManualJudging.Enabled = false;
             this.buttonManualJudging.Location = new System.Drawing.Point(369, 180);
             this.buttonManualJudging.Margin = new System.Windows.Forms.Padding(2);
             this.buttonManualJudging.Name = "buttonManualJudging";
