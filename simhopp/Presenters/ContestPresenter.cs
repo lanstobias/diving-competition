@@ -83,17 +83,21 @@ namespace Simhopp
         /// </summary>
         private void RequestPointsFromJudges()
         {
-            Server?.RequestPoints();
-
-            double point = -1;
-            while (true)
+            Dive dive = GetSelectedDive();
+            if(dive != null)
             {
-                string input = InputDialog.OpenDialog("Ge dina poäng");
-                if (double.TryParse(input, out point))
+                Server?.RequestPoints(GetSelectedDive());
+
+                double point = -1;
+                while (true)
                 {
-                    HeadJudgePoints = point;
-                    View.LabelHeadPoints.Text = point.ToString();
-                    break;
+                    string input = InputDialog.OpenDialog("Ge dina poäng");
+                    if (double.TryParse(input, out point))
+                    {
+                        HeadJudgePoints = point;
+                        View.LabelHeadPoints.Text = point.ToString();
+                        break;
+                    }
                 }
             }
         }
@@ -184,7 +188,7 @@ namespace Simhopp
         {
             bool AllPointsCollected = true;
 
-            if (View.ListViewJudgeClients.Items.Count == CurrentContest.Judges.Count)
+            if (View.ListViewJudgeClients.Items.Count + 1 == CurrentContest.Judges.Count)
             {
                 ScoreList scoreList = new ScoreList();
                 foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)

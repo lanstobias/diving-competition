@@ -89,6 +89,7 @@ namespace Simhopp
         // Private Methods
         private void DisplaySubContestResult(SubContestBranch subContestBranch)
         {
+            View.ListViewContestants.Items.Clear();
             int i = 1;
             foreach (var result in Model.GetSubContestResultDictionary(subContestBranch))
             {
