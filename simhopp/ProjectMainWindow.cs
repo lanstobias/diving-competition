@@ -56,7 +56,7 @@ namespace Simhopp
 
         public void DisableBackButton()
         {
-            this.settingsGobackItem.Enabled = false;
+            this.settingsGobackItem.Visible = false;
         }
 
         public void GoBackToStartMenu()
@@ -64,7 +64,7 @@ namespace Simhopp
             Controls.Remove(CurrentView);
             Controls.Add(mainMenuView);
 
-            this.settingsGobackItem.Enabled = true;
+            this.settingsGobackItem.Visible = true;
         }
 
         /// <summary>

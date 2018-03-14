@@ -26,9 +26,6 @@ namespace Simhopp
         #region Constructor
         public ContestPresenter(ContestView view, ProjectMainWindow window, Contest contest)
         {
-            //disable go back
-            window.DisableBackButton();
-
             this.View = view;
             this.window = window;
             CurrentContest = contest;
@@ -54,7 +51,9 @@ namespace Simhopp
                 Server = new TCPServer(this);
             else
                 ManualJudging();
-            //View.LabelServerIp.Text = "Server: " + Serve;
+
+            //disable go back
+            window.DisableBackButton();
         }
 
         #endregion
