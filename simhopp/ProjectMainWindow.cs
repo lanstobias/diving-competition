@@ -75,6 +75,11 @@ namespace Simhopp
                 CurrentView = PreviousView;
             } 
         }
-        
+
+        private void stängToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hejdå!");
+            this.Close();
+        }
     }
 }
