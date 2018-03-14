@@ -12,6 +12,8 @@ using System.Windows.Forms;
 namespace Simhopp
 {
     public delegate void InvokeJudgeDiveView();
+    public delegate void InvokeMainWindow();
+
     public class JudgeDivePresenter
     {
         public string JudgeName { get; set; }
@@ -99,7 +101,7 @@ namespace Simhopp
                 client?.Close();
                 MessageBox.Show("disconnected from server");
 
-                window.GoBackToStartMenu();
+                this.GoBackToStartMenu();
             }
         }
         
@@ -155,6 +157,16 @@ namespace Simhopp
                 ));
         }
 
-        
+        private void GoBackToStartMenu()
+        {
+
+            window.Invoke(new InvokeMainWindow(
+                () =>
+                {
+                    window.GoBackToStartMenu();
+                }
+
+                ));
+        }
     }
 }
