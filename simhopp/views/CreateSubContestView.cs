@@ -115,15 +115,15 @@ namespace Simhopp
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(29, 67);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(104, 20);
             this.textBoxName.TabIndex = 1;
             // 
             // buttonFinalizeContest
             // 
-            this.buttonFinalizeContest.Location = new System.Drawing.Point(443, 345);
-            this.buttonFinalizeContest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonFinalizeContest.Location = new System.Drawing.Point(443, 315);
+            this.buttonFinalizeContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonFinalizeContest.Name = "buttonFinalizeContest";
             this.buttonFinalizeContest.Size = new System.Drawing.Size(68, 43);
             this.buttonFinalizeContest.TabIndex = 7;
@@ -134,7 +134,7 @@ namespace Simhopp
             // buttonAddSubContest
             // 
             this.buttonAddSubContest.Location = new System.Drawing.Point(187, 10);
-            this.buttonAddSubContest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAddSubContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddSubContest.Name = "buttonAddSubContest";
             this.buttonAddSubContest.Size = new System.Drawing.Size(125, 23);
             this.buttonAddSubContest.TabIndex = 5;
@@ -145,7 +145,7 @@ namespace Simhopp
             // buttonRemoveContestantFromSubContest
             // 
             this.buttonRemoveContestantFromSubContest.Location = new System.Drawing.Point(158, 298);
-            this.buttonRemoveContestantFromSubContest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonRemoveContestantFromSubContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRemoveContestantFromSubContest.Name = "buttonRemoveContestantFromSubContest";
             this.buttonRemoveContestantFromSubContest.Size = new System.Drawing.Size(154, 29);
             this.buttonRemoveContestantFromSubContest.TabIndex = 4;
@@ -156,7 +156,7 @@ namespace Simhopp
             // buttonAddContestantToSubContest
             // 
             this.buttonAddContestantToSubContest.Location = new System.Drawing.Point(158, 265);
-            this.buttonAddContestantToSubContest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAddContestantToSubContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddContestantToSubContest.Name = "buttonAddContestantToSubContest";
             this.buttonAddContestantToSubContest.Size = new System.Drawing.Size(154, 29);
             this.buttonAddContestantToSubContest.TabIndex = 3;
@@ -176,7 +176,7 @@ namespace Simhopp
             // buttonUpdateSubContest
             // 
             this.buttonUpdateSubContest.Location = new System.Drawing.Point(187, 37);
-            this.buttonUpdateSubContest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonUpdateSubContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdateSubContest.Name = "buttonUpdateSubContest";
             this.buttonUpdateSubContest.Size = new System.Drawing.Size(125, 22);
             this.buttonUpdateSubContest.TabIndex = 9;
@@ -188,7 +188,7 @@ namespace Simhopp
             // buttonCancelEdit
             // 
             this.buttonCancelEdit.Location = new System.Drawing.Point(187, 87);
-            this.buttonCancelEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancelEdit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancelEdit.Name = "buttonCancelEdit";
             this.buttonCancelEdit.Size = new System.Drawing.Size(125, 20);
             this.buttonCancelEdit.TabIndex = 10;
@@ -275,7 +275,7 @@ namespace Simhopp
             // buttonRemoveSubContest
             // 
             this.buttonRemoveSubContest.Location = new System.Drawing.Point(187, 63);
-            this.buttonRemoveSubContest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonRemoveSubContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRemoveSubContest.Name = "buttonRemoveSubContest";
             this.buttonRemoveSubContest.Size = new System.Drawing.Size(125, 20);
             this.buttonRemoveSubContest.TabIndex = 3;
@@ -288,7 +288,7 @@ namespace Simhopp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateSubContestView";
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
