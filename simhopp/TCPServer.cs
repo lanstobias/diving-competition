@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Renci.SshNet;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -28,7 +29,11 @@ namespace Simhopp
 
         private ContestPresenter contestPresenter = null;
 
-        private string url = "ftp://files.000webhost.com/simhopp/simhoppServers.txt";
+         private string url = "ftp://files.000webhost.com/simhopp/simhoppServers.txt";
+        //private string url = "tomat.trickip.net/simhopp/simhoppServers.txt";
+        
+
+        private NetworkCredential Credentials;
 
         public static TCPServer Instance(ContestPresenter contest)
         {
@@ -61,9 +66,12 @@ namespace Simhopp
             contestPresenter = contest;
 
             HostInfo = contestPresenter.CurrentContest.Info.Name + ":" + serverIp.ToString();
-
+            
             // kallar Instance()
             server = this;
+
+            //Credentials = new NetworkCredential("pi", "gallian0"); ;
+            Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
 
             AddIpToServerList();
 
@@ -186,6 +194,27 @@ namespace Simhopp
         {
             try
             {
+                //using (var client = new SftpClient("pi@tomat.trickip.net/simhopp/", 2022, "pi", "gallian0"))
+                //{
+
+                //    client.Connect();
+
+                //    Console.WriteLine(client.ConnectionInfo.ServerVersion);
+                //}
+
+                //var connectionInfo = new ConnectionInfo("pi@tomat.trickip.net",
+                //                        2022, "pi",
+                //                        new PasswordAuthenticationMethod("pi", "gallian0"),
+                //                        new PrivateKeyAuthenticationMethod("rsa.key"));
+
+                //using (var client = new SftpClient(connectionInfo))
+                //{
+                //    client.Connect();
+
+                //    client.AppendAllText("simhoppServers.txt", HostInfo + "\n");
+                //}
+
+
                 // Create a ftp request on the chosen url
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
 
@@ -193,9 +222,10 @@ namespace Simhopp
                 request.Method = WebRequestMethods.Ftp.AppendFile;
 
                 // Get ftp credentials.
-                request.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
+                request.Credentials = Credentials;
+                //2022
 
-                // Write the new host to the server list
+                //Write the new host to the server list
                 using (Stream request_stream = request.GetRequestStream())
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(HostInfo + "\n");
@@ -218,7 +248,7 @@ namespace Simhopp
         {
             using (WebClient webClient = new WebClient())
             {
-                webClient.Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
+                webClient.Credentials = Credentials;
 
                 string ipList = "";
 
