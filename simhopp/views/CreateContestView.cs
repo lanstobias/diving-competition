@@ -246,6 +246,7 @@ namespace Simhopp
             this.buttonAddNewContestantToDB.TabIndex = 10;
             this.buttonAddNewContestantToDB.Text = "+";
             this.buttonAddNewContestantToDB.UseVisualStyleBackColor = true;
+            this.buttonAddNewContestantToDB.Click += new System.EventHandler(this.buttonAddNewContestantToDB_Click);
             // 
             // buttonRemoveContestantFromContest
             // 
