@@ -111,6 +111,7 @@
             this.Controls.Add(this.radioButtonLAN);
             this.Controls.Add(this.labelServerType);
             this.Name = "SettingsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Inställningar";
             this.ResumeLayout(false);
             this.PerformLayout();
