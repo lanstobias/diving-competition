@@ -49,6 +49,15 @@ namespace Simhopp
         {
             get; set;
         }
+
+        public double FinalScore
+        {
+            get
+            {
+                return generateFinalizedScore();
+            }
+
+        }
         #endregion
 
         #region Functions
