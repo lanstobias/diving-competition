@@ -15,7 +15,7 @@ namespace Simhopp
         #region Properties
         MainMenuView mainMenuView;
         MainMenuPresenter mainMenuPresenter;
-        public bool LAN { get; set; }
+        public bool LAN { get; set; } = true;
         public int Port { get; set; }
 
         private PanelViewControl CurrentView { get; set; }
@@ -94,10 +94,11 @@ namespace Simhopp
         {
             SettingsForm settingsForm = new SettingsForm();
 
-            LAN = settingsForm.LAN;
-            Port = settingsForm.Port;
 
             settingsForm.Show();
+
+            LAN = settingsForm.LAN;
+            Port = settingsForm.Port;
 
         }
     }
