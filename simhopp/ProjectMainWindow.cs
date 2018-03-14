@@ -87,5 +87,12 @@ namespace Simhopp
             System.Diagnostics.Process.Start("http://tomat.trickip.net/simhopp/?controller=view_result&action=home");
         }
 
+        private void inställningarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsForm = new SettingsForm();
+            
+            settingsForm.Show();
+
+        }
     }
 }
