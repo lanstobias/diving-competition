@@ -81,5 +81,11 @@ namespace Simhopp
             MessageBox.Show("Hejdå!");
             this.Close();
         }
+
+        private void resultatsidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://tomat.trickip.net/simhopp/?controller=view_result&action=home");
+        }
+
     }
 }
