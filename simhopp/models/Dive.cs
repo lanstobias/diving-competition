@@ -56,15 +56,20 @@ namespace Simhopp
         /// <summary>
         /// Generates the raw total score of the dive, without removing the ends.
         /// </summary>
-        /// <returns>double with the raw score</returns>
+        /// <returns>double with the raw score, or -1 if the are no scores</returns>
         public double generateRawScore()
         {
             double RawScore = 0;
-            foreach (var score in Scores)
-                RawScore += score.Value;
 
-            RawScore *= this.Code.Multiplier;
-            return RawScore;
+            if(Scores != null)
+            {
+                foreach (var score in Scores)
+                    RawScore += score.Value;
+
+                RawScore *= this.Code.Multiplier;
+                return RawScore;
+            }
+            return -1;
         }
 
         /// <summary>
@@ -77,14 +82,19 @@ namespace Simhopp
             ScoreList scoresWithoutFirstAndLastScore = generateScoresWithoutFirstAndLastScore();
 
             //Summering av alla poäng
-            foreach (var scores in scoresWithoutFirstAndLastScore)
+            if(scoresWithoutFirstAndLastScore != null)
             {
-                FinalizedScore += scores.Value;
-            }
-            
-            FinalizedScore *= Code.Multiplier;
+                foreach (var scores in scoresWithoutFirstAndLastScore)
+                {
+                    FinalizedScore += scores.Value;
+                }
 
-            return FinalizedScore;
+                FinalizedScore *= Code.Multiplier;
+
+                return FinalizedScore;
+            }
+
+            return -1;
         }
 
         /// <summary>
@@ -99,7 +109,7 @@ namespace Simhopp
 
             // sums all the scores
             // i start at 1 to skip first
-            if (Scores.Count > 2)
+            if (Scores?.Count > 2)
             {
                 for (int i = 1; i < Scores.Count; i++)
                 {
@@ -119,7 +129,7 @@ namespace Simhopp
         public void SortScoreListAscending()
         {
             ScoreComparer scoreComparer = new ScoreComparer();
-            Scores.Sort(scoreComparer);
+            Scores?.Sort(scoreComparer);
         }
 
         /// <summary>
