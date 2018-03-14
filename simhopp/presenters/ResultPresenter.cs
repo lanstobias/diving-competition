@@ -9,14 +9,20 @@ namespace Simhopp
 {
     public class ResultPresenter
     {
+        #region Members
+        // Properties
         public ResultView View { get; set; }
 
         public Contest Model { get; set; }
 
         public SubContestBranch SelectedSubContest { get; set; } = null;
 
+        // Private fields
         private ProjectMainWindow window;
+        #endregion
 
+        #region Constructors
+        // Instance constructor
         public ResultPresenter(ResultView view, ProjectMainWindow window, Contest contest)
         {
             this.View = view;
@@ -29,9 +35,11 @@ namespace Simhopp
                 View.ListViewSubContests.Items.Add(subcontest.Name);
 
             View.EventSubContestSelection += SubContestSelected;
-
         }
+        #endregion
 
+        #region Methods
+        // Public Methods
         public void TestData()
         {
             ScoreList scoreList = new ScoreList();
@@ -62,8 +70,6 @@ namespace Simhopp
                     if (c.FirstName == "pelle")
                         sc.AddNewDive(c, dive2);
                 }
-
-
             }
 
             foreach (var sc in Model.SubContestBranches)
@@ -80,41 +86,46 @@ namespace Simhopp
 
         }
 
+        // Private Methods
+        private void DisplaySubContestResult(SubContestBranch subContestBranch)
+        {
+            int i = 1;
+            foreach (var result in Model.GetSubContestResultDictionary(subContestBranch))
+            {
+                ListViewItem listViewResultItem = new ListViewItem(i.ToString());
+
+                listViewResultItem.SubItems.Add(result.Key.FirstName);
+
+                listViewResultItem.SubItems.Add(result.Key.LastName);
+
+                listViewResultItem.SubItems.Add(result.Value.ToString());
+
+                View.ListViewContestants.Items.Add(listViewResultItem);
+
+                i++;
+
+            }
+        }
+
         private void SubContestSelected()
         {
             if (View.ListViewSubContests.SelectedItems.Count == 1)
             {
                 var subContestName = View.ListViewSubContests.SelectedItems[0].Text;
 
-                foreach(var sc in Model.SubContestBranches)
+                foreach (var sc in Model.SubContestBranches)
                 {
                     if (sc.Name == subContestName)
                     {
-                        int i = 1;
-                        foreach(var result in Model.GetSubContestResultDictionary(sc))
-                        {
-                            ListViewItem listViewResultItem = new ListViewItem(i.ToString());
-
-                            listViewResultItem.SubItems.Add(result.Key.FirstName);
-
-                            listViewResultItem.SubItems.Add(result.Key.LastName);
-
-                            listViewResultItem.SubItems.Add(result.Value.ToString());
-
-                            View.ListViewContestants.Items.Add(listViewResultItem);
-
-                            i++;
-
-                        }
-
+                        DisplaySubContestResult(sc);
                     }
-
 
                 }
 
 
 
             }
-        }
+        } 
+        #endregion
     }
 }
