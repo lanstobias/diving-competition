@@ -17,6 +17,7 @@ namespace Simhopp
     public delegate void DelegateCancelDiveEdit();
     public delegate void DelegateRequestPoints();
     public delegate void DelegateCollectPoints();
+    public delegate void DelegateManualJudging();
 
     public interface IContestView
     {
@@ -31,5 +32,6 @@ namespace Simhopp
         event DelegateRemoveDive EventRemoveDive;
         event DelegateRequestPoints EventRequestPoints;
         event DelegateCollectPoints EventCollectPoints;
+        event DelegateManualJudging EventManualJudging;
     }
 }

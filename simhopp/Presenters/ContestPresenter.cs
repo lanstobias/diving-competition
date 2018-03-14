@@ -39,6 +39,7 @@ namespace Simhopp
             View.EventCancelDiveEdit += CancelModifyDive;
             View.EventRequestPoints += RequestPointsFromJudges;
             View.EventCollectPoints += CollectPoints;
+            View.EventManualJudging += OpenManualJudging;
 
             window.FormClosing += ParentForm_FormClosing;
 
@@ -80,6 +81,14 @@ namespace Simhopp
         private void RequestPointsFromJudges()
         {
             Server.RequestPoints();
+        }
+
+        /// <summary>
+        /// If the program is in offline mode, enable manual scoring by the headjudge
+        /// </summary>
+        private void OpenManualJudging()
+        {
+            
         }
 
         /// <summary>
