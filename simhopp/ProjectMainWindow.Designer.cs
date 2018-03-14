@@ -29,15 +29,13 @@
         private void InitializeComponent()
         {
             this.SuspendLayout();
-
-
             // 
-            // Form1
+            // ProjectMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 421);
-            this.Name = "projectMainWindow";
+            this.Name = "ProjectMainWindow";
             this.Text = "Simhopp";
             this.ResumeLayout(false);
 

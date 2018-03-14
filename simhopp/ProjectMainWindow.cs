@@ -32,6 +32,7 @@ namespace Simhopp
             if (login.ShowDialog() == DialogResult.OK)
             {
                 CurrentJudge = login.Judge;
+                this.Text = "Simhopp: " + CurrentJudge.GetFullName();
                 mainMenuView = new MainMenuView();
                 mainMenuPresenter = new MainMenuPresenter(mainMenuView, this);
 
