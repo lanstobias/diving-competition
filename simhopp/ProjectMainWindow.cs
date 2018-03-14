@@ -13,18 +13,17 @@ namespace Simhopp
     public partial class ProjectMainWindow : Form
     {
         #region Properties
-        MainMenuView mainMenuView;
-        MainMenuPresenter mainMenuPresenter;
+        private MainMenuView mainMenuView;
+        private MainMenuPresenter mainMenuPresenter;
         public bool LAN { get; set; } = true;
         public int Port { get; set; }
 
         private SettingsForm Settings { get; set; } = new SettingsForm();
-
-
         private PanelViewControl CurrentView { get; set; }
-
-        // Holds the previous view that was presented.
         private PanelViewControl PreviousView { get; set; }
+
+        // Holds the previous views that was presented earlier. Last in First out
+        private Stack<PanelViewControl> PrevViewStack { get; set; }
 
         public Judge CurrentJudge { get; set; }
         public bool Offline { get; set; }
@@ -34,16 +33,20 @@ namespace Simhopp
         {
             InitializeComponent();
 
+            PrevViewStack = new Stack<PanelViewControl>();
+
             LoginForm login = new LoginForm();
 
             if (login.ShowDialog() == DialogResult.OK)
             {
                 CurrentJudge = login.Judge;
-                this.Text = "Simhopp: " + CurrentJudge.GetFullName();
+
+                Text = "Simhopp: " + CurrentJudge.GetFullName();
+
                 mainMenuView = new MainMenuView();
                 mainMenuPresenter = new MainMenuPresenter(mainMenuView, this);
 
-                this.Controls.Add(mainMenuView);
+                Controls.Add(mainMenuView);
             }
             else
                 Environment.Exit(1);
@@ -53,8 +56,8 @@ namespace Simhopp
 
         public void GoBackToStartMenu()
         {
-            this.Controls.Remove(CurrentView);
-            this.Controls.Add(mainMenuView);
+            Controls.Remove(CurrentView);
+            Controls.Add(mainMenuView);
         }
 
         /// <summary>
@@ -66,26 +69,31 @@ namespace Simhopp
         {
             this.Controls.Remove(cameFrom);
             this.Controls.Add(viewToLoad);
+            
+            PrevViewStack.Push(cameFrom);
 
-            PreviousView = cameFrom;
             CurrentView = viewToLoad;
         }
 
         public void GoBackToPreviuosPanel()
         {
-            if(PreviousView != null)
+            try
             {
+                PreviousView = PrevViewStack.Pop();
+
                 this.Controls.Remove(CurrentView);
                 this.Controls.Add(PreviousView);
 
-                PreviousView = null;
                 CurrentView = PreviousView;
-            } 
+            }
+            catch(InvalidOperationException)
+            {
+                GoBackToStartMenu();
+            }
         }
 
         private void stängToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hejdå!");
             this.Close();
         }
 
@@ -105,6 +113,11 @@ namespace Simhopp
             Port = Settings.Port;
             Offline = Settings.Offline;
 
+        }
+
+        private void SettingsGoBackItem_Click(object sender, EventArgs e)
+        {
+            GoBackToPreviuosPanel();
         }
     }
 }

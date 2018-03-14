@@ -10,11 +10,11 @@ namespace Simhopp
 {
     public class CreateContestPresenter
     {
+        #region Properties
         public CreateContestView View { get; set; }
 
         private ProjectMainWindow window;
-
-        #region Properties
+        
         public DateTime StartDate { get; set; } = new DateTime();
 
         public DateTime EndDate { get; set; } = new DateTime();
@@ -45,11 +45,12 @@ namespace Simhopp
             View.EventAddContestantToContest += AddContestantToContest;
             View.EventRemoveContestantFromContest += RemoveContestantFromContest;
             View.EventCreateSubContest += GoToCreateSubContest;
-
+            View.EventGoBack += GoBack;
 
             FillWithData();
 
-        } 
+        }
+
         #endregion
 
         #region Methods
@@ -418,7 +419,11 @@ namespace Simhopp
             }
 
             View.LabelEndDate.Text = EndDate.ToShortDateString();
-        } 
+        }
+        private void GoBack()
+        {
+            window.GoBackToPreviuosPanel();
+        }
         #endregion
     }
 }

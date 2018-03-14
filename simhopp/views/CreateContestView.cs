@@ -42,6 +42,7 @@ namespace Simhopp
         private Label labelContestJudges;
         private Label labelContestantsFromDB;
         private Label labelJudgesFromDB;
+        private Button buttonGoBack;
         private System.Windows.Forms.TextBox textBoxName;
 
         public event DelegateSetStartDate EventSetStartDate;
@@ -53,7 +54,7 @@ namespace Simhopp
         public event DelegateAddContestantToContest EventAddContestantToContest;
         public event DelegateRemoveContestantFromContest EventRemoveContestantFromContest;
         public event DelegateCreateSubContest EventCreateSubContest;
-
+        public event DelegateGoBack EventGoBack;
 
         public TextBox TextBoxName { get { return textBoxName; } set { textBoxName = value; } }
         public TextBox TextBoxCity { get { return textBoxCity; } set { textBoxCity = value; } }
@@ -106,11 +107,13 @@ namespace Simhopp
             this.labelContestantsFromDB = new System.Windows.Forms.Label();
             this.labelContestJudges = new System.Windows.Forms.Label();
             this.labelContestContestants = new System.Windows.Forms.Label();
+            this.buttonGoBack = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.buttonGoBack);
             this.mainPanel.Controls.Add(this.labelContestContestants);
             this.mainPanel.Controls.Add(this.labelContestJudges);
             this.mainPanel.Controls.Add(this.labelContestantsFromDB);
@@ -234,8 +237,8 @@ namespace Simhopp
             this.buttonAddNewJudgeToDB.Size = new System.Drawing.Size(20, 20);
             this.buttonAddNewJudgeToDB.TabIndex = 5;
             this.buttonAddNewJudgeToDB.Text = "+";
-            this.buttonAddNewJudgeToDB.Visible = false;
             this.buttonAddNewJudgeToDB.UseVisualStyleBackColor = true;
+            this.buttonAddNewJudgeToDB.Visible = false;
             this.buttonAddNewJudgeToDB.Click += new System.EventHandler(this.ButtonAddNewJudgeToDB_Click);
             // 
             // buttonAddNewContestantToDB
@@ -440,6 +443,16 @@ namespace Simhopp
             this.labelContestContestants.TabIndex = 31;
             this.labelContestContestants.Text = "Deltagare i tävling";
             // 
+            // buttonGoBack
+            // 
+            this.buttonGoBack.Location = new System.Drawing.Point(4, 4);
+            this.buttonGoBack.Name = "buttonGoBack";
+            this.buttonGoBack.Size = new System.Drawing.Size(15, 21);
+            this.buttonGoBack.TabIndex = 32;
+            this.buttonGoBack.Text = "<";
+            this.buttonGoBack.UseVisualStyleBackColor = true;
+            this.buttonGoBack.Click += new System.EventHandler(this.buttonGoBack_Click);
+            // 
             // CreateContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,6 +510,9 @@ namespace Simhopp
             this.EventRemoveJudgeFromContest?.Invoke();
         }
 
-
+        private void buttonGoBack_Click(object sender, EventArgs e)
+        {
+            this.EventGoBack?.Invoke();
+        }
     }
 }
