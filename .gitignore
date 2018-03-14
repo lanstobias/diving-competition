@@ -480,3 +480,5 @@ $RECYCLE.BIN/
 # should be stored in the .pubxml.user file.
 
 # End of https://www.gitignore.io/api/macos,csharp,windows,visualstudio
+
+simhopp_webb/.vscode/sftp.json
