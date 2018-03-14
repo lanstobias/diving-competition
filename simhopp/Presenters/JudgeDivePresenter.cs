@@ -82,9 +82,9 @@ namespace Simhopp
                     {
                         UpdateContestInfo(msg.Substring(8));
                     }
-                    else if (msg.StartsWith("give"))
+                    else if (msg.StartsWith("give:"))
                     {
-                        ToggleGiveScore();
+                        ToggleGiveScore(msg.Substring(4));
                     }
                 }
                 
@@ -118,8 +118,10 @@ namespace Simhopp
         /// <summary>
         /// Enable/disable ButtonGiveScore
         /// </summary>
-        private void ToggleGiveScore()
+        private void ToggleGiveScore(string msg = "")
         {
+            string[] msgArr = msg.Split('|');
+
             View.Invoke(new InvokeJudgeDiveView(
                 () => 
                 {
@@ -127,11 +129,15 @@ namespace Simhopp
 
                     if (View.ButtonGiveScore.Enabled)
                     {
+                        View.LabelCodeGiven.Text = msgArr[0];
+                        View.LabelMultGiven.Text = msgArr[1];
                         View.LabelRequest.Text = "Poäng begärd av huvuddomare";
                         View.LabelRequest.ForeColor = System.Drawing.Color.DarkGreen;
                     }
                     else
                     {
+                        View.LabelCodeGiven.Text = "";
+                        View.LabelMultGiven.Text = "";
                         View.LabelRequest.Text = "Bedömning stängd";
                         View.LabelRequest.ForeColor = System.Drawing.Color.DarkRed;
                     }

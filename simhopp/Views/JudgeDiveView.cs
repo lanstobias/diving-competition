@@ -16,6 +16,10 @@ namespace Simhopp
         private Label labelCity;
         private Label labelContestName;
         private Label labelRequest;
+        private Label labelMultGiven;
+        private Label labelCodeGiven;
+        private Label labelMult;
+        private Label labelCode;
         private System.Windows.Forms.TrackBar sliderPoints;
 
         public Button ButtonGiveScore { get { return buttonGiveScore; } set { buttonGiveScore = value; } }
@@ -28,6 +32,9 @@ namespace Simhopp
         public Label LabelContestName { get { return labelContestName; } set { labelContestName = value; } }
         public Label LabelCity { get { return labelCity; } set { labelCity = value; } }
         public Label LabelVenue { get { return labelVenue; } set { labelVenue = value; } }
+
+        public Label LabelCodeGiven { get { return labelCodeGiven; } set { labelCodeGiven = value; } }
+        public Label LabelMultGiven { get { return labelMultGiven; } set { labelMultGiven = value; } }
 
         public event DelegateGiveScore EventGiveScore;
         public event DelegatePointSliderChanged EventPointSliderChanged;
@@ -48,12 +55,20 @@ namespace Simhopp
             this.labelCity = new System.Windows.Forms.Label();
             this.labelContestName = new System.Windows.Forms.Label();
             this.labelRequest = new System.Windows.Forms.Label();
+            this.labelCode = new System.Windows.Forms.Label();
+            this.labelMult = new System.Windows.Forms.Label();
+            this.labelCodeGiven = new System.Windows.Forms.Label();
+            this.labelMultGiven = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sliderPoints)).BeginInit();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.labelMultGiven);
+            this.mainPanel.Controls.Add(this.labelCodeGiven);
+            this.mainPanel.Controls.Add(this.labelMult);
+            this.mainPanel.Controls.Add(this.labelCode);
             this.mainPanel.Controls.Add(this.labelRequest);
             this.mainPanel.Controls.Add(this.labelVenue);
             this.mainPanel.Controls.Add(this.labelCity);
@@ -62,6 +77,7 @@ namespace Simhopp
             this.mainPanel.Controls.Add(this.sliderPoints);
             this.mainPanel.Controls.Add(this.buttonGiveScore);
             this.mainPanel.Controls.Add(this.labelScore);
+            this.mainPanel.Location = new System.Drawing.Point(0, 20);
             // 
             // labelScore
             // 
@@ -143,6 +159,44 @@ namespace Simhopp
             this.labelRequest.Size = new System.Drawing.Size(95, 13);
             this.labelRequest.TabIndex = 20;
             this.labelRequest.Text = "Bedömning stängd";
+            // 
+            // labelCode
+            // 
+            this.labelCode.AutoSize = true;
+            this.labelCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.labelCode.Location = new System.Drawing.Point(27, 154);
+            this.labelCode.Name = "labelCode";
+            this.labelCode.Size = new System.Drawing.Size(54, 13);
+            this.labelCode.TabIndex = 21;
+            this.labelCode.Text = "Hoppkod:";
+            // 
+            // labelMult
+            // 
+            this.labelMult.AutoSize = true;
+            this.labelMult.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.labelMult.Location = new System.Drawing.Point(150, 154);
+            this.labelMult.Name = "labelMult";
+            this.labelMult.Size = new System.Drawing.Size(32, 13);
+            this.labelMult.TabIndex = 22;
+            this.labelMult.Text = "Multi:";
+            // 
+            // labelCodeGiven
+            // 
+            this.labelCodeGiven.AutoSize = true;
+            this.labelCodeGiven.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.labelCodeGiven.Location = new System.Drawing.Point(84, 154);
+            this.labelCodeGiven.Name = "labelCodeGiven";
+            this.labelCodeGiven.Size = new System.Drawing.Size(0, 13);
+            this.labelCodeGiven.TabIndex = 23;
+            // 
+            // labelMultGiven
+            // 
+            this.labelMultGiven.AutoSize = true;
+            this.labelMultGiven.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.labelMultGiven.Location = new System.Drawing.Point(188, 154);
+            this.labelMultGiven.Name = "labelMultGiven";
+            this.labelMultGiven.Size = new System.Drawing.Size(0, 13);
+            this.labelMultGiven.TabIndex = 24;
             // 
             // JudgeDiveView
             // 

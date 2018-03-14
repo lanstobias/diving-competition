@@ -298,11 +298,11 @@ namespace Simhopp
             return true;
         }
 
-        internal void RequestPoints()
+        internal void RequestPoints(Dive dive)
         {
             foreach (var client in ClientList)
             {
-                client.StreamWriter?.WriteLine("give");
+                client.StreamWriter?.WriteLine("give:"+dive.Code.Code+"|"+dive.Code.Multiplier);
                 client.StreamWriter?.Flush();
             }
         }
