@@ -36,6 +36,8 @@ namespace Simhopp
         private Button buttonCollectPoints;
         private Label labelServerIp;
         private Button buttonManualJudging;
+        private Label labelHeadPoints;
+        private Label labelHeadJudge;
         private System.Windows.Forms.ColumnHeader columnPoints;
 
         public event DelegateAddJump EventAddJump;
@@ -66,6 +68,7 @@ namespace Simhopp
         public Button ButtonRequestPoints { get { return buttonRequestPoints; } set { buttonRequestPoints = value; } }
         public ListView ListViewJudgeClients { get { return listViewJudgeClients; } set { listViewJudgeClients = value; } }
         public Button ButtonManualJudging { get { return buttonManualJudging; } set { buttonManualJudging = value; } }
+        public Label LabelHeadPoints { get { return labelHeadPoints; } set { labelHeadPoints = value; } }
 
         public ContestView()
         {
@@ -102,11 +105,15 @@ namespace Simhopp
             this.buttonCollectPoints = new System.Windows.Forms.Button();
             this.labelServerIp = new System.Windows.Forms.Label();
             this.buttonManualJudging = new System.Windows.Forms.Button();
+            this.labelHeadJudge = new System.Windows.Forms.Label();
+            this.labelHeadPoints = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.labelHeadPoints);
+            this.mainPanel.Controls.Add(this.labelHeadJudge);
             this.mainPanel.Controls.Add(this.buttonManualJudging);
             this.mainPanel.Controls.Add(this.labelServerIp);
             this.mainPanel.Controls.Add(this.buttonCollectPoints);
@@ -392,6 +399,23 @@ namespace Simhopp
             this.buttonManualJudging.UseVisualStyleBackColor = true;
             this.buttonManualJudging.Visible = false;
             this.buttonManualJudging.Click += new System.EventHandler(this.buttonManualJudging_Click);
+            // 
+            // labelHeadJudge
+            // 
+            this.labelHeadJudge.AutoSize = true;
+            this.labelHeadJudge.Location = new System.Drawing.Point(351, 362);
+            this.labelHeadJudge.Name = "labelHeadJudge";
+            this.labelHeadJudge.Size = new System.Drawing.Size(88, 13);
+            this.labelHeadJudge.TabIndex = 22;
+            this.labelHeadJudge.Text = "Din givna poäng:";
+            // 
+            // labelHeadPoints
+            // 
+            this.labelHeadPoints.AutoSize = true;
+            this.labelHeadPoints.Location = new System.Drawing.Point(464, 362);
+            this.labelHeadPoints.Name = "labelHeadPoints";
+            this.labelHeadPoints.Size = new System.Drawing.Size(0, 13);
+            this.labelHeadPoints.TabIndex = 23;
             // 
             // ContestView
             // 

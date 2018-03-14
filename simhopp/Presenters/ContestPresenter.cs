@@ -19,6 +19,8 @@ namespace Simhopp
 
         public TCPServer Server { get; set; }
 
+        public double HeadJudgePoints { get; set; }
+
         #endregion
 
         #region Constructor
@@ -82,6 +84,18 @@ namespace Simhopp
         private void RequestPointsFromJudges()
         {
             Server?.RequestPoints();
+
+            double point = -1;
+            while (true)
+            {
+                string input = InputDialog.OpenDialog("Ge dina poäng");
+                if (double.TryParse(input, out point))
+                {
+                    HeadJudgePoints = point;
+                    View.LabelHeadPoints.Text = point.ToString();
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -194,7 +208,7 @@ namespace Simhopp
                             }
 
                         }
-
+                        scoreList.Add(new Score(HeadJudgePoints, window.CurrentJudge));
                     }
                 }
 
@@ -237,6 +251,7 @@ namespace Simhopp
                             Dive dive = GetSelectedDive();
                             if (dive?.Scores != null)
                             {
+                                int i = 0;
                                 foreach (var score in GetSelectedDive().Scores)
                                 {
                                     if (score.Judge.GetFullName() == clientItem.Text)
@@ -244,12 +259,15 @@ namespace Simhopp
                                         clientItem.SubItems[1].Text = score.Value.ToString();
                                         break;
                                     }
+                                    else if (score.Judge == window.CurrentJudge)
+                                        View.LabelHeadPoints.Text = score.Value.ToString();
                                 }
                                 break;
                             }
                             else
                             {
                                 clientItem.SubItems[1].Text = "-1";
+                                View.LabelHeadPoints.Text = "-1";
                             }
                         }
                     }
