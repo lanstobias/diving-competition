@@ -288,7 +288,6 @@ namespace Simhopp
         /// </summary>
         internal void RefreshClientListView()
         {
-
             View.ListViewJudgeClients?.Items.Clear();
 
             foreach(var client in Server.ClientList)
@@ -448,6 +447,17 @@ namespace Simhopp
 
         private void CloseContest()
         {
+            Database db = new Database();
+            try
+            {
+                db.PushContest(CurrentContest);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+
             Server.Kill();
 
             ResultView resultView = new ResultView();
