@@ -118,7 +118,12 @@ namespace Simhopp
         /// </summary>
         public void Kill()
         {
-            RemoveIpFromServerList();
+            int x = 0;
+            while (!RemoveIpFromServerList())
+            {
+                if(x++ == 3)
+                    break;
+            }
 
             foreach (var client in ClientList)
             {
@@ -247,30 +252,43 @@ namespace Simhopp
                     return false;
                 }
 
-
-                // Get the object used to communicate with the server.
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
-                request.Method = WebRequestMethods.Ftp.UploadFile;
-
-                // Get network credentials.
-                request.Credentials = webClient.Credentials;
-
-                // Find the start index of the host in the hostList
-                int index = ipList.IndexOfAny(HostInfo.ToCharArray());
-
-                if (index != -1)
+                try
                 {
-                    ipList = ipList.Remove(index, (HostInfo + "\n").Length);
+                    // Get the object used to communicate with the server.
+                    FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
+                    request.Method = WebRequestMethods.Ftp.UploadFile;
 
-                    request.ContentLength = ipList.Length;
+                    // Get network credentials.
+                    request.Credentials = webClient.Credentials;
 
-                    using (Stream request_stream = request.GetRequestStream())
+                    // Find the start index of the host in the hostList
+                    try
                     {
-                        byte[] bytes = Encoding.UTF8.GetBytes(ipList);
-                        request_stream.Write(bytes, 0, ipList.Length);
-                        request_stream.Close();
+                        int index = ipList.IndexOfAny(HostInfo.ToCharArray());
+                        
+                        ipList = ipList.Remove(index, (HostInfo + "\n").Length);
+
+                        request.ContentLength = ipList.Length;
+
+                        using (Stream request_stream = request.GetRequestStream())
+                        {
+                            byte[] bytes = Encoding.UTF8.GetBytes(ipList);
+                            request_stream.Write(bytes, 0, ipList.Length);
+                            request_stream.Close();
+                        }
+                        
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        return false;
                     }
                 }
+                catch (Exception)
+                {
+                    return false;
+                }
+                
+                
 
             }
 
