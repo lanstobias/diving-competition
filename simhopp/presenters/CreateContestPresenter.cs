@@ -69,6 +69,8 @@ namespace Simhopp
                 Console.WriteLine(e.Message.ToString());
             }
 
+            ContestJudgeList.Add(window.CurrentJudge);
+
             UpdateListViews();
 
         }
@@ -324,22 +326,27 @@ namespace Simhopp
             try
             {
                 // Collect the chosen judge, gets the full name of the judge
-                var judgeFirstName = View.ListViewLocalJudges.SelectedItems[0].SubItems[0].Text;
-                var judgeLastName = View.ListViewLocalJudges.SelectedItems[0].SubItems[1].Text;
+                var judgeName = View.ListViewLocalJudges.SelectedItems[0].SubItems[0].Text + " " + View.ListViewLocalJudges.SelectedItems[0].SubItems[1].Text;
 
                 Judge judgeToBeRemoved = null;
 
-                // find the right Judge object
-                foreach (var j in ContestJudgeList)
+                // if you are the judge creating the contest, you cannot be removed.
+                if (judgeName != window.CurrentJudge.GetFullName())
                 {
-                    if (String.Equals(j.FirstName, judgeFirstName) && String.Equals(j.LastName, judgeLastName))
-                        judgeToBeRemoved = j;
+                    // find the right Judge object
+                    foreach (var j in ContestJudgeList)
+                    {
+                        if (String.Equals(j.GetFullName(), judgeName))
+                            judgeToBeRemoved = j;
+                    }
+
+                    // remove from contestlist
+                    ContestJudgeList.Remove(judgeToBeRemoved);
+
+                    UpdateListViews();
                 }
-
-                // remove from contestlist
-                ContestJudgeList.Remove(judgeToBeRemoved);
-
-                UpdateListViews();
+                else
+                    MessageBox.Show("Du kan inte ta bort dig själv!");
             }
             catch (ArgumentOutOfRangeException)
             {

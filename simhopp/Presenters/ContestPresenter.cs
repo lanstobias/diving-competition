@@ -19,8 +19,6 @@ namespace Simhopp
 
         public TCPServer Server { get; set; }
 
-        public double HeadJudgePoints { get; set; }
-
         #endregion
 
         #region Constructor
@@ -48,7 +46,7 @@ namespace Simhopp
             Initialize();
 
             if (!window.Offline)
-                Server = new TCPServer(this);
+                StartServer();
             else
                 ManualJudging();
 
@@ -71,10 +69,30 @@ namespace Simhopp
             View.LabelArena.Text = CurrentContest.Info.Arena;
             View.LabelStartDate.Text = CurrentContest.Info.StartDate.ToShortDateString();
             View.LabelEndDate.Text = CurrentContest.Info.EndDate.ToShortDateString();
+        }
 
-            ListViewItem headJudgeItem = new ListViewItem(window.CurrentJudge.GetFullName());
-            headJudgeItem.SubItems.Add("-1");
-            View.ListViewJudgeClients.Items.Add(headJudgeItem);
+        /// <summary>
+        /// Starts up a TCPServer
+        /// </summary>
+        private void StartServer()
+        {
+            Server = new TCPServer(this);
+
+            // let the host connect as a client so he will be treated as one of the judges
+            JudgeDiveView hostJudgeView = new JudgeDiveView();
+            JudgeDivePresenter hostJudgePres = new JudgeDivePresenter(hostJudgeView, window, Server.GetIp().ToString());
+
+            BlankWindow blankWindow = new BlankWindow();
+            blankWindow.Controls.Add(hostJudgeView);
+            blankWindow.StartPosition = FormStartPosition.CenterScreen;
+            blankWindow.Text = "Bedömning: " + window.CurrentJudge.GetFullName();
+            blankWindow.Show();
+
+            foreach(var jClient in Server.ClientList)
+            {
+                if (jClient.ClientName == window.CurrentJudge.GetFullName())
+                    jClient.IsHost = true;
+            }
         }
 
         /// <summary>
@@ -95,18 +113,6 @@ namespace Simhopp
             if(dive != null)
             {
                 Server?.RequestPoints(GetSelectedDive());
-
-                double point = -1;
-                while (true)
-                {
-                    string input = InputDialog.OpenDialog("Ge dina poäng");
-                    if (double.TryParse(input, out point))
-                    {
-                        HeadJudgePoints = point;
-                        View.LabelHeadPoints.Text = point.ToString();
-                        break;
-                    }
-                }
             }
         }
 
@@ -196,7 +202,7 @@ namespace Simhopp
         {
             bool AllPointsCollected = true;
 
-            if (View.ListViewJudgeClients.Items.Count + 1 == CurrentContest.Judges.Count)
+            if (View.ListViewJudgeClients.Items.Count == CurrentContest.Judges.Count)
             {
                 ScoreList scoreList = new ScoreList();
                 foreach (ListViewItem clientItem in View.ListViewJudgeClients.Items)
@@ -220,7 +226,6 @@ namespace Simhopp
                             }
 
                         }
-                        scoreList.Add(new Score(HeadJudgePoints, window.CurrentJudge));
                     }
                 }
 
@@ -235,6 +240,10 @@ namespace Simhopp
                 else
                     MessageBox.Show("Väntar fortfarande på poäng från domare!");
 
+            }
+            else
+            {
+                MessageBox.Show("Alla domare måste ansuta först!");
             }
         }
 
@@ -271,11 +280,6 @@ namespace Simhopp
                                         clientItem.SubItems[1].Text = score.Value.ToString();
                                         break;
                                     }
-                                    else if (score.Judge == window.CurrentJudge && score.Judge.GetFullName() == clientItem.Text)
-                                    {
-                                        clientItem.SubItems[1].Text = score.Value.ToString();
-                                    }
-                                        
                                 }
                                 break;
                             }
@@ -288,6 +292,7 @@ namespace Simhopp
                     }
                 }
             }
+            // offline
             else
             {
                 foreach (var judge in CurrentContest.Judges)
@@ -387,10 +392,6 @@ namespace Simhopp
 
             if (Server != null)
             {
-                ListViewItem headJudgeItem = new ListViewItem(window.CurrentJudge.GetFullName());
-                headJudgeItem.SubItems.Add("-1");
-                View.ListViewJudgeClients.Items.Add(headJudgeItem);
-
                 foreach (var client in Server.ClientList)
                 {
                     ListViewItem clientItem = new ListViewItem(client.ClientName);

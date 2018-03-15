@@ -29,6 +29,8 @@ namespace Simhopp
         public Thread ThreadClient { get; set; } = null;
         public TCPServer Server { get; set; } = null;
 
+        public bool IsHost { get; set; }
+
         public string Points { get; set; } = "-1";
 
         private ContestPresenter contestPresenter;
@@ -37,7 +39,7 @@ namespace Simhopp
 
         #region Constructor
 
-        public HandleClient(TCPServer server, TcpClient client, int id, ContestPresenter contest)
+        public HandleClient(TCPServer server, TcpClient client, ContestPresenter contest)
         {
             this.contestPresenter = contest;
             this.Server = server;
@@ -46,7 +48,7 @@ namespace Simhopp
 
             ThreadClient = new Thread(ClientThread);
             ThreadClient.IsBackground = true;
-            ThreadClient.Name = "Client " + id;
+            ThreadClient.Name = "Client ";
             ThreadClient.Start();
             
         }
@@ -85,8 +87,19 @@ namespace Simhopp
                     }
                     else if (msg.StartsWith("Login:"))
                     {
-                        ClientName = msg.Substring(6);
-                        Server.UpdateJudgeListView();
+                        string msgName = msg.Substring(6);
+
+                        if (AcceptClient(msgName))
+                        {
+                            ClientName = msg.Substring(6);
+                            Server.UpdateJudgeListView();
+                        }
+                        else
+                        {
+                            StreamWriter.WriteLine("denied");
+                            StreamWriter.Flush();
+                        }
+                        
                     }
                     else if (msg.StartsWith("Points:"))
                     {
@@ -100,21 +113,40 @@ namespace Simhopp
             catch (IOException ioe) { }
             finally
             {
-                Client.Close();
-
-                foreach (var client in Server.ClientList)
+                if (!IsHost)
                 {
-                    if (this == client)
-                    {
-                        Server.ClientList.Remove(client);
-                        break;
-                    }
+                    Client.Close();
 
+                    foreach (var client in Server.ClientList)
+                    {
+                        if (this == client)
+                        {
+                            Server.ClientList.Remove(client);
+                            break;
+                        }
+
+                    }
+                    Server.UpdateJudgeListView();
+                    ThreadClient.Abort();
                 }
-                Server.UpdateJudgeListView();
-                ThreadClient.Abort();
             }
 
+        }
+
+        /// <summary>
+        /// Checks if the client connecting is a judge in the contest.
+        /// </summary>
+        /// <param name="msgName"></param>
+        /// <returns>True if connected client is a judge in the contest</returns>
+        private bool AcceptClient(string msgName)
+        {
+            foreach(var judge in contestPresenter.CurrentContest.Judges)
+            {
+                if (judge.GetFullName() == msgName)
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>

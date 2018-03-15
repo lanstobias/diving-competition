@@ -31,6 +31,8 @@ namespace Simhopp
 
         private string ServerIp { get; set; }
 
+        private bool GivingPoints { get; set; } = false;
+
         public JudgeDivePresenter(JudgeDiveView view, ProjectMainWindow window, string serverIp)
         {
             ServerIp = serverIp;
@@ -77,14 +79,24 @@ namespace Simhopp
 
                     // read what the server has to say
                     msg = sr.ReadLine();
-                    
-                    if(msg.StartsWith("contest:"))
+
+                    if (msg.StartsWith("denied"))
+                    {
+                        MessageBox.Show("Anslutning nekad. Du är troligen inte registrerad att döma tvlingen");
+                        break;
+                    }
+                    else if(msg.StartsWith("contest:"))
                     {
                         UpdateContestInfo(msg.Substring(8));
                     }
                     else if (msg.StartsWith("give:"))
                     {
-                        ToggleGiveScore(msg.Substring(5));
+                        if (!GivingPoints)
+                        {
+                            GivingPoints = true;
+                            ToggleGiveScore(msg.Substring(5));
+                        }
+                            
                     }
                 }
                 
@@ -113,6 +125,7 @@ namespace Simhopp
             ToggleGiveScore();
             sw.WriteLine("Points:" + Points);
             sw.Flush();
+            GivingPoints = false;
         }
 
         /// <summary>

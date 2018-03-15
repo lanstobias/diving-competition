@@ -96,9 +96,9 @@ namespace Simhopp
 
                     TcpClient client = tcpListener.AcceptTcpClient();
 
-                    HandleClient c = new HandleClient(this, client, (ClientList.Count + 1), contestPresenter);
+                    HandleClient hc = new HandleClient(this, client, contestPresenter);
 
-                    AddToJudgeListView(c);
+                    AddToJudgeListView(hc);
                 }
             }
             catch (SocketException e)
@@ -197,27 +197,6 @@ namespace Simhopp
         {
             try
             {
-                //using (var client = new SftpClient("pi@tomat.trickip.net/simhopp/", 2022, "pi", "gallian0"))
-                //{
-
-                //    client.Connect();
-
-                //    Console.WriteLine(client.ConnectionInfo.ServerVersion);
-                //}
-
-                //var connectionInfo = new ConnectionInfo("pi@tomat.trickip.net",
-                //                        2022, "pi",
-                //                        new PasswordAuthenticationMethod("pi", "gallian0"),
-                //                        new PrivateKeyAuthenticationMethod("rsa.key"));
-
-                //using (var client = new SftpClient(connectionInfo))
-                //{
-                //    client.Connect();
-
-                //    client.AppendAllText("simhoppServers.txt", HostInfo + "\n");
-                //}
-
-
                 // Create a ftp request on the chosen url
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
 
@@ -305,6 +284,11 @@ namespace Simhopp
                 client.StreamWriter?.WriteLine("give:"+dive.Code.Code+"|"+dive.Code.Multiplier);
                 client.StreamWriter?.Flush();
             }
+        }
+
+        public IPAddress GetIp()
+        {
+            return serverIp;
         }
 
         private void AddToJudgeListView(HandleClient client)
