@@ -1,3 +1,12 @@
+  <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Copyright © <?php echo date("Y"); ?> Oskar Sandh, Thong Nguyen, Bobo Lillqvist, Tobias Lans</span>
+        ​<picture>
+          <source srcset="..." type="image">
+            <img src="http://tomat.trickip.net/simhopp/img/lion.png" class="float-right" style="max-width: 20%;" alt="...">
+            </picture>
+      </div>
+    </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
