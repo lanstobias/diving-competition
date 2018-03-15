@@ -88,7 +88,7 @@ namespace Simhopp
             return false;
         }
         
-        public void CreatePerson()
+        public bool CreatePerson()
         {
             
             if (CheckDataInput() == true)
@@ -111,7 +111,10 @@ namespace Simhopp
                 ClearInputs();
 
                 MessageBox.Show("En ny person har skapats!");
+                return true;
             }
+
+            return false;
         }
 
         public void ClearInputs()
@@ -139,10 +142,11 @@ namespace Simhopp
             //Todo:
             // kolla så all data är korrekt (Program.StringFormatChecker(string)) och samla ihop det till ett nytt Person objekt.
 
-            CreatePerson();
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (CreatePerson())
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
