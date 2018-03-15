@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\BlankWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BlankWindow.Designer.cs">
+      <DependentUpon>BlankWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\InputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\AddPersonView.resx">
       <DependentUpon>AddPersonView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BlankWindow.resx">
+      <DependentUpon>BlankWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DatePicker.resx">
       <DependentUpon>DatePicker.cs</DependentUpon>
