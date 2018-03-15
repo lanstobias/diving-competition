@@ -30,7 +30,7 @@
         </p>
 
         <!-- Table -->
-        <table class="table table-hover table-sm">
+        <table class="table table-hover table-sm" style="margin-bottom:200px">
 
             <?php foreach ($contest->branches as $branch) { ?>
                 <thead class="thead-light">
@@ -41,17 +41,16 @@
                         <th scope="row"></th>
                         <th scope="row"></th>
                         <th scope="row"></th>
-                        <th scope="row"></th>
                     </tr>
                 </thead>
+                <span class="border-bottom"></span>
                 <thead class="thead table-sm" style="background-color:#f6f7f8; font-size:12px;">
                     <tr>
                         <th># &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Namn</th>
                         <th>Hoppkod</th>
                         <th>DD</th>
-                        <th>Total</th>
-                        <th>Points</th>
-                        <th>Score</th>
+                        <th class="text-right">Poäng</th>
+                        <th class="text-right">Total</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -67,23 +66,22 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th></th>
                         </tr>
                     </thead>
 
                     <!-- Dives -->
                     <?php $sum = 0; ?>
                     <?php foreach ($contestant->dives as $dive) {
-                        $sum += ($dive->finalScore * $dive->multiplier);
+                        $sum += ($dive->finalScore);
                     ?>
                     <tbody>
                         <tr>
                             <th scope="col"></th>
                             <td><?php echo $dive->code; ?></td>
-                            <td><?php echo $dive->multiplier; ?></td>
-                            <td><?php echo $dive->finalScore; ?></td>
-                            <td><?php echo $dive->finalScore * $dive->multiplier; ?></td>
-                            <td><?php echo $sum; ?></td>
+                            <td><?php echo number_format((float)$dive->multiplier, 1, '.', ' '); ?></td>
+                            <td class="text-right"><?php echo number_format((float)$dive->finalScore, 2, '.', ' '); ?></td>
+                            <td class="text-right"><?php echo number_format((float)$sum, 2, '.', ' '); ?></td>
+                            <td></td>
                         </tr>
                     </tbody>
                     <?php } ?>
