@@ -233,6 +233,7 @@
     <EmbeddedResource Include="views\ResultView.resx">
       <DependentUpon>ResultView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="klassdiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

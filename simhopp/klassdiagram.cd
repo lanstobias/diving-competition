@@ -1,0 +1,674 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Simhopp.Database" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAACAAAAAAAAAZAQEFAIIAAIAQAIgAAAgCAAAg=</HashCode>
+      <FileName>Database\Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.DatabaseConnection" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAFACgAAABAAAQAAAAAAAAAAAgAAAAI=</HashCode>
+      <FileName>Database\DatabaseConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.AddPersonView" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAEIUAMSDAAAEAGBmAAABTBECIkAFAAAEAAACBAAA=</HashCode>
+      <FileName>Forms\AddPersonView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.DatePicker" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAASAAAACAEAAAgAAAAAAEAAAAAA=</HashCode>
+      <FileName>Forms\DatePicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.InputDialog" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAACCAAAAAAAACAAAACAAAAhAAIAAAAAAEBAAA=</HashCode>
+      <FileName>Forms\InputDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.LoginForm" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAJAAAAACAAAAAAAACAAAATAAAAAIAAIgAQAACEAAA=</HashCode>
+      <FileName>Forms\LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ManualJudging" Collapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwEAMACACCAAIAIAAADIACACAIAAAAAAIAAAAAABACA=</HashCode>
+      <FileName>Forms\ManualJudging.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ServerBrowser" Collapsed="true">
+    <Position X="25.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAACAAAAAAABCIAIACEAAAgMAAABAQAAABAAA=</HashCode>
+      <FileName>Forms\ServerBrowser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.SettingsForm" Collapsed="true">
+    <Position X="16.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAgAAKAAAAABAQiAEAACCAAIAQAIAAAAACEACAA=</HashCode>
+      <FileName>Forms\SettingsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Auth" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Misc\Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.CheckDataInput" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAIBAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Misc\CheckDataInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Helpers" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Misc\Helpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Contest" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAAAECAAAA=</HashCode>
+      <FileName>models\Contest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Contestant" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\Contestant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ContestantList" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>models\ContestantList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ContestInfo" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAQQgAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>models\ContestInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Dive" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIgAAAAAAgAAQAgAAQAAgAAAAAAUAAAAAAAAAA=</HashCode>
+      <FileName>models\Dive.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.DiveCode" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\DiveCode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.DiveList" Collapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAIAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>models\DiveList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Judge" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\Judge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.JudgeList" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\JudgeList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Person" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAgACAAEAAAAAAAAAAAAAKAAAAAAAAAAk=</HashCode>
+      <FileName>models\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.PersonList" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\PersonList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ResultDictionary" Collapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\ResultDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Score" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAACAAAA=</HashCode>
+      <FileName>models\Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ScoreComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>models\ScoreComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Simhopp.ScoreList" Collapsed="true">
+    <Position X="23.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\ScoreList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.SubContestBranch" Collapsed="true">
+    <Position X="18.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAABAAQQAAAAAAAEAAAAAAAACAA=</HashCode>
+      <FileName>models\SubContestBranch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.SubContestBranchList" Collapsed="true">
+    <Position X="20" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\SubContestBranchList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.AddDivePresenter" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAEAgAAAAAAAAAAAAAAAAAAAgBAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>presenters\AddDivePresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ContestPresenter" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABIAAAAAAAAgVAAAAAAAwEAACiRiBKIAgAIAgAAEAA=</HashCode>
+      <FileName>presenters\ContestPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.CreateContestPresenter" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAIgAAQAAAAAAAAACAgwAAABIAEIAIAAAMAAYAA=</HashCode>
+      <FileName>presenters\CreateContestPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.CreateSubContestPresenter" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAQAECAACAACggBAgAgAABCABIgABAAAAAAAA=</HashCode>
+      <FileName>presenters\CreateSubContestPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.JudgeDivePresenter" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgAIAAgAAkAABAAAAAABAAAABAgEIAAgABAAIAAA=</HashCode>
+      <FileName>presenters\JudgeDivePresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.MainMenuPresenter" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAgAAAAAAABAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>presenters\MainMenuPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ResultPresenter" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAABACAAAAABAAAAAABAAAIAAgAAAAAAAA=</HashCode>
+      <FileName>presenters\ResultPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Program" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ProjectMainWindow" Collapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hxgAAImCCDAAUABAASiAACADCAAAAAAIgAAAAAEAAAA=</HashCode>
+      <FileName>ProjectMainWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.HandleClient" Collapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAwAAAACgAACAAgAAAAAEAQAEAAgAAAAU=</HashCode>
+      <FileName>TCPServer\HandleClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.TCPServer" Collapsed="true">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAiIGAAAAAAAMAAAAAAiAAMAAgAQwAAEQAgAAo=</HashCode>
+      <FileName>TCPServer\TCPServer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.AddDiveView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABEAIAAAAAABAAAAAAAIAIACAACAAAAAgAAAAAEAAAA=</HashCode>
+      <FileName>views\AddDiveView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Simhopp.ContestView" Collapsed="true">
+    <Position X="5.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIaDBAKIQjAIwA0cYIECAAITAAalAEMCqYESgCAEgII=</HashCode>
+      <FileName>views\ContestView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Simhopp.CreateContestView" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgjwQgAKIAAgCEBIAAQJHzE0JhIEZAMQCRKILAAmg=</HashCode>
+      <FileName>views\CreateContestView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Simhopp.CreateSubContestView" Collapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEBKAAgAoEAQZACgAMBAMARCREBAAARAEKAEIABJQKE=</HashCode>
+      <FileName>views\CreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Simhopp.JudgeDiveView" Collapsed="true">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACIACAQgAAoEKCAAQAACAGAAQAAQJAAIEKQAIAAAA=</HashCode>
+      <FileName>views\JudgeDiveView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Simhopp.MainMenuView" Collapsed="true">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAABAAAAAAAAACAACAIQACBAAIAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>views\MainMenuView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Simhopp.PanelViewControl" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\PanelViewControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.ResultView" Collapsed="true">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAABAAAQAAMAQAAAAAAAAICgAIAAAAAAAAEAAAEAAA=</HashCode>
+      <FileName>views\ResultView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Properties.Resources" Collapsed="true">
+    <Position X="14.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simhopp.Properties.Settings" Collapsed="true">
+    <Position X="14.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Simhopp.IAddDiveView" Collapsed="true">
+    <Position X="14.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IAddDiveView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Simhopp.IContestView" Collapsed="true">
+    <Position X="16.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAIACAIAAEIYAAAAAAAAAAAAAIAAAAQAAAAAAI=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Simhopp.ICreateContestView" Collapsed="true">
+    <Position X="18.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAggQgAAAAAgAAAAAAAABBAAAAIEAAAAAAAACAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Simhopp.ICreateSubContestView" Collapsed="true">
+    <Position X="20" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAARAAAAAAAAAAAQEAAAAAAEAAAAABAAIE=</HashCode>
+      <FileName>views\ICreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Simhopp.IJudgeDiveView" Collapsed="true">
+    <Position X="21.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IJudgeDiveView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Simhopp.IMainMenuView" Collapsed="true">
+    <Position X="23.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IMainMenuView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="Simhopp.InvokeJudgeDiveView" Collapsed="true">
+    <Position X="16.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>presenters\JudgeDivePresenter.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.InvokeMainWindow" Collapsed="true">
+    <Position X="20" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>presenters\JudgeDivePresenter.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.InvokeContestPresenter" Collapsed="true">
+    <Position X="14.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TCPServer\HandleClient.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.InvokeJudgeListView" Collapsed="true">
+    <Position X="18.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TCPServer\TCPServer.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateAddDive" Collapsed="true">
+    <Position X="20" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IAddDiveView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateAddJump" Collapsed="true">
+    <Position X="25.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateSubContestSelection" Collapsed="true">
+    <Position X="23.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateContestantSelection" Collapsed="true">
+    <Position X="23.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateDiveSelection" Collapsed="true">
+    <Position X="16.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegatePauseContest" Collapsed="true">
+    <Position X="16.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateCloseContest" Collapsed="true">
+    <Position X="20" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateModifyDive" Collapsed="true">
+    <Position X="14.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateRemoveDive" Collapsed="true">
+    <Position X="23.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateCancelDiveEdit" Collapsed="true">
+    <Position X="16.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateRequestPoints" Collapsed="true">
+    <Position X="16.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateCollectPoints" Collapsed="true">
+    <Position X="21.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateManualJudging" Collapsed="true">
+    <Position X="25.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateSetStartDate" Collapsed="true">
+    <Position X="20" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateSetEndDate" Collapsed="true">
+    <Position X="18.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateAddJudgeToDB" Collapsed="true">
+    <Position X="23.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateAddJudgeToContest" Collapsed="true">
+    <Position X="21.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateRemoveJudgeFromContest" Collapsed="true">
+    <Position X="25.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateAddContestantToDB" Collapsed="true">
+    <Position X="16.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateAddContestantToContest" Collapsed="true">
+    <Position X="14.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateRemoveContestantFromContest" Collapsed="true">
+    <Position X="20" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateCreateSubContest" Collapsed="true">
+    <Position X="14.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateGoBack" Collapsed="true">
+    <Position X="21.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateAddContestantToSubContest" Collapsed="true">
+    <Position X="18.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateRemoveContestantFromSubContest" Collapsed="true">
+    <Position X="21.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateAddSubContest" Collapsed="true">
+    <Position X="14.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateFinalizeContest" Collapsed="true">
+    <Position X="18.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateSubContestSelected" Collapsed="true">
+    <Position X="21.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateUpdateSubContest" Collapsed="true">
+    <Position X="25.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateCancelEdit" Collapsed="true">
+    <Position X="18.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateRemoveSubContest" Collapsed="true">
+    <Position X="14.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\ICreateSubContestView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateGiveScore" Collapsed="true">
+    <Position X="20" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IJudgeDiveView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegatePointSliderChanged" Collapsed="true">
+    <Position X="18.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IJudgeDiveView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateCreateNewContest" Collapsed="true">
+    <Position X="25.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IMainMenuView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Simhopp.DelegateJudgeContest" Collapsed="true">
+    <Position X="23.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IMainMenuView.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
