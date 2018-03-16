@@ -19,6 +19,8 @@ namespace Simhopp
 
         public TCPServer Server { get; set; }
 
+        public BlankWindow HeadJudgeWindow { get; internal set; }
+
         #endregion
 
         #region Constructor
@@ -82,11 +84,11 @@ namespace Simhopp
             JudgeDiveView hostJudgeView = new JudgeDiveView();
             JudgeDivePresenter hostJudgePres = new JudgeDivePresenter(hostJudgeView, window, Server.GetIp().ToString());
 
-            BlankWindow blankWindow = new BlankWindow();
-            blankWindow.Controls.Add(hostJudgeView);
-            blankWindow.StartPosition = FormStartPosition.CenterScreen;
-            blankWindow.Text = "Bedömning: " + window.CurrentJudge.GetFullName();
-            blankWindow.Show();
+            HeadJudgeWindow = new BlankWindow();
+            HeadJudgeWindow.Controls.Add(hostJudgeView);
+            HeadJudgeWindow.StartPosition = FormStartPosition.CenterScreen;
+            HeadJudgeWindow.Text = "Bedömning: " + window.CurrentJudge.GetFullName();
+            HeadJudgeWindow.Show();
 
             foreach(var jClient in Server.ClientList)
             {
@@ -100,6 +102,7 @@ namespace Simhopp
         /// </summary>
         private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            HeadJudgeWindow?.Close();
             Server?.Kill();
         }
 
@@ -561,6 +564,9 @@ namespace Simhopp
 
         private void CloseContest()
         {
+
+            HeadJudgeWindow.Close();
+
             Database db = new Database();
             try
             {
