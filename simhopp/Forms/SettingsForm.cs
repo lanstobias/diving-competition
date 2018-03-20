@@ -22,19 +22,21 @@ namespace Simhopp
             InitializeComponent();
         }
 
-        private void radioButtonOnline_Click(object sender, EventArgs e)
+        private void RadioButtonOnline_Click(object sender, EventArgs e)
         {
-            radioButtonLAN.Checked = false;
             radioButtonOnline.Checked = true;
+            radioButtonLAN.Checked = false;
+            radioButtonOffline.Checked = false;
             labelPort.Visible = true;
             textBoxPort.Visible = true;
 
         }
 
-        private void radioButtonLAN_Click(object sender, EventArgs e)
+        private void RadioButtonLAN_Click(object sender, EventArgs e)
         {
             radioButtonOnline.Checked = false;
             radioButtonLAN.Checked = true;
+            radioButtonOffline.Checked = false;
             labelPort.Visible = false;
             textBoxPort.Visible = false;
 

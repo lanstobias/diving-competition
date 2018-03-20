@@ -52,14 +52,14 @@
             // 
             this.radioButtonLAN.AutoSize = true;
             this.radioButtonLAN.Location = new System.Drawing.Point(15, 58);
-            this.radioButtonLAN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonLAN.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonLAN.Name = "radioButtonLAN";
             this.radioButtonLAN.Size = new System.Drawing.Size(46, 17);
             this.radioButtonLAN.TabIndex = 1;
             this.radioButtonLAN.TabStop = true;
             this.radioButtonLAN.Text = "LAN";
             this.radioButtonLAN.UseVisualStyleBackColor = true;
-            this.radioButtonLAN.Click += new System.EventHandler(this.radioButtonLAN_Click);
+            this.radioButtonLAN.Click += new System.EventHandler(this.RadioButtonLAN_Click);
             // 
             // labelPort
             // 
@@ -75,7 +75,7 @@
             // textBoxPort
             // 
             this.textBoxPort.Location = new System.Drawing.Point(58, 111);
-            this.textBoxPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPort.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPort.Name = "textBoxPort";
             this.textBoxPort.Size = new System.Drawing.Size(79, 20);
             this.textBoxPort.TabIndex = 4;
@@ -84,7 +84,7 @@
             // buttonOK
             // 
             this.buttonOK.Location = new System.Drawing.Point(58, 156);
-            this.buttonOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(78, 34);
             this.buttonOK.TabIndex = 5;
@@ -96,14 +96,14 @@
             // 
             this.radioButtonOnline.AutoSize = true;
             this.radioButtonOnline.Location = new System.Drawing.Point(103, 58);
-            this.radioButtonOnline.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonOnline.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonOnline.Name = "radioButtonOnline";
             this.radioButtonOnline.Size = new System.Drawing.Size(55, 17);
             this.radioButtonOnline.TabIndex = 2;
             this.radioButtonOnline.TabStop = true;
             this.radioButtonOnline.Text = "Online";
             this.radioButtonOnline.UseVisualStyleBackColor = true;
-            this.radioButtonOnline.Click += new System.EventHandler(this.radioButtonOnline_Click);
+            this.radioButtonOnline.Click += new System.EventHandler(this.RadioButtonOnline_Click);
             // 
             // radioButtonOffline
             // 
@@ -111,12 +111,12 @@
             this.radioButtonOffline.Location = new System.Drawing.Point(15, 79);
             this.radioButtonOffline.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonOffline.Name = "radioButtonOffline";
-            this.radioButtonOffline.Size = new System.Drawing.Size(55, 17);
+            this.radioButtonOffline.Size = new System.Drawing.Size(100, 17);
             this.radioButtonOffline.TabIndex = 6;
             this.radioButtonOffline.TabStop = true;
-            this.radioButtonOffline.Text = "Offline";
+            this.radioButtonOffline.Text = "Endast en dator";
             this.radioButtonOffline.UseVisualStyleBackColor = true;
-            this.radioButtonOffline.CheckedChanged += new System.EventHandler(this.radioButtonOffline_CheckedChanged);
+            this.radioButtonOffline.Click += new System.EventHandler(this.radioButtonOffline_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -130,7 +130,7 @@
             this.Controls.Add(this.radioButtonOnline);
             this.Controls.Add(this.radioButtonLAN);
             this.Controls.Add(this.labelServerType);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Inställningar";
