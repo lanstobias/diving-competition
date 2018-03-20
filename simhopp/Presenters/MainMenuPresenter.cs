@@ -9,9 +9,11 @@ namespace Simhopp
 {
     class MainMenuPresenter
     {
+        #region Properties
         public IMainMenuView View { get; set; }
 
         private ProjectMainWindow window;
+        #endregion
 
         #region Constructor
         public MainMenuPresenter(IMainMenuView view, ProjectMainWindow window)
@@ -23,6 +25,7 @@ namespace Simhopp
         }
         #endregion
 
+        #region Methods
         public void gotoCreateContestView()
         {
             CreateContestView newView = new CreateContestView();
@@ -40,8 +43,7 @@ namespace Simhopp
                 JudgeDivePresenter presenter = new JudgeDivePresenter(judgeView, window, serverBrowser.ChosenIp);
                 window.ChangePanel(judgeView, (PanelViewControl)View);
             }
-
-            
         }
+        #endregion
     }
 }

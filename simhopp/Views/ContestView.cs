@@ -9,11 +9,12 @@ namespace Simhopp
 {
     public class ContestView : PanelViewControl, IContestView
     {
-        private System.Windows.Forms.Button buttonAddJump;
-        private System.Windows.Forms.Label labelDives;
-        private System.Windows.Forms.Label labelContestants;
-        private System.Windows.Forms.Label labelSubContests;
-        private System.Windows.Forms.ComboBox comboBoxSubContests;
+        #region Fields
+        private Button buttonAddJump;
+        private Label labelDives;
+        private Label labelContestants;
+        private Label labelSubContests;
+        private ComboBox comboBoxSubContests;
         private Label labelStartDate;
         private Label labelArena;
         private Label labelCity;
@@ -31,14 +32,16 @@ namespace Simhopp
         private ListView listViewContestants;
         private ColumnHeader columnFirstName;
         private ColumnHeader columnLastName;
-        private System.Windows.Forms.Label labelContestName;
-        private System.Windows.Forms.ColumnHeader columnJudge;
+        private Label labelContestName;
+        private ColumnHeader columnJudge;
         private Button buttonCollectPoints;
         private Label labelServerIp;
         private Button buttonManualJudging;
-        private Label labelHeadPoints;
-        private Label labelHeadJudge;
-        private System.Windows.Forms.ColumnHeader columnPoints;
+        private ColumnHeader columnPoints;
+
+        #endregion
+
+        #region Delegates
 
         public event DelegateAddJump EventAddJump;
         public event DelegateSubContestSelection EventSubContestSelection;
@@ -52,6 +55,10 @@ namespace Simhopp
         public event DelegateRequestPoints EventRequestPoints;
         public event DelegateCollectPoints EventCollectPoints;
         public event DelegateManualJudging EventManualJudging;
+
+        #endregion
+
+        #region Properties
 
         public ComboBox ComboBoxSubContests { get { return comboBoxSubContests; } set { comboBoxSubContests = value; } }
         public ListView ListViewContestants { get { return listViewContestants; } set { listViewContestants = value; } }
@@ -68,13 +75,19 @@ namespace Simhopp
         public Button ButtonRequestPoints { get { return buttonRequestPoints; } set { buttonRequestPoints = value; } }
         public ListView ListViewJudgeClients { get { return listViewJudgeClients; } set { listViewJudgeClients = value; } }
         public Button ButtonManualJudging { get { return buttonManualJudging; } set { buttonManualJudging = value; } }
-        public Label LabelHeadPoints { get { return labelHeadPoints; } set { labelHeadPoints = value; } }
+
+        #endregion
+
+        #region Constructor
 
         public ContestView()
         {
             InitializeComponent();
         }
 
+        #endregion
+
+        #region Methods
         private void InitializeComponent()
         {
             this.labelContestName = new System.Windows.Forms.Label();
@@ -105,15 +118,11 @@ namespace Simhopp
             this.buttonCollectPoints = new System.Windows.Forms.Button();
             this.labelServerIp = new System.Windows.Forms.Label();
             this.buttonManualJudging = new System.Windows.Forms.Button();
-            this.labelHeadJudge = new System.Windows.Forms.Label();
-            this.labelHeadPoints = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.labelHeadPoints);
-            this.mainPanel.Controls.Add(this.labelHeadJudge);
             this.mainPanel.Controls.Add(this.buttonManualJudging);
             this.mainPanel.Controls.Add(this.labelServerIp);
             this.mainPanel.Controls.Add(this.buttonCollectPoints);
@@ -235,24 +244,25 @@ namespace Simhopp
             // 
             // buttonPause
             // 
-            this.buttonPause.Location = new System.Drawing.Point(354, 54);
+            this.buttonPause.Location = new System.Drawing.Point(269, 39);
             this.buttonPause.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPause.Name = "buttonPause";
             this.buttonPause.Size = new System.Drawing.Size(95, 44);
             this.buttonPause.TabIndex = 9;
             this.buttonPause.Text = "Pausa Tävling";
             this.buttonPause.UseVisualStyleBackColor = true;
+            this.buttonPause.Visible = false;
             // 
             // buttonCloseContest
             // 
-            this.buttonCloseContest.Location = new System.Drawing.Point(354, 109);
+            this.buttonCloseContest.Location = new System.Drawing.Point(367, 39);
             this.buttonCloseContest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCloseContest.Name = "buttonCloseContest";
-            this.buttonCloseContest.Size = new System.Drawing.Size(95, 44);
+            this.buttonCloseContest.Size = new System.Drawing.Size(132, 44);
             this.buttonCloseContest.TabIndex = 10;
             this.buttonCloseContest.Text = "Avsluta";
             this.buttonCloseContest.UseVisualStyleBackColor = true;
-            this.buttonCloseContest.Click += new System.EventHandler(this.buttonCloseContest_Click);
+            this.buttonCloseContest.Click += new System.EventHandler(this.ButtonCloseContest_Click);
             // 
             // buttonModifyDive
             // 
@@ -263,7 +273,7 @@ namespace Simhopp
             this.buttonModifyDive.Text = "Ändra";
             this.buttonModifyDive.UseVisualStyleBackColor = true;
             this.buttonModifyDive.Visible = false;
-            this.buttonModifyDive.Click += new System.EventHandler(this.buttonModifyDive_Click);
+            this.buttonModifyDive.Click += new System.EventHandler(this.ButtonModifyDive_Click);
             // 
             // buttonRemoveDive
             // 
@@ -290,24 +300,24 @@ namespace Simhopp
             // buttonRequestPoints
             // 
             this.buttonRequestPoints.Enabled = false;
-            this.buttonRequestPoints.Location = new System.Drawing.Point(369, 204);
+            this.buttonRequestPoints.Location = new System.Drawing.Point(369, 144);
             this.buttonRequestPoints.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRequestPoints.Name = "buttonRequestPoints";
             this.buttonRequestPoints.Size = new System.Drawing.Size(132, 22);
             this.buttonRequestPoints.TabIndex = 4;
             this.buttonRequestPoints.Text = "Begär bedömning";
             this.buttonRequestPoints.UseVisualStyleBackColor = true;
-            this.buttonRequestPoints.Click += new System.EventHandler(this.buttonRequestPoints_Click);
+            this.buttonRequestPoints.Click += new System.EventHandler(this.ButtonRequestPoints_Click);
             // 
             // listViewJudgeClients
             // 
             this.listViewJudgeClients.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnJudge,
             this.columnPoints});
-            this.listViewJudgeClients.Location = new System.Drawing.Point(369, 230);
+            this.listViewJudgeClients.Location = new System.Drawing.Point(369, 170);
             this.listViewJudgeClients.Margin = new System.Windows.Forms.Padding(2);
             this.listViewJudgeClients.Name = "listViewJudgeClients";
-            this.listViewJudgeClients.Size = new System.Drawing.Size(132, 95);
+            this.listViewJudgeClients.Size = new System.Drawing.Size(132, 181);
             this.listViewJudgeClients.TabIndex = 19;
             this.listViewJudgeClients.UseCompatibleStateImageBehavior = false;
             this.listViewJudgeClients.View = System.Windows.Forms.View.Details;
@@ -315,10 +325,12 @@ namespace Simhopp
             // columnJudge
             // 
             this.columnJudge.Text = "Judge";
+            this.columnJudge.Width = 77;
             // 
             // columnPoints
             // 
             this.columnPoints.Text = "Points";
+            this.columnPoints.Width = 42;
             // 
             // listViewContestants
             // 
@@ -332,7 +344,7 @@ namespace Simhopp
             this.listViewContestants.TabIndex = 1;
             this.listViewContestants.UseCompatibleStateImageBehavior = false;
             this.listViewContestants.View = System.Windows.Forms.View.Details;
-            this.listViewContestants.SelectedIndexChanged += new System.EventHandler(this.listViewContestants_SelectedIndexChanged);
+            this.listViewContestants.SelectedIndexChanged += new System.EventHandler(this.ListViewContestants_SelectedIndexChanged);
             // 
             // columnFirstName
             // 
@@ -356,7 +368,7 @@ namespace Simhopp
             this.listViewDives.TabIndex = 2;
             this.listViewDives.UseCompatibleStateImageBehavior = false;
             this.listViewDives.View = System.Windows.Forms.View.Details;
-            this.listViewDives.SelectedIndexChanged += new System.EventHandler(this.listViewDives_SelectedIndexChanged);
+            this.listViewDives.SelectedIndexChanged += new System.EventHandler(this.ListViewDives_SelectedIndexChanged);
             // 
             // columnCode
             // 
@@ -370,14 +382,14 @@ namespace Simhopp
             // 
             // buttonCollectPoints
             // 
-            this.buttonCollectPoints.Location = new System.Drawing.Point(366, 329);
+            this.buttonCollectPoints.Location = new System.Drawing.Point(366, 353);
             this.buttonCollectPoints.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCollectPoints.Name = "buttonCollectPoints";
             this.buttonCollectPoints.Size = new System.Drawing.Size(135, 22);
             this.buttonCollectPoints.TabIndex = 5;
             this.buttonCollectPoints.Text = "Spara poäng";
             this.buttonCollectPoints.UseVisualStyleBackColor = true;
-            this.buttonCollectPoints.Click += new System.EventHandler(this.buttonCollectPoints_Click);
+            this.buttonCollectPoints.Click += new System.EventHandler(this.ButtonCollectPoints_Click);
             // 
             // labelServerIp
             // 
@@ -390,7 +402,7 @@ namespace Simhopp
             // 
             // buttonManualJudging
             // 
-            this.buttonManualJudging.Location = new System.Drawing.Point(369, 180);
+            this.buttonManualJudging.Location = new System.Drawing.Point(369, 120);
             this.buttonManualJudging.Margin = new System.Windows.Forms.Padding(2);
             this.buttonManualJudging.Name = "buttonManualJudging";
             this.buttonManualJudging.Size = new System.Drawing.Size(132, 22);
@@ -398,24 +410,7 @@ namespace Simhopp
             this.buttonManualJudging.Text = "Manuell bedömning";
             this.buttonManualJudging.UseVisualStyleBackColor = true;
             this.buttonManualJudging.Visible = false;
-            this.buttonManualJudging.Click += new System.EventHandler(this.buttonManualJudging_Click);
-            // 
-            // labelHeadJudge
-            // 
-            this.labelHeadJudge.AutoSize = true;
-            this.labelHeadJudge.Location = new System.Drawing.Point(351, 362);
-            this.labelHeadJudge.Name = "labelHeadJudge";
-            this.labelHeadJudge.Size = new System.Drawing.Size(88, 13);
-            this.labelHeadJudge.TabIndex = 22;
-            this.labelHeadJudge.Text = "Din givna poäng:";
-            // 
-            // labelHeadPoints
-            // 
-            this.labelHeadPoints.AutoSize = true;
-            this.labelHeadPoints.Location = new System.Drawing.Point(464, 362);
-            this.labelHeadPoints.Name = "labelHeadPoints";
-            this.labelHeadPoints.Size = new System.Drawing.Size(0, 13);
-            this.labelHeadPoints.TabIndex = 23;
+            this.buttonManualJudging.Click += new System.EventHandler(this.ButtonManualJudging_Click);
             // 
             // ContestView
             // 
@@ -429,7 +424,7 @@ namespace Simhopp
 
         }
 
-        private void buttonModifyDive_Click(object sender, EventArgs e)
+        private void ButtonModifyDive_Click(object sender, EventArgs e)
         {
             this.EventModifyDive?.Invoke();
         }
@@ -454,34 +449,36 @@ namespace Simhopp
             this.EventAddJump?.Invoke();
         }
 
-        private void listViewContestants_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewContestants_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.EventContestantSelection?.Invoke();
         }
 
-        private void listViewDives_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewDives_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.EventDiveSelection?.Invoke();
         }
 
-        private void buttonRequestPoints_Click(object sender, EventArgs e)
+        private void ButtonRequestPoints_Click(object sender, EventArgs e)
         {
             this.EventRequestPoints?.Invoke();
         }
 
-        private void buttonCollectPoints_Click(object sender, EventArgs e)
+        private void ButtonCollectPoints_Click(object sender, EventArgs e)
         {
             this.EventCollectPoints?.Invoke();
         }
 
-        private void buttonCloseContest_Click(object sender, EventArgs e)
+        private void ButtonCloseContest_Click(object sender, EventArgs e)
         {
             this.EventCloseContest?.Invoke();
         }
 
-        private void buttonManualJudging_Click(object sender, EventArgs e)
+        private void ButtonManualJudging_Click(object sender, EventArgs e)
         {
             this.EventManualJudging?.Invoke();
         }
+
+        #endregion
     }
 }

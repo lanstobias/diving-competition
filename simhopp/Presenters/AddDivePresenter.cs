@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace Simhopp
 {
+    /// <summary>
+    /// Presenter part of AddDive. Lets the user add a new dive to a contestant
+    /// </summary>
     public class AddDivePresenter
     {
+        #region Properties
         public AddDiveView View { get; set; }
 
         private ProjectMainWindow window;
@@ -17,6 +21,9 @@ namespace Simhopp
 
         public Contestant CurrentContestant { get; set; }
 
+        #endregion
+
+        #region Constructor
 
         public AddDivePresenter(AddDiveView view, ProjectMainWindow window, SubContestBranch subContest, Contestant contestant, Dive dive = null)
         {
@@ -34,12 +41,19 @@ namespace Simhopp
             View.EventAddDive += AddDiveToContestant;
         }
 
+        #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// Add a dive to the contestant. Validates the input data before adding it.
+        /// </summary>
         public void AddDiveToContestant()
         {
             if(ValidateData())
             {
                 double multiplier = double.Parse(View.TextBoxDiveMultiplier.Text, CultureInfo.InvariantCulture);
+
                 string code = View.TextBoxDiveCode.Text;
 
                 Dive diveTobeAdded = new Dive(new DiveCode(multiplier, code));
@@ -47,16 +61,20 @@ namespace Simhopp
                 SubContest.AddNewDive(CurrentContestant, diveTobeAdded);
 
                 View.DialogResult = System.Windows.Forms.DialogResult.OK;
+
                 View.Close();
             }
         }
 
+        /// <summary>
+        /// Validates the input data about the new dive
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateData()
         {
             bool isCodeValid = CheckDataInput.StringCheckFormat(View.TextBoxDiveCode.Text);
 
-            double multiplier = 0;
-            bool isMultiplierValid = double.TryParse(View.TextBoxDiveMultiplier.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out multiplier);
+            bool isMultiplierValid = double.TryParse(View.TextBoxDiveMultiplier.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out double multiplier);
 
 
             if (!isCodeValid)
@@ -66,5 +84,7 @@ namespace Simhopp
 
             return isCodeValid && isMultiplierValid;
         }
+
+        #endregion
     }
 }

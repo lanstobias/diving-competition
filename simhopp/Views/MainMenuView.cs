@@ -14,28 +14,29 @@ namespace Simhopp
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        #region Fields
 
         private Button createContestButton;
         private Button loadContestButton;
         private Button judgeContestButton;
         private Button button1;
-        
+        #endregion
+
+        #region Constructor
 
         public MainMenuView()
         {
-
             InitializeComponent();
-
-            
         }
+        #endregion
+
+        #region Delegates
 
         public event DelegateCreateNewContest EventCreateNewContest;
         public event DelegateJudgeContest EventJudgeContest;
+        #endregion
 
-        private void CreateContestButton_Click(object sender, EventArgs e)
-        {
-            this.EventCreateNewContest.Invoke();
-        }
+        #region Methods
 
         private void InitializeComponent()
         {
@@ -71,6 +72,7 @@ namespace Simhopp
             this.loadContestButton.TabIndex = 2;
             this.loadContestButton.Text = "Ladda pågående tävling";
             this.loadContestButton.UseVisualStyleBackColor = true;
+            this.loadContestButton.Visible = false;
             // 
             // judgeContestButton
             // 
@@ -80,7 +82,7 @@ namespace Simhopp
             this.judgeContestButton.TabIndex = 3;
             this.judgeContestButton.Text = "Bedöm tävling";
             this.judgeContestButton.UseVisualStyleBackColor = true;
-            this.judgeContestButton.Click += new System.EventHandler(this.judgeContestButton_Click);
+            this.judgeContestButton.Click += new System.EventHandler(this.JudgeContestButton_Click);
             // 
             // button1
             // 
@@ -98,10 +100,16 @@ namespace Simhopp
             this.ResumeLayout(false);
 
         }
+        private void CreateContestButton_Click(object sender, EventArgs e)
+        {
+            this.EventCreateNewContest.Invoke();
+        }
 
-        private void judgeContestButton_Click(object sender, EventArgs e)
+        private void JudgeContestButton_Click(object sender, EventArgs e)
         {
             this.EventJudgeContest?.Invoke();
         }
+
+        #endregion
     }
 }

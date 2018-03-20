@@ -31,13 +31,13 @@ namespace Simhopp
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inställningarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsGobackItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stängToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hjälpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resultatsidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goBackItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resultsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,8 +45,8 @@ namespace Simhopp
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.hjälpToolStripMenuItem});
+            this.fileMenuItem,
+            this.helpMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
@@ -54,58 +54,58 @@ namespace Simhopp
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // fileMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inställningarToolStripMenuItem,
-            this.settingsGobackItem,
-            this.stängToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 22);
-            this.fileToolStripMenuItem.Text = "Arkiv";
+            this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsMenuItem,
+            this.goBackItem,
+            this.closeMenuItem});
+            this.fileMenuItem.Name = "fileMenuItem";
+            this.fileMenuItem.Size = new System.Drawing.Size(46, 22);
+            this.fileMenuItem.Text = "Arkiv";
             // 
-            // inställningarToolStripMenuItem
+            // settingsMenuItem
             // 
-            this.inställningarToolStripMenuItem.Name = "inställningarToolStripMenuItem";
-            this.inställningarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.inställningarToolStripMenuItem.Text = "Inställningar";
-            this.inställningarToolStripMenuItem.Click += new System.EventHandler(this.inställningarToolStripMenuItem_Click);
+            this.settingsMenuItem.Name = "settingsMenuItem";
+            this.settingsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsMenuItem.Text = "Inställningar";
+            this.settingsMenuItem.Click += new System.EventHandler(this.SettingsMenuItem_Click);
             // 
             // settingsGobackItem
             // 
-            this.settingsGobackItem.Name = "settingsGobackItem";
-            this.settingsGobackItem.Size = new System.Drawing.Size(152, 22);
-            this.settingsGobackItem.Text = "Gå tillbaka";
-            this.settingsGobackItem.Click += new System.EventHandler(this.SettingsGoBackItem_Click);
+            this.goBackItem.Name = "goBackItem";
+            this.goBackItem.Size = new System.Drawing.Size(152, 22);
+            this.goBackItem.Text = "Gå tillbaka";
+            this.goBackItem.Click += new System.EventHandler(this.SettingsGoBackItem_Click);
             // 
-            // stängToolStripMenuItem
+            // closeMenuItem
             // 
-            this.stängToolStripMenuItem.Name = "stängToolStripMenuItem";
-            this.stängToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.stängToolStripMenuItem.Text = "Stäng";
-            this.stängToolStripMenuItem.Click += new System.EventHandler(this.stängToolStripMenuItem_Click);
+            this.closeMenuItem.Name = "closeMenuItem";
+            this.closeMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeMenuItem.Text = "Stäng";
+            this.closeMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
-            // hjälpToolStripMenuItem
+            // helpMenuItem
             // 
-            this.hjälpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manualToolStripMenuItem,
-            this.resultatsidaToolStripMenuItem});
-            this.hjälpToolStripMenuItem.Name = "hjälpToolStripMenuItem";
-            this.hjälpToolStripMenuItem.Size = new System.Drawing.Size(47, 22);
-            this.hjälpToolStripMenuItem.Text = "Hjälp";
+            this.helpMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manualMenuItem,
+            this.resultsMenuItem});
+            this.helpMenuItem.Name = "helpMenuItem";
+            this.helpMenuItem.Size = new System.Drawing.Size(47, 22);
+            this.helpMenuItem.Text = "Hjälp";
             // 
-            // manualToolStripMenuItem
+            // manualMenuItem
             // 
-            this.manualToolStripMenuItem.Name = "manualToolStripMenuItem";
-            this.manualToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.manualToolStripMenuItem.Text = "Manual";
+            this.manualMenuItem.Name = "manualMenuItem";
+            this.manualMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.manualMenuItem.Text = "Manual";
             // 
-            // resultatsidaToolStripMenuItem
+            // resultsMenuItem
             // 
-            this.resultatsidaToolStripMenuItem.Name = "resultatsidaToolStripMenuItem";
-            this.resultatsidaToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.resultatsidaToolStripMenuItem.Text = "Resultatsida";
-            this.resultatsidaToolStripMenuItem.Click += new System.EventHandler(this.resultatsidaToolStripMenuItem_Click);
+            this.resultsMenuItem.Name = "resultsMenuItem";
+            this.resultsMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.resultsMenuItem.Text = "Resultatsida";
+            this.resultsMenuItem.Click += new System.EventHandler(this.ResultsMenuItem_Click);
             // 
             // ProjectMainWindow
             // 
@@ -125,14 +125,14 @@ namespace Simhopp
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stängToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hjälpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manualToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resultatsidaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inställningarToolStripMenuItem;
-        private ToolStripMenuItem settingsGobackItem;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem fileMenuItem;
+        private ToolStripMenuItem closeMenuItem;
+        private ToolStripMenuItem helpMenuItem;
+        private ToolStripMenuItem manualMenuItem;
+        private ToolStripMenuItem resultsMenuItem;
+        private ToolStripMenuItem settingsMenuItem;
+        private ToolStripMenuItem goBackItem;
     }
 }
 

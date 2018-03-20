@@ -11,11 +11,11 @@ namespace Simhopp
     {
 
         private Panel mainPanel;
-        private System.Windows.Forms.TextBox textBoxDiveMultiplier;
-        private System.Windows.Forms.Label labelDiveMultiplier;
-        private System.Windows.Forms.TextBox textBoxDiveCode;
-        private System.Windows.Forms.Label labelDiveCode;
-        private System.Windows.Forms.Button buttonAddDive;
+        private TextBox textBoxDiveMultiplier;
+        private Label labelDiveMultiplier;
+        private TextBox textBoxDiveCode;
+        private Label labelDiveCode;
+        private Button buttonAddDive;
 
         public TextBox TextBoxDiveCode { get { return textBoxDiveCode; } set { textBoxDiveCode = value; } }
 
@@ -30,12 +30,12 @@ namespace Simhopp
 
         private void InitializeComponent()
         {
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.textBoxDiveMultiplier = new System.Windows.Forms.TextBox();
-            this.labelDiveMultiplier = new System.Windows.Forms.Label();
-            this.textBoxDiveCode = new System.Windows.Forms.TextBox();
-            this.labelDiveCode = new System.Windows.Forms.Label();
-            this.buttonAddDive = new System.Windows.Forms.Button();
+            this.mainPanel = new Panel();
+            this.textBoxDiveMultiplier = new TextBox();
+            this.labelDiveMultiplier = new Label();
+            this.textBoxDiveCode = new TextBox();
+            this.labelDiveCode = new Label();
+            this.buttonAddDive = new Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,12 +91,12 @@ namespace Simhopp
             this.buttonAddDive.TabIndex = 0;
             this.buttonAddDive.Text = "Lägg till hopp";
             this.buttonAddDive.UseVisualStyleBackColor = true;
-            this.buttonAddDive.Click += new System.EventHandler(this.buttonAddDive_Click);
+            this.buttonAddDive.Click += new EventHandler(this.ButtonAddDive_Click);
             // 
             // AddDiveView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 358);
             this.Controls.Add(this.mainPanel);
             this.Location = new System.Drawing.Point(12, 12);
@@ -107,7 +107,7 @@ namespace Simhopp
 
         }
 
-        private void buttonAddDive_Click(object sender, EventArgs e)
+        private void ButtonAddDive_Click(object sender, EventArgs e)
         {
             this.EventAddDive?.Invoke();
         }

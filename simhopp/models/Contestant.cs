@@ -50,7 +50,6 @@ namespace Simhopp
             DiveLists = diveLists;
         }
         #endregion
-
-
+        
     }
 }

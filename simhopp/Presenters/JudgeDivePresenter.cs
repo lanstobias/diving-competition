@@ -16,6 +16,7 @@ namespace Simhopp
 
     public class JudgeDivePresenter
     {
+        #region Properties
         public string JudgeName { get; set; }
         public JudgeDiveView View { get; set; }
 
@@ -33,6 +34,10 @@ namespace Simhopp
 
         private bool GivingPoints { get; set; } = false;
 
+        #endregion
+
+        #region Constructor
+
         public JudgeDivePresenter(JudgeDiveView view, ProjectMainWindow window, string serverIp)
         {
             ServerIp = serverIp;
@@ -48,6 +53,10 @@ namespace Simhopp
             threadClient.Start();
         }
 
+        #endregion
+
+        #region Methods
+
         /// <summary>
         /// Sets the Points property to whatever the pointslider is set to
         /// </summary>
@@ -57,6 +66,10 @@ namespace Simhopp
             View.LabelPoints.Text = Points.ToString();
         }
 
+        
+        /// <summary>
+        /// Thread method that handles a client
+        /// </summary>
         public void RunClient()
         {
             
@@ -111,9 +124,13 @@ namespace Simhopp
                     sw.WriteLine("quit");
 
                 client?.Close();
-                MessageBox.Show("disconnected from server");
 
-                this.GoBackToStartMenu();
+                if (window.CurrentJudge != window.HeadJudge)
+                {
+                    MessageBox.Show("disconnected from server");
+
+                    this.GoBackToStartMenu();
+                }
             }
         }
         
@@ -187,5 +204,7 @@ namespace Simhopp
 
                 ));
         }
+
+        #endregion
     }
 }

@@ -9,6 +9,7 @@ namespace Simhopp
 {
     public class CreateSubContestView : PanelViewControl , ICreateSubContestView
     {
+        #region Fields
         private TextBox textBoxName;
         private Button buttonFinalizeContest;
         private Button buttonAddSubContest;
@@ -29,6 +30,9 @@ namespace Simhopp
         private ColumnHeader columnContestContestantLastName;
         private Button buttonRemoveSubContest;
         private Label labelSubContestName;
+        #endregion
+
+        #region Delegates
 
         public event DelegateAddContestantToSubContest EventAddContestantToSubContest;
         public event DelegateRemoveContestantFromSubContest EventRemoveContestantFromSubContest;
@@ -38,6 +42,9 @@ namespace Simhopp
         public event DelegateUpdateSubContest EventUpdateSubContest;
         public event DelegateCancelEdit EventCancelEdit;
         public event DelegateRemoveSubContest EventRemoveSubContest;
+        #endregion
+
+        #region Properties
 
         public TextBox TextBoxName { get { return textBoxName; } set { textBoxName = value; } }
 
@@ -54,10 +61,16 @@ namespace Simhopp
         public ListView ListViewContestContestants { get { return listViewContestContestants; } set { listViewContestContestants = value; } }
         public ListView ListViewSubContestContestants { get { return listViewSubContestConstestants; } set { listViewSubContestConstestants = value; } }
         public ListView ListViewSubContests { get { return listViewSubContests; } set { listViewSubContests = value; } }
+        #endregion
+
+        #region Constructor
         public CreateSubContestView()
         {
             InitializeComponent();
         }
+        #endregion
+
+        #region Methods
 
         private void InitializeComponent()
         {
@@ -140,7 +153,7 @@ namespace Simhopp
             this.buttonAddSubContest.TabIndex = 5;
             this.buttonAddSubContest.Text = "Lägg till deltävling";
             this.buttonAddSubContest.UseVisualStyleBackColor = true;
-            this.buttonAddSubContest.Click += new System.EventHandler(this.buttonAddSubContest_Click);
+            this.buttonAddSubContest.Click += new System.EventHandler(this.ButtonAddSubContest_Click);
             // 
             // buttonRemoveContestantFromSubContest
             // 
@@ -151,7 +164,7 @@ namespace Simhopp
             this.buttonRemoveContestantFromSubContest.TabIndex = 4;
             this.buttonRemoveContestantFromSubContest.Text = "Ta bort från deltävling";
             this.buttonRemoveContestantFromSubContest.UseVisualStyleBackColor = true;
-            this.buttonRemoveContestantFromSubContest.Click += new System.EventHandler(this.buttonRemoveContestantFromSubContest_Click);
+            this.buttonRemoveContestantFromSubContest.Click += new System.EventHandler(this.ButtonRemoveContestantFromSubContest_Click);
             // 
             // buttonAddContestantToSubContest
             // 
@@ -162,7 +175,7 @@ namespace Simhopp
             this.buttonAddContestantToSubContest.TabIndex = 3;
             this.buttonAddContestantToSubContest.Text = "Lägg till i deltävling";
             this.buttonAddContestantToSubContest.UseVisualStyleBackColor = true;
-            this.buttonAddContestantToSubContest.Click += new System.EventHandler(this.buttonAddContestantToSubContest_Click);
+            this.buttonAddContestantToSubContest.Click += new System.EventHandler(this.ButtonAddContestantToSubContest_Click);
             // 
             // labelContestName
             // 
@@ -183,7 +196,7 @@ namespace Simhopp
             this.buttonUpdateSubContest.Text = "Uppdatera";
             this.buttonUpdateSubContest.UseVisualStyleBackColor = true;
             this.buttonUpdateSubContest.Visible = false;
-            this.buttonUpdateSubContest.Click += new System.EventHandler(this.buttonUpdateSubContest_Click);
+            this.buttonUpdateSubContest.Click += new System.EventHandler(this.ButtonUpdateSubContest_Click);
             // 
             // buttonCancelEdit
             // 
@@ -195,7 +208,7 @@ namespace Simhopp
             this.buttonCancelEdit.Text = "Cancel";
             this.buttonCancelEdit.UseVisualStyleBackColor = true;
             this.buttonCancelEdit.Visible = false;
-            this.buttonCancelEdit.Click += new System.EventHandler(this.buttonCancelEdit_Click);
+            this.buttonCancelEdit.Click += new System.EventHandler(this.ButtonCancelEdit_Click);
             // 
             // labelContestContestants
             // 
@@ -245,7 +258,7 @@ namespace Simhopp
             this.listViewSubContests.TabIndex = 34;
             this.listViewSubContests.UseCompatibleStateImageBehavior = false;
             this.listViewSubContests.View = System.Windows.Forms.View.Details;
-            this.listViewSubContests.SelectedIndexChanged += new System.EventHandler(this.listViewSubContests_SelectedIndexChanged);
+            this.listViewSubContests.SelectedIndexChanged += new System.EventHandler(this.ListViewSubContests_SelectedIndexChanged);
             // 
             // columnSubContest
             // 
@@ -282,7 +295,7 @@ namespace Simhopp
             this.buttonRemoveSubContest.Text = "Ta bort";
             this.buttonRemoveSubContest.UseVisualStyleBackColor = true;
             this.buttonRemoveSubContest.Visible = false;
-            this.buttonRemoveSubContest.Click += new System.EventHandler(this.buttonRemoveSubContest_Click);
+            this.buttonRemoveSubContest.Click += new System.EventHandler(this.ButtonRemoveSubContest_Click);
             // 
             // CreateSubContestView
             // 
@@ -301,44 +314,41 @@ namespace Simhopp
             this.EventFinalizeContest?.Invoke();
         }
 
-        private void buttonAddContestantToSubContest_Click(object sender, EventArgs e)
+        private void ButtonAddContestantToSubContest_Click(object sender, EventArgs e)
         {
             this.EventAddContestantToSubContest?.Invoke();
         }
 
-        private void buttonAddSubContest_Click(object sender, EventArgs e)
+        private void ButtonAddSubContest_Click(object sender, EventArgs e)
         {
             this.EventAddSubContest?.Invoke();
         }
 
-        private void buttonRemoveContestantFromSubContest_Click(object sender, EventArgs e)
+        private void ButtonRemoveContestantFromSubContest_Click(object sender, EventArgs e)
         {
             this.EventRemoveContestantFromSubContest?.Invoke();
         }
 
-        //private void listBoxSubContests_SelectionChanged(object sender, EventArgs e)
-        //{
-        //    this.EventSubContestSelected?.Invoke();
-        //}
-
-        private void buttonUpdateSubContest_Click(object sender, EventArgs e)
+        private void ButtonUpdateSubContest_Click(object sender, EventArgs e)
         {
             this.EventUpdateSubContest?.Invoke();
         }
 
-        private void buttonCancelEdit_Click(object sender, EventArgs e)
+        private void ButtonCancelEdit_Click(object sender, EventArgs e)
         {
             this.EventCancelEdit?.Invoke();
         }
 
-        private void listViewSubContests_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewSubContests_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.EventSubContestSelected?.Invoke();
         }
 
-        private void buttonRemoveSubContest_Click(object sender, EventArgs e)
+        private void ButtonRemoveSubContest_Click(object sender, EventArgs e)
         {
             this.EventRemoveSubContest?.Invoke();
         }
+
+#endregion
     }
 }

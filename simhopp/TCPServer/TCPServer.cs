@@ -17,6 +17,7 @@ namespace Simhopp
 
     public class TCPServer
     {
+        #region Properties
         private bool Run { get; set; } = true;
 
         private bool LANServer { get; set; } = true;
@@ -30,10 +31,20 @@ namespace Simhopp
         private ContestPresenter contestPresenter = null;
 
         private string url = "ftp://files.000webhost.com/simhopp/simhoppServers.txt";
-        //private string url = "tomat.trickip.net/simhopp/simhoppServers.txt";
-
 
         private NetworkCredential Credentials;
+
+        private Int32 port = 9058;
+
+        private IPAddress serverIp = IPAddress.Parse("127.0.0.1");
+
+        private TcpListener tcpListener = null;
+
+        private Thread threadServer = null;
+
+        #endregion
+
+        #region Constructor
 
         public static TCPServer Instance(ContestPresenter contest)
         {
@@ -41,12 +52,6 @@ namespace Simhopp
                 server = new TCPServer(contest);
             return server;
         }
-
-        private Int32 port = 9058;
-        private IPAddress serverIp = IPAddress.Parse("127.0.0.1");
-
-        private TcpListener tcpListener = null;
-        private Thread threadServer = null;
 
         public TCPServer(ContestPresenter contest)
         {
@@ -70,8 +75,7 @@ namespace Simhopp
 
             // kallar Instance()
             server = this;
-
-            //Credentials = new NetworkCredential("pi", "gallian0"); ;
+            
             Credentials = new NetworkCredential("oskarsandh", "simmalungt1");
 
             threadServer = new Thread(server.ThreadListener);
@@ -79,7 +83,12 @@ namespace Simhopp
             threadServer.Start();
         }
 
-        // Listens for clients
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Thread method that listens for clients
+        /// </summary>
         private void ThreadListener()
         {
             try
@@ -104,7 +113,6 @@ namespace Simhopp
             catch (SocketException e)
             {
                 Console.WriteLine(e.Message);
-                MessageBox.Show("Servern kan inte läggas upp. Manuel inmatning av poäng aktiverat.");
                 EnableManualJudging();
             }
             finally
@@ -127,8 +135,15 @@ namespace Simhopp
 
             foreach (var client in ClientList)
             {
-                client.StreamWriter?.WriteLine("quit");
-                client.StreamWriter?.Flush();
+                try
+                {
+                    client.StreamWriter?.WriteLine("quit");
+                    client.StreamWriter?.Flush();
+                }
+                catch(ObjectDisposedException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
 
             tcpListener.Stop();
@@ -295,6 +310,10 @@ namespace Simhopp
             return true;
         }
 
+        /// <summary>
+        /// Request points from the clients by sending a message
+        /// </summary>
+        /// <param name="dive">Dive to be judged</param>
         internal void RequestPoints(Dive dive)
         {
             foreach (var client in ClientList)
@@ -339,5 +358,6 @@ namespace Simhopp
                 }));
 
         }
+        #endregion
     }
 }

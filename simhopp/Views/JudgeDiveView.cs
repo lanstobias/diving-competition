@@ -9,6 +9,7 @@ namespace Simhopp
 {
     public class JudgeDiveView : PanelViewControl, IJudgeDiveView
     {
+        #region Fields
         private Button buttonGiveScore;
         private Label labelScore;
         private Label labelPoints;
@@ -20,7 +21,11 @@ namespace Simhopp
         private Label labelCodeGiven;
         private Label labelMult;
         private Label labelCode;
-        private System.Windows.Forms.TrackBar sliderPoints;
+        private TrackBar sliderPoints;
+
+        #endregion
+
+        #region Properties
 
         public Button ButtonGiveScore { get { return buttonGiveScore; } set { buttonGiveScore = value; } }
 
@@ -36,14 +41,24 @@ namespace Simhopp
         public Label LabelCodeGiven { get { return labelCodeGiven; } set { labelCodeGiven = value; } }
         public Label LabelMultGiven { get { return labelMultGiven; } set { labelMultGiven = value; } }
 
+        #endregion
+
+        #region Delegates
+
         public event DelegateGiveScore EventGiveScore;
         public event DelegatePointSliderChanged EventPointSliderChanged;
+
+        #endregion
+
+        #region Constructor
 
         public JudgeDiveView()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Methods
 
         private void InitializeComponent()
         {
@@ -98,7 +113,7 @@ namespace Simhopp
             this.buttonGiveScore.TabIndex = 8;
             this.buttonGiveScore.Text = "Ge Poäng";
             this.buttonGiveScore.UseVisualStyleBackColor = true;
-            this.buttonGiveScore.Click += new System.EventHandler(this.buttonGiveScore_Click);
+            this.buttonGiveScore.Click += new System.EventHandler(this.ButtonGiveScore_Click);
             // 
             // sliderPoints
             // 
@@ -108,7 +123,7 @@ namespace Simhopp
             this.sliderPoints.Size = new System.Drawing.Size(446, 45);
             this.sliderPoints.TabIndex = 9;
             this.sliderPoints.Value = 10;
-            this.sliderPoints.ValueChanged += new System.EventHandler(this.sliderPoints_ValueChanged);
+            this.sliderPoints.ValueChanged += new System.EventHandler(this.SliderPoints_ValueChanged);
             // 
             // labelPoints
             // 
@@ -210,14 +225,16 @@ namespace Simhopp
 
         }
 
-        private void buttonGiveScore_Click(object sender, EventArgs e)
+        private void ButtonGiveScore_Click(object sender, EventArgs e)
         {
             this.EventGiveScore?.Invoke();
         }
 
-        private void sliderPoints_ValueChanged(object sender, EventArgs e)
+        private void SliderPoints_ValueChanged(object sender, EventArgs e)
         {
             this.EventPointSliderChanged?.Invoke();
         }
+
+        #endregion
     }
 }

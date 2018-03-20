@@ -9,20 +9,15 @@ namespace Simhopp
 {
     public class CreateSubContestPresenter
     {
+        #region Properties
         CreateSubContestView View { get; set; }
 
         private ProjectMainWindow window;
-
-        #region Properties
         public Contest CurrentContest { get; set; }
-
         public ContestantList SubContestContestants { get; set; } = new ContestantList();
-
         public SubContestBranchList SubContests { get; set; } = new SubContestBranchList(); 
-        #endregion
-        
         public SubContestBranch SelectedSubContest { get; set; } = null;
-
+        #endregion
 
         #region Constructor
 
@@ -56,10 +51,6 @@ namespace Simhopp
             View.EventUpdateSubContest += UpdateSubContest;
             View.EventCancelEdit += CancelEditOfSubContest;
             View.EventRemoveSubContest += RemoveSubContest;
-
-
-            // temp 
-            //FillWithData();
         }
 
 
@@ -67,24 +58,6 @@ namespace Simhopp
         #endregion
 
         #region Methods
-
-        /// <summary>
-        /// Temporär metod som lägger till en färdig deltävling
-        /// </summary>
-        private void FillWithData()
-        {
-            SubContestBranch testSubContest = new SubContestBranch("Deltävling1", CurrentContest, CurrentContest.Contestants);
-
-            SubContests.Add(testSubContest);
-            //View.ListBoxSubContests.Items.Add(testSubContest.Name);
-
-            View.ListViewSubContests.Items.Add(testSubContest.Name);
-
-            // clear the inputs
-            SubContestContestants.Clear();
-            ClearInputs();
-
-        }
 
         /// <summary>
         /// Clears the various data that the user has entered
@@ -96,9 +69,7 @@ namespace Simhopp
             View.ListViewContestContestants.SelectedItems.Clear();
             View.ListViewSubContests.SelectedItems.Clear();
 
-
             SubContestContestants.Clear();
-
 
             SelectedSubContest = null;
 
@@ -169,7 +140,6 @@ namespace Simhopp
         /// <summary>
         /// Is triggered when a created subcontest is selected. Opens it up for editing
         /// </summary> 
-        // FIXA DETTA
         private void SubContestSelected()
         {
 
@@ -203,12 +173,7 @@ namespace Simhopp
                         ToggleButtons(true);
                     }
                 }
-
-                if (SelectedSubContest == null)
-                {
-
-                }
-
+            
             }
 
         }

@@ -55,7 +55,7 @@ namespace Simhopp
 
         #endregion
 
-        #region Functions
+        #region Methods
         /// <summary>
         /// Listens for messages from a client
         /// </summary>
@@ -71,7 +71,7 @@ namespace Simhopp
 
                 ContestInfo info = contestPresenter.CurrentContest.Info;
                 msg = "contest:" + info.Name + "|" + info.City + "|" + info.Arena;
-                // contest: Example Event|c|Lyon|v|Arena
+                // contest: Example Event|Lyon|Arena
 
                 StreamWriter.WriteLine(msg);
                 StreamWriter.Flush();
@@ -110,7 +110,10 @@ namespace Simhopp
                 }
 
             }
-            catch (IOException ioe) { }
+            catch (IOException ioe)
+            {
+                Console.WriteLine(ioe.Message);
+            }
             finally
             {
                 if (!IsHost)

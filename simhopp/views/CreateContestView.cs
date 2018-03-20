@@ -9,20 +9,21 @@ namespace Simhopp
 {
     public class CreateContestView : PanelViewControl, ICreateContestView
     {
-        private System.Windows.Forms.Button buttonGoToSubContest;
-        private System.Windows.Forms.Button buttonAddNewContestantToDB;
-        private System.Windows.Forms.Button buttonRemoveContestantFromContest;
-        private System.Windows.Forms.Button buttonAddContestantToContest;
-        private System.Windows.Forms.Button buttonAddNewJudgeToDB;
-        private System.Windows.Forms.Button buttonRemoveJudgeFromContest;
-        private System.Windows.Forms.Button buttonAddJudgeToContest;
-        private System.Windows.Forms.Button buttonSetStartDate;
-        private System.Windows.Forms.Label labelStartDate;
-        private System.Windows.Forms.Label labelCity;
-        private System.Windows.Forms.TextBox textBoxArena;
+        #region Fields
+        private Button buttonGoToSubContest;
+        private Button buttonAddNewContestantToDB;
+        private Button buttonRemoveContestantFromContest;
+        private Button buttonAddContestantToContest;
+        private Button buttonAddNewJudgeToDB;
+        private Button buttonRemoveJudgeFromContest;
+        private Button buttonAddJudgeToContest;
+        private Button buttonSetStartDate;
+        private Label labelStartDate;
+        private Label labelCity;
+        private TextBox textBoxArena;
         private Label labelName;
-        private System.Windows.Forms.Label labelContestInfo;
-        private System.Windows.Forms.TextBox textBoxCity;
+        private Label labelContestInfo;
+        private TextBox textBoxCity;
         private Label labelEndDate;
         private Button buttonSetEndDate;
         private Label labelArena;
@@ -43,8 +44,10 @@ namespace Simhopp
         private Label labelContestantsFromDB;
         private Label labelJudgesFromDB;
         private Button buttonGoBack;
-        private System.Windows.Forms.TextBox textBoxName;
+        private TextBox textBoxName;
+        #endregion
 
+        #region Delegates
         public event DelegateSetStartDate EventSetStartDate;
         public event DelegateSetEndDate EventSetEndDate;
         public event DelegateAddJudgeToDB EventAddJudgeToDB;
@@ -55,7 +58,9 @@ namespace Simhopp
         public event DelegateRemoveContestantFromContest EventRemoveContestantFromContest;
         public event DelegateCreateSubContest EventCreateSubContest;
         public event DelegateGoBack EventGoBack;
+        #endregion
 
+        #region Properties
         public TextBox TextBoxName { get { return textBoxName; } set { textBoxName = value; } }
         public TextBox TextBoxCity { get { return textBoxCity; } set { textBoxCity = value; } }
         public TextBox TextBoxArena { get { return textBoxArena; } set { textBoxArena = value; } }
@@ -64,13 +69,20 @@ namespace Simhopp
         public ListView ListViewGlobalJudges { get { return listViewGlobalJudges; } set { listViewGlobalJudges = value; } }
         public ListView ListViewLocalJudges { get { return listViewLocalJudges; } set { listViewLocalJudges = value; } }
         public ListView ListViewGlobalContestants { get { return listViewGlobalContestants; } set { listViewGlobalContestants = value; } }
-        public ListView ListViewLocalContestants { get { return listViewLocalContestants; }set { listViewLocalContestants = value; } } 
+        public ListView ListViewLocalContestants { get { return listViewLocalContestants; }set { listViewLocalContestants = value; } }
+
+        #endregion
+
+        #region Constructor
         public CreateContestView()
         {
             InitializeComponent();
 
         }
 
+        #endregion
+
+        #region Methods
         private void InitializeComponent()
         {
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -205,7 +217,7 @@ namespace Simhopp
             this.buttonSetStartDate.TabIndex = 3;
             this.buttonSetStartDate.Text = "Välj startdatum";
             this.buttonSetStartDate.UseVisualStyleBackColor = true;
-            this.buttonSetStartDate.Click += new System.EventHandler(this.buttonSetStartDate_Click);
+            this.buttonSetStartDate.Click += new System.EventHandler(this.ButtonSetStartDate_Click);
             // 
             // buttonAddJudgeToContest
             // 
@@ -216,7 +228,7 @@ namespace Simhopp
             this.buttonAddJudgeToContest.TabIndex = 7;
             this.buttonAddJudgeToContest.Text = "Lägg till domare";
             this.buttonAddJudgeToContest.UseVisualStyleBackColor = true;
-            this.buttonAddJudgeToContest.Click += new System.EventHandler(this.buttonAddJudgeToContest_Click);
+            this.buttonAddJudgeToContest.Click += new System.EventHandler(this.ButtonAddJudgeToContest_Click);
             // 
             // buttonRemoveJudgeFromContest
             // 
@@ -227,7 +239,7 @@ namespace Simhopp
             this.buttonRemoveJudgeFromContest.TabIndex = 9;
             this.buttonRemoveJudgeFromContest.Text = "Ta bort domare";
             this.buttonRemoveJudgeFromContest.UseVisualStyleBackColor = true;
-            this.buttonRemoveJudgeFromContest.Click += new System.EventHandler(this.buttonRemoveJudgeFromContest_Click);
+            this.buttonRemoveJudgeFromContest.Click += new System.EventHandler(this.ButtonRemoveJudgeFromContest_Click);
             // 
             // buttonAddNewJudgeToDB
             // 
@@ -250,7 +262,7 @@ namespace Simhopp
             this.buttonAddNewContestantToDB.TabIndex = 10;
             this.buttonAddNewContestantToDB.Text = "+";
             this.buttonAddNewContestantToDB.UseVisualStyleBackColor = true;
-            this.buttonAddNewContestantToDB.Click += new System.EventHandler(this.buttonAddNewContestantToDB_Click);
+            this.buttonAddNewContestantToDB.Click += new System.EventHandler(this.ButtonAddNewContestantToDB_Click);
             // 
             // buttonRemoveContestantFromContest
             // 
@@ -261,7 +273,7 @@ namespace Simhopp
             this.buttonRemoveContestantFromContest.TabIndex = 14;
             this.buttonRemoveContestantFromContest.Text = "Ta bort deltagare";
             this.buttonRemoveContestantFromContest.UseVisualStyleBackColor = true;
-            this.buttonRemoveContestantFromContest.Click += new System.EventHandler(this.buttonRemoveContestantFromContest_Click);
+            this.buttonRemoveContestantFromContest.Click += new System.EventHandler(this.ButtonRemoveContestantFromContest_Click);
             // 
             // buttonAddContestantToContest
             // 
@@ -272,7 +284,7 @@ namespace Simhopp
             this.buttonAddContestantToContest.TabIndex = 12;
             this.buttonAddContestantToContest.Text = "Lägg till deltagare";
             this.buttonAddContestantToContest.UseVisualStyleBackColor = true;
-            this.buttonAddContestantToContest.Click += new System.EventHandler(this.buttonAddContestantToContest_Click);
+            this.buttonAddContestantToContest.Click += new System.EventHandler(this.ButtonAddContestantToContest_Click);
             // 
             // buttonGoToSubContest
             // 
@@ -283,7 +295,7 @@ namespace Simhopp
             this.buttonGoToSubContest.TabIndex = 15;
             this.buttonGoToSubContest.Text = "OK";
             this.buttonGoToSubContest.UseVisualStyleBackColor = true;
-            this.buttonGoToSubContest.Click += new System.EventHandler(this.buttonGoToSubContest_Click);
+            this.buttonGoToSubContest.Click += new System.EventHandler(this.ButtonGoToSubContest_Click);
             // 
             // textBoxCity
             // 
@@ -302,7 +314,7 @@ namespace Simhopp
             this.buttonSetEndDate.TabIndex = 4;
             this.buttonSetEndDate.Text = "Välj slutdatum";
             this.buttonSetEndDate.UseVisualStyleBackColor = true;
-            this.buttonSetEndDate.Click += new System.EventHandler(this.buttonSetEndDate_Click);
+            this.buttonSetEndDate.Click += new System.EventHandler(this.ButtonSetEndDate_Click);
             // 
             // labelEndDate
             // 
@@ -451,7 +463,7 @@ namespace Simhopp
             this.buttonGoBack.TabIndex = 32;
             this.buttonGoBack.Text = "<";
             this.buttonGoBack.UseVisualStyleBackColor = true;
-            this.buttonGoBack.Click += new System.EventHandler(this.buttonGoBack_Click);
+            this.buttonGoBack.Click += new System.EventHandler(this.ButtonGoBack_Click);
             // 
             // CreateContestView
             // 
@@ -465,7 +477,7 @@ namespace Simhopp
 
         }
 
-        private void buttonAddNewContestantToDB_Click(object sender, EventArgs e)
+        private void ButtonAddNewContestantToDB_Click(object sender, EventArgs e)
         {
             this.EventAddContestantToDB?.Invoke();
         }
@@ -475,44 +487,46 @@ namespace Simhopp
             this.EventAddJudgeToDB?.Invoke();
         }
 
-        private void buttonSetStartDate_Click(object sender, EventArgs e)
+        private void ButtonSetStartDate_Click(object sender, EventArgs e)
         {
             this.EventSetStartDate?.Invoke();
         }
-        private void buttonSetEndDate_Click(object sender, EventArgs e)
+        private void ButtonSetEndDate_Click(object sender, EventArgs e)
         {
             this.EventSetEndDate?.Invoke();
         }
 
-        private void buttonGoToSubContest_Click(object sender, EventArgs e)
+        private void ButtonGoToSubContest_Click(object sender, EventArgs e)
         {
             
             this.EventCreateSubContest?.Invoke();
         }
 
-        private void buttonAddJudgeToContest_Click(object sender, EventArgs e)
+        private void ButtonAddJudgeToContest_Click(object sender, EventArgs e)
         {
             this.EventAddJudgeToContest?.Invoke();
         }
 
-        private void buttonAddContestantToContest_Click(object sender, EventArgs e)
+        private void ButtonAddContestantToContest_Click(object sender, EventArgs e)
         {
             this.EventAddContestantToContest?.Invoke();
         }
 
-        private void buttonRemoveContestantFromContest_Click(object sender, EventArgs e)
+        private void ButtonRemoveContestantFromContest_Click(object sender, EventArgs e)
         {
             this.EventRemoveContestantFromContest?.Invoke();
         }
 
-        private void buttonRemoveJudgeFromContest_Click(object sender, EventArgs e)
+        private void ButtonRemoveJudgeFromContest_Click(object sender, EventArgs e)
         {
             this.EventRemoveJudgeFromContest?.Invoke();
         }
 
-        private void buttonGoBack_Click(object sender, EventArgs e)
+        private void ButtonGoBack_Click(object sender, EventArgs e)
         {
             this.EventGoBack?.Invoke();
         }
+
+        #endregion
     }
 }
