@@ -127,6 +127,11 @@ namespace Simhopp
             System.Diagnostics.Process.Start("http://tomat.trickip.net/simhopp/?controller=view_result&action=home");
         }
 
+        private void manualMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://tomat.trickip.net/simhopp/pdf/manual.pdf");
+        }
+
         private void SettingsMenuItem_Click(object sender, EventArgs e)
         {
             if (Settings.IsDisposed)

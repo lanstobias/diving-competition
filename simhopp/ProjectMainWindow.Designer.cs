@@ -99,6 +99,7 @@ namespace Simhopp
             this.manualMenuItem.Name = "manualMenuItem";
             this.manualMenuItem.Size = new System.Drawing.Size(137, 22);
             this.manualMenuItem.Text = "Manual";
+            this.manualMenuItem.Click += new System.EventHandler(this.manualMenuItem_Click);
             // 
             // resultsMenuItem
             // 
