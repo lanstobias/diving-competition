@@ -5,6 +5,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Tävlingsresultat<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" target="_blank" href="https://drive.google.com/file/d/1lGxQHpC6fnGaKFacJpqOLiwpdm-k-BLz/view?usp=sharing">Manual <i class="fas fa-external-link-alt"></i></a>
+            </li>
         </ul>
     </div>
 </nav>
