@@ -583,7 +583,8 @@ namespace Simhopp
         /// </summary>
         private void CloseContest()
         {
-            HeadJudgeWindow.Close();
+
+            HeadJudgeWindow?.Close();
 
             Database db = new Database();
             try
